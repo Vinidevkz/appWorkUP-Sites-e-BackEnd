@@ -18,6 +18,7 @@ use App\http\Controllers\MensagemController;
 use App\http\Controllers\SeguirController;
 use App\Http\Controllers\LinguasController;
 use App\Http\Controllers\DenunciaVagaController;
+use App\Http\Controllers\NotificacaoController;
 use App\Models\VagaUsuario;
 
 //Eduardo mexeu e precisa testar
@@ -116,3 +117,7 @@ Route::get('/denunciaempresa', [DenunciaEmpresaController::class, 'store']);
 //API pegar vaga por area
 Route::get('/vagaporarea/{areaVaga}', [VagaController::class, 'verVagaPorArea']);
 Route::get('/outrasvagas/{areaVaga}', [VagaController::class, 'verOutrasVagas']);
+
+//API Notificações
+Route::get('/notificacoes', [NotificacaoController::class, 'index']);
+Route::get('/notificacoes/{idUsuario}', [NotificacaoController::class, 'show']);
