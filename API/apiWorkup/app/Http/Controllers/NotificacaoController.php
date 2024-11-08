@@ -49,10 +49,15 @@ class NotificacaoController extends Controller
      */
     public function show($idUsuario)
     {
-    $notificacao = Notificacoes::where('idUsuario', $idUsuario )->get();
-
-    return $notificacao;
+        // Carrega as notificações com as relações 'empresa' e 'vagas'
+        $notificacoes = Notificacoes::with(['empresa', 'vagas'])
+                                    ->where('idUsuario', $idUsuario)
+                                    ->get();
+    
+        // Retorna as notificações com os dados carregados
+        return response()->json($notificacoes);
     }
+    
 
     /**
      * Show the form for editing the specified resource.
