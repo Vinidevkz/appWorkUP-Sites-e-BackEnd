@@ -94,6 +94,8 @@ Validação
         );
         $empresa = new Empresa;
 
+
+        $empresa->idEmpresa = 1;
         $empresa->usernameEmpresa = $request->usernameEmpresa;
         $empresa->nomeEmpresa = $request->nomeEmpresa;
         $empresa->emailEmpresa = $request->emailEmpresa;
@@ -108,7 +110,7 @@ Validação
         $empresa->numeroLograEmpresa = $request->numeroLograEmpresa;
         $empresa->idStatus = 3;
         $empresa->fotoEmpresa =$request->fotoUrl;
-        $empresa->BannerEmpresa =$request->fotoBanner;
+        $empresa->bannerEmpresa =$request->fotoBanner;
 
     
 

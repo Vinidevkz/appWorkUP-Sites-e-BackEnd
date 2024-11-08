@@ -376,16 +376,7 @@ INSERT INTO `tb_linguas` (`idLingua`, `nomeLingua`, `created_at`, `updated_at`) 
 (8, 'Chinês', NULL, NULL),
 (9, 'Árabe', NULL, NULL),
 (10, 'Russo', NULL, NULL),
-(1, 'Português', NULL, NULL),
-(2, 'Inglês', NULL, NULL),
-(3, 'Espanhol', NULL, NULL),
-(4, 'Francês', NULL, NULL),
-(5, 'Alemão', NULL, NULL),
-(6, 'Italiano', NULL, NULL),
-(7, 'Japonês', NULL, NULL),
-(8, 'Chinês', NULL, NULL),
-(9, 'Árabe', NULL, NULL),
-(10, 'Russo', NULL, NULL);
+
 
 -- --------------------------------------------------------
 
