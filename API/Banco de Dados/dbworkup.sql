@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 07/11/2024 às 16:02
--- Versão do servidor: 10.4.32-MariaDB
--- Versão do PHP: 8.2.12
+-- Generation Time: Nov 08, 2024 at 06:32 AM
+-- Server version: 10.4.32-MariaDB
+-- PHP Version: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,13 +18,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Banco de dados: `dbworkup`
+-- Database: `dbworkup`
 --
 
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `failed_jobs`
+-- Table structure for table `failed_jobs`
 --
 
 CREATE TABLE `failed_jobs` (
@@ -40,7 +40,7 @@ CREATE TABLE `failed_jobs` (
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `migrations`
+-- Table structure for table `migrations`
 --
 
 CREATE TABLE `migrations` (
@@ -50,7 +50,7 @@ CREATE TABLE `migrations` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Despejando dados para a tabela `migrations`
+-- Dumping data for table `migrations`
 --
 
 INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
@@ -68,7 +68,7 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `password_resets`
+-- Table structure for table `password_resets`
 --
 
 CREATE TABLE `password_resets` (
@@ -80,7 +80,7 @@ CREATE TABLE `password_resets` (
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `personal_access_tokens`
+-- Table structure for table `personal_access_tokens`
 --
 
 CREATE TABLE `personal_access_tokens` (
@@ -99,7 +99,7 @@ CREATE TABLE `personal_access_tokens` (
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `tb_admin`
+-- Table structure for table `tb_admin`
 --
 
 CREATE TABLE `tb_admin` (
@@ -116,7 +116,7 @@ CREATE TABLE `tb_admin` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Despejando dados para a tabela `tb_admin`
+-- Dumping data for table `tb_admin`
 --
 
 INSERT INTO `tb_admin` (`idAdmin`, `nomeAdmin`, `usernameAdmin`, `emailAdmin`, `contatoAdmin`, `senhaAdmin`, `fotoAdmin`, `idStatus`, `created_at`, `updated_at`) VALUES
@@ -128,7 +128,7 @@ INSERT INTO `tb_admin` (`idAdmin`, `nomeAdmin`, `usernameAdmin`, `emailAdmin`, `
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `tb_area`
+-- Table structure for table `tb_area`
 --
 
 CREATE TABLE `tb_area` (
@@ -137,7 +137,7 @@ CREATE TABLE `tb_area` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Despejando dados para a tabela `tb_area`
+-- Dumping data for table `tb_area`
 --
 
 INSERT INTO `tb_area` (`idArea`, `nomeArea`) VALUES
@@ -160,7 +160,7 @@ INSERT INTO `tb_area` (`idArea`, `nomeArea`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `tb_areainteresseusuario`
+-- Table structure for table `tb_areainteresseusuario`
 --
 
 CREATE TABLE `tb_areainteresseusuario` (
@@ -170,7 +170,7 @@ CREATE TABLE `tb_areainteresseusuario` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Despejando dados para a tabela `tb_areainteresseusuario`
+-- Dumping data for table `tb_areainteresseusuario`
 --
 
 INSERT INTO `tb_areainteresseusuario` (`idAreaInteresseUsuario`, `idArea`, `idUsuario`) VALUES
@@ -182,7 +182,7 @@ INSERT INTO `tb_areainteresseusuario` (`idAreaInteresseUsuario`, `idArea`, `idUs
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `tb_atuacaoempresa`
+-- Table structure for table `tb_atuacaoempresa`
 --
 
 CREATE TABLE `tb_atuacaoempresa` (
@@ -192,7 +192,7 @@ CREATE TABLE `tb_atuacaoempresa` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Despejando dados para a tabela `tb_atuacaoempresa`
+-- Dumping data for table `tb_atuacaoempresa`
 --
 
 INSERT INTO `tb_atuacaoempresa` (`idAtuacaoEmpresa`, `idArea`, `idEmpresa`) VALUES
@@ -204,7 +204,7 @@ INSERT INTO `tb_atuacaoempresa` (`idAtuacaoEmpresa`, `idArea`, `idEmpresa`) VALU
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `tb_chat`
+-- Table structure for table `tb_chat`
 --
 
 CREATE TABLE `tb_chat` (
@@ -218,7 +218,7 @@ CREATE TABLE `tb_chat` (
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `tb_denunciaempresa`
+-- Table structure for table `tb_denunciaempresa`
 --
 
 CREATE TABLE `tb_denunciaempresa` (
@@ -234,7 +234,7 @@ CREATE TABLE `tb_denunciaempresa` (
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `tb_denunciausuario`
+-- Table structure for table `tb_denunciausuario`
 --
 
 CREATE TABLE `tb_denunciausuario` (
@@ -248,7 +248,7 @@ CREATE TABLE `tb_denunciausuario` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Despejando dados para a tabela `tb_denunciausuario`
+-- Dumping data for table `tb_denunciausuario`
 --
 
 INSERT INTO `tb_denunciausuario` (`idDenunciaUsuario`, `idUsuario`, `idEmpresa`, `motivo`, `idStatus`, `created_at`, `updated_at`) VALUES
@@ -260,7 +260,7 @@ INSERT INTO `tb_denunciausuario` (`idDenunciaUsuario`, `idUsuario`, `idEmpresa`,
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `tb_denunciavaga`
+-- Table structure for table `tb_denunciavaga`
 --
 
 CREATE TABLE `tb_denunciavaga` (
@@ -274,7 +274,7 @@ CREATE TABLE `tb_denunciavaga` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Despejando dados para a tabela `tb_denunciavaga`
+-- Dumping data for table `tb_denunciavaga`
 --
 
 INSERT INTO `tb_denunciavaga` (`idDenunciaVaga`, `idUsuario`, `idVaga`, `motivo`, `idStatus`, `created_at`, `updated_at`) VALUES
@@ -285,7 +285,7 @@ INSERT INTO `tb_denunciavaga` (`idDenunciaVaga`, `idUsuario`, `idVaga`, `motivo`
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `tb_empresa`
+-- Table structure for table `tb_empresa`
 --
 
 CREATE TABLE `tb_empresa` (
@@ -294,6 +294,7 @@ CREATE TABLE `tb_empresa` (
   `nomeEmpresa` varchar(40) NOT NULL,
   `emailEmpresa` varchar(100) NOT NULL,
   `fotoEmpresa` varchar(300) NOT NULL,
+  `bannerEmpresa` longtext NOT NULL,
   `sobreEmpresa` text NOT NULL,
   `cnpjEmpresa` varchar(40) NOT NULL,
   `contatoEmpresa` varchar(20) NOT NULL,
@@ -310,24 +311,24 @@ CREATE TABLE `tb_empresa` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Despejando dados para a tabela `tb_empresa`
+-- Dumping data for table `tb_empresa`
 --
 
-INSERT INTO `tb_empresa` (`idEmpresa`, `usernameEmpresa`, `nomeEmpresa`, `emailEmpresa`, `fotoEmpresa`, `sobreEmpresa`, `cnpjEmpresa`, `contatoEmpresa`, `senhaEmpresa`, `cidadeEmpresa`, `estadoEmpresa`, `LogradouroEmpresa`, `cepEmpresa`, `numeroLograEmpresa`, `avaliacaoEmpresa`, `idStatus`, `created_at`, `updated_at`) VALUES
-(1, 'empresa001', 'Tech Innovations', '', 'tech_innovations.jpg', 'Especializada em tecnologia avançada', '12.345.678/0001-90', '(11) 1234-5678', 'senha123', 'São Paulo', 'SP', 'Rua das Inovações', '01234-567', '123', 'Muito Positivas', 1, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(2, 'empresa002', 'Green Solutions', '', 'green_solutions.jpg', 'Focada em soluções ecológicas', '98.765.432/0001-01', '(21) 2345-6789', 'senha456', 'Rio de Janeiro', 'RJ', 'Av. Verde', '87654-321', '456', NULL, 1, '0000-00-00 00:00:00', '2024-11-02 18:07:17'),
-(3, 'empresa003', 'Foodies Inc.', '', 'foodies_inc.jpg', 'Comércio de alimentos gourmet', '11.223.344/0001-22', '(31) 3456-7890', 'senha789', 'Belo Horizonte', 'MG', 'Rua dos Sabores', '34567-890', '789', NULL, 1, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(10, 'teste', 'teste', 'teste@teste.com', 'a', 'teste', '1212', '121212', '$2y$10$ov45KGFlSZra5aShO2E2aex9BnbHDttmVSuA.Oos0eQxluxplHHbe', 'teste', 'teste', 'teste', '111', '1', NULL, 2, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(11, 'teste', 'teste', 'teste@teste.com', 'a', 'teste', '1212', '121212', '$2y$10$ML8XnGbiHfcVrSlefvQyqeSwlED3n2WF0sq6dmct0alFm0YYDY40O', 'teste', 'teste', 'teste', '111', '1', NULL, 2, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(12, 'teste', 'teste', 'teste@teste.com', 'a', 'teste', '1212', '121212', '$2y$10$84eZT9mBUuVS2/W1Kz.FP.TJ/kBo7dGdvYEvDimqjwPAn1yN9EJqq', 'teste', 'teste', 'teste', '111', '1', NULL, 2, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(13, 'testeBanco', 'teste', 'teste@tt.com', 't', 't', '1', '12', '$2y$10$rels43zkMss3NrJj.9G8uum6Ftz8J8qXjXI9Q43IAjuSh9/mrNkM6', 's', 's', 'sa', '12', '2', NULL, 1, '2024-09-23 00:57:52', '2024-09-23 00:57:52'),
-(14, 'testeBanco', 'teste', 'teste@tt.com', 't', 't', '1', '12', '$2y$10$VJvvpG5WbNGsz84lWpqtCOi7pq4F.hBMmCyc3Umb36UCk6/BGdU3W', 's', 's', 'sa', '12', '2', NULL, 1, '2024-09-23 00:59:57', '2024-09-23 00:59:57'),
-(15, 'testeBanco', 'teste', 'teste@tt.com', 't', 't', '1', '12', '$2y$10$Yg4qaSEmOHSrRv6RAPVaHuxoI2BrHfRR7NqPGYaJlME5VMJMKa7cu', 's', 's', 'sa', '12', '2', NULL, 1, '2024-09-23 01:00:18', '2024-09-23 01:00:18');
+INSERT INTO `tb_empresa` (`idEmpresa`, `usernameEmpresa`, `nomeEmpresa`, `emailEmpresa`, `fotoEmpresa`, `bannerEmpresa`, `sobreEmpresa`, `cnpjEmpresa`, `contatoEmpresa`, `senhaEmpresa`, `cidadeEmpresa`, `estadoEmpresa`, `LogradouroEmpresa`, `cepEmpresa`, `numeroLograEmpresa`, `avaliacaoEmpresa`, `idStatus`, `created_at`, `updated_at`) VALUES
+(1, 'empresa001', 'Tech Innovations', '', 'tech_innovations.jpg', '', 'Especializada em tecnologia avançada', '12.345.678/0001-90', '(11) 1234-5678', 'senha123', 'São Paulo', 'SP', 'Rua das Inovações', '01234-567', '123', 'Muito Positivas', 1, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(2, 'empresa002', 'Green Solutions', '', 'green_solutions.jpg', '', 'Focada em soluções ecológicas', '98.765.432/0001-01', '(21) 2345-6789', 'senha456', 'Rio de Janeiro', 'RJ', 'Av. Verde', '87654-321', '456', NULL, 1, '0000-00-00 00:00:00', '2024-11-02 18:07:17'),
+(3, 'empresa003', 'Foodies Inc.', '', 'foodies_inc.jpg', '', 'Comércio de alimentos gourmet', '11.223.344/0001-22', '(31) 3456-7890', 'senha789', 'Belo Horizonte', 'MG', 'Rua dos Sabores', '34567-890', '789', NULL, 1, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(10, 'teste', 'teste', 'teste@teste.com', 'a', '', 'teste', '1212', '121212', '$2y$10$ov45KGFlSZra5aShO2E2aex9BnbHDttmVSuA.Oos0eQxluxplHHbe', 'teste', 'teste', 'teste', '111', '1', NULL, 2, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(11, 'teste', 'teste', 'teste@teste.com', 'a', '', 'teste', '1212', '121212', '$2y$10$ML8XnGbiHfcVrSlefvQyqeSwlED3n2WF0sq6dmct0alFm0YYDY40O', 'teste', 'teste', 'teste', '111', '1', NULL, 2, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(12, 'teste', 'teste', 'teste@teste.com', 'a', '', 'teste', '1212', '121212', '$2y$10$84eZT9mBUuVS2/W1Kz.FP.TJ/kBo7dGdvYEvDimqjwPAn1yN9EJqq', 'teste', 'teste', 'teste', '111', '1', NULL, 2, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(13, 'testeBanco', 'teste', 'teste@tt.com', 't', '', 't', '1', '12', '$2y$10$rels43zkMss3NrJj.9G8uum6Ftz8J8qXjXI9Q43IAjuSh9/mrNkM6', 's', 's', 'sa', '12', '2', NULL, 1, '2024-09-23 00:57:52', '2024-09-23 00:57:52'),
+(14, 'testeBanco', 'teste', 'teste@tt.com', 't', '', 't', '1', '12', '$2y$10$VJvvpG5WbNGsz84lWpqtCOi7pq4F.hBMmCyc3Umb36UCk6/BGdU3W', 's', 's', 'sa', '12', '2', NULL, 1, '2024-09-23 00:59:57', '2024-09-23 00:59:57'),
+(15, 'testeBanco', 'teste', 'teste@tt.com', 't', '', 't', '1', '12', '$2y$10$Yg4qaSEmOHSrRv6RAPVaHuxoI2BrHfRR7NqPGYaJlME5VMJMKa7cu', 's', 's', 'sa', '12', '2', NULL, 1, '2024-09-23 01:00:18', '2024-09-23 01:00:18');
 
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `tb_escolas`
+-- Table structure for table `tb_escolas`
 --
 
 CREATE TABLE `tb_escolas` (
@@ -338,7 +339,7 @@ CREATE TABLE `tb_escolas` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Despejando dados para a tabela `tb_escolas`
+-- Dumping data for table `tb_escolas`
 --
 
 INSERT INTO `tb_escolas` (`idEscolas`, `nomeEscola`, `created_at`, `updated_at`) VALUES
@@ -351,7 +352,7 @@ INSERT INTO `tb_escolas` (`idEscolas`, `nomeEscola`, `created_at`, `updated_at`)
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `tb_linguas`
+-- Table structure for table `tb_linguas`
 --
 
 CREATE TABLE `tb_linguas` (
@@ -362,7 +363,7 @@ CREATE TABLE `tb_linguas` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Despejando dados para a tabela `tb_linguas`
+-- Dumping data for table `tb_linguas`
 --
 
 INSERT INTO `tb_linguas` (`idLingua`, `nomeLingua`, `created_at`, `updated_at`) VALUES
@@ -376,12 +377,21 @@ INSERT INTO `tb_linguas` (`idLingua`, `nomeLingua`, `created_at`, `updated_at`) 
 (8, 'Chinês', NULL, NULL),
 (9, 'Árabe', NULL, NULL),
 (10, 'Russo', NULL, NULL),
-
+(1, 'Português', NULL, NULL),
+(2, 'Inglês', NULL, NULL),
+(3, 'Espanhol', NULL, NULL),
+(4, 'Francês', NULL, NULL),
+(5, 'Alemão', NULL, NULL),
+(6, 'Italiano', NULL, NULL),
+(7, 'Japonês', NULL, NULL),
+(8, 'Chinês', NULL, NULL),
+(9, 'Árabe', NULL, NULL),
+(10, 'Russo', NULL, NULL);
 
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `tb_mensagem`
+-- Table structure for table `tb_mensagem`
 --
 
 CREATE TABLE `tb_mensagem` (
@@ -395,7 +405,7 @@ CREATE TABLE `tb_mensagem` (
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `tb_modalidadevaga`
+-- Table structure for table `tb_modalidadevaga`
 --
 
 CREATE TABLE `tb_modalidadevaga` (
@@ -404,7 +414,7 @@ CREATE TABLE `tb_modalidadevaga` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Despejando dados para a tabela `tb_modalidadevaga`
+-- Dumping data for table `tb_modalidadevaga`
 --
 
 INSERT INTO `tb_modalidadevaga` (`idModalidadeVaga`, `descModalidadeVaga`) VALUES
@@ -415,7 +425,7 @@ INSERT INTO `tb_modalidadevaga` (`idModalidadeVaga`, `descModalidadeVaga`) VALUE
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `tb_publicacao`
+-- Table structure for table `tb_publicacao`
 --
 
 CREATE TABLE `tb_publicacao` (
@@ -430,7 +440,7 @@ CREATE TABLE `tb_publicacao` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Despejando dados para a tabela `tb_publicacao`
+-- Dumping data for table `tb_publicacao`
 --
 
 INSERT INTO `tb_publicacao` (`idPublicacao`, `detalhePublicacao`, `fotoPublicacao`, `idEmpresa`, `idAdmin`, `idVaga`, `updated_at`, `created_at`) VALUES
@@ -439,7 +449,7 @@ INSERT INTO `tb_publicacao` (`idPublicacao`, `detalhePublicacao`, `fotoPublicaca
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `tb_salvarvaga`
+-- Table structure for table `tb_salvarvaga`
 --
 
 CREATE TABLE `tb_salvarvaga` (
@@ -450,7 +460,7 @@ CREATE TABLE `tb_salvarvaga` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Despejando dados para a tabela `tb_salvarvaga`
+-- Dumping data for table `tb_salvarvaga`
 --
 
 INSERT INTO `tb_salvarvaga` (`idSalvarVaga`, `idUsuario`, `idVaga`, `created_at`) VALUES
@@ -463,7 +473,7 @@ INSERT INTO `tb_salvarvaga` (`idSalvarVaga`, `idUsuario`, `idVaga`, `created_at`
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `tb_seguir`
+-- Table structure for table `tb_seguir`
 --
 
 CREATE TABLE `tb_seguir` (
@@ -476,7 +486,7 @@ CREATE TABLE `tb_seguir` (
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `tb_status`
+-- Table structure for table `tb_status`
 --
 
 CREATE TABLE `tb_status` (
@@ -485,7 +495,7 @@ CREATE TABLE `tb_status` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Despejando dados para a tabela `tb_status`
+-- Dumping data for table `tb_status`
 --
 
 INSERT INTO `tb_status` (`idStatus`, `tipoStatus`) VALUES
@@ -498,7 +508,7 @@ INSERT INTO `tb_status` (`idStatus`, `tipoStatus`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `tb_statusvagausuario`
+-- Table structure for table `tb_statusvagausuario`
 --
 
 CREATE TABLE `tb_statusvagausuario` (
@@ -507,7 +517,7 @@ CREATE TABLE `tb_statusvagausuario` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Despejando dados para a tabela `tb_statusvagausuario`
+-- Dumping data for table `tb_statusvagausuario`
 --
 
 INSERT INTO `tb_statusvagausuario` (`idStatusVagaUsuario`, `tipoStatusVaga`) VALUES
@@ -518,7 +528,7 @@ INSERT INTO `tb_statusvagausuario` (`idStatusVagaUsuario`, `tipoStatusVaga`) VAL
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `tb_usuario`
+-- Table structure for table `tb_usuario`
 --
 
 CREATE TABLE `tb_usuario` (
@@ -550,7 +560,7 @@ CREATE TABLE `tb_usuario` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Despejando dados para a tabela `tb_usuario`
+-- Dumping data for table `tb_usuario`
 --
 
 INSERT INTO `tb_usuario` (`idUsuario`, `nomeUsuario`, `usernameUsuario`, `nascUsuario`, `emailUsuario`, `senhaUsuario`, `contatoUsuario`, `emailContato`, `areaInteresseUsuario`, `linguaUsuario`, `ensinoMedio`, `anoFormacao`, `fotoUsuario`, `fotoBanner`, `cidadeUsuario`, `estadoUsuario`, `logradouroUsuario`, `cepUsuario`, `numeroLograUsuario`, `sobreUsuario`, `formacaoCompetenciaUsuario`, `dataFormacaoCompetenciaUsuario`, `idStatus`, `created_at`, `updated_at`) VALUES
@@ -588,7 +598,7 @@ INSERT INTO `tb_usuario` (`idUsuario`, `nomeUsuario`, `usernameUsuario`, `nascUs
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `tb_vaga`
+-- Table structure for table `tb_vaga`
 --
 
 CREATE TABLE `tb_vaga` (
@@ -610,7 +620,7 @@ CREATE TABLE `tb_vaga` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Despejando dados para a tabela `tb_vaga`
+-- Dumping data for table `tb_vaga`
 --
 
 INSERT INTO `tb_vaga` (`idVaga`, `nomeVaga`, `descricaoVaga`, `prazoVaga`, `salarioVaga`, `cidadeVaga`, `estadoVaga`, `beneficiosVaga`, `diferencialVaga`, `idEmpresa`, `idArea`, `idStatus`, `idModalidadeVaga`, `created_at`, `updated_at`) VALUES
@@ -628,7 +638,7 @@ INSERT INTO `tb_vaga` (`idVaga`, `nomeVaga`, `descricaoVaga`, `prazoVaga`, `sala
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `tb_vagausuario`
+-- Table structure for table `tb_vagausuario`
 --
 
 CREATE TABLE `tb_vagausuario` (
@@ -639,7 +649,7 @@ CREATE TABLE `tb_vagausuario` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Despejando dados para a tabela `tb_vagausuario`
+-- Dumping data for table `tb_vagausuario`
 --
 
 INSERT INTO `tb_vagausuario` (`idVagaUsuario`, `idUsuario`, `idVaga`, `idStatusVagaUsuario`) VALUES
@@ -648,7 +658,7 @@ INSERT INTO `tb_vagausuario` (`idVagaUsuario`, `idUsuario`, `idVaga`, `idStatusV
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `users`
+-- Table structure for table `users`
 --
 
 CREATE TABLE `users` (
@@ -663,21 +673,21 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Índices para tabelas despejadas
+-- Indexes for dumped tables
 --
 
 --
--- Índices de tabela `tb_publicacao`
+-- Indexes for table `tb_publicacao`
 --
 ALTER TABLE `tb_publicacao`
   ADD PRIMARY KEY (`idPublicacao`);
 
 --
--- AUTO_INCREMENT para tabelas despejadas
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT de tabela `tb_publicacao`
+-- AUTO_INCREMENT for table `tb_publicacao`
 --
 ALTER TABLE `tb_publicacao`
   MODIFY `idPublicacao` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
