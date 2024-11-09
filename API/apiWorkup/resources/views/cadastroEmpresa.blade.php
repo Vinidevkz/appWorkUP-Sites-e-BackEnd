@@ -146,27 +146,9 @@
                     <label for="fotoEmpresa" class="form__label">Banner de perfil da empresa:</label>
                                 <input type="file" id="fileInput" class="form-control custom-input"  value="url" name="fotoPerfil">
                                 <input type="text" id="imageUrl2" name="fotoBanner">
-                                <div id="preview">
-                                        <img id="imagePreview" src="" alt="" style="display:none; max-width: 300px; max-height: 300px;">
-                                    </div>
-                        @error('fotoEmpresa')
-                        <div class="error-message">{{$message}}</div>
-                        @enderror  
-                    </div>
-                    <div>   
-                    <div class="col col-12">
-                    <label for="fotoEmpresa" class="form__label">Foto de perfil da empresa:</label>
-                                <input type="file" id="fileInputBanner" class="form-control custom-input"  value="url" name="fotoPerfilBanner">
-                                <input type="text" id="imageUrl" name="fotoUrl">
-                                <div id="preview">
-                                        <img id="imagePreview" src="" alt="" style="display:none; max-width: 300px; max-height: 300px;">
-                                    </div>
-                        @error('fotoEmpresa')
-                        <div class="error-message">{{$message}}</div>
-                        @enderror
 
-                        
-                    </div></div>
+
+                    </div>
                     
 
                     <div class="col col-12">
@@ -176,6 +158,18 @@
                         <div class="error-message">{{$message}}</div>
                         @enderror
                     </div>
+
+                    <div>                    
+                        <div class="col col-12">
+                    <label for="fotoEmpresa" class="form__label">Foto de perfil da empresa:</label>
+                                <input type="file" id="fileInputBanner" class="form-control custom-input"  value="url" name="fotoPerfilBanner">
+                                <input type="text" id="imageUrl" name="fotoUrl">
+
+
+
+                        
+                    </div>
+                </div>
 
 
                 </div>
