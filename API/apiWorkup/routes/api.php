@@ -119,5 +119,4 @@ Route::get('/vagaporarea/{areaVaga}', [VagaController::class, 'verVagaPorArea'])
 Route::get('/outrasvagas/{areaVaga}', [VagaController::class, 'verOutrasVagas']);
 
 //API Notificações
-Route::get('/notificacoes', [NotificacaoController::class, 'index']);
-Route::get('/notificacoes/{idUsuario}', [NotificacaoController::class, 'show']);
+Route::get('/notificacoes/{idUsuario}', [VagaUsuarioController::class, 'notificacaoAprovado']);

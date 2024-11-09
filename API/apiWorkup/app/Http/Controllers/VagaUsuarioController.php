@@ -182,6 +182,12 @@ public function minhasVagas($userId)
     return response()->json($candidaturas); // Retorna as candidaturas com os dados das vagas em JSON
 }
 
+public function notificacaoAprovado($userId){
+    $notificacoes = VagaUsuario::where('idStatusVagaUsuario', '=', 2)->where('idUsuario', $userId)->with('vaga')->with(['empresa'])->get();
+
+    return response()->json($notificacoes);
+}
+
 
 }
 
