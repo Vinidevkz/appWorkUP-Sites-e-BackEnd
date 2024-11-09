@@ -183,16 +183,18 @@ public function minhasVagas($userId)
 }
 
 public function notificacaoAprovado($userId) {
-    $notificacoes = VagaUsuario::where('idStatusVagaUsuario', '=', 2)
-        ->where('idUsuario', $userId)
-        ->with('vaga') // Carrega a relação vaga
-        ->with(['empresa' => function($query) {
-            $query->select('idEmpresa', 'nomeEmpresa'); // Seleciona apenas os campos da empresa
-        }])
+    // Carrega VagaUsuario, com as relações Vaga (e a Empresa dentro de Vaga)
+    $notificacoes = VagaUsuario::where('idStatusVagaUsuario', 2) // Status 2 para aprovado
+        ->where('idUsuario', $userId) // Filtra pelo usuário
+        ->with(['vaga.empresa' => function($query) {
+            $query->select('idEmpresa', 'nomeEmpresa'); // Carrega apenas os campos idEmpresa e nomeEmpresa
+        }]) // Carrega a relação vaga -> empresa
         ->get();
 
+    // Retorna as notificações em formato JSON
     return response()->json($notificacoes);
 }
+
 
 
 
