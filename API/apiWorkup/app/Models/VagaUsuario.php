@@ -42,4 +42,9 @@ class VagaUsuario extends Model
         return $this->belongsTo(Empresa::class, 'idEmpresa');
     }
 
+
+
+
+
+
 }

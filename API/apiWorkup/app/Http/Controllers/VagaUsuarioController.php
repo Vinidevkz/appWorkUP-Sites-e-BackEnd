@@ -176,11 +176,21 @@ public function negarCandidatura($id)
 
 public function minhasVagas($userId)
 {
-    // Supondo que o modelo de candidatura seja Candidatura e tenha um relacionamento com Vaga
-    $candidaturas = VagaUsuario::where('idUsuario', $userId)->with('vaga')->with('empresa')->get();
+    // Consulta as candidaturas do usuário, incluindo as relações vaga, empresa e status
+    $candidaturas = VagaUsuario::where('idUsuario', $userId)
+        ->with([
+            'vaga.empresa' => function($query) {
+                $query->select('idEmpresa', 'nomeEmpresa'); // Carrega apenas idEmpresa e nomeEmpresa
+            },
+            'status' => function($query) {
+                $query->select('idStatusVagaUsuario', 'tipoStatusVaga'); // Carrega o tipoStatusVaga do status
+            }
+        ])
+        ->get();
 
-    return response()->json($candidaturas); // Retorna as candidaturas com os dados das vagas em JSON
+    return response()->json($candidaturas); // Retorna as candidaturas com os dados das vagas e status
 }
+
 
 public function notificacaoAprovado($userId) {
     // Carrega VagaUsuario, com as relações Vaga (e a Empresa dentro de Vaga)
