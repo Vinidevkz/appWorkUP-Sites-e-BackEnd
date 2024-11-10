@@ -35,6 +35,9 @@
                             class="botao-card botao-vaga mb-2 mb-md-0 me-md-2">Publicar vaga</a>
                         <a href="{{ route('post.create', $empresa->idEmpresa) }}" class="botao-card botao-post">Fazer
                             post</a>
+
+                            <a href="{{ route('posts.index', $empresa->idEmpresa) }}" class="botao-card botao-post">Fazer
+                            ver post</a>
                     </div>
                 </div>
             </div>
@@ -180,10 +183,11 @@
     </section>
 
 
-    <section class="publicacoes">
+    <div class="publicacoes">
     <h3>Publicações</h3>
     <div class="container container-publ">
         <div class="row">
+            @dd($posts)  <!-- Isso vai mostrar o conteúdo de $posts diretamente na view -->
             @if($posts->isEmpty())
                 <div class="alert alert-warning" role="alert">
                     Nenhuma postagem encontrada.
@@ -192,39 +196,15 @@
                 @foreach($posts as $post)
                     <div class="col col-publ">
                         <div class="publ">
-                            <div class="row-publ">
-                                <div class="col">
-                                    <div class="empresa-publ">
-                                        <div>
-                                            <img src="{{ $empresa->fotoEmpresa }}" alt="Foto da Empresa">
-                                            <p>{{ $empresa->usernameEmpresa }}</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col conteudo-publ">
-                                    {{ $post->detalhePublicacao }}
-                                </div>
-                                <div class="col img-publ">
-                                    @if($post->fotoPublicacao)
-                                        <img src="{{ $post->fotoPublicacao }}" alt="Foto da Publicação">
-                                    @else
-                                        <img src="{{url('assets/img/dashboardEmpresa/feteps.jpg')}}" alt="Imagem padrão">
-                                    @endif
-                                </div>
-                                <div class="col botoes-publ">
-                                    <div>
-                                        <i class="fa-solid fa-message"></i>
-                                        <i class="fa-regular fa-heart"></i>
-                                    </div>
-                                    <i class="fa-solid fa-flag"></i>
-                                </div>
-                            </div>
+                            <!-- conteúdo da publicação -->
                         </div>
                     </div>
                 @endforeach
             @endif
         </div>
     </div>
+</div>
+
 </section>
 
 

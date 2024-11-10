@@ -178,7 +178,7 @@ Route::middleware('auth:empresa')->group(function(){
                 Route::post('/mensagem', [MensagemController::class, 'store'])->name('mensagem.store');
                 // Post
                 Route::get('/posts', [PostController::class, 'index'])->name('posts.index');
-                Route::get('/posts', [PostController::class, 'index'])->name('posts.index');
+
                 Route::get('/postar/{id}', [PostController::class, 'create'])->name('post.create');
                 Route::post('/postar', [PostController::class, 'store'])->name('posts.store');
                 // Rota para atualizar uma postagem
@@ -186,6 +186,7 @@ Route::middleware('auth:empresa')->group(function(){
 
                 // Rota para excluir uma postagem
                 Route::delete('/posts/{id}', [PostController::class, 'destroy'])->name('posts.destroy');
+                
 
             });
 

@@ -8,6 +8,7 @@ use App\Models\Post;
 use App\Models\Seguir;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\SeguirController;
+use Illuminate\Support\Facades\Log;
 
 class PostController extends Controller
 {
@@ -16,25 +17,30 @@ class PostController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        // Certifique-se de que o usuário esteja autenticado corretamente
-        $empresa = auth()->guard('empresa')->user();
-        
-        // Verifique se o $empresa está sendo recuperado corretamente
-        if (!$empresa) {
-            return redirect()->route('login')->with('error', 'Você precisa estar logado como empresa.');
-        }
+// app/Http/Controllers/PostController.php
+
+public function index()
+{
+    $empresa = auth()->guard('empresa')->user();
+
+    // Log para verificar o valor do idEmpresa
+    Log::info('ID da Empresa: ' . $empresa->idEmpresa);
+
+    // Tentando recuperar os posts associados ao idEmpresa
+    $posts = Post::where('idEmpresa', $empresa->idEmpresa)->get();
+
+    // Log para verificar o que foi recuperado
+    Log::info('Postagens recuperadas:', $posts->toArray());
+
+    // Exibir as postagens
+    return view('posts.index', compact('posts'));
+}
+
+
+
+
+
     
-        // Buscando as postagens da empresa
-        $posts = Post::where('idEmpresa', $empresa->idEmpresa)->get();
-    
-        // Verifique o que está sendo retornado
-        dd($posts); // Isso deve exibir os posts. Se não houver nada, pode indicar um erro na consulta ou no banco de dados.
-    
-        // Retorna a view com as postagens
-        return view('dashboardEmpresa', compact('posts', 'empresa'));
-    }
 
     public function indexApp($idUsuario)
     {
