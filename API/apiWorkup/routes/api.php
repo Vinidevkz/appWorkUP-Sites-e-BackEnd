@@ -19,6 +19,7 @@ use App\http\Controllers\SeguirController;
 use App\Http\Controllers\LinguasController;
 use App\Http\Controllers\DenunciaVagaController;
 use App\Http\Controllers\NotificacaoController;
+use App\Http\Controllers\ChatController;
 use App\Models\VagaUsuario;
 
 //Eduardo mexeu e precisa testar
@@ -120,3 +121,6 @@ Route::get('/outrasvagas/{areaVaga}', [VagaController::class, 'verOutrasVagas'])
 
 //API Notificações
 Route::get('/notificacoes/{idUsuario}', [VagaUsuarioController::class, 'notificacaoAprovado']);
+
+//API chat
+Route::get('/chatsusuario/{idUsuario}', [ChatController::class, 'show']);
