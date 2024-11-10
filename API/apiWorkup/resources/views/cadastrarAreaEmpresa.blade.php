@@ -14,7 +14,8 @@
         <h2>Cadastrar Áreas para a Empresa</h2>
 
         <!-- Formulário para cadastrar áreas -->
-        <form method="POST" action="/empresa/areaAtuacao">
+        <form action="{{ route('areaEmpresa.store') }}" method="POST">
+
             @csrf
             <input type="hidden" name="idEmpresa" value="{{ $empresa->idEmpresa }}">
             

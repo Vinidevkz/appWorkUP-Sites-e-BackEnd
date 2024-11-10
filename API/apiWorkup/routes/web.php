@@ -41,7 +41,7 @@ para acessar a dashboard será necessário digitar o seguinte caminho:
     // Deletar Vaga
     Route::delete('/{id}', [VagaController::class, 'destroy'])->name('vaga.delete');
 
-
+    
 
 //Acessivel para todos
 // rotas Dynamo
@@ -117,6 +117,13 @@ Route::middleware('auth.admin.empresa')->group(function(){
 
 });
 
+            //Formulario Area de atuação Empresa
+            Route::get('/cadastrarAreaAtuacao/{id}', [AreaEmpresaController::class, 'create'])->name('cadastrarAreaEmpresa');
+
+            
+            //Cadastrar Area de atuação Empresa
+            Route::post('/areaAtuacao', [AreaEmpresaController::class,'store'])->name('areaEmpresa.store');;
+
 //Rotas que somente a Empresa pode acessar
 Route::middleware('auth:empresa')->group(function(){
 
@@ -155,12 +162,7 @@ Route::middleware('auth:empresa')->group(function(){
             Route::put('/{id}', [EmpresaController::class, 'update'])->name('empresas.update');
 
 
-            //Formulario Area de atuação Empresa
-            Route::get('/cadastrarAreaAtuacao/{id}', [AreaEmpresaController::class, 'create'])->name('cadastrarAreaEmpresa');
 
-            
-            //Cadastrar Area de atuação Empresa
-            Route::post('/areaAtuacao', [AreaEmpresaController::class,'store']);
 
     
             });
@@ -178,7 +180,12 @@ Route::middleware('auth:empresa')->group(function(){
                 Route::get('/posts', [PostController::class, 'index'])->name('posts.index');
                 Route::get('/posts', [PostController::class, 'index'])->name('posts.index');
                 Route::get('/postar/{id}', [PostController::class, 'create'])->name('post.create');
-                Route::post('/postar', [PostController::class, 'store'])->name('post.store');
+                Route::post('/postar', [PostController::class, 'store'])->name('posts.store');
+                // Rota para atualizar uma postagem
+                Route::put('/posts/{id}', [PostController::class, 'update'])->name('posts.update');
+
+                // Rota para excluir uma postagem
+                Route::delete('/posts/{id}', [PostController::class, 'destroy'])->name('posts.destroy');
 
             });
 

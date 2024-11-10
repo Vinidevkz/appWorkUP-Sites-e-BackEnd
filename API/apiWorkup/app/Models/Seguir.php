@@ -15,6 +15,12 @@ class Seguir extends Model
         'idUsuario',
         'idEmpresa',
     ];
+    // Seguir.php
+public function empresa()
+{
+    return $this->belongsTo(Empresa::class, 'idEmpresa', 'idEmpresa');
+}
+
 
     public $timestamps = false;
 }

@@ -22,4 +22,9 @@ class Post extends Model
         'created_at',
         'updated_at',
     ];
+
+    public function empresa()
+{
+    return $this->belongsTo(Empresa::class, 'idEmpresa', 'idEmpresa');
+}
 }

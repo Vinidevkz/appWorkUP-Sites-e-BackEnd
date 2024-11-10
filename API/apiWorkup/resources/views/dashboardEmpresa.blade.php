@@ -180,51 +180,55 @@
     </section>
 
 
-    <div class="publicacoes">
-        <h3>Publicações</h3>
-        <div class="container container-publ">
-            <div class="row">
-                @if($posts->isEmpty())
-                    <div class="alert alert-warning" role="alert">
-                        Nenhuma postagem encontrada.
-                    </div>
-                @else
-                        @foreach($posts as $post)
-                            <div class="col col-publ">
-                                <div class="publ">
-                                    <div class="row-publ">
-
-                                        <div class="col">
-                                            <div class="empresa-publ">
-                                                <div>
-                                                    <img src="{{ $empresa->fotoEmpresa }}" alt="">
-                                                    <p>{{ $empresa->usernameEmpresa }}</p>
-                                                </div>
-                                            </div>
+    <section class="publicacoes">
+    <h3>Publicações</h3>
+    <div class="container container-publ">
+        <div class="row">
+            @if($posts->isEmpty())
+                <div class="alert alert-warning" role="alert">
+                    Nenhuma postagem encontrada.
+                </div>
+            @else
+                @foreach($posts as $post)
+                    <div class="col col-publ">
+                        <div class="publ">
+                            <div class="row-publ">
+                                <div class="col">
+                                    <div class="empresa-publ">
+                                        <div>
+                                            <img src="{{ $empresa->fotoEmpresa }}" alt="Foto da Empresa">
+                                            <p>{{ $empresa->usernameEmpresa }}</p>
                                         </div>
-                                        <div class="col conteudo-publ">
-                                            {{ $post->detalhePublicacao }}
-                                        </div>
-                                        <div class="col img-publ">
-                                            <img src="{{url('assets/img/dashboardEmpresa/feteps.jpg')}}" alt="">
-                                        </div>
-                                        <div class="col botoes-publ">
-                                            <div>
-                                                <i class="fa-solid fa-message"></i>
-                                                <i class="fa-regular fa-heart"></i>
-                                            </div>
-                                            <i class="fa-solid fa-flag"></i>
-                                        </div>
-
                                     </div>
                                 </div>
+                                <div class="col conteudo-publ">
+                                    {{ $post->detalhePublicacao }}
+                                </div>
+                                <div class="col img-publ">
+                                    @if($post->fotoPublicacao)
+                                        <img src="{{ $post->fotoPublicacao }}" alt="Foto da Publicação">
+                                    @else
+                                        <img src="{{url('assets/img/dashboardEmpresa/feteps.jpg')}}" alt="Imagem padrão">
+                                    @endif
+                                </div>
+                                <div class="col botoes-publ">
+                                    <div>
+                                        <i class="fa-solid fa-message"></i>
+                                        <i class="fa-regular fa-heart"></i>
+                                    </div>
+                                    <i class="fa-solid fa-flag"></i>
+                                </div>
                             </div>
-                        @endforeach
+                        </div>
                     </div>
-                @endif
+                @endforeach
+            @endif
         </div>
+    </div>
+</section>
 
-        </section>
+
+       
 
         <script src="../js/card-equipe.js"></script>
 

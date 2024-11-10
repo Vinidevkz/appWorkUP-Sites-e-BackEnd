@@ -115,7 +115,7 @@ Validação
     
 
         $empresa->save();
-        return redirect()->route('login', ['id' => $empresa->idEmpresa]);
+        return redirect()->route('cadastrarAreaEmpresa', ['id' => $empresa->idEmpresa]);
     }
 
     /**

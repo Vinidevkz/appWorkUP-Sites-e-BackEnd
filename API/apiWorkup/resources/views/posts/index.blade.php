@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
@@ -24,6 +24,16 @@
     <div class="container">
         <h1 class="mb-4">Minhas Postagens</h1>
 
+        @if(session('success'))
+            <div class="alert alert-success" role="alert">
+                {{ session('success') }}
+            </div>
+        @elseif(session('error'))
+            <div class="alert alert-danger" role="alert">
+                {{ session('error') }}
+            </div>
+        @endif
+
         @if($posts->isEmpty())
             <div class="alert alert-warning" role="alert">
                 Nenhuma postagem encontrada.
@@ -37,6 +47,15 @@
                                 <h5 class="card-title">Detalhe da Postagem</h5>
                                 <p class="card-text">{{ $post->detalhePublicacao }}</p>
                                 <small class="text-muted">Postado em: {{ $post->created_at->format('d/m/Y H:i') }}</small>
+                                <div class="mt-3">
+                                    <a href="{{ route('posts.edit', $post->id) }}" class="btn btn-warning btn-sm">Editar</a>
+                                    <!-- Formulário de exclusão -->
+                                    <form action="{{ route('posts.destroy', $post->id) }}" method="POST" style="display:inline;">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="btn btn-danger btn-sm">Excluir</button>
+                                    </form>
+                                </div>
                             </div>
                         </div>
                     </div>

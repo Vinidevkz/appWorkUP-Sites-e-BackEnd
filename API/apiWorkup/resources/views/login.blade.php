@@ -30,6 +30,11 @@
             <div class="col col-12 col-md-6 h-100 col-index-2">
                 <div class="box-login">
                     <h2>Fazer Login</h2>
+                    @if (session('success'))
+                        <div class="alert alert-success">
+                            {{ session('success') }}
+                        </div>
+                    @endif
                     <form action="/login" method="POST">
                         @csrf
                         <div class="wrap-login">
@@ -54,6 +59,7 @@
             @if(session('error'))
             <p>{{ session('error') }}</p>
             @endif
+            
         </div>
         </div>
         </div>

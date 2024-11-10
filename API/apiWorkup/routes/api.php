@@ -120,3 +120,5 @@ Route::get('/outrasvagas/{areaVaga}', [VagaController::class, 'verOutrasVagas'])
 
 //API Notificações
 Route::get('/notificacoes/{idUsuario}', [VagaUsuarioController::class, 'notificacaoAprovado']);
+
+Route::get('/posts/seguindo/{idUsuario}', [PostController::class, 'indexApp']);
