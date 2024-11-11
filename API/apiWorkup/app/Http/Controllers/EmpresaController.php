@@ -95,7 +95,7 @@ Validação
         $empresa = new Empresa;
 
 
-        $empresa->idEmpresa = 1;
+
         $empresa->usernameEmpresa = $request->usernameEmpresa;
         $empresa->nomeEmpresa = $request->nomeEmpresa;
         $empresa->emailEmpresa = $request->emailEmpresa;

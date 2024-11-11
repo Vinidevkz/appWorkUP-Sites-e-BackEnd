@@ -36,7 +36,7 @@
                         <a href="{{ route('post.create', $empresa->idEmpresa) }}" class="botao-card botao-post">Fazer
                             post</a>
 
-                            <a href="{{ route('posts.index', $empresa->idEmpresa) }}" class="botao-card botao-post">Fazer
+                            <a href="{{ route('posts.index', $empresa->idEmpresa) }}" class="botao-card botao-post">
                             ver post</a>
                     </div>
                 </div>

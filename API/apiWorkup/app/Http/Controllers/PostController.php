@@ -21,20 +21,16 @@ class PostController extends Controller
 
 public function index()
 {
-    $empresa = auth()->guard('empresa')->user();
+    // Recupera todas as postagens, sem filtrar por idEmpresa
+    $posts = Post::all();
 
-    // Log para verificar o valor do idEmpresa
-    Log::info('ID da Empresa: ' . $empresa->idEmpresa);
-
-    // Tentando recuperar os posts associados ao idEmpresa
-    $posts = Post::where('idEmpresa', $empresa->idEmpresa)->get();
-
-    // Log para verificar o que foi recuperado
-    Log::info('Postagens recuperadas:', $posts->toArray());
+    // Log para verificar as postagens recuperadas
+    Log::info('Postagens recuperadas: ', $posts->toArray());
 
     // Exibir as postagens
     return view('posts.index', compact('posts'));
 }
+
 
 
 

@@ -167,6 +167,25 @@ Route::middleware('auth:empresa')->group(function(){
     
             });
 
+            //Post
+            Route::prefix('/Post')->group(function(){
+                
+                
+            Route::get('/', [PostController::class, 'index'])->name('posts.index');
+
+            Route::get('/postar/{id}', [PostController::class, 'create'])->name('post.create');
+            Route::post('/postar', [PostController::class, 'store'])->name('posts.store');
+            // Rota para atualizar uma postagem
+            Route::put('/posts/{id}', [PostController::class, 'update'])->name('posts.update');
+
+            // Rota para excluir uma postagem
+            Route::delete('/posts/{id}', [PostController::class, 'destroy'])->name('posts.destroy');
+               
+
+                
+
+            });
+
             //Mensagem
             Route::prefix('/mensagem')->group(function(){
                 //ver mensagens
@@ -176,16 +195,8 @@ Route::middleware('auth:empresa')->group(function(){
                 //mandar mensagens
                 Route::get('/mensagem/{idUsuario}/{idEmpresa}', [MensagemController::class, 'create'])->name('mensagem.create');
                 Route::post('/mensagem', [MensagemController::class, 'store'])->name('mensagem.store');
-                // Post
-                Route::get('/posts', [PostController::class, 'index'])->name('posts.index');
+               
 
-                Route::get('/postar/{id}', [PostController::class, 'create'])->name('post.create');
-                Route::post('/postar', [PostController::class, 'store'])->name('posts.store');
-                // Rota para atualizar uma postagem
-                Route::put('/posts/{id}', [PostController::class, 'update'])->name('posts.update');
-
-                // Rota para excluir uma postagem
-                Route::delete('/posts/{id}', [PostController::class, 'destroy'])->name('posts.destroy');
                 
 
             });

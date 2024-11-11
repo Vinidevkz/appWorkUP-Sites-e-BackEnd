@@ -1,6 +1,11 @@
-@if($posts->count() > 0)  <!-- Verifique o número de itens na coleção -->
+@dd($posts)
+
+@if($posts->count() > 0)
+@dd($posts)
+
     <div class="row">
         @foreach($posts as $post)
+            @dd($post)  <!-- Verifique os dados de cada postagem -->
             <div class="col-md-4 mb-3">
                 <div class="card">
                     <div class="card-body">
