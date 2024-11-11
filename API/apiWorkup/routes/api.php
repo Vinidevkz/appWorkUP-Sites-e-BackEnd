@@ -19,7 +19,10 @@ use App\http\Controllers\SeguirController;
 use App\Http\Controllers\LinguasController;
 use App\Http\Controllers\DenunciaVagaController;
 use App\Http\Controllers\NotificacaoController;
+use App\Http\Controllers\ChatController;
 use App\Models\VagaUsuario;
+
+
 
 //Eduardo mexeu e precisa testar
 Route::get('/mensagens', [MensagemController::class, 'indexUsuario']);
@@ -122,3 +125,10 @@ Route::get('/outrasvagas/{areaVaga}', [VagaController::class, 'verOutrasVagas'])
 Route::get('/notificacoes/{idUsuario}', [VagaUsuarioController::class, 'notificacaoAprovado']);
 
 Route::get('/posts/seguindo/{idUsuario}', [PostController::class, 'indexApp']);
+Route::get('/chatsusuario/{idUsuario}', [ChatController::class, 'show']);
+
+//API Mensagens
+Route::get('/mensagens/{idUsuario}/{idEmpresa}', [MensagemController::class, 'pegarMensagens']);
+Route::post('/mandarMensagem', [MensagemController::class, 'store']);
+
+

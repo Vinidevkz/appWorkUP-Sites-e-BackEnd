@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 09/11/2024 às 21:29
+-- Tempo de geração: 11/11/2024 às 21:29
 -- Versão do servidor: 10.4.32-MariaDB
 -- Versão do PHP: 8.2.12
 
@@ -215,6 +215,13 @@ CREATE TABLE `tb_chat` (
   `idAdmin` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Despejando dados para a tabela `tb_chat`
+--
+
+INSERT INTO `tb_chat` (`idChat`, `idMensagem`, `idEmpresa`, `idUsuario`, `idAdmin`) VALUES
+(1, 1, 1, 25, 1);
+
 -- --------------------------------------------------------
 
 --
@@ -305,7 +312,7 @@ CREATE TABLE `tb_empresa` (
 --
 
 INSERT INTO `tb_empresa` (`idEmpresa`, `usernameEmpresa`, `nomeEmpresa`, `emailEmpresa`, `fotoEmpresa`, `bannerEmpresa`, `sobreEmpresa`, `cnpjEmpresa`, `contatoEmpresa`, `senhaEmpresa`, `cidadeEmpresa`, `estadoEmpresa`, `LogradouroEmpresa`, `cepEmpresa`, `numeroLograEmpresa`, `avaliacaoEmpresa`, `idStatus`, `created_at`, `updated_at`) VALUES
-(1, 'empresa001', 'Tech Innovations', '', 'tech_innovations.jpg', '', 'Especializada em tecnologia avançada', '12.345.678/0001-90', '(11) 1234-5678', 'senha123', 'São Paulo', 'SP', 'Rua das Inovações', '01234-567', '123', 'Muito Positivas', 1, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(1, 'empresa001', 'Tech Innovations', '', 'https://firebasestorage.googleapis.com/v0/b/workup-464af.appspot.com/o/empresa_foto%2Ftechsolutionsbanner.png?alt=media&token=9ba70fb7-321f-4d93-a942-bad513bb2f55', '', 'Especializada em tecnologia avançada', '12.345.678/0001-90', '(11) 1234-5678', 'senha123', 'São Paulo', 'SP', 'Rua das Inovações', '01234-567', '123', 'Muito Positivas', 1, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
 (2, 'empresa002', 'Green Solutions', '', 'green_solutions.jpg', '', 'Focada em soluções ecológicas', '98.765.432/0001-01', '(21) 2345-6789', 'senha456', 'Rio de Janeiro', 'RJ', 'Av. Verde', '87654-321', '456', NULL, 1, '0000-00-00 00:00:00', '2024-11-02 18:07:17'),
 (3, 'empresa003', 'Foodies Inc.', '', 'foodies_inc.jpg', '', 'Comércio de alimentos gourmet', '11.223.344/0001-22', '(31) 3456-7890', 'senha789', 'Belo Horizonte', 'MG', 'Rua dos Sabores', '34567-890', '789', NULL, 1, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
 (10, 'teste', 'teste', 'teste@teste.com', 'a', '', 'teste', '1212', '121212', '$2y$10$ov45KGFlSZra5aShO2E2aex9BnbHDttmVSuA.Oos0eQxluxplHHbe', 'teste', 'teste', 'teste', '111', '1', NULL, 2, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
@@ -360,11 +367,37 @@ CREATE TABLE `tb_linguas` (
 
 CREATE TABLE `tb_mensagem` (
   `idMensagem` int(11) NOT NULL,
+  `idUsuario` int(11) NOT NULL,
+  `idEmpresa` int(11) NOT NULL,
   `mensagem` text NOT NULL,
+  `tipoEmissor` varchar(15) DEFAULT NULL,
   `idChat` int(11) NOT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Despejando dados para a tabela `tb_mensagem`
+--
+
+INSERT INTO `tb_mensagem` (`idMensagem`, `idUsuario`, `idEmpresa`, `mensagem`, `tipoEmissor`, `idChat`, `created_at`, `updated_at`) VALUES
+(2, 25, 1, 'Salve', 'Empresa', 1, '2024-11-11 15:47:12', '2024-11-11 15:47:12'),
+(3, 25, 1, 'Salve', 'Usuario', 1, '2024-11-11 16:22:01', '2024-11-11 16:22:01'),
+(4, 25, 1, 'Msg 3', 'Empresa', 1, '2024-11-11 16:22:23', '2024-11-11 16:22:23'),
+(5, 25, 1, 'Msg 3', 'Empresa', 1, '2024-11-11 16:22:58', '2024-11-11 16:22:58'),
+(6, 25, 1, 'Msg 5', 'Usuario', 1, '2024-11-11 16:23:05', '2024-11-11 16:23:05'),
+(7, 25, 1, 'Msg 5', 'Empresa', 1, '2024-11-11 16:23:35', '2024-11-11 16:23:35'),
+(8, 25, 1, 'Msg 6', 'Empresa', 1, '2024-11-11 16:23:40', '2024-11-11 16:23:40'),
+(9, 25, 1, 'Usuario', 'Usuario', 1, '2024-11-11 16:28:54', '2024-11-11 16:28:54'),
+(11, 25, 1, 'HEUEBUEHEUEHEUEHEUEHDUEHUDBDUDHDUDHSUHSJSHDUDHDHHD', 'Usuario', 1, '2024-11-11 16:54:17', '2024-11-11 16:54:17'),
+(12, 25, 1, 'HEUEBUEHEUEHEUEHEUEHDUEHUDBDUDHDUDHSUHSJSHDUDHDHHD', 'Usuario', 1, '2024-11-11 16:56:32', '2024-11-11 16:56:32'),
+(13, 25, 1, 'Oi', 'Usuario', 1, '2024-11-11 16:57:01', '2024-11-11 16:57:01'),
+(14, 25, 1, 'Oioioioioi', 'Usuario', 1, '2024-11-11 17:01:51', '2024-11-11 17:01:51'),
+(15, 25, 1, 'Xhdhdhdhdhdjhdjdjdjdjdjdjdjdjdjdjdj', 'Usuario', 1, '2024-11-11 17:01:59', '2024-11-11 17:01:59'),
+(17, 25, 1, 'Mensagem teste', 'Usuario', 1, '2024-11-11 17:24:15', '2024-11-11 17:24:15'),
+(18, 25, 1, 'Teste', 'Usuario', 1, '2024-11-11 17:24:24', '2024-11-11 17:24:24'),
+(19, 25, 1, 'Mensagem teste 2', 'Usuario', 1, '2024-11-11 17:25:16', '2024-11-11 17:25:16'),
+(20, 25, 1, 'O Murilo é mt gay n tem como', 'Usuario', 1, '2024-11-11 17:25:24', '2024-11-11 17:25:24');
 
 -- --------------------------------------------------------
 
@@ -809,6 +842,18 @@ ALTER TABLE `tb_vagausuario`
 --
 -- AUTO_INCREMENT para tabelas despejadas
 --
+
+--
+-- AUTO_INCREMENT de tabela `tb_chat`
+--
+ALTER TABLE `tb_chat`
+  MODIFY `idChat` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT de tabela `tb_mensagem`
+--
+ALTER TABLE `tb_mensagem`
+  MODIFY `idMensagem` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT de tabela `tb_salvarvaga`
