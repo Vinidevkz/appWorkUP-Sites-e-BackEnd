@@ -160,15 +160,11 @@ Route::middleware('auth:empresa')->group(function(){
             // Editar perfil Empresas
             Route::get('/{id}/edit', [EmpresaController::class, 'edit'])->name('empresas.edit');
             Route::put('/{id}', [EmpresaController::class, 'update'])->name('empresas.update');
-
-
-
-
     
             });
 
             //Post
-            Route::prefix('/Post')->group(function(){
+            Route::prefix('/post')->group(function(){
                 
                 
             Route::get('/', [PostController::class, 'index'])->name('posts.index');

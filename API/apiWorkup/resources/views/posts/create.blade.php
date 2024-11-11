@@ -30,6 +30,10 @@
                     <form action="{{ route('posts.store') }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div class="mb-3">
+                            <label for="tituloPublicacao" class="form-label">Titulo da Publicação</label>
+                            <input type="text" id="tituloPublicacao" name="tituloPublicacao" class="form-control" required></textarea>
+                        </div>
+                        <div class="mb-3">
                             <label for="detalhePublicacao" class="form-label">Detalhe da Publicação</label>
                             <textarea id="detalhePublicacao" name="detalhePublicacao" class="form-control" required></textarea>
                         </div>
@@ -52,7 +56,17 @@
                             <input type="hidden" name="idEmpresa" value="{{ $empresa->idEmpresa }}">
                         @endif
 
-                        <input type="hidden" name="idVaga" value="1"> <!-- ID da vaga, altere conforme necessário -->
+                        <label for="estadoVaga" class="form__label">Selecione a vaga que estara relacionada com o post:</label>
+                        <select name="idVaga">
+                                    <option value="">Selecionar</option>
+                                    @foreach($vagas as $vaga)
+                                        <option value="{{ $vaga->idVaga }}" {{ old('idaVaga') == $vaga->idaVaga ? 'selected' : '' }}>
+                                            {{ $vaga->nomeVaga }}
+                                            <!-- Supondo que há um campo nomeModalidade na tabela -->
+                                        </option>
+                                    @endforeach
+                                    <!-- Esta parte precisa ficar -->
+                        </select>
 
                         <button type="submit" class="btn btn-success">Enviar</button>
                     </form>

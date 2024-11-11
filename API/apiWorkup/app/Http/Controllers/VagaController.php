@@ -143,6 +143,7 @@ class VagaController extends Controller
     
         // Criar uma nova vaga
         $vaga = new Vaga;
+        $vaga->idVaga = 1;
         $vaga->nomeVaga = $request->nomeVaga;
         $vaga->prazoVaga = $request->prazoVaga;
         $vaga->salarioVaga = $request->salarioVaga;

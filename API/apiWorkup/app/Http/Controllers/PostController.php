@@ -8,6 +8,9 @@ use App\Models\Post;
 use App\Models\Seguir;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\SeguirController;
+use App\Models\Vaga;
+use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 
 class PostController extends Controller
@@ -77,7 +80,10 @@ public function index()
     {
         $empresaId = auth()->guard('empresa')->user()->idEmpresa;
 
-        return view('posts.create', compact('empresaId'));
+        $vagas = Vaga::where('idEmpresa', $empresaId)->get();
+        
+
+        return view('posts.create', compact('empresaId', 'vagas'));
     }
 
     /**
@@ -97,10 +103,13 @@ public function index()
 
     // Criação da postagem
     $post = new Post();
+    $post->tituloPublicacao = $request->tituloPublicacao;
     $post->detalhePublicacao = $request->detalhePublicacao;
     $post->idEmpresa = $request->idEmpresa;
     $post->idVaga = $request->idVaga;
     $post->fotoPublicacao = $request->fotoUrl;
+    $post->created_at = now();
+    $post->updated_at = now();
 
     $post->save();
 

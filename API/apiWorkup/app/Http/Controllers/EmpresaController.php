@@ -96,6 +96,7 @@ Validação
 
 
 
+        $empresa->idEmpresa = 1;
         $empresa->usernameEmpresa = $request->usernameEmpresa;
         $empresa->nomeEmpresa = $request->nomeEmpresa;
         $empresa->emailEmpresa = $request->emailEmpresa;
@@ -103,14 +104,14 @@ Validação
         $empresa->cnpjEmpresa = $request->cnpjEmpresa;
         $empresa->contatoEmpresa = $request->contatoEmpresa;
         $empresa->senhaEmpresa = Hash::make($request->senhaEmpresa);
-        $empresa->cidadeEmpresa     = $request->cidadeEmpresa;
+        $empresa->cidadeEmpresa = $request->cidadeEmpresa;
         $empresa->estadoEmpresa = $request->estadoEmpresa;
         $empresa->LogradouroEmpresa = $request->LogradouroEmpresa;
         $empresa->cepEmpresa = $request->cepEmpresa;
         $empresa->numeroLograEmpresa = $request->numeroLograEmpresa;
         $empresa->idStatus = 3;
         $empresa->fotoEmpresa =$request->fotoUrl;
-        $empresa->bannerEmpresa =$request->fotoBanner;
+        $empresa->bannerEmpresa = $request->fotoBanner;
 
     
 
@@ -280,13 +281,18 @@ Validação
                     'tb_vaga.updated_at',
                     'tb_modalidadeVaga.descModalidadeVaga'
                 )
+                ->orderBy('prazoVaga', 'asc')
                 ->get();
 
 
-                    
+            $posts = DB::table('tb_publicacao')
+            ->where('tb_publicacao.idEmpresa', $idEmpresa)
+            ->select('tituloPublicacao', 'detalhePublicacao', 'fotoPublicacao')
+            ->orderBy('created_at', 'asc')
+            ->get();
 
 
-            return view('dashboardEmpresa', ['empresa'=>$empresa, 'vagas'=>$vagas]);
+            return view('dashboardEmpresa', ['empresa'=>$empresa, 'vagas'=>$vagas, 'posts'=> $posts]);
         
     }
 

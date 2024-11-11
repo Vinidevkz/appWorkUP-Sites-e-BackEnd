@@ -91,7 +91,7 @@
 
     <section id="vagas" class="vagas">
         <div class="d-flex justify-content-start mt-5">
-            <h3 class="fw-light mb-5">Vagas publicadas</h3>
+            <h3 class="fw-light mb-5">Vagas publicadas: {{ $vagas->count() }}</h3>
         </div>
 
         <div class="wrap-carrossel position-relative">
@@ -150,7 +150,7 @@
                         <p class="text mb-3" style="font-weight: 400">Candidatos: {{ $vaga->total_candidatos }}</p>
                         <p class="text my-1">Salário: R${{ $vaga->salarioVaga }}</p>
                         <p class="text mb-1">Área: {{ $vaga->nomeVaga }}</p>
-                        <p class="text mb-1">Modalidade: {{ $vaga->idModalidadeVaga }}</p>
+                        <p class="text mb-1">Modalidade: {{ $vaga->descModalidadeVaga }}</p>
                         <p class="text mb-1">Cidade: {{ $vaga->cidadeVaga }}</p>
                         <p class="text mb-1">Estado: {{ $vaga->estadoVaga }}</p>
                         <p class="text mb-1">Diferencial: {{ $vaga->diferencialVaga }}</p>
@@ -187,20 +187,40 @@
     <h3>Publicações</h3>
     <div class="container container-publ">
         <div class="row">
-            @dd($posts)  <!-- Isso vai mostrar o conteúdo de $posts diretamente na view -->
-            @if($posts->isEmpty())
-                <div class="alert alert-warning" role="alert">
-                    Nenhuma postagem encontrada.
-                </div>
-            @else
-                @foreach($posts as $post)
-                    <div class="col col-publ">
-                        <div class="publ">
-                            <!-- conteúdo da publicação -->
-                        </div>
+        @php
+
+        $idEmpresa = Auth::guard('empresa')->id();
+
+        $posts = DB::table('tb_publicacao')
+            ->where('tb_publicacao.idEmpresa', $idEmpresa)
+            ->select('idPublicacao','tituloPublicacao', 'detalhePublicacao', 'fotoPublicacao')
+            ->orderBy('created_at', 'asc')
+            ->get();
+@endphp
+
+@if($posts->isNotEmpty())
+    @foreach($posts as $post)
+        <div class="col col-publ">
+            <div class="publ">
+               
+                    <div class="card-header">
+                        <h1 class="modal-title fs-5 px-3 text-dark" id="modalVagaLabel{{ $post->idPublicacao }}">{{ $post->tituloPublicacao }}</h1>
                     </div>
-                @endforeach
-            @endif
+                    <div class="card-body">
+                        <img src="{{ $post->fotoPublicacao }}" alt="{{ $post->tituloPublicacao }}" style="object-fit:contain; width:200px">
+                        <p> {{ $post->detalhePublicacao}}</p>
+                    </div>
+
+            </div>
+        </div>
+    @endforeach
+@else
+    <div class="alert alert-warning" role="alert">
+        Nenhuma postagem encontrada.
+    </div>
+@endif
+
+
         </div>
     </div>
 </div>
