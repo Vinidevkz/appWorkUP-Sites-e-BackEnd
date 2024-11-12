@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Admin;
+use App\Models\AreaEmpresa;
 use App\Models\Empresa;
 use App\Models\Vaga;
 use App\Models\VagaUsuario;
@@ -10,6 +11,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 
 class EmpresaController extends Controller
 {
@@ -52,70 +54,111 @@ class EmpresaController extends Controller
      */
     public function store(Request $request)
     {
-        /*
-|--------------------------------------------------------------------------
-Validação
-|--------------------------------------------------------------------------
-*/
-
-        $request->validate(
-            [
-                'usernameEmpresa'  => 'required|unique:tb_empresa,usernameEmpresa',
-                'nomeEmpresa' => 'required',
-                'emailEmpresa' => 'required|unique:tb_empresa,emailEmpresa',
-                'sobreEmpresa' => 'required',
-                'cnpjEmpresa' => 'required|unique:tb_empresa,cnpjEmpresa',
-                'contatoEmpresa' => 'required',
-                'senhaEmpresa' => 'required',
-                'cidadeEmpresa' => 'required',
-                'estadoEmpresa' => 'required',
-                'LogradouroEmpresa' => 'required',
-                'cepEmpresa' => 'required|min:8',
-                'numeroLograEmpresa' => 'required',
-            ],
-            [
-                'usernameEmpresa.required'  => 'Digite um APELIDO',
-                'usernameEmpresa.unique'  => 'Este apelido já está existe!',
-                'nomeEmpresa.required' => 'Digite um nome!',
-                'sobreEmpresa.required' => 'Digite uma descrição sobre a empresa!',
-                'cnpjEmpresa.required' => 'Digite um CNPJ!',
-                'cnpjEmpresa.unique' => 'Este CNPJ já está registrado!',
-                'contatoEmpresa.required' => 'Informe um e-mail ou telefone para contato!',
-                'emailEmpresa.required' => 'Digite uma email!',
-                'emailEmpresa.unique' => 'Este e-mail já está registrado!',
-                'senhaEmpresa.required' => 'Digite uma senha!',
-                'cidadeEmpresa.required' => 'Digite uma cidade',
-                'estadoEmpresa.required' => 'Digite um estado',
-                'LogradouroEmpresa.required' => 'Digite um logradouro',
-                'cepEmpresa.required' => 'Digite um cep',
-                'numeroLograEmpresa.required' => 'Digite um numero',
-                
-            ]
-        );
-        $empresa = new Empresa;
-
-
-        $empresa->usernameEmpresa = $request->usernameEmpresa;
-        $empresa->nomeEmpresa = $request->nomeEmpresa;
-        $empresa->emailEmpresa = $request->emailEmpresa;
-        $empresa->sobreEmpresa = $request->sobreEmpresa;
-        $empresa->cnpjEmpresa = $request->cnpjEmpresa;
-        $empresa->contatoEmpresa = $request->contatoEmpresa;
-        $empresa->senhaEmpresa = Hash::make($request->senhaEmpresa);
-        $empresa->cidadeEmpresa = $request->cidadeEmpresa;
-        $empresa->estadoEmpresa = $request->estadoEmpresa;
-        $empresa->LogradouroEmpresa = $request->LogradouroEmpresa;
-        $empresa->cepEmpresa = $request->cepEmpresa;
-        $empresa->numeroLograEmpresa = $request->numeroLograEmpresa;
-        $empresa->idStatus = 3;
-        $empresa->fotoEmpresa =$request->fotoUrl;
-        $empresa->bannerEmpresa = $request->fotoBanner;
-
+        // Habilita o log de consultas para depuração
+        DB::enableQueryLog();
     
-
-        $empresa->save();
-        return redirect()->route('cadastrarAreaEmpresa', ['id' => $empresa->idEmpresa]);
+        DB::beginTransaction(); // Inicia uma transação
+    
+        try {
+            /*
+            |--------------------------------------------------------------------------
+            | Validação dos Dados da Empresa
+            |--------------------------------------------------------------------------
+            */
+    
+            $request->validate(
+                [
+                    'usernameEmpresa' => 'required|unique:tb_empresa,usernameEmpresa',
+                    'nomeEmpresa' => 'required',
+                    'emailEmpresa' => 'required|unique:tb_empresa,emailEmpresa',
+                    'sobreEmpresa' => 'required',
+                    'cnpjEmpresa' => 'required|unique:tb_empresa,cnpjEmpresa',
+                    'contatoEmpresa' => 'required',
+                    'senhaEmpresa' => 'required',
+                    'cidadeEmpresa' => 'required',
+                    'estadoEmpresa' => 'required',
+                    'LogradouroEmpresa' => 'required',
+                    'cepEmpresa' => 'required|min:8',
+                    'numeroLograEmpresa' => 'required',
+                    'idArea' => 'required|array',
+                    'idArea.*' => 'exists:tb_area,idArea' // Verifica se as áreas existem na tabela
+                ],
+                [
+                    'usernameEmpresa.required' => 'Digite um APELIDO',
+                    'usernameEmpresa.unique' => 'Este apelido já existe!',
+                    'nomeEmpresa.required' => 'Digite um nome!',
+                    'sobreEmpresa.required' => 'Digite uma descrição sobre a empresa!',
+                    'cnpjEmpresa.required' => 'Digite um CNPJ!',
+                    'cnpjEmpresa.unique' => 'Este CNPJ já está registrado!',
+                    'contatoEmpresa.required' => 'Informe um e-mail ou telefone para contato!',
+                    'emailEmpresa.required' => 'Digite um email!',
+                    'emailEmpresa.unique' => 'Este e-mail já está registrado!',
+                    'senhaEmpresa.required' => 'Digite uma senha!',
+                    'cidadeEmpresa.required' => 'Digite uma cidade',
+                    'estadoEmpresa.required' => 'Digite um estado',
+                    'LogradouroEmpresa.required' => 'Digite um logradouro',
+                    'cepEmpresa.required' => 'Digite um cep',
+                    'numeroLograEmpresa.required' => 'Digite um número',
+                    'idArea.required' => 'Escolha pelo menos uma área',
+                    'idArea.array' => 'Área inválida',
+                    'idArea.*.exists' => 'Uma ou mais áreas selecionadas não existem'
+                ]
+            );
+    
+            /*
+            |--------------------------------------------------------------------------
+            | Criação e Salvamento dos Dados da Empresa
+            |--------------------------------------------------------------------------
+            */
+    
+            $empresa = new Empresa();
+            $empresa->usernameEmpresa = $request->usernameEmpresa;
+            $empresa->nomeEmpresa = $request->nomeEmpresa;
+            $empresa->emailEmpresa = $request->emailEmpresa;
+            $empresa->sobreEmpresa = $request->sobreEmpresa;
+            $empresa->cnpjEmpresa = $request->cnpjEmpresa;
+            $empresa->contatoEmpresa = $request->contatoEmpresa;
+            $empresa->senhaEmpresa = Hash::make($request->senhaEmpresa);
+            $empresa->cidadeEmpresa = $request->cidadeEmpresa;
+            $empresa->estadoEmpresa = $request->estadoEmpresa;
+            $empresa->LogradouroEmpresa = $request->LogradouroEmpresa;
+            $empresa->cepEmpresa = $request->cepEmpresa;
+            $empresa->numeroLograEmpresa = $request->numeroLograEmpresa;
+            $empresa->idStatus = 3;
+            $empresa->fotoEmpresa = $request->fotoUrl;
+            $empresa->bannerEmpresa = $request->fotoBanner;
+    
+            $empresa->save();
+    
+            /*
+            |--------------------------------------------------------------------------
+            | Salvamento das Áreas Associadas
+            |--------------------------------------------------------------------------
+            */
+    
+            foreach ($request->idArea as $idArea) {
+                $areaEmpresa = new AreaEmpresa();
+                $areaEmpresa->idArea = $idArea;
+                $areaEmpresa->idEmpresa = $empresa->idEmpresa; // Usa o ID da empresa recém-criada
+                $areaEmpresa->save();
+            }
+    
+            DB::commit(); // Confirma a transação
+    
+            // Redireciona para o login com mensagem de sucesso
+            return redirect()->route('login')->with('success', 'Cadastro concluído. Aguarde a liberação do Admin!');
+    
+        } catch (\Exception $e) {
+            DB::rollBack(); // Reverte a transação em caso de erro
+    
+            // Log de erro: se algo deu errado
+            Log::error('Erro ao salvar áreas ou empresa', ['exception' => $e]);
+    
+            // Captura o erro e retorna uma mensagem amigável
+            return back()->withErrors(['error' => 'Erro ao salvar: ' . $e->getMessage()]);
+        }
     }
+    
 
     /**
      * Display the specified resource.
@@ -146,6 +189,8 @@ Validação
     public function edit($id)
     {
         $empresa = Empresa::findOrFail($id); // Encontra o usuário pelo ID ou lança um erro 404
+
+
         return view('admin.empresa.empresaEditarAdmin', compact('empresa')); // Passa o usuário para a view
     }
 
@@ -185,9 +230,15 @@ Validação
 
         $empresas = Empresa::findOrFail($id);
         $empresas->update($request->all());
+
+        $areasSelecionadas = $request->input('idArea', []); // array de IDs selecionados ou vazio
+
+        // Atualiza as áreas da empresa
+        $empresa->areas()->sync($areasSelecionadas);
+
     
         // Redirecionar para a lista de usuários
-        return view('admin.empresa.editarAreaEmpresa', ['empresa' => $empresas]); // Passa o usuário para a view
+        return view('dashboardEmpresa', ['empresa' => $empresas]); // Passa o usuário para a view
     }
 
     /**
