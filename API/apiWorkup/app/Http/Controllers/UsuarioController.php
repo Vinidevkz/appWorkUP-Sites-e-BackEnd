@@ -96,7 +96,7 @@ class UsuarioController extends Controller
                 'cepUsuario' => 'required|string|max:40',
                 'numeroLograUsuario' => 'required|string|max:40',
                 'sobreUsuario' => 'required|string|max:200',
-                'formacaoCompetenciaUsuario' => 'required|string|max:40',
+                'formacaoCompetenciaUsuario' => 'required|string|max:200',
                 'dataFormacaoCompetenciaUsuario' => 'required|date',
             ]);
 

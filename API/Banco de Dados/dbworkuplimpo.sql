@@ -293,7 +293,7 @@ CREATE TABLE `tb_notificacoes` (
 
 CREATE TABLE `tb_publicacao` (
   `idPublicacao` int(11) NOT NULL,
-  `tituloPublicacao` varchar(100) NOT NULL,
+  L,
   `detalhePublicacao` varchar(300) NOT NULL,
   `fotoPublicacao` text DEFAULT NULL,
   `idEmpresa` int(11) NOT NULL,
@@ -302,7 +302,7 @@ CREATE TABLE `tb_publicacao` (
   `updated_at` datetime NOT NULL,
   `created_at` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
+`tituloPublicacao` varchar(100) NOT NUL
 -- --------------------------------------------------------
 
 --
