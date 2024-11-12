@@ -8,6 +8,7 @@ use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use App\Models\Vaga;
 use App\Models\AreaInteresseUsuario;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\DB;
@@ -124,6 +125,8 @@ class UsuarioController extends Controller
                 'sobreUsuario' => $request->sobreUsuario,
                 'formacaoCompetenciaUsuario' => $request->formacaoCompetenciaUsuario,
                 'dataFormacaoCompetenciaUsuario' => $request->dataFormacaoCompetenciaUsuario,
+                'created_at' => Carbon::now('America/Sao_Paulo'),
+                'updated_at' => Carbon::now('America/Sao_Paulo'),
                 'idStatus' => 3,
             ]);
 
