@@ -13,7 +13,8 @@
 }
 
 .box-criar-post {
-    width: 70%;
+    max-width: 70%;
+    min-width: 70%;
     background-color: #ffffff;
     display: grid;
     place-items: center;
@@ -25,6 +26,7 @@
     justify-content: center;
     padding: 2rem 1.5rem;
     height: 100%;
+    max-width: 100%;
 }
 
 .row-criar-post .col {
@@ -43,6 +45,14 @@
     object-fit: cover;
 }
 
+#fileInput {
+    background-color: #d2d2d2;
+    font-size: 0.8rem;
+    padding: 0.3rem;
+    border-radius: 10px;
+    color: #242424;
+}
+
 .row-criar-post select {
     border-style: none;
     
@@ -55,9 +65,10 @@
 }
 
 .row-criar-post textarea, .row-criar-post select, .row-criar-post input {
-    background-color: #d4d4d4;
+    background-color: #ededed;
     padding: 0.5rem;
     border-style: none;
+    border: 1px solid #dadada;
 }
 
 .footer-criar-post {
