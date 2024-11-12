@@ -86,6 +86,7 @@ header {
 .wrap-user div img {
     width: 40px;
     height: 40px;
+    object-fit: cover;
     background-color: #fff;
     border-radius: 5rem;
 }
