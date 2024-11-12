@@ -28,6 +28,7 @@
 
             <form class="wrap-criar-post row" action="{{ route('posts.store') }}" method="POST"
                 enctype="multipart/form-data">
+                @csrf
 
                 <h5>Criar post</h5>
                 <div class="col-6 h-75 d-flex">
