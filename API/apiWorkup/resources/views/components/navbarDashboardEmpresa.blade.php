@@ -19,10 +19,10 @@
         <div class="wrap-user">
             <div>
                 <!-- Verifique se $empresa não é null antes de exibir os dados -->
-
-                <a href="{{ route('empresas.edit', $empresa->idEmpresa) }}">{{ $empresa->usernameEmpresa }}
-                <img src="{{$empresa->fotoEmpresa}}" alt="">
-                </a>
+                <div class="d-flex flex-row">
+                    <a href="{{ route('empresas.edit', $empresa->idEmpresa) }}">{{ $empresa->usernameEmpresa }}</a>
+                    <img src="{{$empresa->fotoEmpresa}}">
+                </div>
                 <form action="/logout" method="POST">
                     @csrf
                     <div>
@@ -34,7 +34,7 @@
 
 
                 </form>
-                @endauth
+        @endauth
 
             </div>
         </div>
