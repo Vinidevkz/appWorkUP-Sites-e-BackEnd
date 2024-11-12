@@ -150,7 +150,7 @@
                     </div>
 
                     <div class="col col-12">
-                        <label for="fotoEmpresa" class="form__label">Banner de perfil da empresa:</label>
+                        <label for="fotoEmpresa" class="form__label">Foto de perfil da empresa:</label>
                         <input type="file" id="fileInput" class="form-control custom-input" value="url"
                             name="fotoPerfil">
                         <input type="hidden" id="imageUrl2" name="fotoBanner">
@@ -170,7 +170,7 @@
 
                     <div>
                         <div class="col col-12">
-                            <label for="fotoEmpresa" class="form__label">Foto de perfil da empresa:</label>
+                            <label for="fotoEmpresa" class="form__label">Banner de perfil da empresa:</label>
                             <input type="file" id="fileInputBanner" class="form-control custom-input" value="url"
                                 name="fotoPerfilBanner">
                             <input type="hidden" id="imageUrl" name="fotoUrl">
@@ -189,6 +189,33 @@
                     <button type="button" class="avancar" onclick="nextStep()">Avançar</button>
                 </div>
 
+            </div>
+            <div class="form-step wrap-cadastro">
+
+                <div class="wrap-header">
+                    <h2>Cadastro de empresa</h2>
+                    <p>Mostre um pouco mais sobre sua empresa</p>
+                </div>
+
+                <div class="form__group field">
+                <label class="form__label">Escolha as Áreas</label>
+                <div class="checkbox-container" style="max-height: 200px; overflow-y: auto; border: 1px solid #ccc; padding: 10px;">
+                    @foreach($areas as $area)
+                        <div>
+                            <input type="checkbox" name="idArea[]" value="{{ $area->idArea }}" id="area_{{ $area->idArea }}">
+                            <label for="area_{{ $area->idArea }}">{{ $area->nomeArea }}</label>
+                        </div>
+                    @endforeach
+                </div>
+                @error('idArea')
+                    <div class="error-message">{{ $message }}</div>
+                @enderror
+            </div>
+
+            <div class="botoes-cadastro mt-4">
+                    <button type="button" class="voltar" onclick="prevStep()">Voltar</button>
+                    <button type="button" class="avancar" onclick="nextStep()">Avançar</button>
+                </div>
             </div>
 
             <div class="form-step wrap-cadastro">
