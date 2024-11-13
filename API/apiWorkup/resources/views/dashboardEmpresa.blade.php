@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{url('../assets/css/dashboardEmpresa.css')}}">
     <link rel="shortcut icon" href="{{url('assets/img/adminImages/WU-icon.png')}}" type="image/x-icon">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet integrity=" sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet integrity="
+        sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <title>Empresa | Home</title>
@@ -119,7 +121,8 @@
                                             data-bs-target="#modalVaga{{$vaga->idVaga}}">Detalhes<i
                                                 class="fa-solid fa-clipboard-list"></i></button>
 
-                                        <a href="{{ route('verVagaCadastrada', $vaga->idVaga) }}" class="btn-vagas btn-vazado w-50 text-truncate">
+                                        <a href="{{ route('verVagaCadastrada', $vaga->idVaga) }}"
+                                            class="btn-vagas btn-vazado w-50 text-truncate">
                                             Candidatos<i class="fa-solid fa-user"></i>
                                         </a>
                                     </div>
@@ -138,7 +141,8 @@
                                     <div class="header-modal-vaga">
                                         <div>
                                             <h5>{{ $vaga->nomeVaga }}</h5>
-                                            <p class="text mb-3" style="font-weight: 400">Candidatos:{{ $vaga->total_candidatos }}</p>
+                                            <p class="text mb-3" style="font-weight: 400">
+                                                Candidatos:{{ $vaga->total_candidatos }}</p>
                                         </div>
                                     </div>
                                     <div class="opt-vaga">
@@ -151,7 +155,8 @@
                                     </div>
                                     <div class="modal-footer d-flex justify-content-between w-75 align-self-center">
                                         <a href="{{ route('vagas.edit', $vaga->idVaga) }}"
-                                            class="btn-vagas btn-verde w-100">Editar<i class="fa-solid fa-pen-to-square" style="color: #ffffff;"></i></a>
+                                            class="btn-vagas btn-verde w-100">Editar<i class="fa-solid fa-pen-to-square"
+                                                style="color: #ffffff;"></i></a>
                                         <button type="button" class="btn-vagas w-100" data-bs-dismiss="modal"
                                             style="background-color: #ededed; color: black">Voltar</button>
                                     </div>
@@ -170,58 +175,61 @@
 
     @php
 
-$idEmpresa = Auth::guard('empresa')->id();
+        $idEmpresa = Auth::guard('empresa')->id();
 
-$posts = DB::table('tb_publicacao')
-    ->where('tb_publicacao.idEmpresa', $idEmpresa)
-    ->select('idPublicacao','tituloPublicacao', 'detalhePublicacao', 'fotoPublicacao')
-    ->orderBy('created_at', 'asc')
-    ->get();
-@endphp
+        $posts = DB::table('tb_publicacao')
+            ->where('tb_publicacao.idEmpresa', $idEmpresa)
+            ->select('idPublicacao', 'tituloPublicacao', 'detalhePublicacao', 'fotoPublicacao')
+            ->orderBy('created_at', 'asc')
+            ->get();
+    @endphp
 
     <section class="publicacoes">
         <h3>Publicações</h3>
-        <div class="container container-publ">
-            <div class="row">
-                @if($posts->isEmpty())
-                    <div class="alert alert-warning" role="alert">
-                        Nenhuma postagem encontrada.
-                    </div>
-                @else
-                        @foreach($posts as $post)
-                            <div class="col col-publ">
-                                <div class="publ">
-                                    <div class="row-publ">
+        <<div class="wrap-carrossel-publ position-relative">
+    <img src="{{url('assets/img/dashboardEmpresa/bckBtn.png')}}" class="btn-carrossel position-absolute start-0"
+        id="backBtn">
 
-                                        <div class="col">
-                                            <div class="empresa-publ">
-                                                <div>
-                                                    <img src="{{ $empresa->fotoEmpresa }}" alt="">
-                                                    <p>{{ $empresa->usernameEmpresa }}</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col conteudo-publ">
-                                            {{ $post->detalhePublicacao }}
-                                        </div>
-                                        <div class="col img-publ">
-                                            <img src="{{url('assets/img/dashboardEmpresa/feteps.jpg')}}" alt="">
-                                        </div>
-                                        <div class="col botoes-publ">
-                                            <div>
-                                                <i class="fa-solid fa-message"></i>
-                                                <i class="fa-regular fa-heart"></i>
-                                            </div>
-                                            <i class="fa-solid fa-flag"></i>
-                                        </div>
-
-                                    </div>
-                                </div>
-                            </div>
-                        @endforeach
-                    </div>
-                @endif
+    <div class="carrossel-publ">
+        @if($posts->isEmpty())
+        <div class="alert alert-warning" role="alert">
+            Nenhuma postagem encontrada.
         </div>
+        @else
+        @foreach($posts as $post)
+        <div class="col-12 col-sm-4 col-md-4 col-lg-4 d-flex justify-content-center">
+            <div class="publ">
+
+                <div class="empresa-publ">
+                    <img src="{{ $empresa->fotoEmpresa }}" alt="">
+                    <div>
+                        <h5>{{ $empresa->nomeEmpresa }}</h5>
+                        <p>{{ $empresa->usernameEmpresa }}</p>
+                    </div>
+                    
+                </div>
+
+                <div class="col conteudo-publ">
+                    <p>{{ $post->detalhePublicacao }}</p>
+                </div>
+                    <img src="{{$post -> fotoPublicacao}}" class="img-publ" alt="">
+                <div class="col botoes-publ">
+                    <div>
+                        <i class="fa-solid fa-message"></i>
+                        <i class="fa-regular fa-heart"></i>
+                    </div>
+                    <i class="fa-solid fa-flag"></i>
+                </div>
+
+            </div>
+        </div>
+        @endforeach
+        @endif
+    </div>
+
+    <img id="nextBtn" src="{{url('assets/img/dashboardEmpresa/nextBtn.png')}}"
+        class="btn-carrossel position-absolute end-0" id="nextBtn">
+</div>
 
     </section>
 
