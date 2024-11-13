@@ -88,14 +88,15 @@
 
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
-    <script src="https://www.gstatic.com/firebasejs/10.13.2/firebase-app.js"></script>
+     <!-- Firebase App (SDK) -->
+     <script src="https://www.gstatic.com/firebasejs/10.13.2/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.13.2/firebase-storage.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.13.2/firebase-analytics.js"></script>
+
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.13.2/firebase-app.js";
         import { getStorage, ref, uploadBytes, getDownloadURL } from "https://www.gstatic.com/firebasejs/10.13.2/firebase-storage.js";
         import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.13.2/firebase-analytics.js";
-
         const firebaseConfig = {
             apiKey: "AIzaSyA-QUFdmkri7tul4SYrErEivDaxBksa1Qc",
             authDomain: "workup-464af.firebaseapp.com",
@@ -105,15 +106,11 @@
             appId: "1:623240730819:web:28ca0c6e405ccd2d436a76",
             measurementId: "G-X1Y39ZHK8J"
         };
-
         const app = initializeApp(firebaseConfig);
         const storage = getStorage(app);
-
         let selectedFile = null;
-
         document.getElementById('fileInput').addEventListener('change', function(event) {
             selectedFile = event.target.files[0];
-
             if (selectedFile) {
                 const reader = new FileReader();
                 reader.onload = function(e) {
@@ -122,7 +119,6 @@
                     img.style.display = 'block';
                 };
                 reader.readAsDataURL(selectedFile);
-
                 const storageRef = ref(storage, `publicacao/${selectedFile.name}`);
                 uploadBytes(storageRef, selectedFile).then(() => {
                     console.log('Arquivo enviado com sucesso!');
