@@ -117,6 +117,11 @@
                         <div class="opcoes-candidato">
                             <div class="botoes-candidato">
 
+                            <form action="{{ route('mensagem.create', ['idUsuario' => $candidato->idUsuario, 'idEmpresa' => $empresa->idEmpresa]) }}" method="GET">
+                            @csrf
+                            
+                                <button class="mensagem" value="mensagem">Mensagem <i class="fa-solid fa-check"></i></button>
+                                </form>
 
                             <form action="{{ route('candidaturas.aprovar', $candidato->idVagaUsuario) }}" method="POST" >
                             @csrf
@@ -144,7 +149,7 @@
                                             @csrf
                                             <input type="hidden" name="idUsuario" value="{{ $candidato->usuario->idUsuario }}">
                     
-                    <input type="hidden" name="idEmpresa" value="{{ $empresa->idEmpresa  }}"> <!-- Aqui estou assumindo que a empresa está autenticada com Auth -->
+                                            <input type="hidden" name="idEmpresa" value="{{ $empresa->idEmpresa  }}"> <!-- Aqui estou assumindo que a empresa está autenticada com Auth -->
 
 
                                             

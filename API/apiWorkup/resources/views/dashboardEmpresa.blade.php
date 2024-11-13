@@ -32,6 +32,8 @@
                             class="botao-card botao-vaga mb-2 mb-md-0 me-md-2">Publicar vaga</a>
                         <a href="{{ route('post.create', $empresa->idEmpresa) }}" class="botao-card botao-post">Fazer
                             post</a>
+
+                            
                     </div>
                 </div>
             </div>
