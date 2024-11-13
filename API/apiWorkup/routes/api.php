@@ -130,5 +130,8 @@ Route::get('/chatsusuario/{idUsuario}', [ChatController::class, 'show']);
 //API Mensagens
 Route::get('/mensagens/{idUsuario}/{idEmpresa}', [MensagemController::class, 'pegarMensagens']);
 Route::post('/mandarMensagem', [MensagemController::class, 'store']);
+//Alterar mensagem
+Route::put('/mudarmensagem/{idMensagem}', [MensagemController::class, 'update']);
+
 
 
