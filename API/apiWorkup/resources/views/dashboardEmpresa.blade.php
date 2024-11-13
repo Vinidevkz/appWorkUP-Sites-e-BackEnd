@@ -205,7 +205,7 @@ $posts = DB::table('tb_publicacao')
                                             {{ $post->detalhePublicacao }}
                                         </div>
                                         <div class="col img-publ">
-                                            <img src="{{url('assets/img/dashboardEmpresa/feteps.jpg')}}" alt="">
+                                            <img src="{{ $post->fotoPublicacao }}" alt="">
                                         </div>
                                         <div class="col botoes-publ">
                                             <div>
