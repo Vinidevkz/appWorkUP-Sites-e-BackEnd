@@ -125,6 +125,23 @@
                                     <textarea name="sobreEmpresa" placeholder="{{ $empresa->sobreEmpresa }}" value="{{ $empresa->sobreEmpresa }}" required></textarea>
                                 </div>
                             </div>
+                            <div class="row mt-3">
+                            <label for="areas">Escolha as Áreas</label>
+                            <div class="checkbox-container" style="max-height: 200px; overflow-y: auto; border: 1px solid #ccc; padding: 10px;">
+                            <input type="hidden" name="idEmpresa" value="{{ $empresa->idEmpresa }}">
+                                @foreach($areas as $area)
+                                    <div>
+                                        <input type="checkbox" name="idArea[]" value="{{ $area->idArea }}"
+                                               id="area_{{ $area->idArea }}"
+                                               {{ in_array($area->idArea, $empresa->areas->pluck('idArea')->toArray()) ? 'checked' : '' }}>
+                                        <label for="area_{{ $area->idArea }}">{{ $area->nomeArea }}</label>
+                                    </div>
+                                @endforeach
+                            </div>
+                            @error('idArea')
+                            <div class="error-message">{{ $message }}</div>
+                            @enderror
+                        </div>
                         </div>
 
                         <div class="d-flex flex-column align-items-center justify-content-start w-100 ps-5">
@@ -138,7 +155,7 @@
                     </div>
 
                     <div class="footer-editar-empresa">
-                        <button>Voltar</button>
+                        <button onclick="window.history.back()">Voltar</button>
                         <input type="submit" value="Confirmar"></input>
                     </div>
 

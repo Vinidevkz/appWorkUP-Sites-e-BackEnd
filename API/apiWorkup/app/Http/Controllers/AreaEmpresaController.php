@@ -44,48 +44,48 @@ class AreaEmpresaController extends Controller
      */
     public function store(Request $request)
     {
-        // Habilita o log de consultas para depuração
-        DB::enableQueryLog();
+        // // Habilita o log de consultas para depuração
+        // DB::enableQueryLog();
 
-        try {
-            // Validação dos dados do request
-            $request->validate([
-                'idArea' => 'required|array',
-                'idArea.*' => 'exists:tb_area,idArea', // Verifica se as áreas existem na tabela
-            ], [
-                'idArea.required' => 'Escolha pelo menos uma área',
-                'idArea.array' => 'Área inválida',
-                'idArea.*.exists' => 'Uma ou mais áreas selecionadas não existem',
-            ]);
+        // try {
+        //     // Validação dos dados do request
+        //     $request->validate([
+        //         'idArea' => 'required|array',
+        //         'idArea.*' => 'exists:tb_area,idArea', // Verifica se as áreas existem na tabela
+        //     ], [
+        //         'idArea.required' => 'Escolha pelo menos uma área',
+        //         'idArea.array' => 'Área inválida',
+        //         'idArea.*.exists' => 'Uma ou mais áreas selecionadas não existem',
+        //     ]);
 
-            $idEmpresa = $request->idEmpresa; // Obtém o ID da empresa
+        //     $idEmpresa = $request->idEmpresa; // Obtém o ID da empresa
 
-            // Log de depuração: Verifica se os dados estão chegando corretamente
-            Log::info('Requisição recebida para salvar áreas', [
-                'idEmpresa' => $request->idEmpresa,
-                'idArea' => $request->idArea
-            ]);
+        //     // Log de depuração: Verifica se os dados estão chegando corretamente
+        //     Log::info('Requisição recebida para salvar áreas', [
+        //         'idEmpresa' => $request->idEmpresa,
+        //         'idArea' => $request->idArea
+        //     ]);
 
-            // Loop para salvar as áreas selecionadas
-            foreach ($request->idArea as $idArea) {
-                $areaEmpresa = new AreaEmpresa();
-                $areaEmpresa->idArea = $idArea;
-                $areaEmpresa->idEmpresa = $idEmpresa;
+        //     // Loop para salvar as áreas selecionadas
+        //     foreach ($request->idArea as $idArea) {
+        //         $areaEmpresa = new AreaEmpresa();
+        //         $areaEmpresa->idArea = $idArea;
+        //         $areaEmpresa->idEmpresa = $idEmpresa;
 
-                // Salva a área da empresa
-                $areaEmpresa->save();
-            }
+        //         // Salva a área da empresa
+        //         $areaEmpresa->save();
+        //     }
 
-            // Após salvar, redireciona para o dashboard
-            return redirect()->route('login')->with('success', 'Cadastro concluído. Aguarde a liberação do Admin!');
+        //     // Após salvar, redireciona para o dashboard
+        //     return redirect()->route('login')->with('success', 'Cadastro concluído. Aguarde a liberação do Admin!');
             
-        } catch (\Exception $e) {
-            // Log de erro: Se algo deu errado
-            Log::error('Erro ao salvar áreas', ['exception' => $e]);
+        // } catch (\Exception $e) {
+        //     // Log de erro: Se algo deu errado
+        //     Log::error('Erro ao salvar áreas', ['exception' => $e]);
 
-            // Captura o erro e retorna uma mensagem amigável
-            return back()->withErrors(['error' => 'Erro ao salvar: ' . $e->getMessage()]);
-        }
+        //     // Captura o erro e retorna uma mensagem amigável
+        //     return back()->withErrors(['error' => 'Erro ao salvar: ' . $e->getMessage()]);
+        // }
     }
     
 

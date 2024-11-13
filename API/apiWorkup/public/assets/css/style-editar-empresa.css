@@ -62,11 +62,10 @@
 }
 
 .col-edit input {
-    background-color: #f7f7f7;
+    background-color: #ededed;
+    padding: 0.5rem;
     border-style: none;
-    color: #242424;
-    border: 1px solid #e2e2e2;
-    padding: 0.2rem 1rem;
+    border: 1px solid #dadada;
 }
 
 #imagePreview {
