@@ -192,7 +192,7 @@
 
     <section id="publicacoes" class="publicacoes">
         <h3>Publicações</h3>
-        <<div class="wrap-carrossel-publ position-relative">
+        <div class="wrap-carrossel-publ position-relative">
     <img src="{{url('assets/img/dashboardEmpresa/bckBtn.png')}}" class="btn-carrossel position-absolute start-0"
         id="backBtn">
 

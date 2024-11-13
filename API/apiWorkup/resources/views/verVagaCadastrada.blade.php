@@ -36,7 +36,7 @@
                 <div class="col">
 
                     <div class="card-candidato">
-                        <div style="display: flex; flex-direction: row; width: 60%; align-items: center;">
+                        <div style="display: flex; flex-direction: row; width: 40%; align-items: center;">
                             <div class="dados-candidato">
                                 <img src="{{$candidato->usuario->fotoUsuario}}" class="img-candidato">
                                 <div>
@@ -111,20 +111,19 @@
                                     </div>                                   
                                 </div>
                             </div>
-                            {{ $candidato->status->tipoStatusVaga }}
+                            <p class="mx-4" style="color: #505050">{{ $candidato->status->tipoStatusVaga }}</p>
                         </div>
 
                         <div class="opcoes-candidato">
                             <div class="botoes-candidato">
 
                             <form action="{{ route('mensagem.create', ['idUsuario' => $candidato->idUsuario, 'idEmpresa' => $empresa->idEmpresa]) }}" method="GET">
-                            @csrf
-                            
-                                <button class="mensagem" value="mensagem">Mensagem <i class="fa-solid fa-check"></i></button>
-                                </form>
+                                @csrf
+                                    <button class="mensagem" value="mensagem"><i class="fa-solid fa-comment"></i>Mensagem</button>
+                            </form>
 
                             <form action="{{ route('candidaturas.aprovar', $candidato->idVagaUsuario) }}" method="POST" >
-                            @csrf
+                                @csrf
                             
                                 <button class="aprovar" value="aprovar">Aprovar <i class="fa-solid fa-check"></i></button>
                                 </form>
