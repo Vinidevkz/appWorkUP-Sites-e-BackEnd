@@ -101,22 +101,33 @@
                                                         </div>
                                                         <div class="col">
                                                             <h6>Término:</h6>
+                                                            
                                                             <p>{{ $candidato->usuario->dataFormacaoCompetenciaUsuario }}</p>
-                                                        </div>
-                                                    </div>
-                                                </div>
+                                                        </div>                           
+                                                    </div>                                        
+                                                </div>                                         
                                             </div>
-
-                                        </div>
-                                    </div>
+                                        </div>                                       
+                                    </div>                                   
                                 </div>
                             </div>
+                            {{ $candidato->status->tipoStatusVaga }}
                         </div>
 
                         <div class="opcoes-candidato">
                             <div class="botoes-candidato">
+
+
+                            <form action="{{ route('candidaturas.aprovar', $candidato->idVagaUsuario) }}" method="POST" >
+                            @csrf
+                            
                                 <button class="aprovar" value="aprovar">Aprovar <i class="fa-solid fa-check"></i></button>
+                                </form>
+
+                                <form action="{{ route('candidaturas.negar', $candidato->idVagaUsuario) }}" method="POST" >
+                                @csrf
                                 <button class="negar" value="negar">Negar <i class="fa-solid fa-xmark"></i></button>
+                                </form>
                             </div>
                             <button class="denunciar" data-bs-toggle="modal" data-bs-placement="top" data-bs-target="#staticBackdrop">
                                 <i class="fa-solid fa-flag"></i>
@@ -127,13 +138,22 @@
                                     <div class="modal-content p-5" style="height:20rem">
                                         <div class="modal-denuncia">
                                             <h5>Denunciar candidato</h5>
-                                            <form action="" class="denuncia-body">
+
+
+                                            <form action="{{ route('denunciar.store') }}" method="POST" class="denuncia-body">
+                                            @csrf
+                                            <input type="hidden" name="idUsuario" value="{{ $candidato->usuario->idUsuario }}">
+                    
+                    <input type="hidden" name="idEmpresa" value="{{ $empresa->idEmpresa  }}"> <!-- Aqui estou assumindo que a empresa está autenticada com Auth -->
+
+
+                                            
                                                 <div class="denuncia-input">
                                                     <label for="">Motivo:</label>
-                                                    <textarea name="" id="" placeholder="Detalhe o motivo da denúncia"></textarea>
+                                                    <textarea name="motivo" id="motivo" placeholder="Detalhe o motivo da denúncia"></textarea>
                                                 </div>
                                                 <div class="denuncia-footer">
-                                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
                                                     <input type="submit" value="Denunciar">
                                                 </div>
                                             </form>

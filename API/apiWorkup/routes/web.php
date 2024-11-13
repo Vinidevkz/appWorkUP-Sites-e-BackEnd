@@ -127,6 +127,8 @@ Route::middleware('auth.admin.empresa')->group(function(){
 //Rotas que somente a Empresa pode acessar
 Route::middleware('auth:empresa')->group(function(){
 
+    Route::post('/usuario', [DenunciaUsuarioController::class, 'store'])->name('denunciar.store');
+
            //Vaga
            Route::prefix('/vaga')->group(function(){   
 
@@ -192,7 +194,7 @@ Route::middleware('auth:empresa')->group(function(){
                 Route::get('/mensagem/{idUsuario}/{idEmpresa}', [MensagemController::class, 'create'])->name('mensagem.create');
                 Route::post('/mensagem', [MensagemController::class, 'store'])->name('mensagem.store');
                
-
+                
                 
 
             });
@@ -273,6 +275,7 @@ Route::middleware('auth:admin')->group(function(){
                 
                 // Denuncia Usuario
                 Route::get('/usuario', [DenunciaUsuarioController::class, 'index'])->name('denunciar.usuario');
+                
                 Route::get('/usuario/{id}', [DenunciaUsuarioController::class, 'show'])->name('denunciaUsuario.show');
 
                 

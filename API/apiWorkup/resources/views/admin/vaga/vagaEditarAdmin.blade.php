@@ -135,6 +135,14 @@
                             <div class="error-message">{{ $message }}</div>
                             @enderror
                         </div>
+
+                        <div class="col col-12">
+                            <div style="width: 85%">
+                                <label for="">Descrição:</label>
+                                <input type="text" class="form-control custom-input" name="descricaoVaga" placeholder="{{ $vaga->descricaoVaga }}" value="{{ $vaga->descricaoVaga }}" required>
+                            </div>
+
+                        </div>
                     </div>
                 </div>
                 <div class="d-flex justify-content-between" style="width: 65%">

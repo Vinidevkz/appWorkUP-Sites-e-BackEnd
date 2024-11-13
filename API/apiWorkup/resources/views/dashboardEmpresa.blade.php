@@ -108,6 +108,7 @@
                                         </div>
                                     </div>
                                     <div class="opt-vaga">
+                                        <p class="text-truncate my-1">Descrição: {{ $vaga->descricaoVaga }}</p>
                                         <p class="text-truncate my-1">Salário: R${{ $vaga->salarioVaga }}</p>
                                         <p class="text-truncate mb-1">Área: {{ $vaga->nomeVaga }}</p>
                                         <p class="text-truncate mb-1">Estado: {{ $vaga->estadoVaga }}</p>
@@ -142,6 +143,7 @@
                                         </div>
                                     </div>
                                     <div class="opt-vaga">
+                                        <p class="text-truncate my-1">Descrição: {{ $vaga->descricaoVaga }}</p>
                                         <p class="text my-1">Salário: R${{ $vaga->salarioVaga }}</p>
                                         <p class="text mb-1">Área: {{ $vaga->nomeVaga }}</p>
                                         <p class="text mb-1">Modalidade: {{ $vaga->idModalidadeVaga }}</p>
@@ -205,7 +207,7 @@ $posts = DB::table('tb_publicacao')
                                             {{ $post->detalhePublicacao }}
                                         </div>
                                         <div class="col img-publ">
-                                            <img src="{{url('assets/img/dashboardEmpresa/feteps.jpg')}}" alt="">
+                                            <img src="{{ $post->fotoPublicacao }}" alt="">
                                         </div>
                                         <div class="col botoes-publ">
                                             <div>

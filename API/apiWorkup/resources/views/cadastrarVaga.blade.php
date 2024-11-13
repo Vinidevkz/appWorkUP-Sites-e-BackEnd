@@ -88,6 +88,12 @@
                                 </div>
                                 <div class="row">
                                     <div class="col col-12">
+                                        <label for="descricaoVaga" class="form__label">Descrição da Vaga</label>
+                                        <input type="text" name="descricaoVaga" placeholder="Ex: Vaga para aqueles que querem crecer na empresa" value="{{ old('descricaoVaga') }}">
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col col-12">
                                     @error('beneficiosVaga')
                                             <div style="background-color: #fff;" class="error-message">{{ $message }}</div>
                                         @enderror
