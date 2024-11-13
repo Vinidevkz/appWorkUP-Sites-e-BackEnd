@@ -147,7 +147,7 @@ class VagaController extends Controller
         $vaga->prazoVaga = $request->prazoVaga;
         $vaga->salarioVaga = $request->salarioVaga;
         $vaga->cidadeVaga = $request->cidadeVaga;
-        $vaga->descricaoVaga = 'adicionar campo de descricao de vaga';
+        $vaga->descricaoVaga = $request->descricaoVaga;
         $vaga->estadoVaga = $request->estadoVaga;
         $vaga->beneficiosVaga = $request->beneficiosVaga;
         $vaga->diferencialVaga = $request->diferencialVaga;

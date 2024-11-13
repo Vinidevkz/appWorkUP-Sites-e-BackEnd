@@ -45,7 +45,6 @@ class DenunciaUsuarioController extends Controller
         $request->validate([
             'idUsuario' => 'required|integer',
             'motivo' => 'required|string|max:255',
-            'idStatus' => 'required|integer',
             'idEmpresa' => 'required|integer', // Adicione a validação para o ID da empresa
         ]);
     
@@ -53,7 +52,7 @@ class DenunciaUsuarioController extends Controller
             DenunciaUsuario::create([
                 'idUsuario' => $request->idUsuario,
                 'Motivo' => $request->motivo,
-                'idStatus' => $request->idStatus,
+                'idStatus' => 4,
                 'idEmpresa' => $request->idEmpresa, // Salve o ID da empresa
             ]);
     
