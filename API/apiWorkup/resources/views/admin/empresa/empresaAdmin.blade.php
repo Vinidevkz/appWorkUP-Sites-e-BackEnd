@@ -96,7 +96,7 @@ person
        data-contato="{{  $em->contatoEmpresa }}"
        data-cidade="{{ $em->cidadeEmpresa  }}"
        data-estado="{{ $em->estadoEmpresa }}"
-       data-logradouro="{{ $em->logradouroEmpresa }}"
+       data-logradouro="{{ $em->LogradouroEmpresa }}"
        data-cep="{{ $em->cepEmpresa }}"
        data-numLogr="{{ $em->numeroLograEmpresa }}"
     >
@@ -184,9 +184,14 @@ person
                 <div class="row mb-3">
                   <div class="d-flex">
                 <h6 class="me-2">Contato</h6>
+ 
 
                 <i class="bi bi-telephone-fill"></i>
+   
                 </div>
+                <div class="col-md-6 mb-3">
+                        <p><span id="contatoEmpresa"></span></p>
+                    </div>
 
                     <div class="col-md-6">
                         <p><strong>Username:</strong> <span id="usernameEmpresa"></span></p>
@@ -212,13 +217,11 @@ person
                 <!-- Seção de Localização -->
                 <div class="row mb-3">
                 <div class="d-flex">
-                <h6 class="me-2">LOCALIZAÇÕAO</h6>
+                <h6 class="me-2">LOCALIZAÇÃO</h6>
 
                 <i class="bi bi-geo-alt-fill"></i>
                 </div>
-                    <div class="col-md-6">
-                        <p><strong>Contato:</strong> <span id="contatoEmpresa"></span></p>
-                    </div>
+                
                     <div class="col-md-6">
                         <p><strong>Cidade:</strong> <span id="cidadeEmpresa"></span></p>
                     </div>

@@ -99,7 +99,7 @@ class AuthController extends Controller
                 Auth::guard('admin')->logout();
             }
     
-            return redirect()->route('login')->with('message', 'Logout realizado com sucesso.');
+            return redirect()->route('login')->with('success', 'Logout realizado com sucesso.');
 
         }
 

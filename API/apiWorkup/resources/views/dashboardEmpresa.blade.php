@@ -16,6 +16,8 @@
     @include('components.navbarDashboardEmpresa')
 
 
+
+
     <section class="card">
         <div class="row g-0">
             <div class="col-12 col-md-6 d-flex align-items-center justify-content-center">
@@ -179,7 +181,7 @@ $posts = DB::table('tb_publicacao')
     ->get();
 @endphp
 
-    <section class="publicacoes">
+    <section id="publicacoes" class="publicacoes">
         <h3>Publicações</h3>
         <div class="container container-publ">
             <div class="row">

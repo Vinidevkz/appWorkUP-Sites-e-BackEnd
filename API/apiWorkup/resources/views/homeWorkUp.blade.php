@@ -50,11 +50,14 @@
     <!-- Navbar -->
     @include('components.navbarDashboardEmpresa')
 
-    <main class="flex-grow-1"> 
+    <main class="flex-grow-1">
+
 
         <!-- Cabeçalho -->
         <header class="quemsomosf bg-dark py-4">
+            
             <div class="container px-5">
+                
                 <div class="row gx-5 align-items-center justify-content-center">
                     <div class="col-lg-6 col-xl-5">
                         <div class="my-4 text-center text-lg-start">
@@ -94,6 +97,7 @@
                 </div>
             </div>
         </header>
+
 
         <!-- Funções -->
         <section class="funcoes py-4">
@@ -202,6 +206,7 @@
         new window.VLibras.Widget('https://vlibras.gov.br/app');
     </script>
     <script src="{{url('/assets/js/home.js')}}" async></script>
+
 
 </body>
 

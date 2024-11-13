@@ -31,7 +31,7 @@
                 <div class="box-login">
                     <h2>Fazer Login</h2>
                     @if (session('success'))
-                        <div class="alert alert-success">
+                        <div class="alert alert-success" id="success-alert">
                             {{ session('success') }}
                         </div>
                     @endif
@@ -68,7 +68,18 @@
 
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
-
+    <script>
+    // Define o tempo em milissegundos (exemplo: 3000 ms = 3 segundos)
+    setTimeout(function() {
+        // Seleciona o elemento do alerta e o esconde
+        const alert = document.getElementById('success-alert');
+        if (alert) {
+            alert.style.transition = "opacity 0.5s ease";
+            alert.style.opacity = "0";  // Faz o alerta desaparecer suavemente
+            setTimeout(() => alert.remove(), 500); // Remove o alerta do DOM após a transição
+        }
+    }, 2500); // Tempo de exibição do alerta em milissegundos
+</script>
 </body>
 
 </html>

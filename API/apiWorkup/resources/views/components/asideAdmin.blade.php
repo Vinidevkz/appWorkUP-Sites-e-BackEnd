@@ -136,12 +136,10 @@
 
                         <div class="d-flex item-nav-logout">
                         
-                      <form action="/logout" method="POST">
-                        @csrf
-                        <button type="submit" class="p-1 h6" style="background-color: transparent; border:none">
-                        <i class="bi bi-door-open"></i>Sair
+                    
+                        <button type="submit" class="p-1 h6" style="background-color: transparent; border:none" data-bs-toggle="modal" data-bs-target="#sair">
+                        <i class="bi bi-door-open"></i> Sair
                       </button>
-                      </form>
                 
                         </div>
 
@@ -153,3 +151,42 @@
         </div>
                 
             </aside>
+
+<!-- Modal -->
+<div class="modal fade" id="sair" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-sm">
+        <div class="modal-content" style="margin: 0; padding:0; height:200px;">
+            <div class="modal-header">
+            </div>
+            <div class="modal-body d-flex justify-content-center align-items-center" style="margin: 0; padding:0">
+                <h1 class="modal-title fs-5 text-center" id="exampleModalLabel">Deseja realmente sair?</h1>
+            </div>
+            <div class="modal-footer d-flex justify-content-center">
+                <form action="/logout" method="POST">
+                    @csrf
+                    <div class="row">
+                        <div class="col mx-3 m-0 p-0 " style="width:100px"><button type="button" class="botao-card text-light" style="background-color:#303030" data-bs-dismiss="modal">Não</button></div>
+                        <div class="col mx-3 m-0 p-0"> <button type="submit" class="botao-card botao-vaga">Sair</button></div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<style>
+  .botao-card {
+    width: 100%; /* Faz com que os botões ocupem toda a largura disponível em dispositivos móveis */
+    max-width: 200px; /* Limita a largura dos botões em dispositivos maiores */
+    height: 40px;
+    border-style: none;
+    text-decoration: none;
+    display: grid;
+    place-items: center;
+}
+
+.botao-vaga {
+    background-color: #20dd77;
+}
+</style>
