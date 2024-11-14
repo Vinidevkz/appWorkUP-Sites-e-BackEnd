@@ -41,21 +41,21 @@ class AdminController extends Controller
                                $totalDenunciasVagas;
 
         // Iteresses de usuarios                       
-        $totalUsuariosTecnologia = AreaInteresseUsuario::where('idArea', 1)->count();
-        $totalUsuariosAlimentacao = AreaInteresseUsuario::where('idArea', 11)->count();
-        $totalUsuariosGestao = AreaInteresseUsuario::where('idArea', 3)->count();
-        $totalUsuarioGastronomia = AreaInteresseUsuario::where('idArea', 4)->count();
-        $totalUsuariosEngenharia = AreaInteresseUsuario::where('idArea', 14)->count();
-        $totalUsuariosAdministracao = AreaInteresseUsuario::where('idArea', 5)->count();
-        $totalUsuariosMarketing = AreaInteresseUsuario::where('idArea', 2)->count();
-        $totalUsuariosEducacao = AreaInteresseUsuario::where('idArea', 7)->count();
-        $totalUsuariosFinancas = AreaInteresseUsuario::where('idArea', 8)->count();
-        $totalUsuariosRecursosHumanos = AreaInteresseUsuario::where('idArea', 9)->count();
-        $totalUsuariosLogistica = AreaInteresseUsuario::where('idArea', 10)->count();
-        $totalUsuariosServicosGerais = AreaInteresseUsuario::where('idArea', 12)->count();
-        $totalUsuariosMeioAmbiente = AreaInteresseUsuario::where('idArea', 15)->count();
-        $totalUsuarioMedicina = AreaInteresseUsuario::where('idArea', 6)->count();
-        $totalUsuarioHigienizacao = AreaInteresseUsuario::where('idArea', 13)->count();
+        $totalUsuariosTecnologia = Usuario::where('areaInteresseUsuario', 'LIKE', '%Tecnologia%')->count();
+        $totalUsuariosMarketing = Usuario::where('areaInteresseUsuario', 'LIKE', '%Marketing%')->count();
+        $totalUsuariosGestao = Usuario::where('areaInteresseUsuario', 'LIKE', '%Gestão%')->count();
+        $totalUsuarioGastronomia = Usuario::where('areaInteresseUsuario', 'LIKE', '%Gastronomia%')->count();
+        $totalUsuariosAdministracao = Usuario::where('areaInteresseUsuario', 'LIKE', '%Administração%')->count();
+        $totalUsuarioMedicina = Usuario::where('areaInteresseUsuario', 'LIKE', '%Medicina%')->count();
+        $totalUsuariosEducacao = Usuario::where('areaInteresseUsuario', 'LIKE', '%Educação%')->count();
+        $totalUsuariosFinancas = Usuario::where('areaInteresseUsuario', 'LIKE', '%Finança%')->count();
+        $totalUsuariosRecursosHumanos = Usuario::where('areaInteresseUsuario', 'LIKE', '%Recursos Humanos%')->count();
+        $totalUsuariosLogistica = Usuario::where('areaInteresseUsuario', 'LIKE', '%Logística%')->count();
+        $totalUsuariosAlimentacao = Usuario::where('areaInteresseUsuario', 'LIKE', '%Alimentação%')->count();
+        $totalUsuariosServicosGerais = Usuario::where('areaInteresseUsuario', 'LIKE', '%Serviços Gerais%')->count();
+        $totalUsuarioHigienizacao = Usuario::where('areaInteresseUsuario', 'LIKE', '%Higienização%')->count();
+        $totalUsuariosEngenharia = Usuario::where('areaInteresseUsuario', 'LIKE', '%Engenharia%')->count();
+        $totalUsuariosMeioAmbiente = Usuario::where('areaInteresseUsuario', 'LIKE', '%Meio Ambiente%')->count();
 
         
         
