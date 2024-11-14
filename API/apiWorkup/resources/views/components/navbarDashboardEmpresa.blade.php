@@ -21,7 +21,7 @@
             <div>
                 <!-- Verifique se $empresa não é null antes de exibir os dados -->
                 <div class="d-flex flex-row">
-                    <a href="{{ route('empresas.edit', $empresa->idEmpresa) }}">{{ $empresa->usernameEmpresa }}</a>
+                    <a href="{{ route('empresas.edit', $empresa->idEmpresa) }}">{{ $empresa->nomeEmpresa }}</a>
                     <img src="{{$empresa->fotoEmpresa}}">
                 </div>
 

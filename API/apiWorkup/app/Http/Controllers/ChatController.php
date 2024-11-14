@@ -44,6 +44,7 @@ class ChatController extends Controller
         // Exibindo os chats do usuário com a empresa
         $chats = Chat::where('idUsuario', $idUsuario)
             ->with('empresa', 'usuario') // Inclui empresa e usuário relacionados
+            ->orderBy('created_at', 'asc')
             ->get();
 
         return response()->json($chats);

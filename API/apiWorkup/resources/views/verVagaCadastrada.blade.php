@@ -117,10 +117,11 @@
                         <div class="opcoes-candidato">
                             <div class="botoes-candidato">
 
-                            <form action="{{ route('mensagem.create', ['idUsuario' => $candidato->idUsuario, 'idEmpresa' => $empresa->idEmpresa]) }}" method="GET">
-                                @csrf
-                                    <button class="mensagem" value="mensagem"><i class="fa-solid fa-comment"></i>Mensagem</button>
-                            </form>
+                            <form action="{{ route('mensagem.historico', ['idUsuario' => $candidato->idUsuario, 'idEmpresa' => $empresa->idEmpresa]) }}" method="GET">
+    @csrf
+    <button class="mensagem" value="mensagem"><i class="fa-solid fa-comment"></i>Mensagem</button>
+</form>
+
 
                             <form action="{{ route('candidaturas.aprovar', $candidato->idVagaUsuario) }}" method="POST" >
                                 @csrf

@@ -188,7 +188,7 @@ Route::middleware('auth:empresa')->group(function(){
             //Mensagem
             Route::prefix('/mensagem')->group(function(){
                 //ver mensagens
-                Route::get('/{idUsuario}/{idEmpresa}', [MensagemController::class, 'index'])->name('mensagens.index');
+                Route::get('/', [MensagemController::class, 'index'])->name('mensagens.index');
 
                 //ver mensagens de um unico usuario
                 Route::get('/Unico/{idUsuario}', [MensagemController::class, 'indexUsuarioUnico'])->name('mensagem.indexUsuarioUnico');
@@ -201,6 +201,8 @@ Route::middleware('auth:empresa')->group(function(){
                 Route::get('mensagens/{idUsuario}/{idEmpresa}', [MensagemController::class, 'showWeb'])->name('mensagens.show');
 
 
+                // Dentro do arquivo de rotas (web.php)
+Route::get('/mensagem/historico/{idUsuario}/{idEmpresa}', [MensagemController::class, 'showConversation'])->name('mensagem.historico');
 
             });
 
