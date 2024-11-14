@@ -17,21 +17,39 @@ class AdminSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('tb_admin')->insert([
-            'idAdmin'=> 1,
-            'nomeAdmin' => 'Danilo',
-            'usernameAdmin' => 'Dan',
-            'emailAdmin' => 'danilo@example.com',
+        DB::table('tb_admin')->insert( [[ 
+            'nomeAdmin' => 'Admin',
+            'usernameAdmin' => 'admin',
+            'emailAdmin' => 'admin@admin.com',
+            'contatoAdmin' => '(11)9 9999-9999',
+            'senhaAdmin' => Hash::make('123'),
+            'fotoAdmin' => 'fc29c16347cac127de9ef3d04cd20f68.jpg',
+            'idStatus' => 1,
+            'created_at' =>Carbon::now('America/Sao_Paulo'),
+            'updated_at' =>Carbon::now('America/Sao_Paulo'),
+        ],[
+            'nomeAdmin' => 'Danilo da Silva',
+            'usernameAdmin' => 'Danilo',
+            'emailAdmin' => 'danilo@gmail.com',
             'contatoAdmin' => '(11)9 1111-1111',
             'senhaAdmin' => Hash::make('123'),
-            'fotoAdmin' => 'fc29c16347cac127de9ef3d04cd20f68.png',
+            'fotoAdmin' => 'fc29c16347cac127de9ef3d04cd20f68.jpg',
             'idStatus' => 1,
             'created_at' =>Carbon::now('America/Sao_Paulo'),
             'updated_at' =>Carbon::now('America/Sao_Paulo'),
         ],
-        // Para a criação de admins utilize esta seed, assim como acima adicione os campos e seus respectivos valores nas chaves abaixo, e logo após rode o comando:
-        // php artisan db:seed --class=AdminSeeder
-        // Descomente para prosseguir com a criação de um admin: [ ],
+        [ 
+            'nomeAdmin' => 'Vitor Augusto',
+            'usernameAdmin' => 'Vitor',
+            'emailAdmin' => 'vitor@gmail.com',
+            'contatoAdmin' => '(11)9 1111-1111',
+            'senhaAdmin' => Hash::make('123'),
+            'fotoAdmin' => 'fc29c16347cac127de9ef3d04cd20f68.jpg',
+            'idStatus' => 1,
+            'created_at' =>Carbon::now('America/Sao_Paulo'),
+            'updated_at' =>Carbon::now('America/Sao_Paulo'),
+        ],
+        ]
         );
     }
 }

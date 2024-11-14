@@ -122,7 +122,7 @@
                             <div class="row">
                                 <div class="col-edit col-12">
                                     <label for="sobreEmpresa">Sobre:</label>
-                                    <textarea name="sobreEmpresa" placeholder="{{ $empresa->sobreEmpresa }}" value="{{ $empresa->sobreEmpresa }}" required></textarea>
+                                    <textarea name="sobreEmpresa" placeholder="{{ $empresa->sobreEmpresa }}" value="{{ $empresa->sobreEmpresa }}" required>{{ old('sobreEmpresa', $empresa->sobreEmpresa) }}</textarea>
                                 </div>
                             </div>
                             <div class="row mt-3">

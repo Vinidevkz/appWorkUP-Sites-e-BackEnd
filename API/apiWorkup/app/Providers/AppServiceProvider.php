@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use App\Models\Area;
 use App\Models\Post;
+use App\Models\Vaga;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\View;
@@ -49,9 +50,11 @@ class AppServiceProvider extends ServiceProvider
         }
 
         if($empresa){
-            $posts = Post::where('idEmpresa', Auth::guard('empresa')->user())->get();
+            $posts = Post::where('idEmpresa', $empresa->idEmpresa)->get();
+
+            $vagas = Vaga::where('idEmpresa', $empresa->idEmpresa)->get();
             
-            $view->with('posts', $posts)->with('empresa', $empresa);
+            $view->with('posts', $posts)->with('empresa', $empresa)->with('vagas', $vagas);
         }
     });
     

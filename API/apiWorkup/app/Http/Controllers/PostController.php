@@ -96,7 +96,7 @@ public function index()
     {
             // Validação
             $request->validate([
-                'detalhePublicacao' => 'required|max:120',
+                'detalhePublicacao' => 'required|max:300',
              
             ]);
 

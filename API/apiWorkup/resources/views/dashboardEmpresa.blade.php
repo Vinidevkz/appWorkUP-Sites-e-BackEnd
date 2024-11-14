@@ -179,20 +179,11 @@
         </div>
     </section>
 
-    @php
-
-        $idEmpresa = Auth::guard('empresa')->id();
-
-        $posts = DB::table('tb_publicacao')
-            ->where('tb_publicacao.idEmpresa', $idEmpresa)
-            ->select('idPublicacao', 'tituloPublicacao', 'detalhePublicacao', 'fotoPublicacao')
-            ->orderBy('created_at', 'asc')
-            ->get();
-    @endphp
+  
 
     <section id="publicacoes" class="publicacoes">
         <h3>Publicações</h3>
-        <<div class="wrap-carrossel-publ position-relative">
+        <div class="wrap-carrossel-publ position-relative">
     <img src="{{url('assets/img/dashboardEmpresa/bckBtn.png')}}" class="btn-carrossel position-absolute start-0"
         id="backBtn">
 
