@@ -24,6 +24,19 @@ class MensagemController extends Controller
             ->with(['usuario', 'empresa'])  // Carrega as relações do usuário e da empresa
             ->get();
     
+        // Para cada chat, buscar a última mensagem com a combinação de idUsuario, idEmpresa
+        $chats->each(function ($chat) use ($idUsuario, $idEmpresa) {
+            // Buscar a última mensagem com base no idUsuario, idEmpresa e idChat
+            $ultimaMensagem = Mensagem::where('idUsuario', $idUsuario)
+                ->where('idEmpresa', $idEmpresa)
+                ->where('idChat', $chat->idChat)  // Para garantir que estamos pegando mensagens do chat específico
+                ->orderBy('created_at', 'desc')   // Ordena pela data de criação, do mais recente para o mais antigo
+                ->first();  // Pega a última mensagem
+    
+            // Atribuindo a última mensagem ao objeto Chat
+            $chat->ultima_mensagem = $ultimaMensagem;
+        });
+    
         // Se não encontrar chats, retorna uma mensagem de erro
         if ($chats->isEmpty()) {
             return view('mensagem.index', ['message' => 'Nenhum chat encontrado']);
@@ -32,6 +45,9 @@ class MensagemController extends Controller
         // Passa o idUsuario para a view junto com os dados dos chats
         return view('mensagem.index', compact('chats', 'idUsuario'));
     }
+    
+    
+    
     
     
     
@@ -150,48 +166,66 @@ class MensagemController extends Controller
     }
 
     public function storeWeb(Request $request)
-    {
-        // Logando os dados recebidos
-        Log::info('Dados recebidos:', ['dados' => $request->all()]);
+{
+    // Logando os dados recebidos para depuração
+    Log::info('Dados recebidos:', ['dados' => $request->all()]);
 
-        // Validando os dados
-        $request->validate([
-            'idUsuario' => 'required|exists:tb_usuario,idUsuario',
-            'idEmpresa' => 'required|exists:tb_empresa,idEmpresa',
-            'mensagem' => 'required|string',
-            'tipoEmissor' => 'required|string',
-        ]);
+    // Validando os dados de entrada
+    $request->validate([
+        'idUsuario' => 'required|exists:tb_usuario,idUsuario',
+        'idEmpresa' => 'required|exists:tb_empresa,idEmpresa',
+        'mensagem' => 'required|string',
+        'tipoEmissor' => 'required|string',
+    ]);
 
-        // Verificando se já existe um chat entre o usuário e a empresa
-        $chat = Chat::where('idUsuario', $request->idUsuario)
-            ->where('idEmpresa', $request->idEmpresa)
-            ->first();
+    // Verificando se já existe um chat entre o usuário e a empresa
+    $chat = Chat::where('idUsuario', $request->idUsuario)
+        ->where('idEmpresa', $request->idEmpresa)
+        ->first();
 
-        if (!$chat) {
-            // Se não existe chat, cria um novo
-            $chat = Chat::create([
-                'idUsuario' => $request->idUsuario,
-                'idEmpresa' => $request->idEmpresa,
-            ]);
-        }
-
-        // Criando a mensagem
-        $mensagem = Mensagem::create([
+    if (!$chat) {
+        // Se não existe chat, cria um novo
+        $chat = Chat::create([
             'idUsuario' => $request->idUsuario,
             'idEmpresa' => $request->idEmpresa,
-            'mensagem' => $request->mensagem,
-            'tipoEmissor' => $request->tipoEmissor,
-            'idChat' => $chat->idChat, // Atribuindo o idChat para a mensagem
         ]);
-
-        // Recuperando todos os chats da empresa com seus usuários e empresas relacionadas
-        $mensagens = Mensagem::where('idEmpresa', $request->idEmpresa)
-            ->with(['chat.usuario', 'chat.empresa'])  // Carrega os dados do usuário e da empresa associados ao chat
-            ->get();
-
-        // Retornando a view com as mensagens
-        return view('mensagem.index', compact('mensagens'));
     }
+
+    // Criando a mensagem
+    $mensagem = Mensagem::create([
+        'idUsuario' => $request->idUsuario,
+        'idEmpresa' => $request->idEmpresa,
+        'mensagem' => $request->mensagem,
+        'tipoEmissor' => $request->tipoEmissor,
+        'idChat' => $chat->idChat, // Atribuindo o idChat para a mensagem
+    ]);
+
+    // Buscando o chat com a última mensagem
+    $chats = Chat::where('idUsuario', $request->idUsuario)
+        ->where('idEmpresa', $request->idEmpresa)
+        ->with(['usuario', 'empresa']) // Carrega as relações do usuário e da empresa
+        ->get();
+
+    // Para cada chat, buscar a última mensagem
+    $chats->each(function ($chat) use ($request) {
+        // Buscar a última mensagem com base no idUsuario, idEmpresa e idChat
+        $ultimaMensagem = Mensagem::where('idChat', $chat->idChat)
+            ->where('idUsuario', $request->idUsuario)
+            ->where('idEmpresa', $request->idEmpresa)
+            ->orderBy('created_at', 'desc')
+            ->first(); // Pega a última mensagem
+
+        // Atribuindo a última mensagem ao objeto Chat
+        $chat->ultima_mensagem = $ultimaMensagem;
+    });
+
+    // Retornando a view com os dados dos chats e a última mensagem
+    return view('mensagem.index', ['chats' => $chats, 'idUsuario' => $request->idUsuario]);
+}
+
+    
+    
+    
 
     public function showWeb($idUsuario, $idEmpresa)
 {

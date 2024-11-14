@@ -20,6 +20,14 @@
                     <li class="list-group-item">
                         <strong>Usuário:</strong> {{ $chat->usuario->nomeUsuario }} <br>
                         <strong>Empresa:</strong> {{ $chat->empresa->nomeEmpresa }} <br>
+
+                        <!-- Exibindo a última mensagem -->
+                        @if ($chat->ultima_mensagem)
+                            <strong>Última mensagem:</strong> {{ $chat->ultima_mensagem->mensagem }}
+                        @else
+                            <strong>Última mensagem:</strong> Nenhuma mensagem ainda.
+                        @endif
+
                         <!-- Link para ver histórico de mensagens -->
                         <a href="{{ route('mensagens.show', ['idUsuario' => $idUsuario, 'idEmpresa' => $chat->empresa->idEmpresa]) }}">
                             Ver histórico de mensagens
