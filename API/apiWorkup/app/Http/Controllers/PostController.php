@@ -33,18 +33,10 @@ public function index()
     // Exibir as postagens
     return view('posts.index', compact('posts'));
 }
-
-
-
-
-
-
-    
+  
 
     public function indexApp($idUsuario)
     {
-        
-
         // Buscar as empresas que o usuário segue
         $empresasSeguidas = Seguir::where('idUsuario', $idUsuario)
                                   ->pluck('idEmpresa');  // Pega os IDs das empresas que o usuário segue

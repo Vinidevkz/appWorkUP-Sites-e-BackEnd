@@ -15,6 +15,7 @@ use App\http\Controllers\PostController;
 use App\http\Controllers\MensagemController;
 use App\Http\Controllers\DenunciaEmpresaController;
 use App\Http\Controllers\DenunciaVagaController;
+use App\Http\Controllers\ChatController;
 use Illuminate\Support\Facades\Auth;
 
 /*Rotas que possuem o 'prefix' requerem que digite o nome delas antes de buscar algo
@@ -187,15 +188,19 @@ Route::middleware('auth:empresa')->group(function(){
             //Mensagem
             Route::prefix('/mensagem')->group(function(){
                 //ver mensagens
-                Route::get('/', [MensagemController::class, 'index'])->name('mensagens.index');
+                Route::get('/{idUsuario}/{idEmpresa}', [MensagemController::class, 'index'])->name('mensagens.index');
+
                 //ver mensagens de um unico usuario
                 Route::get('/Unico/{idUsuario}', [MensagemController::class, 'indexUsuarioUnico'])->name('mensagem.indexUsuarioUnico');
                 //mandar mensagens
                 Route::get('/mensagem/{idUsuario}/{idEmpresa}', [MensagemController::class, 'create'])->name('mensagem.create');
-                Route::post('/mensagem', [MensagemController::class, 'store'])->name('mensagem.store');
+                Route::post('/mensagem', [MensagemController::class, 'storeWeb'])->name('mensagem.store');
                
-                
-                
+                Route::resource('mensagens', MensagemController::class);
+                Route::resource('chats', ChatController::class);
+                Route::get('mensagens/{idUsuario}/{idEmpresa}', [MensagemController::class, 'showWeb'])->name('mensagens.show');
+
+
 
             });
 

@@ -2,6 +2,7 @@
     @csrf
     <input type="hidden" name="idUsuario" value="{{ $idUsuario }}">
     <input type="hidden" name="idEmpresa" value="{{ $idEmpresa }}">
+    <input type="hidden" name="tipoEmissor" value="Empresa">
     
     <div class="form-group">
         <label for="mensagem">Mensagem:</label>
