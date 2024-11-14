@@ -113,12 +113,12 @@ body, .candidatos {
 
 .dados-candidato h5 {
     font-size: 1.1rem;
-    color: #787878;
+    color: #5d5d5d;
 }
 
 .dados-candidato p {
     font-size: 0.8rem;
-    color: #868686;
+    color: #686868;
 }
 
 .img-candidato {
@@ -166,7 +166,6 @@ body, .candidatos {
     padding: 0 2rem;
     height: 100%;
     gap: 1rem;
-    width: 50%;
 }
 
 .denunciar {
@@ -189,7 +188,7 @@ body, .candidatos {
     align-items: center;
 }
 
-.aprovar, .negar, .perfil {
+.aprovar, .negar, .perfil, .mensagem {
     height: 2.5rem;
     display: flex;
     align-items: center;
@@ -203,9 +202,16 @@ body, .candidatos {
     border-style: none;
 }
 
+.mensagem {
+    color: #505050;
+}
+
 .aprovar, .negar {
     color: #fff;
-    width: 100%;
+}
+
+.aprovar, .negar, .mensagem {
+    width: 8rem;
 }
 
 .aprovar {
