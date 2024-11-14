@@ -156,12 +156,20 @@ class MensagemController extends Controller
     
             // Retornando a resposta
             return response()->json($mensagem, 200);
-        } catch (\Exception $e) {
-            // Logando o erro
-            Log::error('Erro no servidor: ' . $e->getMessage());
+        } catch (\Illuminate\Database\QueryException $e) {
+            // Logando erro de query específico
+            Log::error('Erro no banco de dados: ' . $e->getMessage());
     
-            // Retornando erro 500
-            return response()->json(['error' => 'Erro no servidor', $e->getMessage()], 500);
+            return response()->json(['error' => 'Erro no banco de dados', 'mensagem' => $e->getMessage()], 500);
+        } catch (\Exception $e) {
+            // Logando o erro completo
+            Log::error('Erro no servidor: ' . $e->getMessage(), [
+                'line' => $e->getLine(),
+                'file' => $e->getFile(),
+                'trace' => $e->getTraceAsString(),
+            ]);
+    
+            return response()->json(['error' => 'Erro no servidor', 'mensagem' => $e->getMessage()], 500);
         }
     }
 
@@ -245,6 +253,7 @@ class MensagemController extends Controller
     return view('mensagem.unico', compact('mensagens'));
 }
 
+    
     
     
     

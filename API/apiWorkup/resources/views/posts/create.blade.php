@@ -51,7 +51,7 @@
 
                             <label for="estadoVaga" class="form__label">Selecione a vaga relacionada com o post:</label>
                             <select name="idVaga">
-                                <option value="">Selecionar</option>
+                                <option value="">Nenhuma</option>
                                 @foreach($vagas as $vaga)
                                     <option value="{{ $vaga->idVaga }}" {{ old('idaVaga') == $vaga->idaVaga ? 'selected' : '' }}>
                                         {{ $vaga->nomeVaga }}
