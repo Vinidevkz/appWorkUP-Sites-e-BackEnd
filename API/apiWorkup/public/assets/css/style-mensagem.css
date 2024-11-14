@@ -1,0 +1,78 @@
+body {
+    height: 100vh;
+}
+
+.perfil-user {
+    position: fixed;
+    margin-top: 4rem;
+    background-color: #fff;
+    width: 100%;
+    display: flex;
+    gap: 1rem;
+    padding: 0.5rem 3rem;
+}
+
+.perfil-user img {
+    object-fit: cover;
+    width: 60px;
+    height: 60px;
+    border-radius: 10rem;
+}
+
+.perfil-user div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.perfil-user div h5 {
+    font-weight: 350;
+}
+
+.perfil-user div p {
+    font-weight: 300;
+}
+
+.perfil-user div p, .perfil-user div h5 {
+    margin-bottom: 0;
+}
+
+
+
+
+.campo-mensagem {
+    width: 100%;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0.8rem 0;
+}
+
+.campo-mensagem div {
+    display: flex;
+    justify-content: space-between;
+    width: 55%;
+}
+
+.campo-mensagem textarea {
+    padding: 0.8rem 1rem;
+    width: 85%;
+    height: 3rem;
+    resize: none;
+    scrollbar-width: none;
+    border-radius: 3rem;
+    border: 1px solid #20dd77;
+}
+
+.campo-mensagem button {
+    border-style: none;
+    background-color: transparent;
+}
+
+.campo-mensagem i {
+    font-size: 1.5rem;
+    padding: 1rem;
+    background-color: #20dd77;
+    border-radius: 10rem;
+}
