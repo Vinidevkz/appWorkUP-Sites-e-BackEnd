@@ -17,11 +17,14 @@
     @csrf
         <input type="hidden" name="idUsuario" value="{{ $idUsuario }}">
         <input type="hidden" name="idEmpresa" value="{{ $idEmpresa }}">
+        <input type="hidden" name="tipoEmissor" value="Empresa">
             <div class="perfil-user">
-                <img src="" alt="">
+            <img src="{{$candidato->usuario->fotoUsuario}}" alt="">
                 <div>
-                    <h5>Nome user</h5>
-                    <p>Username user</p>
+                    <h5>{{ $candidato->usuario->nomeUsuario }}</h5>
+                    <p>{{ $candidato->usuario->usernameUsuario }}</p>
+                    
+                    
                 </div>
             </div>
 

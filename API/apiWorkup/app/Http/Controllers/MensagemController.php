@@ -8,6 +8,9 @@ use App\Models\Mensagem;
 use App\Models\Chat;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
+use App\Models\Vaga;
+use Illuminate\Support\Facades\Auth;
+use App\Models\VagaUsuario;
 
 class MensagemController extends Controller
 {
@@ -121,8 +124,14 @@ class MensagemController extends Controller
      */
     public function create($idUsuario, $idEmpresa)
     {
-        return view('mensagem.mensagem', compact('idUsuario', 'idEmpresa'));
+        // Encontre o candidato (assumindo que você tem a relação entre vaga, candidato e usuário)
+        $candidato = VagaUsuario::where('idUsuario', $idUsuario)->first();
+        $empresa = Auth::guard('empresa')->user(); // Pega a empresa autenticada
+    
+        // Passar as variáveis para a view
+        return view('mensagem.mensagem', compact('idUsuario', 'idEmpresa', 'candidato', 'empresa'));
     }
+    
 
     /**
      * Store a newly created resource in storage.
@@ -156,20 +165,12 @@ class MensagemController extends Controller
     
             // Retornando a resposta
             return response()->json($mensagem, 200);
-        } catch (\Illuminate\Database\QueryException $e) {
-            // Logando erro de query específico
-            Log::error('Erro no banco de dados: ' . $e->getMessage());
-    
-            return response()->json(['error' => 'Erro no banco de dados', 'mensagem' => $e->getMessage()], 500);
         } catch (\Exception $e) {
-            // Logando o erro completo
-            Log::error('Erro no servidor: ' . $e->getMessage(), [
-                'line' => $e->getLine(),
-                'file' => $e->getFile(),
-                'trace' => $e->getTraceAsString(),
-            ]);
+            // Logando o erro
+            Log::error('Erro no servidor: ' . $e->getMessage());
     
-            return response()->json(['error' => 'Erro no servidor', 'mensagem' => $e->getMessage()], 500);
+            // Retornando erro 500
+            return response()->json(['error' => 'Erro no servidor', $e->getMessage()], 500);
         }
     }
 
@@ -253,7 +254,6 @@ class MensagemController extends Controller
     return view('mensagem.unico', compact('mensagens'));
 }
 
-    
     
     
     

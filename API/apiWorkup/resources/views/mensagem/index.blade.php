@@ -19,6 +19,8 @@
                 @foreach($chats as $chat)
                     <li class="list-group-item">
                         <strong>Usuário:</strong> {{ $chat->usuario->nomeUsuario }} <br>
+
+                        <img src="{{ $chat->usuario->fotoUsuario }}" alt="Foto do Usuário" width="50" height="50"> <br>
                         <strong>Empresa:</strong> {{ $chat->empresa->nomeEmpresa }} <br>
 
                         <!-- Exibindo a última mensagem -->
@@ -29,6 +31,7 @@
                         @endif
 
                         <!-- Link para ver histórico de mensagens -->
+                         <br>
                         <a href="{{ route('mensagens.show', ['idUsuario' => $idUsuario, 'idEmpresa' => $chat->empresa->idEmpresa]) }}">
                             Ver histórico de mensagens
                         </a>
