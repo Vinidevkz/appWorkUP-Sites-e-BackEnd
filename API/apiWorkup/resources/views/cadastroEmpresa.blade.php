@@ -90,7 +90,7 @@
                     </div>
 
                     <div class="col col-12 h-50">
-                        <label for="usernameEmpresa">Nome de usuário:</label>
+                        <label for="usernameEmpresa">Nome do representante:</label>
                         <input type="text" class="form-control custom-input" name="usernameEmpresa"
                             value="{{old('usernameEmpresa')}}">
                         @error('usernameEmpresa')
