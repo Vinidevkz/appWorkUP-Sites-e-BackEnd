@@ -179,16 +179,7 @@
         </div>
     </section>
 
-    @php
-
-        $idEmpresa = Auth::guard('empresa')->id();
-
-        $posts = DB::table('tb_publicacao')
-            ->where('tb_publicacao.idEmpresa', $idEmpresa)
-            ->select('idPublicacao', 'tituloPublicacao', 'detalhePublicacao', 'fotoPublicacao')
-            ->orderBy('created_at', 'asc')
-            ->get();
-    @endphp
+  
 
     <section id="publicacoes" class="publicacoes">
         <h3>Publicações</h3>

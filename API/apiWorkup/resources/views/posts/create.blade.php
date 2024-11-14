@@ -73,7 +73,7 @@
                         <img id="imagePreview" src="" alt="" style="display:none;">
                     </div>
                     <input type="file" id="fileInput" value="url" name="fotoPublicacao">
-                    <input type="text" id="imageUrl" name="fotoUrl" hidden>
+                    <input type="hidden" id="imageUrl" name="fotoUrl" >
                 </div>
                 <div class="col-8 d-flex justify-content-between mt-4 footer-criar-post">
                     <a href="/empresa/dashboard">Voltar</a>
