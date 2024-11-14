@@ -327,7 +327,7 @@ class VagaController extends Controller
                     ->get();
 
                 $empresas = DB::table('tb_empresa')
-                    ->select('tb_empresa.idEmpresa', 'tb_empresa.nomeEmpresa', 'tb_empresa.usernameEmpresa', 'tb_empresa.estadoEmpresa', 'tb_empresa.fotoEmpresa')
+                    ->select('tb_empresa.idEmpresa', 'tb_empresa.nomeEmpresa', 'tb_empresa.usernameEmpresa', 'tb_empresa.estadoEmpresa', 'tb_empresa.fotoEmpresa', 'tb_empresa.bannerEmpresa')
                     ->where('tb_empresa.nomeEmpresa', 'LIKE', "%{$query}%")
                     ->orWhere('tb_empresa.usernameEmpresa', 'LIKE', "%{$query}%")
                     ->get();
