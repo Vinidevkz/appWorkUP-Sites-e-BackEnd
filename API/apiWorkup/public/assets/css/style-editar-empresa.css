@@ -4,7 +4,7 @@
     padding: 0;
 }
 
-#editar-vaga {
+#editar-empresa {
     margin-top: 4rem;
     width: 100vw;
     height:90vh;
@@ -13,21 +13,21 @@
     place-items: center;
 }
 
-.box-editar-vaga {
+.box-editar-empresa {
     background-color: #fff;
-    height: 32rem;
-    width: 80%;
+    width: 85%;
     display: grid;
     place-items: center;
     border-radius: 10px;
+    padding: 1rem 0;
 }
 
-.main-editar-vaga {
+.main-editar-empresa {
     display: flex;
     flex-direction: column;
 }
 
-.box-editar-vaga h5 {
+.box-editar-empresa h5 {
     font-weight: 400;
     font-size: 1.5rem;
     color: #242424;
@@ -61,11 +61,21 @@
     font-weight: 350;
 }
 
-.col-edit input {
-    background-color: #ededed;
-    padding: 0.5rem;
+.col-edit input, .col-edit textarea {
+    background-color: #f3f3f3;
+    padding: 0.3rem 0.8rem;
     border-style: none;
-    border: 1px solid #dadada;
+    font-size: 1rem;
+    font-weight: 350;
+    color: #505050;
+}
+
+.col-edit textarea {
+    resize: none;
+}
+
+.checkbox-container {
+    height: 5rem;
 }
 
 #imagePreview {
