@@ -192,7 +192,7 @@ Route::middleware('auth:empresa')->group(function(){
                 Route::get('/Unico/{idUsuario}', [MensagemController::class, 'indexUsuarioUnico'])->name('mensagem.indexUsuarioUnico');
                 //mandar mensagens
                 Route::get('/mensagem/{idUsuario}/{idEmpresa}', [MensagemController::class, 'create'])->name('mensagem.create');
-                Route::post('/mensagem', [MensagemController::class, 'store'])->name('mensagem.store');
+                Route::post('/mensagem', [MensagemController::class, 'storeWeb'])->name('mensagem.store');
                
                 
                 

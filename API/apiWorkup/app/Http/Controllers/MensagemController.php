@@ -135,8 +135,48 @@ class MensagemController extends Controller
             // Retornando erro 500
             return response()->json(['error' => 'Erro no servidor', $e->getMessage()], 500);
         }
+        
     }
     
+    public function storeWeb(Request $request)
+    {
+        
+            // Logando os dados recebidos
+            Log::info('Dados recebidos:', ['dados' => $request->all()]);
+    
+            // Validando os dados
+            $request->validate([
+                'idUsuario' => 'required|exists:tb_usuario,idUsuario',
+                'idEmpresa' => 'required|exists:tb_empresa,idEmpresa',
+                'mensagem' => 'required|string',
+                'tipoEmissor' => 'required|string',
+            ]);
+
+                    // Verificando se já existe um chat entre o usuário e a empresa
+        $chat = Chat::where('idUsuario', $request->idUsuario)
+        ->where('idEmpresa', $request->idEmpresa)
+        ->first();
+
+        if (!$chat) {
+            // Se não existe chat, cria um novo
+            $chat = Chat::create([
+                'idUsuario' => $request->idUsuario,
+                'idEmpresa' => $request->idEmpresa,
+            ]);
+        }
+    
+            // Criando a mensagem
+            $mensagem = Mensagem::create([
+                'idUsuario' => $request->idUsuario,
+                'idEmpresa' => $request->idEmpresa,
+                'mensagem' => $request->mensagem,
+                'tipoEmissor' => $request->tipoEmissor,
+                'idChat' => $chat->idChat,
+            ]);
+    
+            // Retornando a resposta
+            return view('mensagem.index');
+    }
     
     
 
