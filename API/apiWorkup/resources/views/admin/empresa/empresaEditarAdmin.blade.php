@@ -11,19 +11,19 @@
     <title>Editar empresa</title>
 </head>
 
-<body>
+<body style="background-color: #f4f4f4;">
 
-    <section id="editar-vaga">
+    <section id="editar-empresa">
 
         @include('components.navbarDashboardEmpresa')
 
-        <div class="box-editar-vaga">
+        <div class="box-editar-empresa">
             <form method="POST" action="{{ route('empresas.update', $empresa->idEmpresa) }}"
                 class="wrap-editar-empresa">
 
                 @csrf
                 @method('PUT')
-                <div class="main-editar-vaga">
+                <div class="main-editar-empresa">
 
                     <h5>Editar perfil:</h5>
 
@@ -131,7 +131,7 @@
                             <input type="hidden" name="idEmpresa" value="{{ $empresa->idEmpresa }}">
                                 @foreach($areas as $area)
                                     <div>
-                                        <input type="checkbox" name="idArea[]" value="{{ $area->idArea }}"
+                                        <input class="check-edit" type="checkbox" name="idArea[]" value="{{ $area->idArea }}"
                                                id="area_{{ $area->idArea }}"
                                                {{ in_array($area->idArea, $empresa->areas->pluck('idArea')->toArray()) ? 'checked' : '' }}>
                                         <label for="area_{{ $area->idArea }}">{{ $area->nomeArea }}</label>
@@ -144,7 +144,7 @@
                         </div>
                         </div>
 
-                        <div class="d-flex flex-column align-items-center justify-content-start w-100 ps-5">
+                        <div class="d-flex flex-column align-items-center justify-content-center w-50 ps-5">
                             <img src="{{$empresa->fotoEmpresa}}" id="imagePreview" class="mb-4"
                                 style="height: 200px; width: 200px; object-fit: cover;" alt="">
                             <input type="file" id="fileInput" value="url" name="fotoPerfilBanner">

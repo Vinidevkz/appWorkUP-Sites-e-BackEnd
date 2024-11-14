@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Mensagem;
 use App\Models\Empresa;
+use App\Models\Usuario;
 
 
 class Chat extends Model
@@ -18,7 +19,7 @@ class Chat extends Model
 
 
     protected $fillable = [
-        'idmensagem',
+
         'idUsuario',
         'idEmpresa',
 
@@ -32,6 +33,11 @@ class Chat extends Model
     public function empresa()
     {
         return $this->belongsTo(Empresa::class, 'idEmpresa');
+    }
+
+    public function usuario()
+    {
+        return $this->belongsTo(Usuario::class, 'idUsuario');
     }
     
 

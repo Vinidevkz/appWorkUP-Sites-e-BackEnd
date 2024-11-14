@@ -66,7 +66,7 @@
 
 .row-criar-post textarea, .row-criar-post select, .row-criar-post input {
     background-color: #ededed;
-    padding: 0.5rem;
+    padding: 0.3rem;
     border-style: none;
     border: 1px solid #dadada;
     font-size: 0.8rem;

@@ -39,6 +39,16 @@ class ChatController extends Controller
         //
     }
 
+    public function showWeb($idUsuario)
+    {
+        // Exibindo os chats do usuário com a empresa
+        $chats = Chat::where('idUsuario', $idUsuario)
+            ->with('empresa', 'usuario') // Inclui empresa e usuário relacionados
+            ->get();
+
+        return response()->json($chats);
+    }
+
     /**
      * Display the specified resource.
      *

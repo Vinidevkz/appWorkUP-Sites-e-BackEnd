@@ -85,7 +85,7 @@ class UsuarioController extends Controller
                 'contatoUsuario' => 'required|string|max:20',
                 'emailContato' => 'required|string|max:50',
                 'areaInteresseUsuario' => 'required|string|max:100',
-                'linguaUsuario' => 'nullable|string|max:20',
+                'linguaUsuario' => 'required|string',
                 'ensinoMedio' => 'nullable|string|max:50',
                 'anoFormacao' => 'nullable|int',
                 'fotoUsuario' => 'nullable|string|max:300',
