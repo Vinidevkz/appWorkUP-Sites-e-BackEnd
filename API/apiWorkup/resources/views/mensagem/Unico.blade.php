@@ -3,22 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mensagens de {{ $usuarioNome }}</title>
+    <title>Histórico de Mensagens</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
     <div class="container mt-5">
-        <h1>Mensagens Enviadas para {{ $usuarioNome }}</h1>
+        <h1>Histórico de Mensagens</h1>
 
-        @if($mensagens->isEmpty())
-            <p>Nenhuma mensagem enviada ainda.</p>
+        <!-- Verificando se há uma mensagem de erro -->
+        @if(isset($message))
+            <p>{{ $message }}</p>
         @else
             <ul class="list-group">
+                <!-- Iterando sobre as mensagens -->
                 @foreach($mensagens as $mensagem)
                     <li class="list-group-item">
-
-                        <strong>Mensagem:</strong> {{ $mensagem->mensagem }} <br>
-                        <small>Enviada em: {{ \Carbon\Carbon::parse($mensagem->created_at)->format('d/m/Y H:i') }}</small>
+                        <strong>{{ $mensagem->usuario->nomeUsuario }} ({{ $mensagem->empresa->nomeEmpresa }}):</strong> 
+                        {{ $mensagem->mensagem }} <br>
+                        <small>Enviado em: {{ \Carbon\Carbon::parse($mensagem->created_at)->format('d/m/Y H:i') }}</small>
                     </li>
                 @endforeach
             </ul>
