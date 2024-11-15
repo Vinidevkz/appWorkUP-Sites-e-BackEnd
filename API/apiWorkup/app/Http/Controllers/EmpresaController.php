@@ -299,40 +299,7 @@ class EmpresaController extends Controller
             $idEmpresa = Auth::guard('empresa')->id();
             $empresa = Empresa::select('*')->where('idEmpresa', $idEmpresa)->first();
 
-        // Busca todas as vagas cadastradas pela empresa, com a contagem de candidatos
-
-            $vagas = DB::table('tb_vaga')
-                ->where('tb_vaga.idEmpresa', $idEmpresa)
-                ->select(
-                    'tb_vaga.*',
-                    'tb_modalidadeVaga.descModalidadeVaga', 
-                    DB::raw('COUNT(tb_vagausuario.idVaga) as total_candidatos')
-                )
-                ->join('tb_modalidadeVaga', 'tb_vaga.idModalidadeVaga','tb_modalidadeVaga.idModalidadeVaga')
-                ->join('tb_area', 'tb_vaga.idArea','tb_area.idArea')
-                ->join('tb_status', 'tb_vaga.idStatus','tb_status.idStatus')
-                ->leftJoin('tb_vagausuario', 'tb_vaga.idVaga','tb_vagausuario.idVaga')  // Fazendo o join com a tabela de candidaturas
-                ->groupBy(
-                    'tb_vaga.idVaga',
-                    'tb_vaga.nomeVaga',
-                    'tb_vaga.descricaoVaga',
-                    'tb_vaga.prazoVaga',
-                    'tb_vaga.salarioVaga',
-                    'tb_vaga.cidadeVaga',
-                    'tb_vaga.estadoVaga',
-                    'tb_vaga.beneficiosVaga',
-                    'tb_vaga.diferencialVaga',
-                    'tb_vaga.idEmpresa',
-                    'tb_vaga.idArea',
-                    'tb_vaga.idStatus',
-                    'tb_vaga.idModalidadeVaga',
-                    'tb_vaga.created_at',
-                    'tb_vaga.updated_at',
-                    'tb_modalidadeVaga.descModalidadeVaga'
-                )
-                ->orderBy('prazoVaga', 'asc')
-                ->get();
-
+ 
 
             $posts = DB::table('tb_publicacao')
             ->where('tb_publicacao.idEmpresa', $idEmpresa)
@@ -341,7 +308,7 @@ class EmpresaController extends Controller
             ->get();
 
 
-            return view('dashboardEmpresa', ['empresa'=>$empresa, 'vagas'=>$vagas, 'posts'=> $posts]);
+            return view('dashboardEmpresa', ['empresa'=>$empresa,'posts'=> $posts]);
         
     }
 

@@ -118,7 +118,7 @@
                                         <p class="text-truncate my-1">Salário: R${{ $vaga->salarioVaga }}</p>
                                         <p class="text-truncate mb-1">Área: {{ $vaga->nomeVaga }}</p>
                                         <p class="text-truncate mb-1">Estado: {{ $vaga->estadoVaga }}</p>
-                                        <p class="text-truncate mb-1">Candidatos: {{ $vaga->total_candidatos }}</p>
+                                        <p class="text-truncate mb-1">Candidatos: {{  $vaga->candidatos_count ?? 0 }}</p>
                                     </div>
 
                                     <div class="footer-vaga">
@@ -147,14 +147,14 @@
                                         <div>
                                             <h5>{{ $vaga->nomeVaga }}</h5>
                                             <p class="text mb-3" style="font-weight: 400">
-                                                Candidatos:{{ $vaga->total_candidatos }}</p>
+                                                Candidatos:{{  $vaga->candidatos_count ?? 0 }}</p>
                                         </div>
                                     </div>
                                     <div class="opt-vaga">
                                         <p class="text-truncate my-1">Descrição: {{ $vaga->descricaoVaga }}</p>
                                         <p class="text my-1">Salário: R${{ $vaga->salarioVaga }}</p>
                                         <p class="text mb-1">Área: {{ $vaga->nomeVaga }}</p>
-                                        <p class="text mb-1">Modalidade: {{ $vaga->idModalidadeVaga }}</p>
+                                        <p class="text mb-1">Modalidade: {{ $vaga->modalidade->descModalidadeVaga }}</p>
                                         <p class="text mb-1">Cidade: {{ $vaga->cidadeVaga }}</p>
                                         <p class="text mb-1">Estado: {{ $vaga->estadoVaga }}</p>
                                         <p class="text mb-1">Diferencial: {{ $vaga->diferencialVaga }}</p>

@@ -245,6 +245,14 @@ class VagaController extends Controller
     {
         $vaga = Vaga::where('idVaga', $id)->get()->first();
 
+        try {
+            $request->merge([
+                'prazoVaga' => Carbon::createFromFormat('d/m/Y', $request->prazoVaga)->format('Y-m-d'),
+            ]);
+        } catch (\Exception $e) {
+            return back()->withErrors(['prazoVaga' => 'Formato de data inválido.']);
+        }
+
         DB::table('tb_vaga')
             ->where('idVaga', $id)
             ->update([

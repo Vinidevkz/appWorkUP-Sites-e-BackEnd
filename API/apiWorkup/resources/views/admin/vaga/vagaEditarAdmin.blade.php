@@ -118,7 +118,7 @@
                         <div class="col col-6">
                             <div>
                                 <label for="prazoVaga">Prazo</label>
-                                <input type="text" name="prazoVaga" placeholder="{{ $vaga->prazoVaga }}" value="{{ $vaga->prazoVaga }}" required>
+                                <input type="text" name="prazoVaga" placeholder="{{ $vaga->prazoVaga }}" pattern="\d{2}/\d{2}/\d{4}" value="{{ \Carbon\Carbon::parse($vaga->prazoVaga)->format('d/m/Y') }}" required>
                             </div>
                             @error('prazoVaga')
                             <div class="error-message">{{ $message }}</div>

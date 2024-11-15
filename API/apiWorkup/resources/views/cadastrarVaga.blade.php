@@ -111,7 +111,7 @@
                                             <div style="background-color: #fff;" class="error-message">{{ $message }}</div>
                                         @enderror
                                         <label for="">Expira em:</label>
-                                        <input type="text" name="prazoVaga" value="{{ old('prazoVaga') }}" placeholder="dd/mm/yyyy" pattern="\d{2}/\d{2}/\d{4}" required>
+                                        <input type="text" name="prazoVaga" value="{{ old('prazoVaga') }}" placeholder="dd/mm/yyyy" pattern="\d{2}/\d{2}/\d{4}" data-mask="00/00/0000" required>
                                     </div>
                                     <div class="col-12 d-flex align-items-center">
                                         <div class="form__group field">
