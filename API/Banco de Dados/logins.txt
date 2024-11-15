@@ -1,0 +1,43 @@
+empresas:
+senhas: 123
+
+b2wdigital@gmail.com
+
+ey@gmail.com
+
+beyondmeat@gmail.com
+
+pwc@gmail.com
+
+so trocar o nome por esses para as outras
+ambev
+cosan
+deloitte
+embraer
+ernst & Young
+kPMG
+microsoft
+natura
+Nubank
+pagSeguro
+petrobras
+raízen
+totvs
+xp
+enel
+sony
+
+usuarios:
+senha: 123
+alessandra@gmail.com
+
+so trocar o nome por esses para as outras
+danilo
+daniel
+eduardo
+felipe
+fernanda
+inacio
+murilo
+vinícius
+vitor
