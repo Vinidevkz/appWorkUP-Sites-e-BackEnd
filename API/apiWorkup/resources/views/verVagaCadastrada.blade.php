@@ -117,22 +117,88 @@
                         <div class="opcoes-candidato">
                             <div class="botoes-candidato">
 
-                            <form action="{{ route('mensagem.historico', ['idUsuario' => $candidato->idUsuario, 'idEmpresa' => $empresa->idEmpresa]) }}" method="GET">
+                            <form action="{{ route('mensagem.index', ['idUsuario' => $candidato->idUsuario, $empresa->idEmpresa ]) }}" method="GET">
     @csrf
     <button class="mensagem" value="mensagem"><i class="fa-solid fa-comment"></i>Mensagem</button>
 </form>
 
 
-                            <form action="{{ route('candidaturas.aprovar', $candidato->idVagaUsuario) }}" method="POST" >
-                                @csrf
-                            
-                                <button class="aprovar" value="aprovar">Aprovar <i class="fa-solid fa-check"></i></button>
-                                </form>
 
-                                <form action="{{ route('candidaturas.negar', $candidato->idVagaUsuario) }}" method="POST" >
-                                @csrf
-                                <button class="negar" value="negar">Negar <i class="fa-solid fa-xmark"></i></button>
-                                </form>
+                                <!-- Botão de Aprovação -->
+                            <button type="button" class="aprovar" data-bs-toggle="modal" data-bs-target="#aprovarModal">
+                                Aprovar <i class="fa-solid fa-check"></i>
+                            </button>
+
+                            <!-- Modal para Aprovação -->
+                            <div class="modal fade" id="aprovarModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="aprovarModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content p-5" style="height:20rem">
+                                        <div class="modal-aprovar">
+                                            <h5>Confirmar Aprovação do Candidato</h5>
+
+                                            <p>Você tem certeza que deseja aprovar este candidato?</p>
+
+                                            <form action="{{ route('candidaturas.aprovar', $candidato->idVagaUsuario) }}" method="POST">
+                                                @csrf
+                                                <input type="hidden" name="idVagaUsuario" value="{{ $candidato->idVagaUsuario }}">
+
+                                                <!-- Caixa de texto com texto padrão de aprovação, que pode ser editado -->
+                                                <div class="form-group">
+                                                    <label for="motivoFeedback">Mensagem de Aprovação:</label>
+                                                    <textarea name="motivoFeedback" id="motivoFeedback" class="form-control" rows="4" placeholder="Escreva uma mensagem de aprovação ou edite a mensagem padrão...">
+                                                        Parabéns, você foi aprovado! Estamos aguardando sua disponibilidade para agendar a entrevista.
+                                                    </textarea>
+                                                </div>
+
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                                                    <input type="submit" value="Aprovar" class="btn btn-success">
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                                                            
+
+                            <!-- Botão de Negação -->
+                            <button type="button" class="negar" data-bs-toggle="modal" data-bs-target="#negarModal">
+                                Negar <i class="fa-solid fa-xmark"></i>
+                            </button>
+
+                            <!-- Modal para Negação -->
+                            <div class="modal fade" id="negarModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="negarModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content p-5" style="height:20rem">
+                                        <div class="modal-negar">
+                                            <h5>Confirmar Negação da Candidatura</h5>
+
+                                            <p>Você tem certeza que deseja negar este candidato?</p>
+
+                                            <form action="{{ route('candidaturas.negar', $candidato->idVagaUsuario) }}" method="POST">
+                                                @csrf
+                                                <input type="hidden" name="idVagaUsuario" value="{{ $candidato->idVagaUsuario }}">
+
+                                                <!-- Caixa de texto com texto padrão de negação, que pode ser editado -->
+                                                <div class="form-group">
+                                                    <label for="motivoNegacao">Motivo da Negação:</label>
+                                                    <textarea name="motivoNegacao" id="motivoNegacao" class="form-control" rows="4" placeholder="Escreva o motivo da negação ou edite a mensagem padrão...">
+                                                        Infelizmente, não atendemos ao perfil desejado. No entanto, seu currículo será mantido em nosso banco de dados para futuras oportunidades.
+                                                    </textarea>
+                                                </div>
+
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                                                    <input type="submit" value="Negar" class="btn btn-danger">
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
                             </div>
                             <button class="denunciar" data-bs-toggle="modal" data-bs-placement="top" data-bs-target="#staticBackdrop">
                                 <i class="fa-solid fa-flag"></i>

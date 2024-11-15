@@ -107,23 +107,56 @@ class VagaUsuarioController extends Controller
         return view('verVagaCadastrada', compact('vaga', 'candidatos', 'empresa'));
     }
 
-    public function aprovarCandidatura($id)
-{
-    $vagaUsuario = VagaUsuario::findOrFail($id);
-    $vagaUsuario->idStatusVagaUsuario = 2; // 2 para aprovado
-    $vagaUsuario->save();
 
-    return redirect()->back()->with('success', 'Candidatura aprovada com sucesso.');
-}
+    public function aprovarCandidatura(Request $request, $id)
+    {
+        
+        $vagaUsuario = VagaUsuario::findOrFail($id);
+        
+        
+        $vagaUsuario->idStatusVagaUsuario = 2;
 
-public function negarCandidatura($id)
-{
-    $vagaUsuario = VagaUsuario::findOrFail($id);
-    $vagaUsuario->idStatusVagaUsuario = 3; // 3 para negado
-    $vagaUsuario->save();
+        // Verifique se foi enviado um motivo personalizado no formulário
+        if ($request->has('motivoFeedback') && !empty($request->motivoFeedback)) {
+            // Se houver um motivo, defina o motivoFeedback com o texto enviado
+            $vagaUsuario->motivoFeedback = $request->motivoFeedback;
+        } else {
+            // Caso contrário, use a mensagem padrão de aprovação
+            $vagaUsuario->motivoFeedback = 'Parabéns, você foi aprovado! Estamos aguardando sua disponibilidade para agendar a entrevista.';
+        }
+        
+        
+        $vagaUsuario->save();
 
-    return redirect()->back()->with('success', 'Candidatura negada com sucesso.');
-}
+        
+        return redirect()->back()->with('success', 'Candidatura aprovada com sucesso.');
+    }
+
+    
+    public function negarCandidatura(Request $request, $id)
+    {
+        
+        $vagaUsuario = VagaUsuario::findOrFail($id);
+        
+        
+        $vagaUsuario->idStatusVagaUsuario = 3;
+
+        // Verifique se foi enviado um motivo personalizado no formulário
+        if ($request->has('motivoNegacao') && !empty($request->motivoNegacao)) {
+            // Se houver um motivo, defina o motivoFeedback com o texto enviado
+            $vagaUsuario->motivoFeedback = $request->motivoNegacao;
+        } else {
+            // Caso contrário, use a mensagem padrão de negação
+            $vagaUsuario->motivoFeedback = 'Infelizmente, não atendemos ao perfil desejado. No entanto, seu currículo será mantido em nosso banco de dados para futuras oportunidades.';
+        }
+        
+        
+        $vagaUsuario->save();
+
+        
+        return redirect()->back()->with('success', 'Candidatura negada com sucesso.');
+    }
+
 
     
 

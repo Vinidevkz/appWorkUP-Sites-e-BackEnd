@@ -187,22 +187,32 @@ Route::middleware('auth:empresa')->group(function(){
 
             //Mensagem
             Route::prefix('/mensagem')->group(function(){
+
+                
                 //ver mensagens
-                Route::get('/', [MensagemController::class, 'index'])->name('mensagens.index');
+
 
                 //ver mensagens de um unico usuario
                 Route::get('/Unico/{idUsuario}', [MensagemController::class, 'indexUsuarioUnico'])->name('mensagem.indexUsuarioUnico');
                 //mandar mensagens
                 Route::get('/mensagem/{idUsuario}/{idEmpresa}', [MensagemController::class, 'create'])->name('mensagem.create');
-                Route::post('/mensagem', [MensagemController::class, 'storeWeb'])->name('mensagem.store');
+
                
                 Route::resource('mensagens', MensagemController::class);
                 Route::resource('chats', ChatController::class);
                 Route::get('mensagens/{idUsuario}/{idEmpresa}', [MensagemController::class, 'showWeb'])->name('mensagens.show');
 
+                // Verifique se a sua rota está configurada corretamente no arquivo web.php
+                Route::get('mensagem/{idUsuario}/{idEmpresa}', [MensagemController::class, 'index'])->name('mensagem.index');
+
+
+
+
+                Route::post('/mensagem', [MensagemController::class, 'storeWeb'])->name('mensagem.store');
+                
 
                 // Dentro do arquivo de rotas (web.php)
-Route::get('/mensagem/historico/{idUsuario}/{idEmpresa}', [MensagemController::class, 'showConversation'])->name('mensagem.historico');
+                Route::get('/mensagem/historico/{idUsuario}/{idEmpresa}', [MensagemController::class, 'showConversation'])->name('mensagem.historico');
 
             });
 
