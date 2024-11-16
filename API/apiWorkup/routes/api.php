@@ -125,11 +125,13 @@ Route::get('/outrasvagas/{areaVaga}', [VagaController::class, 'verOutrasVagas'])
 Route::get('/notificacoes/{idUsuario}', [VagaUsuarioController::class, 'notificacaoAprovado']);
 
 Route::get('/posts/seguindo/{idUsuario}', [PostController::class, 'indexApp']);
+Route::get('/todosPosts', [PostController::class, 'todosOsPosts']);
 Route::get('/chatsusuario/{idUsuario}', [ChatController::class, 'show']);
 
 //API Mensagens
 Route::get('/mensagens/{idUsuario}/{idEmpresa}', [MensagemController::class, 'pegarMensagens']);
 Route::post('/mandarMensagem', [MensagemController::class, 'store']);
+Route::get('/mensagemMaisRecente/{idUsuario}/{idEmpresa}', [MensagemController::class, 'pegarMensagemMaisRecente']);
 //Alterar mensagem
 Route::put('/mudarmensagem/{idMensagem}', [MensagemController::class, 'update']);
 

@@ -58,7 +58,9 @@ class ChatController extends Controller
      */
     public function show($idUsuario)
     {
-        $chats = Chat::where('idUsuario', $idUsuario)->with('empresa')->get();
+        $chats = Chat::where('idUsuario', $idUsuario)
+            ->with(['empresa', 'ultimaMensagem']) // Inclui empresa e última mensagem
+            ->get();
     
         if ($chats->isNotEmpty()) {
             return response()->json($chats);

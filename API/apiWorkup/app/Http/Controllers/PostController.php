@@ -61,6 +61,13 @@ public function index()
         ]);
     }
 
+    public function todosOsPosts()
+    {
+        $posts = Post::with('empresa')->get();
+
+        return response()->json($posts);
+    }
+
     
 
     /**

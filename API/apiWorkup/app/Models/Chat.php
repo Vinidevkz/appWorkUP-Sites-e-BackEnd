@@ -27,8 +27,14 @@ class Chat extends Model
 
     public function mensagem()
     {
-        return $this->hasMany(Mensagem::class, 'idMensagem');
+        return $this->hasMany(Mensagem::class, 'idChat', 'idChat'); // Correção: chave estrangeira é 'idChat'
     }
+    
+    public function ultimaMensagem()
+    {
+        return $this->hasOne(Mensagem::class, 'idChat', 'idChat')->latest('created_at'); // Última mensagem com base no 'created_at'
+    }
+    
 
     public function empresa()
     {
