@@ -393,7 +393,7 @@ table{
 
 }
 #searchInput {
-  width: 18%;
+  width: 25%;
   padding: 2px 40px 1px 30px; /* Espaço para o ícone */
   box-sizing: border-box; /* Para incluir o padding na largura total */
   border: none;
@@ -403,7 +403,7 @@ table{
 }
 #searchInput:hover{
 
-  border: 2px solid green;
+  border: 1px solid green;
   
 }
 

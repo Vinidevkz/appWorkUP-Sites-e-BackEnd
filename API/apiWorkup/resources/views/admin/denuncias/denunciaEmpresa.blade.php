@@ -24,7 +24,7 @@
     <div class="container md-4 mt-3">
 
     <div class="d-flex  align-items-center">
-<h1 class="p-0 m-0 fs-3">Empresas denunciados</h1>
+<h5 class="p-0 m-0 ">Empresas denunciados</h5>
 <i class="bi bi-ban ms-2 text-danger fs-4"></i>
 </div>
 
