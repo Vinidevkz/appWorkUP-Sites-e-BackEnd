@@ -10,7 +10,8 @@
     --ed: #ededed;
     --c4: #c4c4c4;
     --24: #242424;
-    --f6: #f6f6f6
+    --f6: #f6f6f6;
+    --f8: #f8f8f8;
 }
 
 *, *::before, *::after {
@@ -112,7 +113,7 @@ header {
 
 p {
     margin-bottom: 0;
-    font-weight: 400;
+    font-weight: 350;
     font-size: 1rem;
 }
 
@@ -125,7 +126,7 @@ p {
     font-size: 0.9rem;
 }
 
-.label-padrao {
+label {
     font-weight: 350;
     margin-bottom: 0;
 }

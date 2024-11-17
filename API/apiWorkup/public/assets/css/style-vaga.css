@@ -1,17 +1,11 @@
-*, *::before, *::after {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
-
 body {
-    background-color: #f4f4f4;
+    overflow: hidden !important;
 }
 
 #vaga {
-    margin-top: 8vh;
-    height: 87vh;
-    background-color: #f4f4f4;
+    margin-top: 4rem;
+    height: 92vh;
+    background-color: var(--ed);
 }
 
 .col-vaga-1, .col-vaga-2, form {
@@ -21,20 +15,15 @@ body {
 
 .box-vaga {
     width: 90%;
-    height: 100%;
-    background-color: #fff;
+    height: 90%;
+    background-color: var(--f4);
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 1rem;
-}
-
-form {
-    height: 100%;
 }
 
 .vaga-wrap {
-    height: 100%;
+    height: 90%;
     width: 85%;
 }
 
@@ -44,38 +33,17 @@ form {
     justify-content: space-around;
 }
 
-h3 {
-    display: flex;
-    justify-content: left;
-
-}
-
-.wrap-body {    
-}
-
 .vaga-wrap .row .col {
     display: flex;
     flex-direction: column;
 }
 
-input {
-    background-color: #f8f8f8;
-    border-style: none;
-    padding: 0.2rem 0.5rem;
-    border: 1px solid #e8e8e8;
-}
-
-input:focus {
-    outline: none;
-    border: 1px solid #20dd77;
-}
-
 .input-container select {
-    background-color: rgb(255, 255, 255);
+    background-color: var(--f4);
     border-style: none;
     width: 100%;
     padding: 0.3rem 1rem;
-    border-left: 3px solid #00ff75;
+    border-left: 3px solid var(--verde);
 }
 
 .input-container select {
@@ -87,8 +55,8 @@ input:focus {
     background-color: #ffffff;
 }
 
-.input-container select option:hover {
-    background-color: #ff0000;
+.wrap-footer {
+    margin-top: 1rem;
 }
 
 .wrap-footer, .enviar {
@@ -97,10 +65,8 @@ input:focus {
 }
 
 .enviar {
-    background-color: #20dd77;
+    background-color: var(--verde);
     color: #fff;
-    padding: 0.5rem 0;
-    width: 60%;
 }
 
 .col-vaga-2 {

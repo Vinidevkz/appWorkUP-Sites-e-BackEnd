@@ -17,12 +17,9 @@
 <body>
 
     @include('components.navbarDashboardEmpresa')
-
-
-
-
-    <section class="card">
-        <div class="row g-0">
+    
+    <section class="card rounded-0">
+        <div class="row">
             <div class="col-12 col-md-6 d-flex align-items-center justify-content-center">
                 <div class="txt-card-wrap text-center text-md-start p-3">
                     <p>Seja bem-vindo(a) {{ $empresa->nomeEmpresa }}!</p>
@@ -47,7 +44,7 @@
     </section>
 
     <section class="funcoes">
-        <h4 class="titulo-secao text-center">Aqui você pode:</h4>
+        <h4 class="mb-5" style="align-self: center">Aqui você pode:</h4>
         <div class="row align-self-center linha-funcoes" style="width: 95%">
             <div class="col-funcoes col-4">
                 <div class="card-funcoes">
@@ -56,8 +53,7 @@
                         <h5>Publicar vagas</h5>
                     </div>
                     <div class="body-card-funcoes">
-                        <p>O nosso foco é a publicação de vagas, podendo ser editadas e removidas posteriormente.
-                        </p>
+                        <p>O nosso foco é a publicação de vagas, podendo ser editadas e removidas posteriormente.</p>
                     </div>
                 </div>
             </div>
@@ -90,7 +86,7 @@
 
     <section id="vagas" class="vagas">
         <div class="d-flex justify-content-start mt-5">
-            <h4 class="fw-light mb-5">Vagas publicadas</h4>
+            <h4 class="mb-5">Vagas publicadas</h4>
         </div>
 
         <div class="wrap-carrossel position-relative">
@@ -123,49 +119,11 @@
                                     </div>
 
                                     <div class="footer-vaga">
-                                        <button type="button" class="btn-vagas btn-verde text-truncate" data-bs-toggle="modal"
+                                        <button type="button" class="btn-verde botao-padrao" data-bs-toggle="modal"
                                             data-bs-target="#modalVaga{{$vaga->idVaga}}">Detalhes<i
                                                 class="fa-solid fa-clipboard-list"></i></button>
 
-                                        <a href="{{ route('verVagaCadastrada', $vaga->idVaga) }}"
-                                            class="btn-vagas btn-vazado w-50 text-truncate">
-                                            Candidatos<i class="fa-solid fa-user"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    @endforeach
-
-
-                    @foreach($vagas as $vaga)
-                        <!-- Modal para cada vaga -->
-                        <div class="modal fade" id="modalVaga{{ $vaga->idVaga }}" tabindex="-1"
-                            aria-labelledby="modalVagaLabel{{ $vaga->idVaga }}" aria-hidden="true">
-                            <div class="modal-dialog">
-                                <div class="modal-content">
-                                    <div class="header-modal-vaga">
-                                        <div>
-                                            <h5>{{ $vaga->nomeVaga }}</h5>
-                                            <p class="text mb-3" style="font-weight: 400">
-                                                Candidatos:{{  $vaga->candidatos_count ?? 0 }}</p>
-                                        </div>
-                                    </div>
-                                    <div class="opt-vaga">
-                                        <p class="text-truncate my-1">Descrição: {{ $vaga->descricaoVaga }}</p>
-                                        <p class="text my-1">Salário: R${{ $vaga->salarioVaga }}</p>
-                                        <p class="text mb-1">Área: {{ $vaga->nomeVaga }}</p>
-                                        <p class="text mb-1">Modalidade: {{ $vaga->modalidade->descModalidadeVaga }}</p>
-                                        <p class="text mb-1">Cidade: {{ $vaga->cidadeVaga }}</p>
-                                        <p class="text mb-1">Estado: {{ $vaga->estadoVaga }}</p>
-                                        <p class="text mb-1">Diferencial: {{ $vaga->diferencialVaga }}</p>
-                                    </div>
-                                    <div class="modal-footer d-flex justify-content-between w-75 align-self-center">
-                                        <a href="{{ route('vagas.edit', $vaga->idVaga) }}"
-                                            class="btn-vagas btn-verde w-100">Editar<i class="fa-solid fa-pen-to-square"
-                                                style="color: #ffffff;"></i></a>
-                                        <button type="button" class="btn-vagas w-100" data-bs-dismiss="modal"
-                                            style="background-color: #ededed; color: black">Voltar</button>
+                                        <a href="{{ route('verVagaCadastrada', $vaga->idVaga) }}" class="btn-vazado botao-padrao w-50">Candidatos<i class="fa-solid fa-user"></i></a>
                                     </div>
                                 </div>
                             </div>
@@ -183,14 +141,14 @@
   
 
     <section id="publicacoes" class="publicacoes">
-        <h3>Publicações</h3>
+        <h4 class="mb-5">Publicações</h4>
         <div class="wrap-carrossel-publ position-relative">
     <img src="{{url('assets/img/dashboardEmpresa/bckBtn.png')}}" class="btn-carrossel position-absolute start-0"
         id="backBtn">
 
     <div class="carrossel-publ">
         @if($posts->isEmpty())
-        <div class="alert alert-warning" role="alert">
+        <div class="alert alert-warning" style="align-self: center" role="alert">
             Nenhuma postagem encontrada.
         </div>
         @else
@@ -211,14 +169,6 @@
                     <p>{{ $post->detalhePublicacao }}</p>
                 </div>
                     <img src="{{$post -> fotoPublicacao}}" class="img-publ" alt="">
-                <div class="col botoes-publ">
-                    <div>
-                        <i class="fa-solid fa-message"></i>
-                        <i class="fa-regular fa-heart"></i>
-                    </div>
-                    <i class="fa-solid fa-flag"></i>
-                </div>
-
             </div>
         </div>
         @endforeach

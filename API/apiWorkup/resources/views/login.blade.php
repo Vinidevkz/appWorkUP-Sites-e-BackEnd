@@ -43,13 +43,13 @@
                             </div>
                         </div>
                         <div class="footer-box-login">
+                            @if(session('error'))
+                                <p style="align-self: center; color: #ff0505">{{ session('error') }}</p>
+                            @endif
                             <input type="submit" href="/home" id="logar" class="botao-padrao" value="Entrar">
                             <button class="botao-padrao"><a href="/cadastrarEmpresa" id="cadastrar" style="text-decoration: none; color: #242424">Cadastrar-se</a></button>
                         </div>
                     </form>
-                    @if(session('error'))
-                        <p>{{ session('error') }}</p>
-                    @endif
                 </div>
             </div>
         </div>  
