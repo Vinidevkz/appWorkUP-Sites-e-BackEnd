@@ -18,7 +18,7 @@ body {
 .box-cadastro {
     width: 55%;
     padding: 4rem 0;
-    background-color: var(--fundo);
+    background-color: var(--f4);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -45,8 +45,6 @@ body {
 }
 
 .inputs-txt input, #sobreEmpresa {
-    background-color: #e0e0e0;
-    border-style: none;
     height: 2rem;
     resize: none;
 }
@@ -55,10 +53,6 @@ body {
     width: 100%;
     display: flex;
     justify-content: space-between;
-}
-
-.voltar, .avancar {
-    border-style: none;
 }
 
 .voltar {
@@ -76,5 +70,3 @@ body {
     font-size: 0.8rem;
     color: rgb(255, 69, 69);
 }
-
-

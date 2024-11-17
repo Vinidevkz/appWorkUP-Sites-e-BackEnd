@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{url('assets/css/style-criar-post.css')}}">
-    <link rel="stylesheet" href="{{url('../assets/css/dashboardEmpresa.css')}}">
+    <link rel="stylesheet" href="{{url('assets/css/estilo-padrao-workup.css')}}">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <title>Criar postagem</title>
@@ -38,7 +38,7 @@
                     <div class="row-criar-post row d-flex flex-column justify-content-between w-100">
                         <div class="col col-12">
                             <label for="">Titulo:</label>
-                            <input type="text" id="tituloPublicacao" name="tituloPublicacao" required></input>
+                            <input class="input-padrao" type="text" id="tituloPublicacao" name="tituloPublicacao" required></input>
                         </div>
                         <div class="col col-12">
 
@@ -46,7 +46,7 @@
                                 @php
                                     $empresa = Auth::guard('empresa')->user();
                                 @endphp
-                                <input type="hidden" name="idEmpresa" value="{{ $empresa->idEmpresa }}">
+                                <input class="input-padrao" type="hidden" name="idEmpresa" value="{{ $empresa->idEmpresa }}">
                             @endif
 
                             <label for="estadoVaga" class="form__label">Selecione a vaga relacionada com o post:</label>
@@ -72,8 +72,8 @@
                     <div id="preview">
                         <img id="imagePreview" src="" alt="" style="display:none;">
                     </div>
-                    <input type="file" id="fileInput" value="url" name="fotoPublicacao">
-                    <input type="hidden" id="imageUrl" name="fotoUrl" >
+                    <input class="input-padrao" type="file" id="fileInput" value="url" name="fotoPublicacao">
+                    <input class="input-padrao" type="hidden" id="imageUrl" name="fotoUrl" >
                 </div>
                 <div class="col-8 d-flex justify-content-between mt-4 footer-criar-post">
                     <a href="/empresa/dashboard">Voltar</a>

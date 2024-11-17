@@ -35,29 +35,29 @@
 
             <div class="row d-flex flex-column w-75 h-75 align-items-center justify-content-between inputs-txt">
                 <div class="col col-12 h-50">
-                    <label for="nome-empresa">Nome da empresa:</label>
+                    <label class="label-padrao" for="nome-empresa">Nome da empresa:</label>
                     <input type="text">
                 </div>
                 <div class="col col-12 h-50">
-                    <label for="nome-empresa">Representante da empresa:</label>
+                    <label class="label-padrao" for="nome-empresa">Representante da empresa:</label>
                     <input type="text">
                 </div>
             </div>
 
             <div class="row d-flex flex-row h-50 w-75 inputs-txt">
                 <div class="col d-flex col-6 h-100">
-                    <label for="nome-empresa">Email:</label>
+                    <label class="label-padrao" for="nome-empresa">Email:</label>
                     <input type="text">
                 </div>
                 <div class="col d-flex col-6 h-100">
-                    <label for="nome-empresa">Senha:</label>
+                    <label class="label-padrao" for="nome-empresa">Senha:</label>
                     <input type="text">
                 </div>
             </div>
 
             <div class="botoes-cadastro mt-4">
-                <button type="button" class="voltar" onclick="prevStep()">Voltar</button>
-                <button type="button" class="avancar" onclick="nextStep()">Avançar</button>
+                <button type="button" class="voltar botao-padrao" onclick="prevStep()">Voltar</button>
+                <button type="button" class="avancar botao-padrao" onclick="nextStep()">Avançar</button>
             </div>
 
         </form>
@@ -81,8 +81,8 @@
                     style="height: 10rem">
 
                     <div class="col col-12 h-50">
-                        <label for="nomeEmpresa">Nome da empresa:</label>
-                        <input type="text" class="form-control custom-input" name="nomeEmpresa"
+                        <label class="label-padrao" for="nomeEmpresa">Nome da empresa:</label>
+                        <input type="text" class="input-padrao" name="nomeEmpresa"
                             value="{{old('nomeEmpresa')}}">
                         @error('nomeEmpresa')
                             <div class="error-message">{{$message}}</div>
@@ -90,8 +90,8 @@
                     </div>
 
                     <div class="col col-12 h-50">
-                        <label for="usernameEmpresa">Nome do representante:</label>
-                        <input type="text" class="form-control custom-input" name="usernameEmpresa"
+                        <label class="label-padrao" for="usernameEmpresa">Nome do representante:</label>
+                        <input type="text" class="input-padrao" name="usernameEmpresa"
                             value="{{old('usernameEmpresa')}}">
                         @error('usernameEmpresa')
                             <div class="error-message">{{$message}}</div>
@@ -103,8 +103,8 @@
                 <div class="row d-flex flex-row h-50 inputs-txt">
 
                     <div class="col d-flex col-6 h-100">
-                        <label for="emailEmpresa">Email:</label>
-                        <input type="email" class="form-control custom-input" name="emailEmpresa"
+                        <label class="label-padrao" for="emailEmpresa">Email:</label>
+                        <input type="email" class="input-padrao" name="emailEmpresa"
                             placeholder="exemplo@gmail.com" value="{{old('emailEmpresa')}}">
                         @error('emailEmpresa')
                             <div class="error-message">{{ $message }}</div>
@@ -112,8 +112,8 @@
                     </div>
 
                     <div class="col d-flex col-6 h-100">
-                        <label for="senhaEmpresa">Senha:</label>
-                        <input type="password" class="form-control custom-input" name="senhaEmpresa"
+                        <label class="label-padrao" for="senhaEmpresa">Senha:</label>
+                        <input type="password" class="input-padrao" name="senhaEmpresa"
                             value="{{old('senhaEmpresa')}}">
                         @error('senhaEmpresa')
                             <div class="error-message">{{$message}}</div>
@@ -123,8 +123,8 @@
                 </div>
 
                 <div class="botoes-cadastro mt-4">
-                    <button type="button" class="voltar" onclick="window.history.back()">Voltar</button>
-                    <button type="button" class="avancar" onclick="nextStep()">Avançar</button>
+                    <button type="button" class="voltar botao-padrao" onclick="window.history.back()">Voltar</button>
+                    <button type="button" class="avancar botao-padrao" onclick="nextStep()">Avançar</button>
                 </div>
 
             </div>
@@ -140,8 +140,8 @@
                     style="height: 21rem">
 
                     <div class="col col-12 h-50">
-                        <label for="sobreEmpresa">Sobre:</label>
-                        <textarea class="form-control custom-input" id="sobreEmpresa" name="sobreEmpresa"
+                        <label class="label-padrao" for="sobreEmpresa">Sobre:</label>
+                        <textarea class="input-padrao" id="sobreEmpresa" name="sobreEmpresa"
                             placeholder="Escreva um pouco sobre vocês!" style="min-height: 70%;"
                             value="{{old('sobreEmpresa')}}"></textarea>
                         @error('sobreEmpresa')
@@ -150,8 +150,8 @@
                     </div>
 
                     <div class="col col-12">
-                        <label for="fotoEmpresa" class="form__label">Foto de perfil da empresa:</label>
-                        <input type="file" id="fileInput" class="form-control custom-input" value="url"
+                        <label class="label-padrao" for="fotoEmpresa" class="form__label">Foto de perfil da empresa:</label>
+                        <input type="file" id="fileInput" class="input-padrao" value="url"
                             name="fotoPerfil">
                         <input type="hidden" id="imageUrl2" name="fotoBanner">
 
@@ -160,8 +160,8 @@
 
 
                     <div class="col col-12">
-                        <label for="contatoempresa">Contato:</label>
-                        <input type="text" class="form-control custom-input" name="contatoEmpresa"
+                        <label class="label-padrao" for="contatoempresa">Contato:</label>
+                        <input type="text" class="input-padrao" name="contatoEmpresa"
                             placeholder="telefone comercial, email, etc." value="{{old('contatoEmpresa')}}">
                         @error('contatoEmpresa')
                             <div class="error-message">{{$message}}</div>
@@ -170,8 +170,8 @@
 
                     <div>
                         <div class="col col-12">
-                            <label for="fotoEmpresa" class="form__label">Banner de perfil da empresa:</label>
-                            <input type="file" id="fileInputBanner" class="form-control custom-input" value="url"
+                            <label class="label-padrao" for="fotoEmpresa" class="form__label">Banner de perfil da empresa:</label>
+                            <input type="file" id="fileInputBanner" class="input-padrao" value="url"
                                 name="fotoPerfilBanner">
                             <input type="hidden" id="imageUrl" name="fotoUrl">
 
@@ -185,8 +185,8 @@
                 </div>
 
                 <div class="botoes-cadastro mt-4">
-                    <button type="button" class="voltar" onclick="prevStep()">Voltar</button>
-                    <button type="button" class="avancar" onclick="nextStep()">Avançar</button>
+                    <button type="button" class="voltar botao-padrao" onclick="prevStep()">Voltar</button>
+                    <button type="button" class="avancar botao-padrao" onclick="nextStep()">Avançar</button>
                 </div>
 
             </div>
@@ -198,12 +198,12 @@
                 </div>
 
                 <div class="form__group field">
-                <label class="form__label">Escolha as Áreas</label>
+                <label class="label-padrao" class="form__label">Escolha as Áreas</label>
                 <div class="checkbox-container" style="max-height: 200px; overflow-y: auto; border: 1px solid #ccc; padding: 10px;">
                     @foreach($areas as $area)
                         <div>
                             <input type="checkbox" name="idArea[]" value="{{ $area->idArea }}" id="area_{{ $area->idArea }}">
-                            <label for="area_{{ $area->idArea }}">{{ $area->nomeArea }}</label>
+                            <label class="label-padrao" for="area_{{ $area->idArea }}">{{ $area->nomeArea }}</label>
                         </div>
                     @endforeach
                 </div>
@@ -213,8 +213,8 @@
             </div>
 
             <div class="botoes-cadastro mt-4">
-                    <button type="button" class="voltar" onclick="prevStep()">Voltar</button>
-                    <button type="button" class="avancar" onclick="nextStep()">Avançar</button>
+                    <button type="button" class="voltar botao-padrao" onclick="prevStep()">Voltar</button>
+                    <button type="button" class="avancar botao-padrao" onclick="nextStep()">Avançar</button>
                 </div>
             </div>
 
@@ -226,9 +226,9 @@
                 </div>
                 <div class="row mb-3">
                     <div class="col col-12">
-                        <label for="cepEmpresa">CEP:</label>
+                        <label class="label-padrao" for="cepEmpresa">CEP:</label>
                         <div class="input-group">
-                            <input type="text" class="form-control custom-input" name="cepEmpresa" data-mask="00000-000"
+                            <input type="text" class="input-padrao" name="cepEmpresa" data-mask="00000-000"
                                 id="cepEmpresa" placeholder="12345-000" value="{{ old('cepEmpresa') }}"
                                 oninput="verificarCEP()">
                         </div>
@@ -240,7 +240,7 @@
 
                 <div class="row mb-3">
                     <div class="col col-12">
-                        <label for="logradouroEmpresa">Endereço:</label>
+                        <label class="label-padrao" for="logradouroEmpresa">Endereço:</label>
                         <input type="text" class="form-control custom-input " name="LogradouroEmpresa"
                             id="logradouroEmpresa" placeholder="Logradouro da Empresa"
                             value="{{ old('LogradouroEmpresa') }}">
@@ -252,7 +252,7 @@
 
                 <div class="row mb-3">
                     <div class="col col-12">
-                        <label for="cidadeEmpresa">Cidade:</label>
+                        <label class="label-padrao" for="cidadeEmpresa">Cidade:</label>
                         <input type="text" class="form-control custom-input " name="cidadeEmpresa" id="cidadeEmpresa"
                             placeholder="Ex: São Paulo" value="{{ old('cidadeEmpresa') }}">
                         @error('cidadeEmpresa')
@@ -263,7 +263,7 @@
 
                 <div class="row mb-3">
                     <div class="col col-9">
-                        <label for="estadoEmpresa">Estado:</label>
+                        <label class="label-padrao" for="estadoEmpresa">Estado:</label>
                         <input type="text" class="form-control custom-input " name="estadoEmpresa" id="estadoEmpresa"
                             placeholder="Ex: São Paulo - SP" value="{{ old('estadoEmpresa') }}">
                         @error('estadoEmpresa')
@@ -272,8 +272,8 @@
                     </div>
 
                     <div class="col col-3">
-                        <label for="numeroLograEmpresa">Número:</label>
-                        <input type="text" class="form-control custom-input" name="numeroLograEmpresa"
+                        <label class="label-padrao" for="numeroLograEmpresa">Número:</label>
+                        <input type="text" class="input-padrao" name="numeroLograEmpresa"
                             placeholder="Número" value="{{ old('numeroLograEmpresa') }}">
                         @error('numeroLograEmpresa')
                             <div class="error-message">{{ $message }}</div>
@@ -282,8 +282,8 @@
                 </div>
                 <div class="row mb-3">
                     <div class="col col-12">
-                        <label for="estadoEmpresa">CNPJ:</label>
-                        <input type="text" class="form-control custom-input" data-mask="00.000.000/0000-00"
+                        <label class="label-padrao" for="estadoEmpresa">CNPJ:</label>
+                        <input type="text" class="input-padrao" data-mask="00.000.000/0000-00"
                             name="cnpjEmpresa" placeholder="XX.XXX.XXX/0001-XX" value="{{old('cnpjEmpresa')}}">
                         @error('cnpjEmpresa')
                             <div class="error-message">{{ $message }}</div>
@@ -292,8 +292,8 @@
                 </div>
 
                 <div class="botoes-cadastro mt-4">
-                    <button type="button" class="voltar" onclick="prevStep()">Voltar</button>
-                    <input type="submit" class="avancar" value="Enviar">
+                    <button type="button" class="voltar botao-padrao" onclick="prevStep()">Voltar</button>
+                    <input type="submit" class="avancar botao-padrao" value="Enviar">
                 </div>
             </div>
         </form>
