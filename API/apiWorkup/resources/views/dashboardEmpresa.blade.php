@@ -146,7 +146,7 @@
                                     <div class="opt-vaga">
                                         <p class="text-truncate my-1">Descrição: {{ $vaga->descricaoVaga }}</p>
                                         <p class="text my-1">Salário: R${{ $vaga->salarioVaga }}</p>
-                                        <p class="text mb-1">Área: {{ $vaga->nomeVaga }}</p>
+                                        <p class="text mb-1">Área: {{ $vaga->area->nomeArea }}</p>
                                         <p class="text mb-1">Modalidade: {{ $vaga->modalidade->descModalidadeVaga }}</p>
                                         <p class="text mb-1">Cidade: {{ $vaga->cidadeVaga }}</p>
                                         <p class="text mb-1">Estado: {{ $vaga->estadoVaga }}</p>
@@ -195,7 +195,7 @@
                     <img src="{{ $empresa->fotoEmpresa }}" alt="">
                     <div>
                         <h5>{{ $empresa->nomeEmpresa }}</h5>
-                        <p>{{ $empresa->usernameEmpresa }}</p>
+                        <p>@ {{ $empresa->usernameEmpresa }}</p>
                     </div>
                     
                 </div>
@@ -219,13 +219,13 @@
     <footer class="py-3" style="background-color: #1b1b1b">
         <ul class="nav justify-content-center border-bottom pb-3 mb-3" style="gap: 2rem;">
             <li class="nav-item">
-                <a href=""><i class="fa-brands fa-github"></i></a>
+                <a href="https://github.com/Vinidevkz/appWorkUP-Sites-e-BackEnd" target="_blank"><i class="fa-brands fa-github"></i></a>
             </li>
             <li class="nav-item">
-                <a href=""><i class="fa-brands fa-square-x-twitter"></i></a>
+                <a href="#"><i class="fa-brands fa-square-x-twitter"></i></a>
             </li>
             <li class="nav-item">
-                <a href=""><i class="fa-brands fa-square-instagram"></i></a>
+                <a href="#"><i class="fa-brands fa-square-instagram"></i></a>
             </li>
         </ul>
         <p class="text-center text-light">

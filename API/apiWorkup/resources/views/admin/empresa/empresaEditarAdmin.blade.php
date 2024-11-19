@@ -74,6 +74,7 @@
                                 <div class="col-edit col-7">
                                     <label for="cidadeEmpresa">Cidade:</label>
                                     <input type="text" name="cidadeEmpresa" placeholder="{{ $empresa->cidadeEmpresa }}"
+                                        id="cidadeEmpresa"
                                         value="{{ $empresa->cidadeEmpresa }}" required>
                                     @error('cidadeEmpresa')
                                         <div class="error-message">{{ $message }}</div>
@@ -82,6 +83,7 @@
                                 <div class="col-edit col-5">
                                     <label for="estadoEmpresa">Estado:</label>
                                     <input type="text" name="estadoEmpresa" placeholder="{{ $empresa->estadoEmpresa }}"
+                                        id="estadoEmpresa"    
                                         value="{{ $empresa->estadoEmpresa }}" required>
                                     @error('estadoEmpresa')
                                         <div class="error-message">{{ $message }}</div>
@@ -93,8 +95,8 @@
 
                                 <div class="col-edit col-4">
                                     <label for="cepEmpresa">CEP:</label>
-                                    <input type="text" name="cepEmpresa" placeholder="{{ $empresa->cepEmpresa }}"
-                                        value="{{ $empresa->cepEmpresa }}" required>
+                                    <input type="text" name="cepEmpresa" data-mask="00000-000" id="cepEmpresa" placeholder="{{ $empresa->cepEmpresa }}"
+                                        value="{{ $empresa->cepEmpresa }}" oninput="verificarCEP()" required>
                                     @error('cepEmpresa')
                                         <div class="error-message">{{ $message }}</div>
                                     @enderror
@@ -102,7 +104,7 @@
 
                                 <div class="col-edit col-4">
                                     <label for="LogradouroEmpresa">Logradouro:</label>
-                                    <input type="text" name="LogradouroEmpresa"
+                                    <input type="text" name="LogradouroEmpresa" id="logradouroEmpresa"
                                         placeholder="{{ $empresa->LogradouroEmpresa }}"
                                         value="{{ $empresa->LogradouroEmpresa }}" required>
                                     @error('LogradouroEmpresa')
@@ -157,8 +159,8 @@
                     </div>
 
                     <div class="footer-editar-empresa">
-                        <button onclick="window.history.back()">Voltar</button>
-                        <input type="submit" value="Confirmar"></input>
+                    <button type="button" onclick="window.history.back()">Voltar</button>
+                    <input type="submit" value="Confirmar"></input>
                     </div>
 
                 </div>
@@ -167,7 +169,16 @@
         </div>
     </section>
 
+     <!-- jQuery -->
+     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<!-- jQuery Mask Plugin -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
+
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+
+    <script src="{{url('assets/js/buscacep.js')}}"></script>
+
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
         integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
         crossorigin="anonymous"></script>
