@@ -31,7 +31,15 @@
 
         <div class="box-candidatos row">
 
+        @if (session('success'))
+            <div class="alert alert-success" id="success-alert">
+                {{ session('success') }}
+            </div>
+        @endif
+
             @foreach($candidatos as $candidato)
+
+            @if($candidato->status->idStatusVagaUsuario === 1)
 
                 <div class="col">
 
@@ -237,6 +245,8 @@
                         </div>
                     </div>
                 </div>
+
+                @endif
             @endforeach
         </div>
 
@@ -253,6 +263,18 @@
         const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
     </script>
 
+<script>
+    // Define o tempo em milissegundos (exemplo: 3000 ms = 3 segundos)
+    setTimeout(function() {
+        // Seleciona o elemento do alerta e o esconde
+        const alert = document.getElementById('success-alert');
+            if (alert) {
+                alert.style.transition = "opacity 0.5s ease";
+                alert.style.opacity = "0";  // Faz o alerta desaparecer suavemente
+                setTimeout(() => alert.remove(), 500); // Remove o alerta do DOM após a transição
+            }
+        }, 2500); // Tempo de exibição do alerta em milissegundos
+    </script>
 </body>
 
 </html>

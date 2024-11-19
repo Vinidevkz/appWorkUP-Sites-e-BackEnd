@@ -113,7 +113,7 @@
                                     <div class="opt-vaga">
                                         <p class="text-truncate my-1">Descrição: {{ $vaga->descricaoVaga }}</p>
                                         <p class="text-truncate my-1">Salário: R${{ $vaga->salarioVaga }}</p>
-                                        <p class="text-truncate mb-1">Área: {{ $vaga->nomeVaga }}</p>
+                                        <p class="text-truncate mb-1">Área: {{ $vaga->area->nomeArea }}</p>
                                         <p class="text-truncate mb-1">Estado: {{ $vaga->estadoVaga }}</p>
                                         <p class="text-truncate mb-1">Candidatos: {{  $vaga->candidatos_count ?? 0 }}</p>
                                     </div>
@@ -123,6 +123,41 @@
                                             data-bs-target="#modalVaga{{$vaga->idVaga}}">Detalhes<i
                                                 class="fa-solid fa-clipboard-list"></i></button>
 
+                                        <a href="{{ route('verVagaCadastrada', $vaga->idVaga) }}" class="btn-vazado botao-padrao w-50">Candidatos<i class="fa-solid fa-user"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
+
+                    @foreach($vagas as $vaga)
+                        <!-- Modal para cada vaga -->
+                        <div class="modal fade" id="modalVaga{{ $vaga->idVaga }}" tabindex="-1"
+                            aria-labelledby="modalVagaLabel{{ $vaga->idVaga }}" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="header-modal-vaga">
+                                        <div>
+                                            <h5>{{ $vaga->nomeVaga }}</h5>
+                                            <p class="text mb-3" style="font-weight: 400">
+                                                Candidatos: {{  $vaga->candidatos_count ?? 0 }}</p>
+                                        </div>
+                                    </div>
+                                    <div class="opt-vaga">
+                                        <p class="text-truncate my-1">Descrição: {{ $vaga->descricaoVaga }}</p>
+                                        <p class="text my-1">Salário: R${{ $vaga->salarioVaga }}</p>
+                                        <p class="text mb-1">Área: {{ $vaga->nomeVaga }}</p>
+                                        <p class="text mb-1">Modalidade: {{ $vaga->modalidade->descModalidadeVaga }}</p>
+                                        <p class="text mb-1">Cidade: {{ $vaga->cidadeVaga }}</p>
+                                        <p class="text mb-1">Estado: {{ $vaga->estadoVaga }}</p>
+                                        <p class="text mb-1">Diferencial: {{ $vaga->diferencialVaga }}</p>
+                                    </div>
+                                    <div class="modal-footer d-flex justify-content-between w-75 align-self-center">
+                                        <a href="{{ route('vagas.edit', $vaga->idVaga) }}"
+                                            class="btn-vagas btn-verde w-100">Editar<i class="fa-solid fa-pen-to-square"
+                                                style="color: #ffffff;"></i></a>
+                                        <button type="button" class="btn-vagas w-100" data-bs-dismiss="modal"
+                                            style="background-color: #ededed; color: black">Voltar</button>
                                         <a href="{{ route('verVagaCadastrada', $vaga->idVaga) }}" class="btn-vazado botao-padrao w-50">Candidatos<i class="fa-solid fa-user"></i></a>
                                     </div>
                                 </div>

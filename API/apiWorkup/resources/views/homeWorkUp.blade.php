@@ -5,6 +5,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="{{url('assets/img/adminImages/WU-icon.png')}}" type="image/x-icon">
+    <link rel="stylesheet" href="{{url('../assets/css/estilo-padrao-workup.css')}}">
+
     <link rel="icon" href="/img/icons/android-chrome-192x192.png" type="image/x-icon">
     <title>WorkUP | Home</title>
 
