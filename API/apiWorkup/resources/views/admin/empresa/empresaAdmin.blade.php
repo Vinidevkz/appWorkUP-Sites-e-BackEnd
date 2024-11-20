@@ -62,7 +62,7 @@ person
                 <tr>
                   <th>ID</th>
                   <th>NOME</th>
-                  <th>E-MAIL</th>
+                  <th>Responsável</th>
 
                   <!-- para procurar pelo status -->
                   @if(request()->has('order') && request()->order == 'status')
@@ -83,10 +83,15 @@ person
               <tbody>
                 @forelse($empresas as $em) <!-- Usando um alias diferente -->
                   <tr>
-                    <td>{{ $em-> idEmpresa }}</td>
-                    <td>
+                    <td class="p-3">{{ $em-> idEmpresa }}</td>
+                    <td class="d-flex align-items-center">
 
-                    <a href="#" class="visualizar-link mb-3" data-bs-toggle="modal" data-bs-target="#visualizarModal"
+  <div class="d-flex modal-imagem justify-content-center">
+  <img src="{{$em->fotoEmpresa}}" alt="" width="50px" height="50px" class="rounded-pill">
+  </div>
+
+
+                    <a href="#" class="visualizar-link m-0 ps-2" data-bs-toggle="modal" data-bs-target="#visualizarModal"
        data-id="{{ $em->idEmpresa }}"
        data-nome="{{$em->nomeEmpresa }}"
        data-username="{{ $em->usernameEmpresa  }}"
@@ -100,13 +105,15 @@ person
        data-cep="{{ $em->cepEmpresa }}"
        data-numLogr="{{ $em->numeroLograEmpresa }}"
     >
-        {{ $em->nomeEmpresa }}
+        {{ $em->nomeEmpresa }} 
     </a>
 
 
                     </td>
-                    <td>{{ $em->usernameEmpresa }}</td>
-                    <td>
+                    <td class="m-0 p-3">{{ $em->usernameEmpresa }} </td>
+                    
+                    <td class="p-3">
+                      
   <span class="badge rounded-pill d-inline 
     @switch($em->status->tipoStatus)
       @case('Ativo')
@@ -120,11 +127,11 @@ person
         @break
       @default
         badge-default
-    @endswitch">
+    @endswitch ">
     {{ $em->status->tipoStatus }}
   </span>
 </td>
-                    <td>
+                    <td class="p-3">
 
                       <form action="{{ route('empresas.delete', $em->idEmpresa) }}" method="POST" class="d-inline">
                         @csrf

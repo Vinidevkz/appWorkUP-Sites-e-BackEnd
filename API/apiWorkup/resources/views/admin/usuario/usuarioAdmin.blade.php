@@ -69,12 +69,12 @@ person
           <tbody>
     @forelse($usuarios as $u) 
         <tr>
-            <td>{{ $u->idUsuario }}</td>
-            <td class="d-flex flex-row">
+            <td class="p-3">{{ $u->idUsuario }}</td>
+            <td class="d-flex flex-row align-items-center">
                 <div class="user-initials rounded-circle text-white d-flex justify-content-center align-items-center ms-3" style="width: 45px; height: 45px;">
                     {{ strtoupper(substr($u->nomeUsuario, 0, 1)) }}{{ strtoupper(substr(explode(' ', $u->nomeUsuario)[1] ?? '', 0, 1)) }}
                 </div>  
-                <a href="#" class="visualizar-link mb-3" data-bs-toggle="modal" data-bs-target="#visualizarModal"
+                <a href="#" class="visualizar-link m-0" data-bs-toggle="modal" data-bs-target="#visualizarModal"
        data-id="{{ $u->idUsuario }}"
        data-nome="{{ $u->nomeUsuario }}"
        data-username="{{ $u->usernameUsuario }}"
@@ -95,8 +95,8 @@ person
   
                 </a>
             </td>
-            <td>{{ $u->emailUsuario }}</td>
-            <td>
+            <td class="p-3">{{ $u->emailUsuario }}</td>
+            <td class="p-3">
                 <span class="badge rounded-pill d-inline 
                     @switch($u->status->tipoStatus)
                         @case('Ativo')
@@ -114,7 +114,7 @@ person
                     {{ $u->status->tipoStatus }}
                 </span>
             </td>
-            <td>
+            <td class="p-3">
                 <form action="{{ route('usuarios.delete', $u->idUsuario) }}" method="POST" class="d-inline">
                     @csrf
                     @method('DELETE')

@@ -373,7 +373,7 @@ table{
 }
 /* Para navegadores WebKit (Chrome, Safari) */
 .tabela-container::-webkit-scrollbar {
-  width: 3px; /* Largura da barra de rolagem */
+  width: 10px; /* Largura da barra de rolagem */
 }
 
 .tabela-container::-webkit-scrollbar-thumb {
@@ -595,4 +595,7 @@ table td  a{
 }
 .size-txt{
   font-size: 1.1rem;
+}
+.modal-imagem{
+
 }
