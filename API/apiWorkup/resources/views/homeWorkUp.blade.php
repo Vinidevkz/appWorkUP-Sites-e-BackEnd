@@ -84,80 +84,59 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-xl-5 col-xxl-6 d-none d-xl-block text-center">
-                        <div id="carouselExampleSlidesOnly" class="carousel" data-bs-ride="carousel">
-                            <div class="carousel-inner">
-                                <div class="carousel-item active">
-                                    <img class="img-fluid rounded-2 my-0" src="{{url('/assets/img/home/smart.png')}}" alt="imgHeader">
-                                </div>
-                                <div class="carousel-item">
-                                    <img class="img-fluid rounded-2 my-0" src="{{url('/assets/img/home/mkwup.png')}}" alt="imgHeader">
-                                </div>
-                            </div>
-                        </div>
+                    <div class="col-xl-5 col-xxl-4 d-none d-xl-block text-center">
+                        <img class="img-fluid rounded-4 my-0" src="{{url('/assets/img/home/mkwup.png')}}" alt="imgHeader">
                     </div>
-                </div>
-            </div>
         </header>
 
 
         <!-- Funções -->
         <section class="funcoes py-4">
-    <div class="container">
-        <h3 class="titulo-secao text-center mb-4">Aqui você pode:</h3>
-        <div class="row">
-            <div class="col-lg-6 col-md-6 col-sm-12 mb-4">
+            <div class="container"></div>
+            <h3 class="titulo-secao text-center mb-4">Aqui você pode:</h3>
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 mb-4">
                 <div class="card-funcoes p-3 h-100">
                     <div class="header-card-funcoes d-flex align-items-center mb-3">
-                        <i class="fa-solid fa-note-sticky me-2" style="color: #20dd77;"></i>
-                        <h4>Publicar vagas</h4>
+                    <i class="fa-solid fa-note-sticky me-2" style="color: #20dd77;"></i>
+                    <h4>Publicar vagas</h4>
                     </div>
                     <div class="body-card-funcoes">
-                        <p>O nosso foco é a publicação de vagas, sendo essa a função principal dessa página. As vagas podem ser editadas e removidas posteriormente.</p>
+                    <p>O nosso foco é a publicação de vagas, sendo essa a função principal dessa página. As vagas podem ser editadas e removidas posteriormente.</p>
                     </div>
                 </div>
-            </div>
-            <div class="col-lg-6 col-md-6 col-sm-12 mb-4">
+                </div>
+                <div class="col-lg-12 col-md-12 col-sm-12 mb-4">
                 <div class="card-funcoes p-3 h-100">
                     <div class="header-card-funcoes d-flex align-items-center mb-3">
-                        <i class="fa-solid fa-paper-plane me-2" style="color: #20dd77;"></i>
-                        <h4>Mensagens</h4>
+                    <i class="fa-solid fa-paper-plane me-2" style="color: #20dd77;"></i>
+                    <h4>Mensagens</h4>
                     </div>
                     <div class="body-card-funcoes">
-                        <p>Enviar menssagens aos candidatos de forma rapida e segura .</p>
+                    <p>Enviar menssagens aos candidatos de forma rapida e segura .</p>
                     </div>
                 </div>
-            </div>
-            <div class="col-lg-6 col-md-6 col-sm-12 mb-4">
+                </div>
+                <div class="col-lg-12 col-md-12 col-sm-12 mb-4">
                 <div class="card-funcoes p-3 h-100">
                     <div class="header-card-funcoes d-flex align-items-center mb-3">
-                        <i class="fa-solid fa-users me-2" style="color: #20dd77;"></i>
-                        <h4>Conhecer os jovens talentos</h4>
+                    <i class="fa-solid fa-users me-2" style="color: #20dd77;"></i>
+                    <h4>Conhecer os jovens talentos</h4>
                     </div>
                     <div class="body-card-funcoes">
-                        <p>Aqui você pode conectar estudantes de diferentes áreas, promovendo a troca de conhecimento e networking.</p>
+                    <p>Aqui você pode conectar estudantes de diferentes áreas, promovendo a troca de conhecimento e networking.</p>
                     </div>
                 </div>
-            </div>
-            <div class="col-lg-6 col-md-6 col-sm-12 mb-4">
-                <div class="card-funcoes p-3 h-100">
-                    <div class="header-card-funcoes d-flex align-items-center mb-3">
-                        <i class="fa-solid fa-briefcase me-2" style="color: #20dd77;"></i>
-                        <h4>Encontrar oportunidades</h4>
-                    </div>
-                    <div class="body-card-funcoes">
-                        <p>Além de publicar vagas, você também pode encontrar oportunidades de estágio e emprego na nossa plataforma.</p>
-                    </div>
                 </div>
+                
             </div>
-        </div>
-    </div>
-</section>
+            </div>
+        </section>
 
     </main>
 
     <!-- Rodapé -->
-    <footer class="footer bg-light mt-auto py-4">
+    <footer class="footer mt-auto py-4">
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
