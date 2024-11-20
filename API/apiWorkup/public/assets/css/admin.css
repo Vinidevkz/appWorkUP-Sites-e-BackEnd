@@ -236,6 +236,7 @@ aside{
 .card-data-user, .card-data-job, .card-data-company{
   height: 100px;
   background-color: white;
+  border-left: #20DD77  solid 5px;
   
 }
 
@@ -591,4 +592,7 @@ table td  a{
 }
 .line-denuncia{
   width: 100vw;
+}
+.size-txt{
+  font-size: 1.1rem;
 }
