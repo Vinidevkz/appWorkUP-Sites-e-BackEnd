@@ -216,7 +216,7 @@ class VagaController extends Controller
     public function showVagasEmpresa($idEmpresa)
     {
         $vagaempresa = Vaga::where('idEmpresa', $idEmpresa)
-            ->select('idVaga', 'nomeVaga', 'cidadeVaga', 'estadoVaga', 'salarioVaga')
+            ->select('idVaga', 'nomeVaga', 'cidadeVaga', 'estadoVaga', 'salarioVaga', 'created_at')
             ->get();
     
         return response()->json($vagaempresa, 200);
