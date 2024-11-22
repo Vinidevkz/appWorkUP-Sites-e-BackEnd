@@ -23,23 +23,6 @@ main.conteudo {
       width: 100%;
 }
 
-.carousel-item .top img {
-      width: 100%;
-      height: auto;
-      opacity: 0;
-      transition: opacity 2s ease-in-out;
-}
-
-.carousel-item.active .top img {
-      opacity: 1;
-}
-
-.carousel-inner img {
-      max-width: 70%;
-      height: auto;
-      margin: 0 auto;
-}
-
 .logoheader {
       width: 100%;
       height: auto;
@@ -82,21 +65,14 @@ main.conteudo {
       font-size: 1.25rem;
       color: #fff;
       text-align: center;
+      
 }
 
-/* Rodapé */
-.footer {
-
-      background-color: #8b8b8b;
+p {
+      font-size: 1 rem;
+      color: #0a0808;
+      text-align: start;
+      font-weight: 600;
 }
 
-/* Formulário de Inscrição */
-.subscribe__input {
-      width: 70%;
-      padding: 10px;
-      margin-right: 5px;
-}
 
-.subscribe__btn {
-      padding: 10px 20px;
-}
