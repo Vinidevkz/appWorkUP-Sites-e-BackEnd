@@ -142,7 +142,7 @@
         <section class="d-flex justify-content-between p-4 text-black" style="background-color: #20dd77">
             
             <div class="me-5">
-                <span>Nos siga em nossas mídias sociais</span>
+                <h5>Nos siga em nossas mídias sociais</h5>
             </div>
          
             <div>
