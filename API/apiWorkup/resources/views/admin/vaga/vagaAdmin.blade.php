@@ -55,16 +55,16 @@ person
       </div>
       <div>
 
-    <div class="tabela-container" style="max-height: 700px; overflow-y: auto; overflow-x: hidden;">
+    <div class="tabela-container" style="max-height: 550px; overflow-y: auto; overflow-x: hidden;">
 
-    <div class="search-container mt-3">
+    <div class="search-container mt-3" width="5%" id="size-busca">
           <span class="material-symbols-outlined search-icon">search</span>
           <input type="text" id="searchInput" placeholder="Buscar...">
         </div>
 
 
-        <table class="table align-middle  mb-0  table-striped m-0 table-user bg-white table-hover" id="myTable">
-            <thead>
+        <table class="table" id="myTable">
+            <thead class="border-white table-dark">
                 <tr>
                     <th class="fw-bold">ID</th>
                     <th class="fw-bold">NOME</th>
@@ -117,13 +117,13 @@ devices
             <tbody>
                 @forelse($vagas as $v) <!-- Usando um alias diferente -->
                 <tr>
-                    <td>{{ $v->idVaga }}</td>
-                    <td> 
+                    <td class="p-3">{{ $v->idVaga }}</td>
+                    <td class="p-3"> 
                     <a href="{{ route('vagas.show', $v->idVaga) }}" class="visualizar-link mb-3">{{ $v->nomeVaga }}</a>
                     </td>
-                    <td>{{  $v->area->nomeArea}}</td>
-                    <td>{{  $v->modalidade->descModalidadeVaga}}</td>
-                    <td>
+                    <td class="p-3">{{  $v->area->nomeArea}}</td>
+                    <td class="p-3">{{  $v->modalidade->descModalidadeVaga}}</td>
+                    <td class="p-3">
   <span class="badge rounded-pill d-inline 
     @switch($v->status->tipoStatus)
       @case('Ativo')
@@ -141,18 +141,18 @@ devices
     {{ $v->status->tipoStatus }}
   </span>
 </td>
-                    <td>
+                    <td class="p-3">
                  
                         <form action="{{ route('vagas.delete', $v->idVaga) }}" method="POST" class="d-inline">
                             @csrf
                             @method('DELETE')
-                            <button onclick="return confirm('Realmente deseja excluir esse usuário?')" type="submit" class="btn btn-outline-danger btn-sm"><span class="bi-trash-fill"></span>&nbsp;Bloquear</button>
+                            <button onclick="return confirm('Realmente deseja excluir esse usuário?')" type="submit" class="btn btn-outline-danger btn-sm"><span class="bi-slash-circle"></span>&nbsp;</button>
                         </form>
 
                         <form action="{{ route('vagas.aprovar', $v->idVaga) }}" method="POST" class="d-inline">
                             @csrf
                             @method('Post')
-                            <button onclick="return confirm('Realmente deseja aprovar essa vaga?')" type="submit" class="btn btn-outline-success btn-sm"><span class="bi bi-check2"></span>&nbsp;Ativar</button>
+                            <button onclick="return confirm('Realmente deseja aprovar essa vaga?')" type="submit" class="btn btn-outline-success btn-sm"><span class="bi bi-check2"></span>&nbsp;</button>
                         </form>
                         
                     </td>

@@ -369,7 +369,7 @@ table{
 } */
 
 .tabela-scroll{
-  height: 100px;
+  height: 10px;
 }
 /* Para navegadores WebKit (Chrome, Safari) */
 .tabela-container::-webkit-scrollbar {
@@ -393,6 +393,17 @@ table{
   margin-bottom: 10px;
 
 }
+
+#searchInput2 {
+  width: 85%;
+  padding: 2px 40px 1px 30px; /* Espaço para o ícone */
+  box-sizing: border-box; /* Para incluir o padding na largura total */
+  border: none;
+  border: 1px solid black;
+  border-radius: 20px;
+  background-color: transparent;
+}
+
 #searchInput {
   width: 25%;
   padding: 2px 40px 1px 30px; /* Espaço para o ícone */
@@ -432,7 +443,7 @@ table{
   padding: 1px 40px 1px 30px; /* Espaço para o ícone */
   box-sizing: border-box; /* Para incluir o padding na largura total */
   color: white;
-  border: 1px solid white;
+  border: 1px solid black;
   background-color: transparent;
 }
 .search-icon2 {
@@ -598,4 +609,19 @@ table td  a{
 }
 .modal-imagem{
 
+}
+table{
+  max-height: 100px;
+}
+.alinhar{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.oo{
+  text-decoration: none;
+  padding: 2px;
+}
+.oo:hover{
+  background-color: #fff;
 }

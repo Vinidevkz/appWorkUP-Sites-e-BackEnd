@@ -35,14 +35,32 @@ person
     <div class="container md-4 mt-3">
 
 
-      <div class="tabela-container" style="max-height: 700px; overflow-y: auto; overflow-x: hidden;">
-        <div class="search-container mt-3">
-          <span class="material-symbols-outlined search-icon">search</span>
-          <input type="text" id="searchInput" placeholder="Buscar...">
+      <div class="tabela-container" style="max-height: 550px; overflow-y: auto; overflow-x: hidden;">
+
+<div class="alinhar">
+<div class="search-container-2 mt-3 " >
+          <span class="material-symbols-outlined search-icon2 ">search</span>
+          <input type="text" id="searchInput2" placeholder="Buscar..." class="text-black">
         </div>
 
-        <table class="table align-middle  mb-0  table-striped m-0 table-user bg-white table-hover" id="myTable">
-        <thead class="bg-light">
+        <div class="dropdown m-2">
+                  <a class="oo border border-black d-flex align-items-center justify-content-center" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+  <i class="bi bi-funnel text-black fs-5 fw-bold"></i>
+  <p class="m-0 text-black ">Filtrar</p>
+  </a>
+                        <ul class="dropdown-menu" aria-labelledby="statusDropdown" id="statusFilterMenu">
+                            <li><a class="dropdown-item" href="#" data-value="">Todos</a></li>
+                            <li><a class="dropdown-item" href="#" data-value="Ativo">Ativo</a></li>
+                            <li><a class="dropdown-item" href="#" data-value="Pendente">Pendente</a></li>
+                            <li><a class="dropdown-item" href="#" data-value="Bloqueado">Bloqueado</a></li>
+                        </ul>
+                    </div>
+</div>
+
+
+
+        <table class="table" id="myTable">
+        <thead class="table-dark">
             <tr>
               <th class="fw-bold">Id</th>
               <th class="fw-bold">Usuário</th>
@@ -62,6 +80,9 @@ person
                 <div class="d-flex btn-acoes align-items-center">
                   <span class="material-symbols-outlined">keyboard_double_arrow_down</span>
                   <p class="m-0 fw-bold">Ações</p>
+                  
+
+
                 </div>
               </th>
             </tr>
@@ -71,9 +92,13 @@ person
         <tr>
             <td class="p-3">{{ $u->idUsuario }}</td>
             <td class="d-flex flex-row align-items-center">
-                <div class="user-initials rounded-circle text-white d-flex justify-content-center align-items-center ms-3" style="width: 45px; height: 45px;">
+                <!-- <div class="user-initials rounded-circle text-white d-flex justify-content-center align-items-center ms-3" style="width: 45px; height: 45px;">
                     {{ strtoupper(substr($u->nomeUsuario, 0, 1)) }}{{ strtoupper(substr(explode(' ', $u->nomeUsuario)[1] ?? '', 0, 1)) }}
-                </div>  
+                </div>   -->
+                <div class="d-flex modal-imagem justify-content-center">
+                <img src="{{$u->fotoUsuario}}" alt=""  width="50px" height="50px" class="rounded-pill">
+
+                </div>
                 <a href="#" class="visualizar-link m-0" data-bs-toggle="modal" data-bs-target="#visualizarModal"
        data-id="{{ $u->idUsuario }}"
        data-nome="{{ $u->nomeUsuario }}"
@@ -118,12 +143,12 @@ person
                 <form action="{{ route('usuarios.delete', $u->idUsuario) }}" method="POST" class="d-inline">
                     @csrf
                     @method('DELETE')
-                    <button onclick="return confirm('Realmente deseja excluir esse usuário?')" type="submit" class="btn btn-outline-danger btn-sm"><span class="bi-trash-fill"></span> Bloquear</button>
+                    <button onclick="return confirm('Realmente deseja excluir esse usuário?')" type="submit" class="btn btn-outline-danger btn-sm"><span class="bi-slash-circle"></span></button>
                 </form>
                 <form action="{{ route('usuarios.aprovar', $u->idUsuario) }}" method="POST" class="d-inline">
                     @csrf
                     @method('POST')
-                    <button onclick="return confirm('Realmente deseja aprovar esse usuário?')" type="submit" class="btn btn-outline-success btn-sm"><span class="bi bi-check2"></span> Ativar</button>
+                    <button onclick="return confirm('Realmente deseja aprovar esse usuário?')" type="submit" class="btn btn-outline-success btn-sm"><span class="bi bi-check2"></span></button>
                 </form>
             </td>
         </tr>
@@ -287,7 +312,7 @@ sidebarlinks.forEach(link => {
 })
 
   // Adiciona um evento de entrada ao campo de busca
-  document.getElementById('searchInput').addEventListener('input', function() {
+  document.getElementById('searchInput2').addEventListener('input', function() {
     const filter = this.value.toLowerCase(); // Valor digitado na barra de busca
     const rows = document.querySelectorAll('#myTable tbody tr'); // Todas as linhas da tabela
     let visibleRows = 0; // Contador de linhas visíveis
@@ -352,6 +377,40 @@ sidebarlinks.forEach(link => {
     });
   });
 </script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const dropdownItems = document.querySelectorAll("#statusFilterMenu .dropdown-item");
+        const tableRows = document.querySelectorAll("#myTable tbody tr");
+        const clearButton = document.getElementById("clearFilters");
+
+        dropdownItems.forEach(item => {
+            item.addEventListener("click", function (e) {
+                e.preventDefault(); // Evita o redirecionamento padrão
+                const selectedStatus = this.getAttribute("data-value");
+
+                // Filtrar as linhas
+                tableRows.forEach(row => {
+                    const statusCell = row.querySelector("td:nth-child(4) .badge");
+                    if (!statusCell) return;
+
+                    const status = statusCell.textContent.trim();
+                    row.style.display = selectedStatus === "" || status === selectedStatus ? "" : "none";
+                });
+
+                // Atualizar o texto do botão dropdown
+                const dropdownButton = document.getElementById("statusDropdown");
+                dropdownButton.textContent = this.textContent;
+            });
+        });
+
+        // Botão de limpar filtros
+        clearButton.addEventListener("click", function () {
+            tableRows.forEach(row => row.style.display = ""); // Mostra todas as linhas
+            document.getElementById("statusDropdown").textContent = "Selecione o Status";
+        });
+    });
+</script>
+
 
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>

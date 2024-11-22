@@ -49,7 +49,7 @@ person
       <div class="container md-4">
         <div >
 
-          <div class="tabela-container" style="max-height: 700px; overflow-y: auto; overflow-x: hidden;">
+          <div class="tabela-container" style="max-height: 550px; overflow-y: auto; overflow-x: hidden;">
 
 
           <div class="search-container mt-3">
@@ -57,8 +57,8 @@ person
           <input type="text" id="searchInput" placeholder="Buscar...">
         </div>
 
-            <table class="table table-striped" id="myTable">
-              <thead>
+            <table class="table" id="myTable">
+              <thead class="border-white table-dark">
                 <tr>
                   <th>ID</th>
                   <th>NOME</th>
@@ -80,7 +80,7 @@ person
 <th>Ações</th>
                 </tr>
               </thead>
-              <tbody>
+              <tbody class="border-bottom-2">
                 @forelse($empresas as $em) <!-- Usando um alias diferente -->
                   <tr>
                     <td class="p-3">{{ $em-> idEmpresa }}</td>
@@ -136,13 +136,13 @@ person
                       <form action="{{ route('empresas.delete', $em->idEmpresa) }}" method="POST" class="d-inline">
                         @csrf
                         @method('DELETE')
-                        <button onclick="return confirm('Realmente deseja excluir esse usuário?')" type="submit" class="btn btn-outline-danger btn-sm"><span class="bi-trash-fill"></span>&nbsp;Bloquear</button>
+                        <button onclick="return confirm('Realmente deseja excluir esse usuário?')" type="submit" class="btn btn-outline-danger btn-sm"><span class="bi-slash-circle"></span>&nbsp;</button>
                       </form>
 
                       <form action="{{ route('empresas.aprovar', $em->idEmpresa) }}" method="POST" class="d-inline">
                             @csrf
                             @method('Post')
-                            <button onclick="return confirm('Realmente deseja aprovar essa Empresa?')" type="submit" class="btn btn-outline-success btn-sm"><span class="bi bi-check2"></span>&nbsp;Ativar</button>
+                            <button onclick="return confirm('Realmente deseja aprovar essa Empresa?')" type="submit" class="btn btn-outline-success btn-sm"><span class="bi bi-check2"></span>&nbsp;</button>
                         </form>
 
                     </td>
