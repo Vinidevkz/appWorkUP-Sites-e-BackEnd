@@ -17,7 +17,7 @@
                 <div class="imgs-login">
                     <div class="d-flex flex-column align-items-center">
                         <img id="logo" src="{{url('assets/img/login/WorkUp-Logo.png')}}" alt="">
-                        <p class="text-light">Seja Bem Vindo ao nosso site!</p>
+                        <p class="text-light fw-medium">Seja Bem Vindo ao nosso site!</p>
                     </div>
                     <img id="notebook" src="{{url('assets/img/login/notebook-teste-2.png')}}" alt="">
                 </div>
@@ -44,7 +44,7 @@
                         </div>
                         <div class="footer-box-login">
                             @if(session('error'))
-                                <p style="align-self: center; color: #ff0505">{{ session('error') }}</p>
+                                <p style="align-self: center; color: #ff0505; font-size: 0.8rem">{{ session('error') }}</p>
                             @endif
                             <input type="submit" href="/home" id="logar" class="botao-padrao" value="Entrar">
                             <button class="botao-padrao"><a href="/cadastrarEmpresa" id="cadastrar" style="text-decoration: none; color: #242424">Cadastrar-se</a></button>
