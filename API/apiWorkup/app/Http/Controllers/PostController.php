@@ -68,6 +68,12 @@ public function index()
         return response()->json($posts);
     }
 
+    public function postsPorEmpresa($id){
+        $posts = Post::where('idEmpresa', '=', $id)->with('empresa')->get();
+
+        return response()-> json($posts);
+    }
+
     
 
     /**

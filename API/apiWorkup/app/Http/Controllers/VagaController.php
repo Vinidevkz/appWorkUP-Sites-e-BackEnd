@@ -217,6 +217,7 @@ class VagaController extends Controller
     {
         $vagaempresa = Vaga::where('idEmpresa', $idEmpresa)
             ->select('idVaga', 'nomeVaga', 'cidadeVaga', 'estadoVaga', 'salarioVaga', 'created_at')
+            ->with('modalidade')
             ->get();
     
         return response()->json($vagaempresa, 200);
@@ -328,7 +329,7 @@ class VagaController extends Controller
             if ($query) {
                 $vagas = DB::table('tb_vaga')
                     ->leftJoin('tb_empresa', 'tb_vaga.idEmpresa', '=', 'tb_empresa.idEmpresa')
-                    ->select('tb_vaga.*')
+                    ->select('tb_vaga.*', 'tb_empresa.nomeEmpresa')
                     ->where('tb_vaga.nomeVaga', 'LIKE', "%{$query}%")
                     ->orWhere('tb_empresa.nomeEmpresa', 'LIKE', "%{$query}%")
                     ->orWhere('tb_empresa.usernameEmpresa', 'LIKE', "%{$query}%")

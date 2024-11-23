@@ -126,6 +126,7 @@ Route::get('/notificacoes/{idUsuario}', [VagaUsuarioController::class, 'notifica
 
 Route::get('/posts/seguindo/{idUsuario}', [PostController::class, 'indexApp']);
 Route::get('/todosPosts', [PostController::class, 'todosOsPosts']);
+Route::get('/postsempresa/{idEmpresa}', [PostController::class, 'postsPorEmpresa']);
 Route::get('/chatsusuario/{idUsuario}', [ChatController::class, 'show']);
 
 //API Mensagens
