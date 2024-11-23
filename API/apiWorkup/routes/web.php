@@ -112,7 +112,6 @@ Route::middleware('auth.admin.empresa')->group(function(){
                 // Editar Vaga
                 Route::put('/{id}', [VagaController::class, 'update'])->name('vagas.update');
                 //Cadastrar Vaga
-                Route::get('/cadastrar', [VagaController::class, 'create'])->name('cadastrarVaga');
     
             });
 
@@ -137,6 +136,8 @@ Route::middleware('auth:empresa')->group(function(){
             Route::get('/{id}/edit', [VagaController::class, 'edit'])->name('vagas.edit');
           
             //Formulario Vaga
+            Route::get('/cadastrar', [VagaController::class, 'create'])->name('cadastrarVaga');
+
             Route::post('/cadastrar', [VagaController::class, 'store']);
             
             //Vagas que a empresa postou

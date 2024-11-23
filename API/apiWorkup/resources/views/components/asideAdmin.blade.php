@@ -32,13 +32,10 @@
         
                     <div class="aside-body">
 
-                    <div class="search-container-2 mt-3 mb-3">
-          <span class="material-symbols-outlined search-icon2">search</span>
-          <input type="text" id="searchInput2" placeholder="Buscar...">
-        </div>
-                        <div class="d-flex link-aside-active flex-row item-nav" >
+       
+                        <div class=" mt-5 d-flex link-aside-active flex-row item-nav" >
                            
-                            <a href="/admin" class="p-0 h6">
+                            <a href="/admin" class="p-0 h6 ">
                                 <i class="bi bi-grid " ></i>
                                 Dashboard</a>
                         </div>

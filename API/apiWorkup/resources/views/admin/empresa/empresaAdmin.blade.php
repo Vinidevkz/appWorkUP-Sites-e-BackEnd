@@ -49,20 +49,42 @@ person
       <div class="container md-4">
         <div >
 
-          <div class="tabela-container" style="max-height: 700px; overflow-y: auto; overflow-x: hidden;">
+
+         <div class="filtro-container">
+   <h2>Filtros</h2>
+
+   
+  
+   <div class="row d-flex align-items-center">
+    <input type="text" placeholder="Buscar por nome..." id="searchInput" class="col-6"> 
 
 
-          <div class="search-container mt-3">
-          <span class="material-symbols-outlined search-icon">search</span>
-          <input type="text" id="searchInput" placeholder="Buscar...">
-        </div>
+    <div class="dropdown m-2 p-0 col-1"> 
+      <a class="oo  d-flex align-items-center justify-content-center" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+         <i class="bi bi-funnel text-black fs-4 fw-bold"></i> 
+   </a> 
+   <ul class="dropdown-menu" aria-labelledby="statusDropdown" id="statusFilterMenu"> 
+    <li><a class="dropdown-item" href="#" data-value="">Todos</a></li>
+     <li><a class="dropdown-item" href="#" data-value="Ativo">Ativo</a></li> 
+     <li><a class="dropdown-item" href="#" data-value="Pendente">Pendente</a></li>
+      <li><a class="dropdown-item" href="#" data-value="Bloqueado">Bloqueado</a></li> 
+    </ul>
+   </div>
 
-            <table class="table table-striped" id="myTable">
-              <thead>
+   <!-- <img src="{{ asset('assets/img/adminimages/undraw_learning_sketching_nd4f.svg') }}" alt="Imagem de Aprendizado" id="imagem-filtro" class="col-3"> -->
+   </div>
+</div>
+          <div class="tabela-container" style="max-height: 550px; overflow-y: auto; overflow-x: hidden;">
+
+
+
+
+            <table class="table" id="myTable">
+              <thead class="border-white table-dark">
                 <tr>
                   <th>ID</th>
                   <th>NOME</th>
-                  <th>E-MAIL</th>
+                  <th>Responsável</th>
 
                   <!-- para procurar pelo status -->
                   @if(request()->has('order') && request()->order == 'status')
@@ -80,13 +102,18 @@ person
 <th>Ações</th>
                 </tr>
               </thead>
-              <tbody>
+              <tbody class="border-bottom-2">
                 @forelse($empresas as $em) <!-- Usando um alias diferente -->
                   <tr>
-                    <td>{{ $em-> idEmpresa }}</td>
-                    <td>
+                    <td class="p-3">{{ $em-> idEmpresa }}</td>
+                    <td class="d-flex align-items-center">
 
-                    <a href="#" class="visualizar-link mb-3" data-bs-toggle="modal" data-bs-target="#visualizarModal"
+  <div class="d-flex modal-imagem justify-content-center">
+  <img src="{{$em->fotoEmpresa}}" alt="" width="50px" height="50px" class="rounded-pill">
+  </div>
+
+
+                    <a href="#" class="visualizar-link m-0 ps-2" data-bs-toggle="modal" data-bs-target="#visualizarModal"
        data-id="{{ $em->idEmpresa }}"
        data-nome="{{$em->nomeEmpresa }}"
        data-username="{{ $em->usernameEmpresa  }}"
@@ -100,13 +127,15 @@ person
        data-cep="{{ $em->cepEmpresa }}"
        data-numLogr="{{ $em->numeroLograEmpresa }}"
     >
-        {{ $em->nomeEmpresa }}
+        {{ $em->nomeEmpresa }} 
     </a>
 
 
                     </td>
-                    <td>{{ $em->usernameEmpresa }}</td>
-                    <td>
+                    <td class="m-0 p-3">{{ $em->usernameEmpresa }} </td>
+                    
+                    <td class="p-3">
+                      
   <span class="badge rounded-pill d-inline 
     @switch($em->status->tipoStatus)
       @case('Ativo')
@@ -120,22 +149,22 @@ person
         @break
       @default
         badge-default
-    @endswitch">
+    @endswitch ">
     {{ $em->status->tipoStatus }}
   </span>
 </td>
-                    <td>
+                    <td class="p-3">
 
                       <form action="{{ route('empresas.delete', $em->idEmpresa) }}" method="POST" class="d-inline">
                         @csrf
                         @method('DELETE')
-                        <button onclick="return confirm('Realmente deseja excluir esse usuário?')" type="submit" class="btn btn-outline-danger btn-sm"><span class="bi-trash-fill"></span>&nbsp;Bloquear</button>
+                        <button onclick="return confirm('Realmente deseja excluir esse usuário?')" type="submit" class="btn btn-outline-danger btn-sm"><span class="bi-slash-circle"></span>&nbsp;</button>
                       </form>
 
                       <form action="{{ route('empresas.aprovar', $em->idEmpresa) }}" method="POST" class="d-inline">
                             @csrf
                             @method('Post')
-                            <button onclick="return confirm('Realmente deseja aprovar essa Empresa?')" type="submit" class="btn btn-outline-success btn-sm"><span class="bi bi-check2"></span>&nbsp;Ativar</button>
+                            <button onclick="return confirm('Realmente deseja aprovar essa Empresa?')" type="submit" class="btn btn-outline-success btn-sm"><span class="bi bi-check2"></span>&nbsp;</button>
                         </form>
 
                     </td>

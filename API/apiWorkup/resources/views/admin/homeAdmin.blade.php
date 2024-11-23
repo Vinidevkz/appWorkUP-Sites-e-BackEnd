@@ -68,45 +68,70 @@ input[type="file"] {
         <div class="mb-2 mt-2 d-flex flex-row align-items-center">
 <h5 class="m-0">Olá, {{ $nomeAdmin }}! </h3>
         </div>
-        <div class="row d-flex justify-content-between">
-          <div class="col-3">
-            <div class="card rounded card-data-job shadow-sm">
-              <div class="card-header bg-light centralizar-dados d-flex  align-items-center flex-row">
-              <span class="material-symbols-outlined">
-                badge
-              </span>
-              <p class="text-black m-0">Vagas no sistema</p>
-              </div>
-              <div class="card-body d-flex justify-content-center">
-              <h2 class="text-black">{{ $totalRegistrosVaga }}</h2>
-              </div>
-            </div>
 
-          </div>
+        <div class="row d-flex justify-content-between">
+
+        <div class="col-3">
+           
+           <div class="card rounded card-data-job shadow-sm d-flex align-items-center justify-content-center">
+               
+               <div class="row mt-3 d-flex align-items-center">
+               <div class="col-7 p-0">
+               <i class="bi bi-card-list fs-1"></i>               </div>
+                 <div class="col"></div>
+                 <div class="col-3">
+                   <div class="row">
+                     <div class="col-2">
+                       <div class="d-flex flex-column  align-items-center">
+                         <h6 class="size-txt fw-light">Vagas</h6>
+                         <p class="fs-4 fw-medium">{{$totalRegistrosVaga}}</p>
+                       </div>
+                     </div>                 
+                    </div>
+                 </div>
+               </div>
+             </div>
+           </div>
           <div class="col-3">
-            <div class="  card rounded card-data-user shadow-sm ">
-              <div class="card-header bg-light centralizar-dados d-flex  align-items-center flex-row">
-              <span class="material-symbols-outlined">
-bar_chart
-</span>
-                <p class="text-black m-0">Usuários no sistema</p>
-              </div>
-              <div class="card-body d-flex justify-content-center">
-              <h2 class="text-black">{{ $totalRegistrosUsuario }}</h2>
+           
+          <div class="card rounded card-data-job shadow-sm d-flex align-items-center justify-content-center">
+              
+              <div class="row mt-3 d-flex align-items-center">
+              <div class="col-7 p-0">
+              <i class="bi bi-people fs-1"></i>                </div>
+                <div class="col"></div>
+                <div class="col-3">
+                  <div class="row">
+                    <div class="col-2">
+                      <div class="d-flex flex-column  align-items-center">
+                        <h6 class="size-txt fw-light">Usuários</h6>
+                        <p class="fs-4 fw-medium">{{$totalRegistrosUsuario}}</p>
+                      </div>
+                    </div>                 
+                   </div>
+                </div>
               </div>
             </div>
           </div>
           <div class="col-3">
-            <div class=" card rounded card-data-company shadow-sm ">
-              <div class=" card-header bg-light centralizar-dados d-flex  align-items-center flex-row">
-              <span class="material-symbols-outlined">
-location_city
-</span>
-                <p class="text-black m-0">Empresas no sistema</p>
+          <div class="card rounded card-data-job shadow-sm d-flex align-items-center justify-content-center">
+              
+              <div class="row mt-3 d-flex align-items-center">
+              <div class="col-7 p-0">
+              <i class="bi bi-buildings fs-1"></i>                </div>
+                <div class="col"></div>
+                <div class="col-3">
+                  <div class="row">
+                    <div class="col-2">
+                      <div class="d-flex flex-column  align-items-center">
+                        <h6 class="size-txt fw-light">Empresas</h6>
+                        <p class="fs-4 fw-medium">{{$totalRegistrosEmpresa}}</p>
+                      </div>
+                    </div>                 
+                   </div>
+                </div>
               </div>
-              <div class="card-body d-flex justify-content-center">
-              <h2 class="text-black">{{ $totalRegistrosEmpresa }}</h2>
-              </div>
+
             </div>
 
           </div>
@@ -198,6 +223,7 @@ location_city
     </div>
   </div>
   </div>
+  
      <!-- Modal -->
      <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg">

@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chat</title>
     <link rel="stylesheet" href="{{ url('assets/css/style-mensagem.css') }}">
+    <link rel="stylesheet" href="{{url('../assets/css/estilo-padrao-workup.css')}}">
+
     <link rel="stylesheet" href="{{ url('../assets/css/dashboardEmpresa.css') }}">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
@@ -189,12 +191,12 @@
 
                 <div class="messages-container">
     @if($mensagens->count() > 0)
-        @foreach ($mensagens->reverse() as $mensagem)
+        @foreach ($mensagens as $mensagem)
             <div class="message {{ $mensagem->tipoEmissor === 'Empresa' ? 'empresa' : 'usuario' }}">
                 <div class="message-bubble">
                     <p>{{ $mensagem->mensagem }}</p>
+                    <small class="text-muted">{{ \Carbon\Carbon::parse($mensagem->created_at)->format('d/m/Y H:i') }}</small>
                 </div>
-                <small class="text-muted">{{ \Carbon\Carbon::parse($mensagem->created_at)->format('d/m/Y H:i') }}</small>
             </div>
         @endforeach
     @else

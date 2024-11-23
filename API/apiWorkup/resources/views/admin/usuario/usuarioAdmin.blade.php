@@ -35,14 +35,53 @@ person
     <div class="container md-4 mt-3">
 
 
-      <div class="tabela-container" style="max-height: 700px; overflow-y: auto; overflow-x: hidden;">
-        <div class="search-container mt-3">
-          <span class="material-symbols-outlined search-icon">search</span>
-          <input type="text" id="searchInput" placeholder="Buscar...">
-        </div>
 
-        <table class="table align-middle  mb-0  table-striped m-0 table-user bg-white table-hover" id="myTable">
-        <thead class="bg-light">
+    <div class="filtro-container">
+   <h2>Filtros</h2>
+
+   
+  
+   <div class="row d-flex align-items-center">
+    <input type="text" placeholder="Buscar por nome..." id="searchInput2" class="col-6"> 
+
+
+    <div class="dropdown m-2 p-0 col-1"> 
+      <a class="oo  d-flex align-items-center justify-content-center" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+         <i class="bi bi-funnel text-black fs-4 fw-bold"></i> 
+   </a> 
+   <ul class="dropdown-menu" aria-labelledby="statusDropdown" id="statusFilterMenu"> 
+    <li><a class="dropdown-item" href="#" data-value="">Todos</a></li>
+     <li><a class="dropdown-item" href="#" data-value="Ativo">Ativo</a></li> 
+     <li><a class="dropdown-item" href="#" data-value="Pendente">Pendente</a></li>
+      <li><a class="dropdown-item" href="#" data-value="Bloqueado">Bloqueado</a></li> 
+    </ul>
+   </div>
+
+   <!-- <img src="{{ asset('assets/img/adminimages/undraw_learning_sketching_nd4f.svg') }}" alt="Imagem de Aprendizado" id="imagem-filtro" class="col-3"> -->
+   </div>
+
+
+
+    
+    </div>
+
+      <div class="tabela-container" style="max-height: 550px; overflow-y: auto; overflow-x: hidden;">
+
+<div class="alinhar">
+
+
+
+</div>
+
+
+
+
+
+
+
+
+        <table class="table" id="myTable">
+        <thead class="table-dark">
             <tr>
               <th class="fw-bold">Id</th>
               <th class="fw-bold">Usuário</th>
@@ -62,6 +101,9 @@ person
                 <div class="d-flex btn-acoes align-items-center">
                   <span class="material-symbols-outlined">keyboard_double_arrow_down</span>
                   <p class="m-0 fw-bold">Ações</p>
+                  
+
+
                 </div>
               </th>
             </tr>
@@ -69,12 +111,16 @@ person
           <tbody>
     @forelse($usuarios as $u) 
         <tr>
-            <td>{{ $u->idUsuario }}</td>
-            <td class="d-flex flex-row">
-                <div class="user-initials rounded-circle text-white d-flex justify-content-center align-items-center ms-3" style="width: 45px; height: 45px;">
+            <td class="p-3">{{ $u->idUsuario }}</td>
+            <td class="d-flex flex-row align-items-center">
+                <!-- <div class="user-initials rounded-circle text-white d-flex justify-content-center align-items-center ms-3" style="width: 45px; height: 45px;">
                     {{ strtoupper(substr($u->nomeUsuario, 0, 1)) }}{{ strtoupper(substr(explode(' ', $u->nomeUsuario)[1] ?? '', 0, 1)) }}
-                </div>  
-                <a href="#" class="visualizar-link mb-3" data-bs-toggle="modal" data-bs-target="#visualizarModal"
+                </div>   -->
+                <div class="d-flex modal-imagem justify-content-center">
+                <img src="{{$u->fotoUsuario}}" alt=""  width="50px" height="50px" class="rounded-pill">
+
+                </div>
+                <a href="#" class="visualizar-link m-0" data-bs-toggle="modal" data-bs-target="#visualizarModal"
        data-id="{{ $u->idUsuario }}"
        data-nome="{{ $u->nomeUsuario }}"
        data-username="{{ $u->usernameUsuario }}"
@@ -95,8 +141,8 @@ person
   
                 </a>
             </td>
-            <td>{{ $u->emailUsuario }}</td>
-            <td>
+            <td class="p-3">{{ $u->emailUsuario }}</td>
+            <td class="p-3">
                 <span class="badge rounded-pill d-inline 
                     @switch($u->status->tipoStatus)
                         @case('Ativo')
@@ -114,16 +160,16 @@ person
                     {{ $u->status->tipoStatus }}
                 </span>
             </td>
-            <td>
+            <td class="p-3">
                 <form action="{{ route('usuarios.delete', $u->idUsuario) }}" method="POST" class="d-inline">
                     @csrf
                     @method('DELETE')
-                    <button onclick="return confirm('Realmente deseja excluir esse usuário?')" type="submit" class="btn btn-outline-danger btn-sm"><span class="bi-trash-fill"></span> Bloquear</button>
+                    <button onclick="return confirm('Realmente deseja excluir esse usuário?')" type="submit" class="btn btn-outline-danger btn-sm"><span class="bi-slash-circle"></span></button>
                 </form>
                 <form action="{{ route('usuarios.aprovar', $u->idUsuario) }}" method="POST" class="d-inline">
                     @csrf
                     @method('POST')
-                    <button onclick="return confirm('Realmente deseja aprovar esse usuário?')" type="submit" class="btn btn-outline-success btn-sm"><span class="bi bi-check2"></span> Ativar</button>
+                    <button onclick="return confirm('Realmente deseja aprovar esse usuário?')" type="submit" class="btn btn-outline-success btn-sm"><span class="bi bi-check2"></span></button>
                 </form>
             </td>
         </tr>
@@ -144,7 +190,76 @@ person
   </div>
 </div>
 
+<!-- Modal -->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="staticBackdropLabel">Criar administrador</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+      <form method="POST" action="/formAdmin" enctype="multipart/form-data" class="">
+@csrf
 
+  <div class="row mb-3">
+
+  @error('nomeAdmin')
+                                <div class="error-message">{{ $message }}</div>
+                                @enderror
+    <div class="form-group col-md-4 form__group field">
+      <label for="inputEmail4" class="form_label">Nome do administrador</label>
+      <input type="text" class="form-control custom-input" id="inputEmail4" placeholder="Nome do ADM" name="nomeAdmin" value="{{ old('nomeAdmin') }}" required>
+    </div>
+
+    @error('usernameAdmin')
+                                <div class="error-message">{{ $message }}</div>
+                                @enderror
+    <div class="form-group col-md-4 form__group field ">
+    <label for="inputAddress" class="form_label">Nome de usuário</label>
+    <input type="text" class="form-control custom-input" id="inputAddress" placeholder="nome.sobrenome" value="{{ old('usernameAdmin') }}"  name="usernameAdmin" required>
+  </div>
+
+
+  @error('senhaAdmin')
+                                <div class="error-message">{{ $message }}</div>
+                                @enderror
+  <div class="form-group col-md-4 form__group field">
+      <label for="inputPassword4" class="form_label">Senha</label>
+      <input type="password" class="form-control  custom-input" id="inputPassword4" placeholder="Senha" value="{{ old('senhaAdmin') }}"  name="senhaAdmin" required>
+    </div>
+
+  </div>
+
+
+ <div class="row mb-3">
+
+ @error('emailAdmin')
+                                <div class="error-message">{{ $message }}</div>
+                                @enderror
+  <div class="form-group col-md-5 form__group field">
+    <label for="inputAddress2" class="form__label">E-mail</label>
+    <input type="email" class="form-control custom-input" id="inputAddress2" name="emailAdmin" placeholder="email" value="{{ old('emailAdmin') }}">
+  </div>
+
+ 
+  
+  @error('contatoAdmin')
+                                <div class="error-message">{{ $message }}</div>
+                                @enderror
+    <div class="form-group col-md-3 form__group field">
+      <label for="inputCity" class="form__label" class="">Contato</label>
+      <input type="number" class="form-control custom-input custom-input" id="inputPhone" name="contatoAdmin" value="{{ old('contatoAdmin') }}" placeholder="(00) 0000-0000" required>
+
+  </div>
+
+<div class="form-group col-md-4 mb-3">
+  <label for="fotoAdmin">Imagem do administrador</label>
+  <input type="file" name="fotoAdmin" id="fotoAdmin" class="form-control custom-input" accept="image/*" />
+  <label for="fotoAdmin" class="custom-file-label"></label>
+</div>
+
+    </div>
 <!-- Modal -->
 <div class="modal" id="visualizarModal" tabindex="-1" aria-labelledby="visualizarModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-lg">
@@ -287,7 +402,7 @@ sidebarlinks.forEach(link => {
 })
 
   // Adiciona um evento de entrada ao campo de busca
-  document.getElementById('searchInput').addEventListener('input', function() {
+  document.getElementById('searchInput2').addEventListener('input', function() {
     const filter = this.value.toLowerCase(); // Valor digitado na barra de busca
     const rows = document.querySelectorAll('#myTable tbody tr'); // Todas as linhas da tabela
     let visibleRows = 0; // Contador de linhas visíveis
@@ -352,6 +467,40 @@ sidebarlinks.forEach(link => {
     });
   });
 </script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const dropdownItems = document.querySelectorAll("#statusFilterMenu .dropdown-item");
+        const tableRows = document.querySelectorAll("#myTable tbody tr");
+        const clearButton = document.getElementById("clearFilters");
+
+        dropdownItems.forEach(item => {
+            item.addEventListener("click", function (e) {
+                e.preventDefault(); // Evita o redirecionamento padrão
+                const selectedStatus = this.getAttribute("data-value");
+
+                // Filtrar as linhas
+                tableRows.forEach(row => {
+                    const statusCell = row.querySelector("td:nth-child(4) .badge");
+                    if (!statusCell) return;
+
+                    const status = statusCell.textContent.trim();
+                    row.style.display = selectedStatus === "" || status === selectedStatus ? "" : "none";
+                });
+
+                // Atualizar o texto do botão dropdown
+                const dropdownButton = document.getElementById("statusDropdown");
+                dropdownButton.textContent = this.textContent;
+            });
+        });
+
+        // Botão de limpar filtros
+        clearButton.addEventListener("click", function () {
+            tableRows.forEach(row => row.style.display = ""); // Mostra todas as linhas
+            document.getElementById("statusDropdown").textContent = "Selecione o Status";
+        });
+    });
+</script>
+
 
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>

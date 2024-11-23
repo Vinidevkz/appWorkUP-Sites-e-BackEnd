@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{url('../assets/css/style-candidatos.css')}}">
     <link rel="stylesheet" href="{{url('assets/css/estilo-padrao-workup.css')}}">
+    <link rel="stylesheet" href="{{url('../assets/css/dashboardEmpresa.css')}}">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
@@ -31,7 +32,15 @@
 
         <div class="box-candidatos row">
 
+        @if (session('success'))
+            <div class="alert alert-success" id="success-alert">
+                {{ session('success') }}
+            </div>
+        @endif
+
             @foreach($candidatos as $candidato)
+
+            @if($candidato->status->idStatusVagaUsuario === 1)
 
                 <div class="col">
 
@@ -65,7 +74,7 @@
                                                     </div>
                                                     <div class="d-flex flex-column sub-candidato">
                                                         <p>{{ $candidato->usuario->emailUsuario }}</p>
-                                                        <p>Nasceu em:{{ $candidato->usuario->nascUsuario }}</p>
+                                                        <p>Nasceu em:   {{ \Carbon\Carbon::parse($candidato->usuario->nascUsuario)->format('d/m/Y') }}</p>
                                                     </div>
                                                 </div>
                                             </div>
@@ -102,7 +111,7 @@
                                                         <div class="col">
                                                             <h6>Término:</h6>
                                                             
-                                                            <p>{{ $candidato->usuario->dataFormacaoCompetenciaUsuario }}</p>
+                                                            <p>{{ \Carbon\Carbon::parse($candidato->usuario->dataFormacaoCompetenciaUsuario)->format('d/m/Y') }}</p>
                                                         </div>                           
                                                     </div>                                        
                                                 </div>                                         
@@ -237,6 +246,8 @@
                         </div>
                     </div>
                 </div>
+
+                @endif
             @endforeach
         </div>
 
@@ -253,6 +264,18 @@
         const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
     </script>
 
+<script>
+    // Define o tempo em milissegundos (exemplo: 3000 ms = 3 segundos)
+    setTimeout(function() {
+        // Seleciona o elemento do alerta e o esconde
+        const alert = document.getElementById('success-alert');
+            if (alert) {
+                alert.style.transition = "opacity 0.5s ease";
+                alert.style.opacity = "0";  // Faz o alerta desaparecer suavemente
+                setTimeout(() => alert.remove(), 500); // Remove o alerta do DOM após a transição
+            }
+        }, 2500); // Tempo de exibição do alerta em milissegundos
+    </script>
 </body>
 
 </html>

@@ -5,6 +5,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="{{url('assets/img/adminImages/WU-icon.png')}}" type="image/x-icon">
+    <link rel="stylesheet" href="{{url('../assets/css/estilo-padrao-workup.css')}}">
+
     <link rel="icon" href="/img/icons/android-chrome-192x192.png" type="image/x-icon">
     <title>WorkUP | Home</title>
 
@@ -25,7 +27,7 @@
 
 </head>
 
-<body class="d-flex flex-column min-vh-100"> 
+<body class="d-flex flex-column min-vh-100">
 
     <!-- Sidebar -->
     <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasSidebar">
@@ -55,9 +57,9 @@
 
         <!-- Cabeçalho -->
         <header class="quemsomosf bg-dark py-4">
-            
+
             <div class="container px-5">
-                
+
                 <div class="row gx-5 align-items-center justify-content-center">
                     <div class="col-lg-6 col-xl-5">
                         <div class="my-4 text-center text-lg-start">
@@ -82,120 +84,159 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-xl-5 col-xxl-6 d-none d-xl-block text-center">
-                        <div id="carouselExampleSlidesOnly" class="carousel" data-bs-ride="carousel">
-                            <div class="carousel-inner">
-                                <div class="carousel-item active">
-                                    <img class="img-fluid rounded-2 my-0" src="{{url('/assets/img/home/smart.png')}}" alt="imgHeader">
-                                </div>
-                                <div class="carousel-item">
-                                    <img class="img-fluid rounded-2 my-0" src="{{url('/assets/img/home/mkwup.png')}}" alt="imgHeader">
-                                </div>
-                            </div>
-                        </div>
+                    <div class="col-xl-5 col-xxl-4 d-none d-xl-block text-center">
+                        <img class="img-fluid rounded-4 my-0" src="{{url('/assets/img/home/mkwup.png')}}" alt="imgHeader">
                     </div>
-                </div>
-            </div>
         </header>
 
 
         <!-- Funções -->
         <section class="funcoes py-4">
-    <div class="container">
-        <h3 class="titulo-secao text-center mb-4">Aqui você pode:</h3>
-        <div class="row">
-            <div class="col-lg-6 col-md-6 col-sm-12 mb-4">
-                <div class="card-funcoes p-3 h-100">
-                    <div class="header-card-funcoes d-flex align-items-center mb-3">
-                        <i class="fa-solid fa-note-sticky me-2" style="color: #20dd77;"></i>
-                        <h4>Publicar vagas</h4>
-                    </div>
-                    <div class="body-card-funcoes">
-                        <p>O nosso foco é a publicação de vagas, sendo essa a função principal dessa página. As vagas podem ser editadas e removidas posteriormente.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-6 col-md-6 col-sm-12 mb-4">
-                <div class="card-funcoes p-3 h-100">
-                    <div class="header-card-funcoes d-flex align-items-center mb-3">
-                        <i class="fa-solid fa-paper-plane me-2" style="color: #20dd77;"></i>
-                        <h4>Mensagens</h4>
-                    </div>
-                    <div class="body-card-funcoes">
-                        <p>Enviar menssagens aos candidatos de forma rapida e segura .</p>
+            <div class="container"></div>
+            <h3 class="titulo-secao text-center mb-4">Aqui você pode:</h3>
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 mb-4">
+                    <div class="card-funcoes p-3 h-100">
+                        <div class="header-card-funcoes d-flex align-items-center mb-3">
+                            <i class="fa-solid fa-note-sticky me-2" style="color: #20dd77;"></i>
+                            <h4>Publicar vagas</h4>
+                        </div>
+                        <div class="body-card-funcoes">
+                            <p>Nosso foco principal é a publicação de vagas, onde jovens podem utilizar o aplicativo WorkUp para se inscreverem. Esta é a principal função desta página. As vagas disponíveis podem ser editadas e removidas posteriormente, garantindo que sempre tenhamos oportunidades atualizadas e relevantes para nossos usuários. Acreditamos que, ao facilitar o processo de inscrição e gestão de vagas, estamos ajudando os jovens a encontrar oportunidades de emprego adequadas às suas habilidades e interesses, contribuindo para seu desenvolvimento profissional.</p>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-lg-6 col-md-6 col-sm-12 mb-4">
-                <div class="card-funcoes p-3 h-100">
-                    <div class="header-card-funcoes d-flex align-items-center mb-3">
-                        <i class="fa-solid fa-users me-2" style="color: #20dd77;"></i>
-                        <h4>Conhecer os jovens talentos</h4>
-                    </div>
-                    <div class="body-card-funcoes">
-                        <p>Aqui você pode conectar estudantes de diferentes áreas, promovendo a troca de conhecimento e networking.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-6 col-md-6 col-sm-12 mb-4">
-                <div class="card-funcoes p-3 h-100">
-                    <div class="header-card-funcoes d-flex align-items-center mb-3">
-                        <i class="fa-solid fa-briefcase me-2" style="color: #20dd77;"></i>
-                        <h4>Encontrar oportunidades</h4>
-                    </div>
-                    <div class="body-card-funcoes">
-                        <p>Além de publicar vagas, você também pode encontrar oportunidades de estágio e emprego na nossa plataforma.</p>
+                <div class="col-lg-12 col-md-12 col-sm-12 mb-4">
+                    <div class="card-funcoes p-3 h-100">
+                        <div class="header-card-funcoes d-flex align-items-center mb-3">
+                            <i class="fa-solid fa-paper-plane me-2" style="color: #20dd77;"></i>
+                            <h4>Mensagens</h4>
+                        </div>
+                        <div class="body-card-funcoes">
+                            <p>Nosso sistema não se limita apenas à publicação de vagas. Também oferecemos a funcionalidade de enviar mensagens para os candidatos de forma rápida e segura. Isso permite uma comunicação eficiente entre empregadores e candidatos, facilitando a troca de informações e o acompanhamento dos processos seletivos. Com essa ferramenta, os empregadores podem enviar atualizações, convites para entrevistas e feedbacks diretamente aos candidatos, tornando o processo de recrutamento mais ágil e transparente. Além disso, essa comunicação direta ajuda a manter os candidatos informados e engajados, aumentando a eficácia das contratações.</p>
+                        </div>
                     </div>
                 </div>
+                <div class="col-lg-12 col-md-12 col-sm-12 mb-4">
+                    <div class="card-funcoes p-3 h-100">
+                        <div class="header-card-funcoes d-flex align-items-center mb-3">
+                            <i class="fa-solid fa-users me-2" style="color: #20dd77;"></i>
+                            <h4>Compartilhe Conhecimento Profissional </h4>
+                        </div>
+                        <div class="body-card-funcoes">
+                            <p>Além da publicação de vagas e comunicação com candidatos, nossa plataforma também oferece a funcionalidade de fazer posts com informações de cunho profissional. Compartilhe conteúdos valiosos como cursos e bootcamps gratuitos para ajudar a comunidade a se desenvolver e crescer na carreira. Mantenha-se atualizado com as melhores oportunidades de aprendizado e capacitação profissional!</p>
+                        </div>
+                    </div>
+                </div>
+
             </div>
-        </div>
-    </div>
-</section>
+            </div>
+        </section>
 
     </main>
 
-    <!-- Rodapé -->
-    <footer class="footer bg-light mt-auto py-4">
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
-                <div class="single_footer">
-                    <h4>Receba Nossas Notícias</h4>
-                    <div class="signup_form">
-                        <form action="#" class="subscribe d-flex">
-                            <input type="text" class="form-control me-2" placeholder="Digite seu Email">
-                            <button type="button" class="btn btn-primary"><i class="fa-solid fa-envelope"></i></button>
-                        </form>
-                    </div>
-                    <div class="social_profile mt-3">
-                        <ul class="list-unstyled d-flex">
-                            <li class="me-3"><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                            <li class="me-3"><a href="#"><i class="fab fa-x"></i></a></li>
-                            <li class="me-3"><a href="#"><i class="fab fa-google"></i></a></li>
-                            <li class="me-3"><a href="#"><i class="fab fa-instagram"></i></a></li>
-                        </ul>
-                    </div>
-                </div>
+   
+    
+    <footer class="text-center text-lg-start text-dark" style="background-color: #ECEFF1">
+       
+        <section class="d-flex justify-content-between p-4 text-black" style="background-color: #20dd77">
+            
+            <div class="me-5">
+                <h5>Nos siga em nossas mídias sociais</h5>
             </div>
-            <div class="col-lg-4 col-md-6 col-sm-12 mb-4 text-center">
-                <img src="{{url('/assets/img/home/workuplogo.png')}}" alt="Logo Dynamo" style="max-width: 250px; margin-bottom: 10px;">
-                <h4>By Dynamo</h4>
-                <p>Projetos Parceiros</p>
-                <div class="d-flex justify-content-center">
-                    <div class="m-2">
-                        <img src="{{url('/assets/img/home/conectec.jpeg')}}" alt="Parceiro 1" class="rounded-circle" style="width: 50px; height: 50px;">
-                    </div>
-                    <div class="m-2">
-                        <img src="{{url('/assets/img/home/acheaqui.png')}}" alt="Parceiro 2" class="rounded-circle" style="width: 50px; height: 50px;">
-                    </div>
-                    <div class="m-2">
-                        <img src="{{url('/assets/img/home/helphouse.jpeg')}}" alt="Parceiro 3" class="rounded-circle" style="width: 50px; height: 50px;">
-                    </div>
-                </div>
+         
+            <div>
+                <a href="" class="text-white me-4">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+                <a href="" class="text-white me-4">
+                    <i class="fab fa-twitter"></i>
+                </a>
+                <a href="" class="text-white me-4">
+                    <i class="fab fa-google"></i>
+                </a>
+                <a href="" class="text-white me-4">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="" class="text-white me-4">
+                    <i class="fab fa-linkedin"></i>
+                </a>
+                <a href="" class="text-white me-4">
+                    <i class="fab fa-github"></i>
+                </a>
             </div>
+        </section>
+
+        <section class="">
+            <div class="container text-center text-md-start mt-5">
+
+                <div class="row mt-3">
+
+                    <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+                    
+                    <img class="logofooter mb-2" src="{{url('/assets/img/home/workuplogo.png')}}" alt="Logofooter" style="width: 200px; height: auto;"> 
+                    
+                        <p>
+                            Sua plataforma de conexão com jovens talentos, onde você pode publicar vagas, enviar mensagens e conhecer os jovens talentos.
+                        </p>
+                    </div>
+
+
+                    <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+
+                        <h6 class="text-uppercase fw-bold">Produtos</h6>
+                        <hr class="mb-4 mt-0 d-inline-block mx-auto" style="width: 60px; background-color: #7c4dff; height: 2px" />
+                        <p>
+                            <a href="#!" class="text-dark">Postagens</a>
+                        </p>
+                        <p>
+                            <a href="#!" class="text-dark">Usuarios</a>
+                        </p>
+                        <p>
+                            <a href="#!" class="text-dark">Empresas</a>
+                        </p>
+                       
+                    </div>
+
+
+                    <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+
+                        <h6 class="text-uppercase fw-bold">Projetos Parceiros</h6>
+                        <hr class="mb-4 mt-0 d-inline-block mx-auto" style="width: 60px; background-color: #7c4dff; height: 2px" />
+                        <p>
+                            <img src="{{url('/assets/img/home/conectec.jpeg')}}" alt="Sunset" class="logo-projeto" style="width: 100px; height: auto;">
+                        </p>
+                        <p>
+                            <img src="{{url('/assets/img/home/acheaqui.png')}}" alt="Cronos" class="logo-projeto" style="width: 100px; height: auto;">
+                        </p>
+                        <p>
+                            <img src="{{url('/assets/img/home/helphouse.jpeg')}}" alt="Seven" class="logo-projeto" style="width: 100px; height: auto;">
+                        </p>
+                        
+                    </div>
+
+
+                    <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+
+                        <h6 class="text-uppercase fw-bold">Contate-nos</h6>
+                        <hr class="mb-4 mt-0 d-inline-block mx-auto" style="width: 60px; background-color: #7c4dff; height: 2px" />
+                        <p><i class="fas fa-home mr-3"></i> São Paulo, SP, BR</p>
+                        <p><i class="fas fa-envelope mr-3"></i> workup@gmail.com</p>
+                        <p><i class="fas fa-phone mr-3"></i> 55 (11) 1234-56789</p>
+                        <p><i class="fas fa-print mr-3"></i> 55 (11) 1234-56789</p>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+
+        <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2)">
+            © 2024 by WorkUP. All rights reserved.
         </div>
-    </div>
-</footer>
+    </footer>
+ 
 
 
 
