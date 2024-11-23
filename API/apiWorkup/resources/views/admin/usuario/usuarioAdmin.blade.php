@@ -35,27 +35,50 @@ person
     <div class="container md-4 mt-3">
 
 
+
+    <div class="filtro-container">
+   <h2>Filtros</h2>
+
+   <div class="d-flex ">
+  
+   <div class="row d-flex align-items-center">
+    <input type="text" placeholder="Buscar por nome..." id="searchInput2" class="col-4"> 
+
+
+    <div class="dropdown m-2 p-0 col-1"> 
+      <a class="oo  d-flex align-items-center justify-content-center" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+         <i class="bi bi-funnel text-black fs-4 fw-bold"></i> 
+   </a> 
+   <ul class="dropdown-menu" aria-labelledby="statusDropdown" id="statusFilterMenu"> 
+    <li><a class="dropdown-item" href="#" data-value="">Todos</a></li>
+     <li><a class="dropdown-item" href="#" data-value="Ativo">Ativo</a></li> 
+     <li><a class="dropdown-item" href="#" data-value="Pendente">Pendente</a></li>
+      <li><a class="dropdown-item" href="#" data-value="Bloqueado">Bloqueado</a></li> 
+    </ul>
+   </div>
+
+  <div class="col-6 p-0"></div>
+   <img src="{{ asset('assets/img/adminimages/undraw_learning_sketching_nd4f.svg') }}" alt="Imagem de Aprendizado" id="imagem-filtro" class="col-2">
+   <div class="col-0 p-0"></div>
+   </div>
+    </div>
+
+
+    
+    </div>
+
       <div class="tabela-container" style="max-height: 550px; overflow-y: auto; overflow-x: hidden;">
 
 <div class="alinhar">
-<div class="search-container-2 mt-3 " >
-          <span class="material-symbols-outlined search-icon2 ">search</span>
-          <input type="text" id="searchInput2" placeholder="Buscar..." class="text-black">
-        </div>
 
-        <div class="dropdown m-2">
-                  <a class="oo border border-black d-flex align-items-center justify-content-center" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-  <i class="bi bi-funnel text-black fs-5 fw-bold"></i>
-  <p class="m-0 text-black ">Filtrar</p>
-  </a>
-                        <ul class="dropdown-menu" aria-labelledby="statusDropdown" id="statusFilterMenu">
-                            <li><a class="dropdown-item" href="#" data-value="">Todos</a></li>
-                            <li><a class="dropdown-item" href="#" data-value="Ativo">Ativo</a></li>
-                            <li><a class="dropdown-item" href="#" data-value="Pendente">Pendente</a></li>
-                            <li><a class="dropdown-item" href="#" data-value="Bloqueado">Bloqueado</a></li>
-                        </ul>
-                    </div>
+
+
 </div>
+
+
+
+
+
 
 
 
@@ -169,7 +192,76 @@ person
   </div>
 </div>
 
+<!-- Modal -->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="staticBackdropLabel">Criar administrador</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+      <form method="POST" action="/formAdmin" enctype="multipart/form-data" class="">
+@csrf
 
+  <div class="row mb-3">
+
+  @error('nomeAdmin')
+                                <div class="error-message">{{ $message }}</div>
+                                @enderror
+    <div class="form-group col-md-4 form__group field">
+      <label for="inputEmail4" class="form_label">Nome do administrador</label>
+      <input type="text" class="form-control custom-input" id="inputEmail4" placeholder="Nome do ADM" name="nomeAdmin" value="{{ old('nomeAdmin') }}" required>
+    </div>
+
+    @error('usernameAdmin')
+                                <div class="error-message">{{ $message }}</div>
+                                @enderror
+    <div class="form-group col-md-4 form__group field ">
+    <label for="inputAddress" class="form_label">Nome de usuário</label>
+    <input type="text" class="form-control custom-input" id="inputAddress" placeholder="nome.sobrenome" value="{{ old('usernameAdmin') }}"  name="usernameAdmin" required>
+  </div>
+
+
+  @error('senhaAdmin')
+                                <div class="error-message">{{ $message }}</div>
+                                @enderror
+  <div class="form-group col-md-4 form__group field">
+      <label for="inputPassword4" class="form_label">Senha</label>
+      <input type="password" class="form-control  custom-input" id="inputPassword4" placeholder="Senha" value="{{ old('senhaAdmin') }}"  name="senhaAdmin" required>
+    </div>
+
+  </div>
+
+
+ <div class="row mb-3">
+
+ @error('emailAdmin')
+                                <div class="error-message">{{ $message }}</div>
+                                @enderror
+  <div class="form-group col-md-5 form__group field">
+    <label for="inputAddress2" class="form__label">E-mail</label>
+    <input type="email" class="form-control custom-input" id="inputAddress2" name="emailAdmin" placeholder="email" value="{{ old('emailAdmin') }}">
+  </div>
+
+ 
+  
+  @error('contatoAdmin')
+                                <div class="error-message">{{ $message }}</div>
+                                @enderror
+    <div class="form-group col-md-3 form__group field">
+      <label for="inputCity" class="form__label" class="">Contato</label>
+      <input type="number" class="form-control custom-input custom-input" id="inputPhone" name="contatoAdmin" value="{{ old('contatoAdmin') }}" placeholder="(00) 0000-0000" required>
+
+  </div>
+
+<div class="form-group col-md-4 mb-3">
+  <label for="fotoAdmin">Imagem do administrador</label>
+  <input type="file" name="fotoAdmin" id="fotoAdmin" class="form-control custom-input" accept="image/*" />
+  <label for="fotoAdmin" class="custom-file-label"></label>
+</div>
+
+    </div>
 <!-- Modal -->
 <div class="modal" id="visualizarModal" tabindex="-1" aria-labelledby="visualizarModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-lg">
