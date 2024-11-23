@@ -37,15 +37,7 @@
 </div>
 
 
-<div class="toast" role="alert" aria-live="assertive" aria-atomic="true">
-  <div class="toast-body">
-    Hello, world! This is a toast message.
-    <div class="mt-2 pt-2 border-top">
-      <button type="button" class="btn btn-primary btn-sm">Take action</button>
-      <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="toast">Close</button>
-    </div>
-  </div>
-</div>
+
 
 @forelse($denuncias as $denuncia)
 <div class="alert alert-dark" role="alert">
@@ -69,7 +61,11 @@
 
 
 <div class="row">
-  <div class="col-9"></div>
+  <div class="col-5">
+  <i class="bi bi-info-circle fs-6 pe-2 text-danger fw-bold" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal"></i>
+
+  </div>
+  <div class="col-4"></div>
   <div class="col-1">
   <button type="button" class="btn btn-danger">Danger</button>
   </div>
@@ -77,6 +73,7 @@
   <button type="button" class="btn btn-primary">Primary</button>
   </div>
 </div>
+
 
 </div>
 @empty
@@ -114,7 +111,6 @@
              
           
                   <td class="p-0">
-                    <i class="bi bi-info-circle fs-6 pe-2 text-warning" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal"></i>
           
                     <!-- Modal -->
                     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -130,15 +126,9 @@
                             <p class="">
                               Esta seção é dedicada ao monitoramento de denúncias de usuários. Aqui, você pode visualizar os relatos de comportamentos inadequados ou abusivos dentro da plataforma. É fundamental que todas as denúncias sejam tratadas com seriedade e imparcialidade.
                             </p>
-                              <p><span class="fw-bold">Denunciado:</span> {{ $denuncia->usuario->nomeUsuario }}</p>
-                             <p>Motivo da denúncia: {{$denuncia->motivo}}</p>
+                             
                           </div>
-                          <div class="modal-footer">
-                          <a href="mailto:?subject=Advertência%20de%20comportamento inadequado&body=Este é um e-mail automárico da empresa: WorkUp%20%20por favor, não responda.">
-    <button type="button" class="btn btn-outline-primary">Advertência</button>
-</a>
-                            <button type="button" class="btn btn-outline-danger">Tomar ação</button>
-                          </div>
+                      
                         </div>
                       </div>
                     </div>
@@ -166,7 +156,10 @@
             </div>
       </div>
     </div>
+    
   </div>
+
+
 
 </div>
 
