@@ -55,12 +55,34 @@ person
       </div>
       <div>
 
+      <div class="filtro-container">
+   <h2>Filtros</h2>
+
+   
+  
+   <div class="row d-flex align-items-center">
+    <input type="text" placeholder="Buscar por nome..." id="searchInput" class="col-6"> 
+
+
+    <div class="dropdown m-2 p-0 col-1"> 
+      <a class="oo  d-flex align-items-center justify-content-center" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+         <i class="bi bi-funnel text-black fs-4 fw-bold"></i> 
+   </a> 
+   <ul class="dropdown-menu" aria-labelledby="statusDropdown" id="statusFilterMenu"> 
+    <li><a class="dropdown-item" href="#" data-value="">Todos</a></li>
+     <li><a class="dropdown-item" href="#" data-value="Ativo">Ativo</a></li> 
+     <li><a class="dropdown-item" href="#" data-value="Pendente">Pendente</a></li>
+      <li><a class="dropdown-item" href="#" data-value="Bloqueado">Bloqueado</a></li> 
+    </ul>
+   </div>
+
+   <!-- <img src="{{ asset('assets/img/adminimages/undraw_learning_sketching_nd4f.svg') }}" alt="Imagem de Aprendizado" id="imagem-filtro" class="col-3"> -->
+   </div>
+</div>
     <div class="tabela-container" style="max-height: 550px; overflow-y: auto; overflow-x: hidden;">
 
-    <div class="search-container mt-3" width="5%" id="size-busca">
-          <span class="material-symbols-outlined search-icon">search</span>
-          <input type="text" id="searchInput" placeholder="Buscar...">
-        </div>
+  
+
 
 
         <table class="table" id="myTable">

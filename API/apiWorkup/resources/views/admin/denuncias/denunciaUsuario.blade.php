@@ -15,20 +15,74 @@
 
 <body>
 
-
+<div class="toast align-items-center text-bg-primary border-0" role="alert" aria-live="assertive" aria-atomic="true">
+  <div class="d-flex">
+    <div class="toast-body">
+      Hello, world! This is a toast message.
+    </div>
+    <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+  </div>
+</div>
 <div class="row">
+
 @include('components.asideAdmin')
-            </aside>
+    
   <div class="col-9 mt-4">
     <div class="container md-4 mt-3">
 
       <div class="d-flex  align-items-center">
 <h5 class="p-0 m-0 ">Usuários denunciados</h5>
 <i class="bi bi-ban ms-2 text-danger fs-4"></i>
+
 </div>
 
-<div class="">
-<div class="">
+
+<div class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+  <div class="toast-body">
+    Hello, world! This is a toast message.
+    <div class="mt-2 pt-2 border-top">
+      <button type="button" class="btn btn-primary btn-sm">Take action</button>
+      <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="toast">Close</button>
+    </div>
+  </div>
+</div>
+
+@forelse($denuncias as $denuncia)
+<div class="alert alert-dark" role="alert">
+
+
+  <div class="row">
+    <div class="col-2">
+      <p>{{ $denuncia->usuario->nomeUsuario }}</p>
+    </div>
+    <div class="col-8"></div>
+    <div class="col-2">
+      <p>{{ $denuncia->created_at }}</p>
+    </div>
+  </div>
+
+<div class="row">
+  <div class="col">
+    <p>{{$denuncia->motivo}}</p>
+  </div>
+</div>
+
+
+<div class="row">
+  <div class="col-9"></div>
+  <div class="col-1">
+  <button type="button" class="btn btn-danger">Danger</button>
+  </div>
+  <div class="col-1 ps-4">
+  <button type="button" class="btn btn-primary">Primary</button>
+  </div>
+</div>
+
+</div>
+@empty
+@endforelse
+
+
 <table class="table table-hover  text-center align-middle">
           <thead class="table-light rounded-top">
             <tr>
@@ -113,6 +167,7 @@
       </div>
     </div>
   </div>
+
 </div>
 
 <script>

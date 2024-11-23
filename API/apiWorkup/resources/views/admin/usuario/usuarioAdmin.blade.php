@@ -39,10 +39,10 @@ person
     <div class="filtro-container">
    <h2>Filtros</h2>
 
-   <div class="d-flex ">
+   
   
    <div class="row d-flex align-items-center">
-    <input type="text" placeholder="Buscar por nome..." id="searchInput2" class="col-4"> 
+    <input type="text" placeholder="Buscar por nome..." id="searchInput2" class="col-6"> 
 
 
     <div class="dropdown m-2 p-0 col-1"> 
@@ -57,11 +57,9 @@ person
     </ul>
    </div>
 
-  <div class="col-6 p-0"></div>
-   <img src="{{ asset('assets/img/adminimages/undraw_learning_sketching_nd4f.svg') }}" alt="Imagem de Aprendizado" id="imagem-filtro" class="col-2">
-   <div class="col-0 p-0"></div>
+   <!-- <img src="{{ asset('assets/img/adminimages/undraw_learning_sketching_nd4f.svg') }}" alt="Imagem de Aprendizado" id="imagem-filtro" class="col-3"> -->
    </div>
-    </div>
+
 
 
     

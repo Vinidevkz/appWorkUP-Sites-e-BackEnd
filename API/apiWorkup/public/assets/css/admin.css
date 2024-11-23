@@ -376,24 +376,12 @@ table{
 }
 
 #searchInput2 {
-width: 200px;
+width: 300px;
 height: 50px;
 }
 
-#searchInput {
-  width: 25%;
-  padding: 2px 40px 1px 30px; /* Espaço para o ícone */
-  box-sizing: border-box; /* Para incluir o padding na largura total */
-  border: none;
-  border: 1px solid black;
-  border-radius: 20px;
-  background-color: transparent;
-}
-#searchInput:hover{
 
-  border: 1px solid green;
-  
-}
+
 
 .search-icon {
   position: absolute;
@@ -590,28 +578,22 @@ table{
 .oo{
   text-decoration: none;
   padding: 2px;
+  background-color: #fff;
 }
 
 .filtro-container {
-  background-color: #3EB489; /* Vermelho Tomate */
+  background-image: url('../img/adminImages/banner3.png');/* Vermelho Tomate */
   padding: 20px;
   border-radius: 10px;
   color: white;
 }
 .filtro-container input {
-  margin: 5px;
+  margin: 7px;
   padding: 10px;
   border: none;
   border-radius: 5px;
 }
-.filtro-container button {
-  background-color: #228B22; /* Laranja Tangerina */
-  color: white;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-}
+
 .filtro-container button:hover {
   background-color: #228B22; /* Laranja Dourado */
 }
