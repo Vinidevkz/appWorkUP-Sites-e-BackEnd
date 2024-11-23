@@ -50,7 +50,6 @@
                 <tr class="blink" id="denuncia-{{ $denuncia->idDenunciaUsuario }}">
                   <td class="blink align-middle">{{ $denuncia->idDenunciaEmpresa }}</td>
                   <td class="align-middle">
-                  <!-- {{ route('denuncia.show', $denuncia->idDenunciaUsuario ) }} -->
                     <a href="#" class="text-black fw-bold">
                       {{ $denuncia->empresa->nomeEmpresa }}
                     </a>

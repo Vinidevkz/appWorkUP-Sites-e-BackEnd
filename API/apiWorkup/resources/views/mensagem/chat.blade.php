@@ -191,12 +191,12 @@
 
                 <div class="messages-container">
     @if($mensagens->count() > 0)
-        @foreach ($mensagens->reverse() as $mensagem)
+        @foreach ($mensagens as $mensagem)
             <div class="message {{ $mensagem->tipoEmissor === 'Empresa' ? 'empresa' : 'usuario' }}">
                 <div class="message-bubble">
                     <p>{{ $mensagem->mensagem }}</p>
+                    <small class="text-muted">{{ \Carbon\Carbon::parse($mensagem->created_at)->format('d/m/Y H:i') }}</small>
                 </div>
-                <small class="text-muted">{{ \Carbon\Carbon::parse($mensagem->created_at)->format('d/m/Y H:i') }}</small>
             </div>
         @endforeach
     @else
