@@ -115,7 +115,7 @@ Route::get('/escolas', [EscolasController::class, 'index']);
 Route::get('/minhasvagas/{userId}', [VagaUsuarioController::class, 'minhasVagas']);
 
 //API denuncia de empresa
-Route::get('/denunciaempresa', [DenunciaEmpresaController::class, 'store']);
+Route::post('/denunciaempresa', [DenunciaEmpresaController::class, 'store']);
 
 //API pegar vaga por area
 Route::get('/vagaporarea/{areaVaga}', [VagaController::class, 'verVagaPorArea']);
