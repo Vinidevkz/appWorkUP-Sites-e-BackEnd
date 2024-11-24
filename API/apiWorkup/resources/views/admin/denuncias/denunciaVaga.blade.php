@@ -15,51 +15,67 @@
 
 <body>
 
-
 <div class="row">
+
 @include('components.asideAdmin')
+    
 
+ 
+  <div class="col-7" style="max-height: 700px; overflow-y: auto; overflow-x: hidden;">
 
-  <div class="col-9 mt-4">
-    <div class="container md-4 mt-3">
-    <div class="d-flex  align-items-center">
-<h5 class="p-0 m-0 ">Vagas denunciados</h5>
+  <div class="container md-4 mt-3">
+
+<div class="d-flex  align-items-center">
+<h5 class="p-0 m-0 ">Vagas denunciadas</h5>
 <i class="bi bi-ban ms-2 text-danger fs-4"></i>
+
 </div>
 
 
-    <table class="table table-hover blink text-center align-middle">
-          <thead class="table-light rounded-top">
-            <tr class="">
-              <th class="fw-bold">Id</th>
-              <th class="fw-bold">Usuário</th>
-              <th>Data da denúncia</th>
-          
-              <th>
-                <div class="d-flex justify-content-center align-items-center">
-                  <span class="material-symbols-outlined">keyboard_double_arrow_down</span>
-                  <p class="m-0 fw-bold ms-1">Mais informações</p>
-                </div>
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-   
-              @forelse($denuncias as $denuncia)
-                <tr class="blink" id="denuncia-{{ $denuncia->idDenunciaUsuario }}">
-                  <td class="blink align-middle">{{ $denuncia->idDenunciaVaga }}</td>
-                  <td class="align-middle">
-               
-                    <a href="#" class="text-black fw-bold">
-                      {{ $denuncia->vaga->nomeVaga }}
-                    </a>
-                  </td>
-                  <td class="align-middle">{{ $denuncia->created_at }}</td>
-          
-          
-                  <td class="p-0">
-                    <i class="bi bi-info-circle fs-6 pe-2" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal"></i>
-          
+
+
+@forelse($denuncias as $denuncia)
+<div class="alert alert-tertiary border border-1 linhas-denuncia" role="alert" data-nome="{{ $denuncia->usuario->nomeUsuario }}">
+
+
+<div class="row ">
+<div class="col-3 fw-bold nome">
+<p>{{ $denuncia->vaga->nomeVaga }}</p>
+</div>
+<div class="col-6"></div>
+<div class="col-3 fw-medium">
+<p>{{ $denuncia->created_at }}</p>
+</div>
+</div>
+
+<div class="row">
+<div class="col ms-4">
+<p>{{$denuncia->motivo}}</p>
+</div>
+</div>
+
+
+<div class="row">
+<div class="col-5">
+<i class="bi bi-info-circle fs-6 pe-2 text-dark fw-bold" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal"></i>
+
+</div>
+<div class="col-3"></div>
+<div class="col-2">
+<button type="button" class="btn btn-danger btn-sm"><i class="bi bi-envelope-slash"></i>&nbsp;E-mail</button>
+</div>
+
+<div class="col-2 ps-1">
+<button type="button" class="btn btn-primary btn-sm"><i class="bi bi-trash3"></i>&nbsp;Descartar</button>
+</div>
+</div>
+
+
+</div>
+@empty
+@endforelse
+
+
                     <!-- Modal -->
                     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                       <div class="modal-dialog modal-dialog-centered">
@@ -74,77 +90,61 @@
                             <p class="">
                               Esta seção é dedicada ao monitoramento de denúncias de usuários. Aqui, você pode visualizar os relatos de comportamentos inadequados ou abusivos dentro da plataforma. É fundamental que todas as denúncias sejam tratadas com seriedade e imparcialidade.
                             </p>
-                              <p><span class="fw-bold">Denunciado:</span> {{ $denuncia->vaga->nomeUsuario }}</p>
-                             <p>Motivo da denúncia: {{$denuncia->motivo}}</p>
+                             
                           </div>
-                          <div class="modal-footer">
-                          <button type="button" class="btn btn-outline-primary">Conferir postagem</button>
-
-                          </div>
+                      
                         </div>
                       </div>
                     </div>
-          
-                    <form action="{{ route('usuarios.aprovar', $denuncia->usuario->idUsuario) }}" method="POST" class="d-inline">
-                      @csrf
-                      @method('POST')
-                   
-                    </form>
-                  </td>
-                </tr>
-              @empty
-                <tr>
-                  <td colspan="5" class="text-center align-middle">Nenhum usuário encontrado.</td>
-                </tr>
-              @endforelse
-          </tbody>
-        </table>
 
-        <div class="no-results" id="noResults">
-              <img src="{{url('assets/img/adminImages/not-found.png')}}" alt="">
-              <p>Nenhum registro encontrado.</p>
-            </div>
-      </div>
-    </div>
-  </div>
 </div>
 
-<script>
-  const sidebarlinks = document.querySelectorAll('.h6');
 
-  // Adicionando eventos
-  sidebarlinks.forEach(link => {
-    link.addEventListener('click', function() {
-      sidebarlinks.forEach(item => item.classList.remove('asisde-sidebar-active'));
-      this.classList.add('asisde-sidebar-active');
+  </div>
+  
+  <div class="col-3 mt-5 ">
+  <input type="text" placeholder="Buscar por nome..." id="searchInput2" class="col-6"> 
+
+  <div id="userInfo" class="mt-3 me-2"></div>
+  </div>
+
+  <script>
+  document.getElementById('searchInput2').addEventListener('input', function () {
+    const searchValue = this.value.toLowerCase();
+    const alerts = document.querySelectorAll('.linhas-denuncia');
+
+    alerts.forEach(alert => {
+      const userName = alert.getAttribute('data-nome').toLowerCase();
+      if (userName.includes(searchValue)) {
+        alert.style.display = ''; // Mostra o elemento
+      } else {
+        alert.style.display = 'none'; // Esconde o elemento
+      }
     });
   });
+</script>
 
-  // Adiciona um evento de entrada ao campo de busca
-  document.getElementById('searchInput').addEventListener('input', function() {
-    const filter = this.value.toLowerCase(); // Valor digitado na barra de busca
-    const rows = document.querySelectorAll('#myTable tbody tr'); // Todas as linhas da tabela
-    let visibleRows = 0; // Contador de linhas visíveis
-    const noResults = document.getElementById('noResults');
+<script>
+  document.getElementById('searchInput2').addEventListener('input', function () {
+    const searchValue = this.value.toLowerCase();
+    const alerts = document.querySelectorAll('.linhas-denuncia');
+    const userInfoContainer = document.getElementById('userInfo'); // Div para exibir as informações do usuário
 
-    // Itera por todas as linhas da tabela para verificar se devem ser exibidas ou ocultadas
-    rows.forEach(row => {
-      const textContent = row.textContent.toLowerCase();
-      if (textContent.includes(filter)) {
-        row.style.display = ''; // Exibe a linha
-        visibleRows++; // Incrementa o contador de linhas visíveis
-        
+    // Filtrar os alerts existentes
+    alerts.forEach(alert => {
+      const userName = alert.getAttribute('data-nome').toLowerCase();
+      if (userName.includes(searchValue)) {
+        alert.style.display = ''; // Mostra o elemento
       } else {
-        row.style.display = 'none'; // Oculta a linha
-         
-      }  
-      noResults.style.display = (visibleRows > 0) ? 'none' : 'block';
+        alert.style.display = 'none'; // Esconde o elemento
+      }
     });
-
 
 
   });
 </script>
+
+
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
 

@@ -15,17 +15,20 @@
 <body style="background-color: #f4f4f4;">
 
 @include('components.navbarDashboardEmpresa') 
+<div class="nav-footer">
+<a href="/empresa/dashboard"><i class="fa-solid fa-arrow-left"></i>Voltar</a>
 
-    <div class="nav-footer">
-        <a href="/empresa/dashboard"><i class="fa-solid fa-arrow-left"></i>Voltar</a>
+<form method="GET" action="{{ route('verVagaCadastrada', $vaga->idVaga) }}">
+  
         <ul>
-            <li>Pendentes</li>
-            <li>Aprovados</li>
-            <li>Negados</li>
-            <li>Denúncias</li>
+            <li><button type="submit" name="filtro" value="Todos" class="btn btn-link">Todos</button></li>
+            <li><button type="submit" name="filtro" value=1 class="btn btn-link">Pendentes</button></li>
+            <li><button type="submit" name="filtro" value=2 class="btn btn-link">Aprovados</button></li>
+            <li><button type="submit" name="filtro" value=3 class="btn btn-link">Reprovados</button></li>
+            <li><button type="submit" name="filtro" value="Denuncias" class="btn btn-link">Denúncias</button></li>
         </ul>
-    </div>
-
+    </form>
+</div>
     <section class="candidatos">
 
         <h4 style="font-size: 1.3rem; font-weight: 400;">Candidatos a vaga: {{ $vaga->nomeVaga }}</h4>
@@ -39,9 +42,40 @@
         @endif
 
             @foreach($candidatos as $candidato)
+            @if(request('filtro') == 'Denuncias')
+    <div class="col">
+        <div class="card-candidato">
+            <div style="display: flex; flex-direction: row; width: 40%; align-items: center;">
+                <div class="dados-candidato">
+                    <img src="{{$candidato->usuario->fotoUsuario}}" class="img-candidato">
+                    <div>
+                        <h5 class="text-truncate">{{$candidato->usuario->nomeUsuario}}</h5>
+                        <p>{{ $candidato->usuario->emailUsuario }}</p>
+                    </div>
+                </div>
 
-           
+                <p class="mx-4" style="color: #505050">{{ $candidato->status->tipoStatusVaga }}</p>
+                <button class="perfil" data-bs-toggle="modal" data-bs-target="#verdenuncia{{$candidato->usuario->idUsuario}}">
+                    Ver Denuncia
+                </button>
+            </div>
+        </div>
+    </div>
 
+    <div class="modal fade" id="verdenuncia{{$candidato->usuario->idUsuario}}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="aprovarModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content p-5" style="height:20rem">
+                @foreach($candidato->usuario->denuncias as $denuncia)  <!-- Acessando as denúncias do usuário -->
+                    <p>{{ $denuncia->motivo }}</p>
+                @endforeach
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Voltar</button>
+
+            </div>
+        </div>
+    </div>
+@endif
+
+@if(request('filtro') != 'Denuncias')
                 <div class="col">
 
                     <div class="card-candidato">
@@ -53,12 +87,12 @@
                                     <p>{{ $candidato->usuario->emailUsuario }}</p>
                                 </div>
                             </div>
-                            <button class="perfil" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                            <button class="perfil" data-bs-toggle="modal" data-bs-target="#verperfil{{$candidato->usuario->idUsuario}}">
                                 Ver perfil
                             </button>
 
                             <!-- Modal -->
-                            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                            <div class="modal fade" id="verperfil{{$candidato->usuario->idUsuario}}" tabindex="-1" aria-labelledby="exampleModalLabel"
                                 aria-hidden="true">
                                 <div class="modal-dialog">
                                     <div class="modal-content d-flex justify-content-center">
@@ -145,12 +179,12 @@
 
 
                                 <!-- Botão de Aprovação -->
-                            <button type="button" class="aprovar" data-bs-toggle="modal" data-bs-target="#aprovarModal">
+                            <button type="button" class="aprovar" data-bs-toggle="modal" data-bs-target="#aprovarModal{{$candidato->usuario->idUsuario}}">
                                 Aprovar <i class="fa-solid fa-check"></i>
                             </button>
 
                             <!-- Modal para Aprovação -->
-                            <div class="modal fade" id="aprovarModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="aprovarModalLabel" aria-hidden="true">
+                            <div class="modal fade" id="aprovarModal{{$candidato->usuario->idUsuario}}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="aprovarModalLabel" aria-hidden="true">
                                 <div class="modal-dialog">
                                     <div class="modal-content p-5" style="height:20rem">
                                         <div class="modal-aprovar">
@@ -184,12 +218,12 @@
                                                             
 
                             <!-- Botão de Negação -->
-                            <button type="button" class="negar" data-bs-toggle="modal" data-bs-target="#negarModal">
+                            <button type="button" class="negar" data-bs-toggle="modal" data-bs-target="#negarModal{{$candidato->usuario->idUsuario}}">
                                 Negar <i class="fa-solid fa-xmark"></i>
                             </button>
 
                             <!-- Modal para Negação -->
-                            <div class="modal fade" id="negarModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="negarModalLabel" aria-hidden="true">
+                            <div class="modal fade" id="negarModal{{$candidato->usuario->idUsuario}}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="negarModalLabel" aria-hidden="true">
                                 <div class="modal-dialog">
                                     <div class="modal-content p-5" style="height:20rem">
                                         <div class="modal-negar">
@@ -257,8 +291,8 @@
                         </div>
                     </div>
                 </div>
+                @endif
 
-                
             @endforeach
         </div>
 

@@ -42,6 +42,10 @@ class VagaUsuario extends Model
         return $this->belongsTo(Empresa::class, 'idEmpresa');
     }
 
+    public function denuncias() {
+        return $this->belongsTo(DenunciaUsuario::class, 'idUsuario');
+    }
+
 
 
 

@@ -119,7 +119,7 @@ person
                 <div class="d-flex modal-imagem justify-content-center">
                 <img src="{{$u->fotoUsuario}}" alt=""  width="50px" height="50px" class="rounded-pill">
 
-                </div>
+          </div>
                 <a href="#" class="visualizar-link m-0" data-bs-toggle="modal" data-bs-target="#visualizarModal"
        data-id="{{ $u->idUsuario }}"
        data-nome="{{ $u->nomeUsuario }}"
@@ -135,11 +135,12 @@ person
        data-sobre="{{ $u->sobreUsuario }}"
        data-formacao="{{ $u->formacaoCompetenciaUsuario }}"
        data-dataFormacao="{{ $u->dataFormacaoCompetenciaUsuario }}"
-       data-createdAt="{{ $u->created_at }}">
+       data-createdAt="{{ $u->created_at }}"
+       >
         {{ $u->nomeUsuario }}
     </a>
   
-                </a>
+              
             </td>
             <td class="p-3">{{ $u->emailUsuario }}</td>
             <td class="p-3">
@@ -355,7 +356,9 @@ person
 </div>
 
 
-
+</div>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
 <script>
   document.addEventListener('DOMContentLoaded', function() {
     const links = document.querySelectorAll('.visualizar-link');
@@ -431,13 +434,13 @@ sidebarlinks.forEach(link => {
     const links = document.querySelectorAll('.visualizar-link');
     links.forEach(link => {
       link.addEventListener('click', function(event) {
+        event.preventDefault();
         const id = link.getAttribute('data-id');
         const nome = link.getAttribute('data-nome');
         const username = link.getAttribute('data-username');
         const nasc = link.getAttribute('data-nasc');
         const email = link.getAttribute('data-email');
         const contato = link.getAttribute('data-contato');
-        const foto = link.getAttribute('data-foto');
         const cidade = link.getAttribute('data-cidade');
         const estado = link.getAttribute('data-estado');
         const logradouro = link.getAttribute('data-logradouro');
@@ -463,9 +466,12 @@ sidebarlinks.forEach(link => {
         document.getElementById('formacaoCompetenciaUsuario').textContent = formacao;
         document.getElementById('dataFormacaoCompetenciaUsuario').textContent = dataFormacao;
         document.getElementById('created_at').textContent = createdAt;
+
+        const modal = new bootstrap.Modal(document.getElementById('visualizarModal')); modal.show()
       });
     });
   });
+  
 </script>
 <script>
     document.addEventListener("DOMContentLoaded", function () {
@@ -501,9 +507,8 @@ sidebarlinks.forEach(link => {
     });
 </script>
 
+<script src="script.js"></script>
 
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
 
 </body>
 </html>
