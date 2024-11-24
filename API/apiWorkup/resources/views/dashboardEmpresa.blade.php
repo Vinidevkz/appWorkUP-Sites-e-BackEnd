@@ -226,8 +226,8 @@
                                                 </div>
                                             </div>
                                             <div class="d-flex flex-row" style="gap: 1rem">
-                                                <a href="{{ route('post.edit', $post->idpublicacao) }}" class="btn-vazado botao-padrao">Editar <i class="fa-solid fa-user"></i></a>
-                                                <form action="{{ route('post.destroy', $post->idpublicacao) }}" method="POST">
+                                                <a href="{{ route('post.edit', $post->idPublicacao) }}" class="btn-vazado botao-padrao">Editar <i class="fa-solid fa-user"></i></a>
+                                                <form action="{{ route('post.destroy', $post->idPublicacao) }}" method="POST">
                                                     @csrf
                                                     @method('DELETE')
                                                     <button type="submit" class="btn-vazado botao-padrao">

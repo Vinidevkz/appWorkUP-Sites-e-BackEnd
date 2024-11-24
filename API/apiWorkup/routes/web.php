@@ -181,7 +181,7 @@ Route::middleware('auth:empresa')->group(function(){
             Route::put('/posts/{id}', [PostController::class, 'update'])->name('posts.update');
 
             // Rota para excluir uma postagem
-            Route::delete('/posts/{id}', [PostController::class, 'destroy'])->name('posts.destroy');
+            Route::delete('/posts/{id}', [PostController::class, 'destroy'])->name('post.destroy');
                
 
                 
