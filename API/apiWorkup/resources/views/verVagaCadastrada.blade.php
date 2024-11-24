@@ -76,16 +76,16 @@
 @endif
 
 @if(request('filtro') != 'Denuncias')
+                <div class="col">
 
-            <div class="col">
-
-                <div class="card-candidato">
-                    <div style="display: flex; flex-direction: row; width: 40%; align-items: center;">
-                        <div class="dados-candidato">
-                            <img src="{{$candidato->usuario->fotoUsuario}}" class="img-candidato">
-                            <div>
-                                <h5 class="text-truncate">{{$candidato->usuario->nomeUsuario}}</h5>
-                                <p>{{ $candidato->usuario->emailUsuario }}</p>
+                    <div class="card-candidato">
+                        <div style="display: flex; flex-direction: row; width: 40%; align-items: center;">
+                            <div class="dados-candidato">
+                                <img src="{{$candidato->usuario->fotoUsuario}}" class="img-candidato">
+                                <div>
+                                    <h5 class="text-truncate">{{$candidato->usuario->nomeUsuario}}</h5>
+                                    <p>{{ $candidato->usuario->emailUsuario }}</p>
+                                </div>
                             </div>
                             <button class="perfil" data-bs-toggle="modal" data-bs-target="#verperfil{{$candidato->usuario->idUsuario}}">
                                 Ver perfil
@@ -166,76 +166,20 @@
                                 </div>
                             </div>
                             <p class="mx-4" style="color: #505050">{{ $candidato->status->tipoStatusVaga }}</p>
-
                         </div>
-                        <button class="perfil" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                            Ver perfil
-                        </button>
 
-                        <!-- Modal -->
-                        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                            <div class="modal-dialog">
-                                <div class="modal-content d-flex justify-content-center">
-                                    <div class="modal-candidato">
-                                        <img src="{{$candidato->usuario->fotoBanner}}" alt="" class="banner-modal">
-                                        <div class="d-flex header-modal">
-                                            <img src="{{$candidato->usuario->fotoUsuario}}" alt="" style="width: 100px; height: 100px; border-radius: 5rem; align-self: start;">
-                                            <div class="dados-modal">
-                                                <div style="margin-top: 1.5rem">
-                                                    <h5 class="w-100 text-break">{{ $candidato->usuario->nomeUsuario }}</h5>
-                                                    <h6 class="mb-0 align-self-center username" style="color: #6a6a6a">{{ $candidato->usuario->usernameUsuario }}</h6>
-                                                </div>
-                                                <div class="d-flex flex-column sub-candidato">
-                                                    <p>{{ $candidato->usuario->emailUsuario }}</p>
-                                                    <p>Nasceu em:   {{ \Carbon\Carbon::parse($candidato->usuario->nascUsuario)->format('d/m/Y') }}</p>
-                                                </div>
-                                            </div>
-                                        </div>
+                        <div class="opcoes-candidato">
+                            <div class="botoes-candidato">
 
-                                        <div class="conteudo-modal">
-                                            <div class="sobre">
-                                                <h5>Sobre mim:</h5>
-                                                <p style="font-size: 0.8rem">
-                                                    {{ $candidato->usuario->sobreUsuario }}
-                                                </p>
-                                            </div>
-                                            <div class="info-adicional">
-                                                <div class="row d-flex flex-column">
-                                                <div class="col">
-                                                        <h6>Contato:</h6>
-                                                        <p>{{ $candidato->usuario->contatoUsuario }}</p>
-                                                    </div>
-                                                    <div class="col">
-                                                        <h6>Escolaridade:</h6>
-                                                        <p>{{ $candidato->usuario->ensinoMedio }}</p>
-                                                    </div>
-                                                    <div class="col">
-                                                        <h6>Cidade:</h6>
-                                                        <p>{{ $candidato->usuario->cidadeUsuario }}</p>
-                                                    </div>
-                                                    <div class="col">
-                                                        <h6>Estado:</h6>
-                                                        <p>{{ $candidato->usuario->estadoUsuario }}</p>
-                                                    </div>
-                                                    <div class="col">
-                                                        <h6>Extra:</h6>
-                                                        <p>{{ $candidato->usuario->formacaoCompetenciaUsuario }}</p>
-                                                    </div>
-                                                    <div class="col">
-                                                        <h6>Término:</h6>
+                            <form action="{{ route('mensagem.index', ['idUsuario' => $candidato->idUsuario, $empresa->idEmpresa ]) }}" method="GET">
+    @csrf
+    <button class="mensagem" value="mensagem"><i class="fa-solid fa-comment"></i>Mensagem</button>
+</form>
 
-                                                        <p>{{ \Carbon\Carbon::parse($candidato->usuario->dataFormacaoCompetenciaUsuario)->format('d/m/Y') }}</p>
-                                                    </div>  
 
-                                                    <div class="col">
-                                                        <h6>Habilidade:</h6>
-                                                        <p>{{ $candidato->usuario->skillUsuario }}</p>
-                                                        <p>{{ $candidato->usuario->skill2Usuario }}</p>
-                                                        <p>{{ $candidato->usuario->skill3Usuario }}</p>
-                                                        <p>{{ $candidato->usuario->skill4Usuario }}</p>
-                                                        <p>{{ $candidato->usuario->skill5Usuario }}</p>
-                                                    </div>
 
+                                <!-- Botão de Aprovação -->
+                            <button type="button" class="aprovar" data-bs-toggle="modal" data-bs-target="#aprovarModal{{$candidato->usuario->idUsuario}}">
                                 Aprovar <i class="fa-solid fa-check"></i>
                             </button>
 
@@ -270,8 +214,13 @@
                                 </div>
                             </div>
 
+
+                                                            
+
                             <!-- Botão de Negação -->
                             <button type="button" class="negar" data-bs-toggle="modal" data-bs-target="#negarModal{{$candidato->usuario->idUsuario}}">
+                                Negar <i class="fa-solid fa-xmark"></i>
+                            </button>
 
                             <!-- Modal para Negação -->
                             <div class="modal fade" id="negarModal{{$candidato->usuario->idUsuario}}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="negarModalLabel" aria-hidden="true">
@@ -304,12 +253,48 @@
                                 </div>
                             </div>
 
+                            </div>
+                            <button class="denunciar" data-bs-toggle="modal" data-bs-placement="top" data-bs-target="#staticBackdrop">
+                                <i class="fa-solid fa-flag"></i>
+                            </button>
+
+                            <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content p-5" style="height:20rem">
+                                        <div class="modal-denuncia">
+                                            <h5>Denunciar candidato</h5>
+
+
+                                            <form action="{{ route('denunciar.store') }}" method="POST" class="denuncia-body">
+                                            @csrf
+                                            <input type="hidden" name="idUsuario" value="{{ $candidato->usuario->idUsuario }}">
+                    
+                                            <input type="hidden" name="idEmpresa" value="{{ $empresa->idEmpresa  }}"> <!-- Aqui estou assumindo que a empresa está autenticada com Auth -->
+
+
+                                            
+                                                <div class="denuncia-input">
+                                                    <label for="">Motivo:</label>
+                                                    <textarea name="motivo" id="motivo" placeholder="Detalhe o motivo da denúncia"></textarea>
+                                                </div>
+                                                <div class="denuncia-footer">
+                                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                                                    <input type="submit" value="Denunciar">
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
                         </div>
                     </div>
                 </div>
                 @endif
 
             @endforeach
+        </div>
 
     </section>
 
