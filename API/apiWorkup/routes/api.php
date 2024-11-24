@@ -67,6 +67,9 @@ Route::post('/vagaUsuario', [VagaUsuarioController::class,'store']);
 Route::delete('/vagaUsuario/{idVaga}/{idUsuario}', [VagaUsuarioController::class,'destroy']);
 //Verificar candidatura
 Route::get('/verificarCandidatura/{idUsuario}/{idVaga}', [VagaUsuarioController::class, 'verificarCandidatura']);
+//Atualizar Tags de Habilidades
+Route::put('/habilidades/{idUsuario}', [UsuarioController::class, 'editarTags']);
+
 
 
 //API'S VAGA
