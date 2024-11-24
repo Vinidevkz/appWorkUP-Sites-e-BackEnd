@@ -1,34 +1,140 @@
-@dd($posts)
+<!DOCTYPE html>
+<html lang="en">
 
-@if($posts->count() > 0)
-@dd($posts)
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{url('assets/css/style-criar-post.css')}}">
+    <link rel="stylesheet" href="{{url('assets/css/estilo-padrao-workup.css')}}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <title>Criar postagem</title>
+</head>
 
-    <div class="row">
-        @foreach($posts as $post)
-            @dd($post)  <!-- Verifique os dados de cada postagem -->
-            <div class="col-md-4 mb-3">
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title">Detalhe da Postagem</h5>
-                        <p class="card-text">{{ $post->detalhePublicacao ?? 'Sem descrição disponível' }}</p>
-                        <small class="text-muted">Postado em: {{ $post->created_at->format('d/m/Y H:i') }}</small>
-                        <div class="mt-3">
-                            <a href="{{ route('posts.edit', $post->idPublicacao) }}" class="btn btn-warning btn-sm">Editar</a>
+<body>
 
-                            <!-- Formulário de exclusão -->
-                            <form action="{{ route('posts.destroy', $post->idPublicacao) }}" method="POST" style="display:inline;">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" class="btn btn-danger btn-sm">Excluir</button>
-                            </form>
+    <section id="criar-post">
+
+    @include('components.navbarDashboardEmpresa')
+
+        <div class="box-criar-post">
+
+            @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+            @endif
+
+            <form class="wrap-criar-post row" action="{{ route('posts.update', $post->idPublicacao) }}" method="POST"
+                enctype="multipart/form-data">
+                @csrf
+                @method('PUT')
+                <h5>Editar post</h5>
+                <div class="col-6 h-75 d-flex">
+                    <div class="row-criar-post row d-flex flex-column justify-content-between w-100">
+                        <div class="col col-12">
+                            <label for="">Titulo:</label>
+                            <input class="input-padrao" type="text" id="tituloPublicacao" name="tituloPublicacao" value="{{ old('tituloPublicacao', $post->tituloPublicacao) }}"required></input>
+                        </div>
+                        <div class="col col-12">
+
+                            @if (Auth::guard('empresa')->check())
+                                @php
+                                    $empresa = Auth::guard('empresa')->user();
+                                @endphp
+                                <input class="input-padrao" type="hidden" name="idEmpresa" value="{{ $empresa->idEmpresa }}">
+                            @endif
+
+                            <label for="estadoVaga" class="form__label">Selecione a vaga relacionada com o post:</label>
+                            <select class="input-padrao" name="idVaga">
+                                <option value="">Nenhuma</option>
+                                @foreach($vagas as $vaga)
+                                    <option value="{{ $vaga->idVaga }}" {{ old('idaVaga') == $vaga->idaVaga ? 'selected' : '' }}>
+                                        {{ $vaga->nomeVaga }}
+                                        <!-- Supondo que há um campo nomeModalidade na tabela -->
+                                    </option>
+                                @endforeach
+                                <!-- Esta parte precisa ficar -->
+                            </select>
+                        </div>
+                        <div class="col col-12">
+                            <label for="detalhePublicacao" class="form-label">Detalhes da Publicação</label>
+                            <textarea class="input-padrao" id="detalhePublicacao" name="detalhePublicacao" required>{{ old('detalhePublicacao', $post->detalhePublicacao) }}</textarea>
                         </div>
                     </div>
                 </div>
-            </div>
-        @endforeach
-    </div>
-@else
-    <div class="alert alert-warning" role="alert">
-        Nenhuma postagem encontrada.
-    </div>
-@endif
+                <div class="img-post col-6 h-75 d-flex flex-column justify-content-end" style="gap: 1rem">
+                    <label for="fotoPublicacao" class="form__label">Foto da Publicação</label>
+                    <div id="preview">
+                    <img src="{{$post->fotoPublicacao}}" id="imagePreview" class="mb-4"
+                    style="height: 200px; width: 200px; object-fit: cover;" alt="">
+                    </div>
+                    <input class="input-padrao" type="file" id="fileInput" value="url" name="fotoPublicacao">
+                    <input class="input-padrao" type="hidden" id="imageUrl" name="fotoUrl" >
+                </div>
+                <div class="col-8 d-flex justify-content-between mt-4 footer-criar-post">
+                    <a class="botao-padrao" href="/empresa/dashboard">Voltar</a>
+                    <button class="botao-padrao" type="submit">atualizar</button>
+                </div>
+            </form>
+
+        </div>
+
+    </section>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
+     <!-- Firebase App (SDK) -->
+     <script src="https://www.gstatic.com/firebasejs/10.13.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.13.2/firebase-storage.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.13.2/firebase-analytics.js"></script>
+
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.13.2/firebase-app.js";
+        import { getStorage, ref, uploadBytes, getDownloadURL } from "https://www.gstatic.com/firebasejs/10.13.2/firebase-storage.js";
+        import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.13.2/firebase-analytics.js";
+        const firebaseConfig = {
+            apiKey: "AIzaSyA-QUFdmkri7tul4SYrErEivDaxBksa1Qc",
+            authDomain: "workup-464af.firebaseapp.com",
+            projectId: "workup-464af",
+            storageBucket: "workup-464af.appspot.com",
+            messagingSenderId: "623240730819",
+            appId: "1:623240730819:web:28ca0c6e405ccd2d436a76",
+            measurementId: "G-X1Y39ZHK8J"
+        };
+        const app = initializeApp(firebaseConfig);
+        const storage = getStorage(app);
+        let selectedFile = null;
+        document.getElementById('fileInput').addEventListener('change', function(event) {
+            selectedFile = event.target.files[0];
+            if (selectedFile) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const img = document.getElementById('imagePreview');
+                    img.src = e.target.result;
+                    img.style.display = 'block';
+                };
+                reader.readAsDataURL(selectedFile);
+                const storageRef = ref(storage, `publicacao/${selectedFile.name}`);
+                uploadBytes(storageRef, selectedFile).then(() => {
+                    console.log('Arquivo enviado com sucesso!');
+                    getDownloadURL(storageRef).then((url) => {
+                        document.getElementById('imageUrl').value = url;
+                    }).catch((error) => {
+                        console.error('Erro ao obter a URL da imagem:', error);
+                    });
+                }).catch((error) => {
+                    console.error('Erro ao enviar o arquivo:', error);
+                });
+            }
+        });
+    </script>
+
+</body>
+
+</html>

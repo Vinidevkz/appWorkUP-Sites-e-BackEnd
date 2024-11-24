@@ -138,6 +138,8 @@
                             <div class="opt-vaga">
                                 <p class="text-truncate my-1">Descrição: {{ $vaga->descricaoVaga }}</p>
                                 <p class="text my-1">Salário: R${{ $vaga->salarioVaga }}</p>
+                                <p class="text mb-1">Carga horária: {{ $vaga->horarioVaga }}</p>
+                                <p class="text mb-1">Tipo de contrato: {{ $vaga->contratoVaga }}</p>
                                 <p class="text mb-1">Área: {{ $vaga->area->nomeArea }}</p>
                                 <p class="text mb-1">Modalidade: {{ $vaga->modalidade->descModalidadeVaga }}</p>
                                 <p class="text mb-1">Cidade: {{ $vaga->cidadeVaga }}</p>

@@ -40,7 +40,7 @@
 
             @foreach($candidatos as $candidato)
 
-            @if($candidato->status->idStatusVagaUsuario === 1)
+           
 
                 <div class="col">
 
@@ -112,7 +112,18 @@
                                                             <h6>Término:</h6>
                                                             
                                                             <p>{{ \Carbon\Carbon::parse($candidato->usuario->dataFormacaoCompetenciaUsuario)->format('d/m/Y') }}</p>
-                                                        </div>                           
+                                                        </div>  
+                                                        
+                                                        <div class="col">
+                                                            <h6>Habilidade:</h6>
+                                                            <p>{{ $candidato->usuario->skillUsuario }}</p>
+                                                            <p>{{ $candidato->usuario->skill2Usuario }}</p>
+                                                            <p>{{ $candidato->usuario->skill3Usuario }}</p>
+                                                            <p>{{ $candidato->usuario->skill4Usuario }}</p>
+                                                            <p>{{ $candidato->usuario->skill5Usuario }}</p>
+                                                        </div>
+
+
                                                     </div>                                        
                                                 </div>                                         
                                             </div>
@@ -247,7 +258,7 @@
                     </div>
                 </div>
 
-                @endif
+                
             @endforeach
         </div>
 

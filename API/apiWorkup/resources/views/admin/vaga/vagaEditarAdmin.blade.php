@@ -90,6 +90,42 @@
                                     <div class="error-message">{{ $message }}</div>
                                 @enderror
                             </div>
+
+
+
+                            <div class="col col-6">
+    <div>
+        <label for="horarioVaga">Carga horária:</label>
+        <select class="input-padrao" name="horarioVaga">
+            <option value="44h/Sem" {{ old('horarioVaga', $vaga->horarioVaga) == '44h/Sem' ? 'selected' : '' }}>44h/Sem</option>
+            <option value="40h/Sem" {{ old('horarioVaga', $vaga->horarioVaga) == '40h/Sem' ? 'selected' : '' }}>40h/Sem</option>
+            <option value="30h/Sem" {{ old('horarioVaga', $vaga->horarioVaga) == '30h/Sem' ? 'selected' : '' }}>30h/Sem</option>
+            <option value="20h/Sem" {{ old('horarioVaga', $vaga->horarioVaga) == '20h/Sem' ? 'selected' : '' }}>20h/Sem</option>
+            <option value="Flexível (negociada)" {{ old('horarioVaga', $vaga->horarioVaga) == 'Flexível (negociada)' ? 'selected' : '' }}>Flexível (negociada)</option>
+        </select>
+    </div>
+    @error('horarioVaga')
+        <div class="error-message">{{ $message }}</div>
+    @enderror
+</div>
+
+<div class="col col-6">
+    <div>
+        <label for="contratoVaga">Tipo de contrato:</label>
+        <select class="input-padrao" name="contratoVaga">
+            <option value="CLT" {{ old('contratoVaga', $vaga->contratoVaga) == 'CLT' ? 'selected' : '' }}>CLT</option>
+            <option value="Estágio (Superior)" {{ old('contratoVaga', $vaga->contratoVaga) == 'Estágio (Superior)' ? 'selected' : '' }}>Estágio (Superior)</option>
+            <option value="Estágio (Médio)" {{ old('contratoVaga', $vaga->contratoVaga) == 'Estágio (Médio)' ? 'selected' : '' }}>Estágio (Médio)</option>
+            <option value="PJ (Pessoa Jurídica)" {{ old('contratoVaga', $vaga->contratoVaga) == 'PJ (Pessoa Jurídica)' ? 'selected' : '' }}>PJ (Pessoa Jurídica)</option>
+        </select>
+    </div>
+    @error('contratoVaga')
+        <div class="error-message">{{ $message }}</div>
+    @enderror
+</div>
+
+
+
                         </div>
 
                         <div class="row">

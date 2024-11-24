@@ -81,50 +81,49 @@
                                         </div>
                                     </div>
                                 </div>
+
+
                                 <div class="row">
                                     <div class="col-6">
                                         <div class="form__group field">
-                                            @error('idModalidadeVaga')
+                                            @error('horarioVaga')
                                                 <div style="background-color: #fff;" class="error-message">{{ $message }}
                                                 </div>
                                             @enderror
                                             <div class="input-container">
-                                                <label for="estadoVaga" >Carga horária:</label>
+                                                <label for="horarioVaga" >Carga horária:</label>
 
-                                                <!-- Esta parte precisa ficar pode tirar o select contato que de o mesmo nome ao campo -->
-                                                <select name="idArea">
+                                                <select name="horarioVaga">
                                                     <option value="">Selecionar</option>
-                                                    @foreach($areas as $area)
-                                                        <option value="{{ $area->idArea }}" {{ old('idArea') == $area->idArea ? 'selected' : '' }}>
-                                                            {{ $area->nomeArea }}
-                                                            <!-- Supondo que há um campo nomeModalidade na tabela -->
-                                                        </option>
-                                                    @endforeach
-                                                    <!-- Esta parte precisa ficar -->
+                                                   
+                                                    <option value="">Selecionar</option>
+                                                    <option value="44h/Sem" {{ old('horarioVaga') == '44h/Sem' ? 'selected' : '' }}>44h/Sem</option>
+                                                    <option value="40h/Sem" {{ old('horarioVaga') == '40h/Sem' ? 'selected' : '' }}>40h/Sem</option>
+                                                    <option value="30h/Sem" {{ old('horarioVaga') == '30h/Sem' ? 'selected' : '' }}>30h/Sem</option>
+                                                    <option value="20h/Sem" {{ old('horarioVaga') == '20h/Sem' ? 'selected' : '' }}>20h/Sem</option>
+                                                    <option value="Flexível (negociada)" {{ old('horarioVaga') == 'Flexível (negociada)' ? 'selected' : '' }}>Flexível (negociada)</option>
                                                 </select>
-                                            </div>
                                         </div>
                                     </div>
+                                </div>
 
                                     <div class="col-6">
                                         <div class="form__group field">
-                                            @error('idModalidadeVaga')
+                                            @error('contratoVaga')
                                                 <div style="background-color: #fff;" class="error-message">{{ $message }}
                                                 </div>
                                             @enderror
                                             <div class="input-container">
-                                                <label for="estadoVaga" >Tipo de contrato:</label>
+                                                <label for="contratoVaga" >Tipo de contrato:</label>
 
-                                                <!-- Esta parte precisa ficar pode tirar o select contato que de o mesmo nome ao campo -->
-                                                <select name="idArea">
-                                                    <option value="">Selecionar</option>
-                                                    @foreach($areas as $area)
-                                                        <option value="{{ $area->idArea }}" {{ old('idArea') == $area->idArea ? 'selected' : '' }}>
-                                                            {{ $area->nomeArea }}
-                                                            <!-- Supondo que há um campo nomeModalidade na tabela -->
-                                                        </option>
-                                                    @endforeach
-                                                    <!-- Esta parte precisa ficar -->
+                                                
+                                                <select name="contratoVaga">
+                                                <option value="">Selecionar</option>
+
+                                                <option value="CLT" {{ old('contratoVaga') == 'CLT' ? 'selected' : '' }}>CLT</option>
+                                                <option value="Estágio (Superior)" {{ old('contratoVaga') == 'Estágio (Superior)' ? 'selected' : '' }}>Estágio (Superior)</option>
+                                                <option value="Estágio (Médio)" {{ old('contratoVaga') == 'Estágio (Médio)' ? 'selected' : '' }}>Estágio (Médio)</option>
+                                                <option value="PJ (Pessoa Jurídica)" {{ old('contratoVaga') == 'PJ (Pessoa Jurídica)' ? 'selected' : '' }}>PJ (Pessoa Jurídica)</option>
                                                 </select>
                                             </div>
                                         </div>

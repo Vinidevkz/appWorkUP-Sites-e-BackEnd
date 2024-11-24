@@ -176,6 +176,8 @@ Route::middleware('auth:empresa')->group(function(){
             Route::get('/postar/{id}', [PostController::class, 'create'])->name('post.create');
             Route::post('/postar', [PostController::class, 'store'])->name('posts.store');
             // Rota para atualizar uma postagem
+            Route::get('/posts/{id}/edit', [PostController::class, 'edit'])->name('post.edit');
+
             Route::put('/posts/{id}', [PostController::class, 'update'])->name('posts.update');
 
             // Rota para excluir uma postagem

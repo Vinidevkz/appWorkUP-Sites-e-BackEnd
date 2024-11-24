@@ -220,10 +220,10 @@
 
                         <h6 class="text-uppercase fw-bold">Contate-nos</h6>
                         <hr class="mb-4 mt-0 d-inline-block mx-auto" style="width: 60px; background-color: #7c4dff; height: 2px" />
-                        <p><i class="fas fa-home mr-3"></i> São Paulo, SP, BR</p>
+                        <p><i class="fas fa-home mr-3"></i> São Paulo, SP, Brasil</p>
                         <p><i class="fas fa-envelope mr-3"></i> workup@gmail.com</p>
-                        <p><i class="fas fa-phone mr-3"></i> 55 (11) 1234-56789</p>
-                        <p><i class="fas fa-print mr-3"></i> 55 (11) 1234-56789</p>
+                        <p><i class="fas fa-phone mr-3"></i> 55 (11) 2567-7318</p>
+                        <p><i class="fas fa-print mr-3"></i> 55 (11) 6881-3050</p>
                     </div>
 
                 </div>
@@ -233,7 +233,7 @@
 
 
         <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2)">
-            © 2024 by WorkUP. All rights reserved.
+        Copyright© 2024 by WorkUP - Todos os direitos reservados.
         </div>
     </footer>
  

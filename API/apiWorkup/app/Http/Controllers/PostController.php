@@ -138,10 +138,7 @@ public function index()
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
-    {
-        //
-    }
+
 
     /**
      * Update the specified resource in storage.
@@ -149,36 +146,42 @@ public function index()
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
+     * 
+     * 
      */
+
+     public function edit($id)
+    {
+        $post = Post::find($id);
+
+        if (!$post) {
+            return redirect()->route('empresa.dashboard')->with('error', 'Postagem não encontrada.');
+        }
+
+        return view('posts.index', compact('post'));
+    }
+
     public function update(Request $request, $id)
     {
-        // Validação dos dados recebidos
-        $request->validate([
-            'detalhePublicacao' => 'required|max:120',
-            'fotoPublicacao' => 'nullable|url', // Se o campo de foto for enviado, deve ser uma URL válida
-        ]);
-
-        // Encontrar a postagem pelo ID
         $post = Post::find($id);
 
         // Se a postagem não for encontrada
         if (!$post) {
-            return redirect()->route('posts.index')->with('error', 'Postagem não encontrada.');
+            return redirect()->route('empresa.dashboard')->with('error', 'Postagem não encontrada.');
         }
 
         // Atualizar os dados da postagem
+        $post->tituloPublicacao = $request->tituloPublicacao;
         $post->detalhePublicacao = $request->detalhePublicacao;
-
-        // Se uma nova foto for fornecida, atualize a URL
-        if ($request->has('fotoPublicacao')) {
-            $post->fotoPublicacao = $request->fotoPublicacao;
-        }
+        $post->idEmpresa = $request->idEmpresa;
+        $post->idVaga = $request->idVaga;
+        $post->fotoPublicacao = $request->fotoUrl;
 
         // Salvar as alterações
         $post->save();
 
         // Retornar resposta de sucesso e redirecionar para a página de postagens
-        return redirect()->route('posts.index')->with('success', 'Postagem atualizada com sucesso!');
+        return redirect()->route('empresa.dashboard')->with('success', 'Postagem atualizada com sucesso!');
     }
 
     /**
@@ -194,13 +197,13 @@ public function index()
 
         // Se a postagem não for encontrada
         if (!$post) {
-            return redirect()->route('posts.index')->with('error', 'Postagem não encontrada.');
+            return redirect()->route('empresa.dashboard')->with('error', 'Postagem não encontrada.');
         }
 
         // Excluir a postagem
         $post->delete();
 
         // Retornar resposta de sucesso e redirecionar para a página de postagens
-        return redirect()->route('posts.index')->with('success', 'Postagem excluída com sucesso!');
+        return redirect()->route('empresa.dashboard')->with('success', 'Postagem excluída com sucesso!');
     }
 }

@@ -120,6 +120,8 @@ class VagaController extends Controller
                 'salarioVaga' => 'required|numeric', // Certifique-se de que o salário seja um número
                 'cidadeVaga' => 'required',
                 'estadoVaga' => 'required',
+                'horarioVaga' => 'required',
+                'contratoVaga' => 'required',
                 'beneficiosVaga' => 'required',
                 'diferencialVaga' => 'required',
                 'idArea' => 'required',
@@ -144,6 +146,8 @@ class VagaController extends Controller
         // Criar uma nova vaga
         $vaga = new Vaga;
         $vaga->nomeVaga = $request->nomeVaga;
+        $vaga->horarioVaga = $request->horarioVaga;
+        $vaga->contratoVaga = $request->contratoVaga;
         $vaga->prazoVaga = $request->prazoVaga;
         $vaga->salarioVaga = $request->salarioVaga;
         $vaga->cidadeVaga = $request->cidadeVaga;
@@ -265,6 +269,8 @@ class VagaController extends Controller
                 'cidadeVaga' => $request->cidadeVaga,
                 'estadoVaga' => $request->estadoVaga,
                 'estadoVaga' => $request->estadoVaga,
+                'horarioVaga' => $request->horarioVaga,
+                'contratoVaga' => $request->contratoVaga,
 
             ]);
 
