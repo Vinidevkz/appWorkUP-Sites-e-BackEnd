@@ -280,6 +280,48 @@ class UsuarioController extends Controller
     // Retorna a view de edição com os dados do usuário
     return view('admin.usuario.usuarioEditarAdmin', compact('usuario', 'areasInteresse'));
 }
+public function editarTags(Request $request, $id)
+{
+    try {
+        // Obter as tags da requisição
+        $tags = $request->only([
+            'skillUsuario', 'skill2Usuario', 'skill3Usuario', 'skill4Usuario', 'skill5Usuario'
+        ]);
+
+        // Verificar se o usuário existe
+        $usuario = Usuario::find($id);
+        if (!$usuario) {
+            return response()->json(['error' => 'Usuário não encontrado.'], 404);
+        }
+
+        // Atualizar as tags do usuário, garantindo que valores vazios sejam considerados nulos
+        $usuario->skillUsuario = $tags['skillUsuario'] ?? null;
+        $usuario->skill2Usuario = $tags['skill2Usuario'] ?? null;
+        $usuario->skill3Usuario = $tags['skill3Usuario'] ?? null;
+        $usuario->skill4Usuario = $tags['skill4Usuario'] ?? null;
+        $usuario->skill5Usuario = $tags['skill5Usuario'] ?? null;
+
+        // Salvar as alterações
+        $usuarioUpdated = $usuario->save();
+
+        // Verificar se a atualização foi bem-sucedida
+        if (!$usuarioUpdated) {
+            return response()->json(['error' => 'Falha ao atualizar as habilidades do usuário.'], 500);
+        }
+
+        // Retornar resposta de sucesso com os dados mais atualizados
+        return response()->json($usuario->fresh(), 200);
+
+    } catch (\Exception $e) {
+        // Captura de qualquer outra exceção
+        return response()->json(['error' => 'Erro inesperado: ' . $e->getMessage()], 500);
+    }
+}
+
+
+
+
+
 
 
 
