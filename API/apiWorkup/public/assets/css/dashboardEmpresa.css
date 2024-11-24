@@ -70,12 +70,18 @@
     max-width: 100%;
 }
 
-.funcoes {
+#funcoes {
     display: flex;
     justify-content: center;
     flex-direction: column;
     background-color: #f4f4f4;
     padding: 5rem 0 0 0;
+}
+
+#funcoes h4, #vagas h4, #publicacoes h4, .header-modal-vaga div h4 {
+    font-family: "Poppins", sans-serif;
+    font-weight: 300;
+    font-size: 1.2rem;
 }
 
 .fundo-funcoes {
@@ -241,6 +247,7 @@
     width: 80%;
     display: flex;
     justify-content: start;
+    margin-top: 2rem;
 }
 
 .header-modal-vaga h5 {
@@ -264,6 +271,7 @@
 .footer-vaga {
     display: flex;
     justify-content: space-between; 
+    align-items: center;
     width: 100%;
     height: 100%;
     padding: 0 1rem;
@@ -273,25 +281,24 @@
 
 .btn-verde, .btn-vazado {
     flex-grow: 1; 
-    width: 100%; 
-    height: 60%;
+    height: 50%;
     max-width: none; 
     border-radius: 5px; 
     padding: 0.75rem 1.5rem; 
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
     justify-content: center; 
     text-align: center;
     transition: background-color 0.3s, color 0.3s;
     white-space: normal;
     overflow: hidden;
+    gap: 8px;
 }
 
 .btn-verde {
     background-color: var(--verde);
     color: #fff;
-    border: none;
 }
 
 .btn-vazado {
@@ -311,7 +318,7 @@
 
 .btn-verde i, .btn-vazado i {
     margin-top: 0.3rem;
-    font-size: 1.2rem;
+    font-size: 1rem;
 }
 
 

@@ -1,11 +1,16 @@
 body {
-    overflow: hidden !important;
+    overflow-x: hidden !important;
+    background-color: var(--ed);
 }
 
 #vaga {
     margin-top: 4rem;
-    height: 92vh;
+    height: 100%;
     background-color: var(--ed);
+}
+
+.row-vaga {
+    min-height: 92vh;
 }
 
 .col-vaga-1, .col-vaga-2, form {
@@ -15,7 +20,7 @@ body {
 
 .box-vaga {
     width: 90%;
-    height: 90%;
+    height: 41rem;
     background-color: var(--f4);
     display: flex;
     justify-content: center;
@@ -23,7 +28,6 @@ body {
 }
 
 .vaga-wrap {
-    height: 90%;
     width: 85%;
 }
 
@@ -33,13 +37,16 @@ body {
     justify-content: space-around;
 }
 
+.wrap-body {
+    gap: 0.8rem;
+}
+
 .vaga-wrap .row .col {
     display: flex;
     flex-direction: column;
 }
 
 .input-container select {
-    background-color: var(--f4);
     border-style: none;
     width: 100%;
     padding: 0.3rem 1rem;
@@ -52,11 +59,12 @@ body {
 
 .input-container select option {
     color: #535353;
-    background-color: #ffffff;
 }
 
 .wrap-footer {
     margin-top: 1rem;
+    width: 100%;
+    height: 3rem;
 }
 
 .wrap-footer, .enviar {
@@ -66,6 +74,7 @@ body {
 
 .enviar {
     background-color: var(--verde);
+    width: 40%;
     color: #fff;
 }
 

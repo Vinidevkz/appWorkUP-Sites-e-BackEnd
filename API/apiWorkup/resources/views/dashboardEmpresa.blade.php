@@ -7,8 +7,7 @@
     <link rel="stylesheet" href="{{url('../assets/css/estilo-padrao-workup.css')}}">
     <link rel="stylesheet" href="{{url('../assets/css/dashboardEmpresa.css')}}">
     <link rel="shortcut icon" href="{{url('assets/img/adminImages/WU-icon.png')}}" type="image/x-icon">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet integrity="
-        sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity=" sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <title>Empresa | Home</title>
@@ -39,7 +38,7 @@
         </div>
     </section>
 
-    <section class="funcoes">
+    <section id="funcoes">
         <h4 class="mb-5 text-center">Aqui você pode:</h4>
         <div class="row justify-content-center linha-funcoes" style="width: 95%; margin: 0 auto;">
             <div class="col-funcoes col-12 col-sm-6 col-md-4 mb-4">
@@ -129,12 +128,11 @@
                 <div class="modal fade" id="modalVaga{{ $vaga->idVaga }}" tabindex="-1"
                     aria-labelledby="modalVagaLabel{{ $vaga->idVaga }}" aria-hidden="true">
                     <div class="modal-dialog">
-                        <div class="modal-content">
+                        <div class="modal-content h-50">
                             <div class="header-modal-vaga">
                                 <div>
-                                    <h5>{{ $vaga->nomeVaga }}</h5>
-                                    <p class="text mb-3" style="font-weight: 400">
-                                        Candidatos: {{  $vaga->candidatos_count ?? 0 }}</p>
+                                    <h4>{{ $vaga->nomeVaga }}</h4>
+                                    <p>Candidatos: {{  $vaga->candidatos_count ?? 0 }}</p>
                                 </div>
                             </div>
                             <div class="opt-vaga">
@@ -146,12 +144,10 @@
                                 <p class="text mb-1">Estado: {{ $vaga->estadoVaga }}</p>
                                 <p class="text mb-1">Diferencial: {{ $vaga->diferencialVaga }}</p>
                             </div>
-                            <div class="modal-footer d-flex justify-content-between w-75 align-self-center">
-                                <a href="{{ route('vagas.edit', $vaga->idVaga) }}" class="btn-vagas btn-verde w-100">Editar<i class="fa-solid fa-pen-to-square"
-                                        style="color: #ffffff;"></i></a>
-                                <button type="button" class="btn-vagas w-100" data-bs-dismiss="modal"
-                                    style="background-color: #ededed; color: black">Voltar</button>
-                                <a href="{{ route('verVagaCadastrada', $vaga->idVaga) }}" class="btn-vazado botao-padrao w-50">Candidatos<i class="fa-solid fa-user"></i></a>
+                            <div class="modal-footer d-flex w-75 align-self-center">
+                                <a href="{{ route('vagas.edit', $vaga->idVaga) }}" class="botao-padrao btn-verde">Editar<i class="fa-solid fa-pen-to-square" style="color: #ffffff;"></i></a>
+                                <a href="{{ route('verVagaCadastrada', $vaga->idVaga) }}" class="btn-vazado botao-padrao">Candidatos<i class="fa-solid fa-user"></i></a>
+                                <button type="button" class="botao-padrao w-100" data-bs-dismiss="modal" style="background-color: #ededed; color: black">Voltar</button>
                             </div>
                         </div>
                     </div>

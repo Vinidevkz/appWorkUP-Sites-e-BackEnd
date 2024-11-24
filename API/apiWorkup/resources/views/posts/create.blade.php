@@ -50,7 +50,7 @@
                             @endif
 
                             <label for="estadoVaga" class="form__label">Selecione a vaga relacionada com o post:</label>
-                            <select name="idVaga">
+                            <select class="input-padrao" name="idVaga">
                                 <option value="">Nenhuma</option>
                                 @foreach($vagas as $vaga)
                                     <option value="{{ $vaga->idVaga }}" {{ old('idaVaga') == $vaga->idaVaga ? 'selected' : '' }}>
@@ -63,7 +63,7 @@
                         </div>
                         <div class="col col-12">
                             <label for="detalhePublicacao" class="form-label">Detalhes da Publicação</label>
-                            <textarea id="detalhePublicacao" name="detalhePublicacao" required></textarea>
+                            <textarea class="input-padrao" id="detalhePublicacao" name="detalhePublicacao" required></textarea>
                         </div>
                     </div>
                 </div>
@@ -76,8 +76,8 @@
                     <input class="input-padrao" type="hidden" id="imageUrl" name="fotoUrl" >
                 </div>
                 <div class="col-8 d-flex justify-content-between mt-4 footer-criar-post">
-                    <a href="/empresa/dashboard">Voltar</a>
-                    <button type="submit">Postar</button>
+                    <a class="botao-padrao" href="/empresa/dashboard">Voltar</a>
+                    <button class="botao-padrao" type="submit">Postar</button>
                 </div>
             </form>
 
