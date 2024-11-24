@@ -94,18 +94,38 @@ class VagaUsuarioController extends Controller
         // Encontre a vaga com o ID passado
         $vaga = Vaga::findOrFail($idVaga);
 
+        $candidatos = VagaUsuario::where([
+            ['idVaga', '=', $idVaga]
+        ])->get();
+
         $empresaId = Auth::guard('empresa')->id();
         if ($vaga->idEmpresa !== $empresaId) {
             return redirect()->route('home')->with('error', 'Você não tem permissão para ver os candidatos dessa vaga.');
         }
     
-        // Busque os candidatos que se inscreveram para esta vaga, incluindo o status
-        $candidatos = VagaUsuario::where('idVaga', $idVaga)
-            ->with(['usuario', 'status']) // Inclui a relação status
+        $filter = request('filtro');
+
+        if($filter && $filter != 'Todos' && $filter != 'Denuncias') { // Verifica se o filtro não é "Todos"
+            // Se o filtro for um valor diferente de "Todos", filtra pelo status
+            $candidatos = VagaUsuario::where([
+                ['idStatusVagaUsuario', '=', $filter],
+                ['idVaga', '=', $idVaga]
+            ])->get();
+        } if($filter == 'Todos') {
+            // Caso "Todos" ou nenhum filtro seja selecionado, retorna todos os candidatos
+            $candidatos = VagaUsuario::where('idVaga', $idVaga)
+                ->with(['usuario', 'status']) // Inclui a relação status
+                ->get();
+        }
+        if($filter == 'Denuncias'){
+            $candidatos = VagaUsuario::where('idVaga', $idVaga)
+            ->with(['usuario', 'status', 'usuario.denuncias']) // Inclui a relação status
             ->get();
+        }
             $empresa = Auth::guard('empresa')->user(); // Obter a empresa autenticada
         return view('verVagaCadastrada', compact('vaga', 'candidatos', 'empresa'));
     }
+    
 
 
     public function aprovarCandidatura(Request $request, $id)

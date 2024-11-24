@@ -205,6 +205,40 @@ devices
 </div>
 
 <script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const dropdownItems = document.querySelectorAll("#statusFilterMenu .dropdown-item");
+        const tableRows = document.querySelectorAll("#myTable tbody tr");
+        const clearButton = document.getElementById("clearFilters");
+
+        dropdownItems.forEach(item => {
+            item.addEventListener("click", function (e) {
+                e.preventDefault(); // Evita o redirecionamento padrão
+                const selectedStatus = this.getAttribute("data-value");
+
+                // Filtrar as linhas
+                tableRows.forEach(row => {
+                    const statusCell = row.querySelector("td:nth-child(4) .badge");
+                    if (!statusCell) return;
+
+                    const status = statusCell.textContent.trim();
+                    row.style.display = selectedStatus === "" || status === selectedStatus ? "" : "none";
+                });
+
+                // Atualizar o texto do botão dropdown
+                const dropdownButton = document.getElementById("statusDropdown");
+                dropdownButton.textContent = this.textContent;
+            });
+        });
+
+        // Botão de limpar filtros
+        clearButton.addEventListener("click", function () {
+            tableRows.forEach(row => row.style.display = ""); // Mostra todas as linhas
+            document.getElementById("statusDropdown").textContent = "Selecione o Status";
+        });
+    });
+</script>
+<script>
+
 const sidebarlinks = document.querySelectorAll('.item-nav');
 
 // Adicionando eventos
