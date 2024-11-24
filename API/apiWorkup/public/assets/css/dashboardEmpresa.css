@@ -360,10 +360,11 @@
 
 .empresa-publ {
     width: 100%;
-    padding-left: 1.5rem;
+    padding: 0 1.5rem;
     display: flex;
     flex-direction: row;
     align-items: center;
+    justify-content: space-between;
     gap: 0.8rem;
 }
 
@@ -385,6 +386,35 @@
     color: #505050;
     margin-bottom: 0;
 }
+
+.modal-publ {
+    width: 85%;
+    height: 100%;
+    padding: 3rem 0;
+}
+
+.body-modal-publ {
+    margin-top: 2rem;
+}
+
+.modal-publ, .body-modal-publ {
+    display: flex;
+    flex-direction: column;
+}
+
+.body-modal-publ img {
+    width: 100%;
+    height: 20rem;
+    object-fit: cover;
+    object-position: center;
+}
+
+.descricao-modal-publ {
+    min-height: 1rem;
+    max-height: 4rem;
+    margin-bottom: 1rem;
+}
+
 
 .conteudo-publ {
     width: 80%;
