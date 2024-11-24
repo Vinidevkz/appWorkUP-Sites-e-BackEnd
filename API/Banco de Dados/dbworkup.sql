@@ -304,16 +304,15 @@ CREATE TABLE `tb_linguas` (
 --
 
 INSERT INTO `tb_linguas` (`idLingua`, `nomeLingua`) VALUES
-(1, 'Português'),
-(2, 'Inglês'),
-(3, 'Espanhol'),
-(4, 'Francês'),
-(5, 'Alemão'),
-(6, 'Italiano'),
-(7, 'Japonês'),
-(8, 'Chinês'),
-(9, 'Árabe'),
-(10, 'Russo');
+(1, 'Inglês'),
+(2, 'Espanhol'),
+(3, 'Francês'),
+(4, 'Alemão'),
+(5, 'Italiano'),
+(6, 'Japonês'),
+(7, 'Chinês'),
+(8, 'Árabe'),
+(9, 'Russo');
 
 -- --------------------------------------------------------
 

@@ -40,7 +40,7 @@
 
             @foreach($candidatos as $candidato)
 
-           
+            @if($candidato->status->idStatusVagaUsuario === 1)
 
                 <div class="col">
 
@@ -258,7 +258,7 @@
                     </div>
                 </div>
 
-                
+                @endif    
             @endforeach
         </div>
 
