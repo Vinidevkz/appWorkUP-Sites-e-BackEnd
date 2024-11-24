@@ -158,6 +158,11 @@
                     <div class="col">
                     <h5 class="card-title m-0">${empresa.nomeEmpresa}</h5>
                     </div>
+                     <p class="card-text mt-3"><span class="fw-bold">Email:</span> ${empresa.emailEmpresa}</p>
+                  <p class="card-text "><span class="fw-bold">Criado em:</span> ${new Date(empresa.created_at).toLocaleDateString()}</p>
+                  <p class="card-text "><span class="fw-bold">Contato:</span> ${empresa.contatoEmpresa}</p>
+                  <p class="card-text "><span class="fw-bold">Representante:</span> ${empresa.usernameEmpresa}</p>
+
                   </div>
                
                 </div>
