@@ -120,7 +120,7 @@ person
                 <img src="{{$u->fotoUsuario}}" alt=""  width="50px" height="50px" class="rounded-pill">
 
           </div>
-                <a href="#" class="visualizar-link m-0" data-bs-toggle="modal" data-bs-target="#visualizarModal"
+                <a href="" class="visualizar-link m-0" data-bs-toggle="modal" data-bs-target="#visualizarModal"
        data-id="{{ $u->idUsuario }}"
        data-nome="{{ $u->nomeUsuario }}"
        data-username="{{ $u->usernameUsuario }}"

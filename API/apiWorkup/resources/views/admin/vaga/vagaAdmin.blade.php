@@ -11,6 +11,8 @@
   <link rel="stylesheet" href="{{ url('assets/css/navbarAdmin.css') }}">
   <link rel="stylesheet" href="{{ url('assets/css/admin.css') }}">
 
+  
+
   <title>Administrador | Vagas</title>
 </head>
 
@@ -141,8 +143,22 @@ devices
                 <tr>
                     <td class="p-3">{{ $v->idVaga }}</td>
                     <td class="p-3"> 
-                    <a href="{{ route('vagas.show', $v->idVaga) }}" class="visualizar-link mb-3">{{ $v->nomeVaga }}</a>
-                    </td>
+                    <a href="#" class="visualizar-link mb-3" data-bs-toggle="modal" data-bs-target="#visualizarModal"
+   data-id="{{ $v->idVaga }}"
+   data-nome="{{ $v->nomeVaga }}"
+   data-descricao="{{ $v->descricaoVaga }}"
+   data-prazo="{{ $v->prazoVaga }}"
+   data-salario="{{ $v->salarioVaga }}"
+   data-cidade="{{ $v->cidadeVaga }}"
+   data-estado="{{ $v->estadoVaga }}"
+   data-beneficios="{{ $v->beneficiosVaga }}"
+   data-diferencial="{{ $v->diferencialVaga }}"
+   data-idempresa="{{ $v->idEmpresa }}"
+   data-idarea="{{ $v->idArea }}"
+   data-idstatus="{{ $v->idStatus }}"
+   data-idmodalidade="{{ $v->idModalidadeVaga }}">
+    {{ $v->nomeVaga }}
+</a>                    </td>
                     <td class="p-3">{{  $v->area->nomeArea}}</td>
                     <td class="p-3">{{  $v->modalidade->descModalidadeVaga}}</td>
                     <td class="p-3">
@@ -193,7 +209,76 @@ devices
     </div>
 </div>
 
+<!-- Modal -->
+<div class="modal fade" id="visualizarModal" tabindex="-1" aria-labelledby="visualizarModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content rounded-4 shadow">
+            <div class="modal-header  text-white rounded-top" style="background-color: #81c784">
+                <h5 class="modal-title" id="visualizarModalLabel"><i class="bi bi-info-circle me-2"></i>Detalhes da Vaga</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body p-4">
+                <!-- Seção de Identificação -->
+                <div class="mb-4">
+                    <h6 class="text-uppercase text-muted"><i class="bi bi-briefcase-fill me-2"></i>Identificação</h6>
+                    <hr class="mt-0 mb-3">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <p><strong>ID:</strong> <span id="idVaga"></span></p>
+                        </div>
+                        <div class="col-md-6">
+                            <p><strong>Nome:</strong> <span id="nomeVaga"></span></p>
+                        </div>
+                    </div>
+                </div>
 
+                <!-- Seção de Descrição -->
+                <div class="mb-4">
+                    <h6 class="text-uppercase text-muted"><i class="bi bi-file-text me-2"></i>Descrição</h6>
+                    <hr class="mt-0 mb-3">
+                    <p><span id="descricaoVaga"></span></p>
+                </div>
+
+                <!-- Seção de Informações Adicionais -->
+                <div class="mb-4">
+                    <h6 class="text-uppercase text-muted"><i class="bi bi-info-circle-fill me-2"></i>Informações Adicionais</h6>
+                    <hr class="mt-0 mb-3">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <p><strong>Prazo:</strong> <span id="prazoVaga"></span></p>
+                        </div>
+                        <div class="col-md-6">
+                            <p><strong>Salário:</strong> <span id="salarioVaga"></span></p>
+                        </div>
+                        <div class="col-md-6">
+                            <p><strong>Benefícios:</strong> <span id="beneficiosVaga"></span></p>
+                        </div>
+                        <div class="col-md-6">
+                            <p><strong>Diferencial:</strong> <span id="diferencialVaga"></span></p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Seção de Localização -->
+                <div class="mb-4">
+                    <h6 class="text-uppercase text-muted"><i class="bi bi-geo-alt-fill me-2"></i>Localização</h6>
+                    <hr class="mt-0 mb-3">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <p><strong>Cidade:</strong> <span id="cidadeVaga"></span></p>
+                        </div>
+                        <div class="col-md-6">
+                            <p><strong>Estado:</strong> <span id="estadoVaga"></span></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer bg-light d-flex justify-content-end">
+                <button type="button" class="btn btn-secondary px-4" data-bs-dismiss="modal">Fechar</button>
+            </div>
+        </div>
+    </div>
+</div>
 
           <!-- \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ -->
            
@@ -278,6 +363,23 @@ sidebarlinks.forEach(link => {
 
   });
 
+</script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const links = document.querySelectorAll('.visualizar-link');
+        links.forEach(link => {
+            link.addEventListener('click', function(event) {
+                const attributes = [
+                    'id', 'nome', 'descricao', 'prazo', 'salario', 'cidade', 
+                    'estado', 'beneficios', 'diferencial', 'idempresa', 'idarea', 
+                    'idstatus', 'idmodalidade'
+                ];
+                attributes.forEach(attr => {
+                    document.getElementById(attr + 'Vaga').textContent = link.getAttribute('data-' + attr);
+                });
+            });
+        });
+    });
 </script>
 <script src="script.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>

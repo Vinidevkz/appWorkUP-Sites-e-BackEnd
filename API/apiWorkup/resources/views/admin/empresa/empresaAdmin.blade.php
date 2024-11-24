@@ -187,21 +187,22 @@ person
   </div>
 
 <!-- Modal -->
-<div class="modal" id="visualizarModal" tabindex="-1" aria-labelledby="visualizarModalLabel" aria-hidden="true">
+<div class="modal fade" id="visualizarModal" tabindex="-1" aria-labelledby="visualizarModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-lg">
-        <div class="modal-content modal-width-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="visualizarModalLabel">Detalhes da Empresa</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <div class="modal-content rounded-4 shadow">
+            <div class="modal-header text-white rounded-top" style="background-color: #81c784">
+                <h5 class="modal-title" id="visualizarModalLabel">
+                    <i class="bi bi-building me-2"></i>Detalhes da Empresa
+                </h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <div class="modal-body">
+            <div class="modal-body p-4">
                 <!-- Seção de Identificação -->
-                <div class="row mb-3">
-                  <div class="d-flex">
-                  <h6 class="me-2">Identificação </h6>
-
-                  <i class="bi bi-file-person-fill"></i>
-                  </div>
+                <div class="row mb-3 border-bottom pb-3">
+                    <div class="d-flex align-items-center mb-2">
+                        <h6 class="me-2">Identificação</h6>
+                        <i class="bi bi-file-person-fill"></i>
+                    </div>
                     <div class="col-md-6">
                         <p><strong>ID:</strong> <span id="idEmpresa"></span></p>
                     </div>
@@ -210,18 +211,14 @@ person
                     </div>
                 </div>
                 <!-- Seção de Contato -->
-                <div class="row mb-3">
-                  <div class="d-flex">
-                <h6 class="me-2">Contato</h6>
- 
-
-                <i class="bi bi-telephone-fill"></i>
-   
-                </div>
-                <div class="col-md-6 mb-3">
-                        <p><span id="contatoEmpresa"></span></p>
+                <div class="row mb-3 border-bottom pb-3">
+                    <div class="d-flex align-items-center mb-2">
+                        <h6 class="me-2">Contato</h6>
+                        <i class="bi bi-telephone-fill"></i>
                     </div>
-
+                    <div class="col-md-6">
+                        <p><strong>Contato:</strong> <span id="contatoEmpresa"></span></p>
+                    </div>
                     <div class="col-md-6">
                         <p><strong>Username:</strong> <span id="usernameEmpresa"></span></p>
                     </div>
@@ -230,12 +227,11 @@ person
                     </div>
                 </div>
                 <!-- Seção de Informações Adicionais -->
-                <div class="row mb-3">
-                <div class="d-flex">
-                <h6 class="me-2">INFO. ADICIONAIS</h6>
-
-                <i class="bi bi-info-square-fill"></i>
-                </div>
+                <div class="row mb-3 border-bottom pb-3">
+                    <div class="d-flex align-items-center mb-2">
+                        <h6 class="me-2">Informações Adicionais</h6>
+                        <i class="bi bi-info-square-fill"></i>
+                    </div>
                     <div class="col-md-6">
                         <p><strong>Sobre:</strong> <span id="sobreEmpresa"></span></p>
                     </div>
@@ -244,40 +240,67 @@ person
                     </div>
                 </div>
                 <!-- Seção de Localização -->
-                <div class="row mb-3">
-                <div class="d-flex">
-                <h6 class="me-2">LOCALIZAÇÃO</h6>
-
-                <i class="bi bi-geo-alt-fill"></i>
-                </div>
-                
+                <div class="row mb-3 border-bottom pb-3">
+                    <div class="d-flex align-items-center mb-2">
+                        <h6 class="me-2">Localização</h6>
+                        <i class="bi bi-geo-alt-fill"></i>
+                    </div>
                     <div class="col-md-6">
                         <p><strong>Cidade:</strong> <span id="cidadeEmpresa"></span></p>
                     </div>
-                </div>
-                <div class="row mb-3">
                     <div class="col-md-6">
                         <p><strong>Estado:</strong> <span id="estadoEmpresa"></span></p>
                     </div>
                     <div class="col-md-6">
                         <p><strong>Logradouro:</strong> <span id="logradouroEmpresa"></span></p>
                     </div>
-                </div>
-                <div class="row mb-3">
                     <div class="col-md-6">
                         <p><strong>CEP:</strong> <span id="cepEmpresa"></span></p>
                     </div>
                     <div class="col-md-6">
-                        <p><strong>Número logradouro:</strong> <span id="numeroLograEmpresa"></span></p>
+                        <p><strong>Número do Logradouro:</strong> <span id="numeroLograEmpresa"></span></p>
                     </div>
                 </div>
             </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+            <div class="modal-footer bg-light">
+                <button type="button" class="btn btn-secondary px-4" data-bs-dismiss="modal">Fechar</button>
             </div>
         </div>
     </div>
 </div>
+
+
+<style>
+    .modal-content {
+        border: none;
+    }
+    .modal-header {
+        padding: 1rem 1.5rem;
+    }
+    .modal-body {
+        font-size: 0.95rem;
+    }
+    .modal-footer {
+        padding: 1rem 1.5rem;
+    }
+    h6 {
+        font-size: 1.1rem;
+        font-weight: 600;
+    }
+    .modal-header {
+        background-color: #0d6efd;
+        color: #fff;
+    }
+    .modal-footer button {
+        font-size: 0.9rem;
+    }
+    .modal-footer {
+        background-color: #f8f9fa;
+    }
+    i {
+        font-size: 1.2rem;
+    }
+</style>
 
 
 
