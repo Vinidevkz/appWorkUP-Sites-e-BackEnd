@@ -328,5 +328,24 @@ class EmpresaController extends Controller
        return view('homeEmpresa', compact('vagas')); // Passa a variável $vagas para a view
    }
 
+
+   // UsuarioController.php
+public function buscarEmpresa(Request $request)
+{
+    $nome = $request->get('nome');
+    $empresa = Empresa::where('nomeEmpresa', 'LIKE', "%{$nome}%")->first();
+
+    if ($empresa) {
+        return response()->json([
+            'status' => 'success',
+            'empresa' => $empresa,
+        ]);
+    }
+
+    return response()->json([
+        'status' => 'error',
+        'message' => 'Empresa não encontrada',
+    ]);
+}
 }
 

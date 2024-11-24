@@ -281,4 +281,25 @@ class UsuarioController extends Controller
     return view('admin.usuario.usuarioEditarAdmin', compact('usuario', 'areasInteresse'));
 }
 
+
+
+
+// UsuarioController.php
+public function buscarUsuario(Request $request)
+{
+    $nome = $request->get('nome');
+    $usuario = Usuario::where('nomeUsuario', 'LIKE', "%{$nome}%")->first();
+
+    if ($usuario) {
+        return response()->json([
+            'status' => 'success',
+            'usuario' => $usuario,
+        ]);
+    }
+
+    return response()->json([
+        'status' => 'error',
+        'message' => 'Usuário não encontrado',
+    ]);
+}
 }

@@ -334,3 +334,6 @@ Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
 
 //---------------------------------------------
+
+Route::get('/buscar-usuario', [UsuarioController::class, 'buscarUsuario'])->name('buscar.usuario');
+Route::get('/buscar-empresa', [EmpresaController::class, 'buscarEmpresa'])->name('buscar.empresa');
