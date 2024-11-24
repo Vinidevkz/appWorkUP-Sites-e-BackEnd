@@ -70,16 +70,17 @@
                 <div class="img-post col-6 h-75 d-flex flex-column justify-content-end" style="gap: 1rem">
                     <label for="fotoPublicacao" class="form__label">Foto da Publicação</label>
                     <div id="preview">
-                    <img src="{{$post->fotoPublicacao}}" id="imagePreview" class="mb-4"
-                    style="height: 200px; width: 200px; object-fit: cover;" alt="">
+                        <img src="{{$post->fotoPublicacao}}" id="imagePreview" class="mb-4" alt="">
                     </div>
                     <input class="input-padrao" type="file" id="fileInput" value="url" name="fotoPublicacao">
                     <input class="input-padrao" type="hidden" id="imageUrl" name="fotoUrl" >
                 </div>
+
                 <div class="col-8 d-flex justify-content-between mt-4 footer-criar-post">
                     <a class="botao-padrao" href="/empresa/dashboard">Voltar</a>
-                    <button class="botao-padrao" type="submit">atualizar</button>
+                    <button class="botao-padrao" type="submit">Atualizar</button>
                 </div>
+
             </form>
 
         </div>

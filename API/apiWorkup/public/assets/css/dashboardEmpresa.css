@@ -284,7 +284,6 @@
     height: 50%;
     max-width: none; 
     border-radius: 5px; 
-    padding: 0.75rem 1.5rem; 
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -294,6 +293,7 @@
     white-space: normal;
     overflow: hidden;
     gap: 8px;
+    text-decoration: none;
 }
 
 .btn-verde {
@@ -415,6 +415,10 @@
     margin-bottom: 1rem;
 }
 
+.btn-vermelho {
+    background-color: #ff6565;
+    color: #fff;
+}
 
 .conteudo-publ {
     width: 80%;
