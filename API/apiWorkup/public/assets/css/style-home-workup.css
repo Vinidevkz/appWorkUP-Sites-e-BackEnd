@@ -1,0 +1,97 @@
+body {
+    min-height: 100vh;
+}
+
+/*-- Seção de introdução --*/
+
+#card-header {
+    width: 100vw;
+    height: 30rem;
+    background-image: url("../img/home/card-home-workup.png");
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    margin-top: 4rem;
+    display: flex;
+    align-items: center;
+}
+
+.saudacoes {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: var(--f4);
+}
+
+.saudacoes h3 {
+    font-weight: 400;
+}
+
+.saudacoes p, .saudacoes h3, .card-funcoes h5, #funcoes h5 {
+    font-family: "Poppins", sans-serif;
+}
+
+.saudacoes a {
+    background-color: var(--verde);
+    color: #fff;
+    text-decoration: none;
+    width: 20%;
+    display: flex;
+    justify-content: center;
+    margin-top: 2rem;
+    font-size: 1rem;
+}
+
+/*-- Seção de funções --*/
+
+#funcoes {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 2rem;
+    height: 24rem;
+    background-color: var(--f4);
+}
+
+#funcoes h5 {
+    font-weight: 350;
+}
+
+.wrap-funcoes {
+    display: flex;
+    align-items: center;
+    width: 90%;
+    height: 24rem;
+}
+
+#funcoes .row {
+    width: 100%;
+    max-height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card-funcoes {
+    padding: 1.5rem;
+    background-color: #fff;
+    min-height: 6rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    transition: all 1s ease;
+    .conteudo-funcoes {
+        display: none;
+    }
+}
+
+.card-funcoes i {
+    color: var(--verde);
+}
+
+.card-funcoes:hover {
+    .conteudo-funcoes {
+        display: block;
+    }
+}

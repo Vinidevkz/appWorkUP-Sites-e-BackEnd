@@ -41,46 +41,6 @@
         </div>
     </section>
 
-    <section id="funcoes">
-        <h4 class="mb-5 text-center">Aqui você pode:</h4>
-        <div class="row justify-content-center linha-funcoes" style="width: 95%; margin: 0 auto;">
-            <div class="col-funcoes col-12 col-sm-6 col-md-4 mb-4">
-                <div class="card-funcoes h-100">
-                    <div class="header-card-funcoes d-flex align-items-center mb-3">
-                        <i class="fa-solid fa-note-sticky me-2" style="color: #20dd77;"></i>
-                        <h5>Publicar vagas</h5>
-                    </div>
-                    <div class="body-card-funcoes">
-                        <p>O nosso foco é a publicação de vagas, podendo ser editadas e removidas posteriormente.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-funcoes col-12 col-sm-6 col-md-4 mb-4">
-                <div class="card-funcoes h-100">
-                    <div class="header-card-funcoes d-flex align-items-center mb-3">
-                        <i class="fa-solid fa-paper-plane me-2" style="color: #20dd77;"></i>
-                        <h5>Mensagens</h5>
-                    </div>
-                    <div class="body-card-funcoes">
-                        <p>Enviar mensagens aos candidatos de forma rápida e segura.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-funcoes col-12 col-sm-6 col-md-4 mb-4">
-                <div class="card-funcoes h-100">
-                    <div class="header-card-funcoes d-flex align-items-center mb-3">
-                        <i class="fa-solid fa-users me-2" style="color: #20dd77;"></i>
-                        <h5>Conhecer os jovens talentos</h5>
-                    </div>
-                    <div class="body-card-funcoes">
-                        <p>Aqui você pode se conectar com estudantes de diferentes áreas, promovendo a troca de
-                            conhecimento e networking.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <section id="vagas" class="vagas">
         <div class="d-flex justify-content-start mt-5">
             <h4 class="mb-5">Vagas publicadas</h4>
@@ -92,7 +52,7 @@
 
             <div class="carrossel">
                 @if($vagas->isEmpty())
-                    <div class="alert alert-warning" role="alert">
+                    <div class="alert alert-warning" role="alert" style="margin: auto">
                         Nenhuma vaga publicada.
                     </div>
                 @else
@@ -181,7 +141,7 @@
 
             <div class="carrossel-publ">
                 @if($posts->isEmpty())
-                    <div class="alert alert-warning" style="align-self: center" role="alert">
+                    <div class="alert alert-warning" role="alert" style="margin: auto">
                         Nenhuma postagem encontrada.
                     </div>
                 @else
