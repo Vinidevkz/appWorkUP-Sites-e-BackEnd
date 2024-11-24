@@ -181,7 +181,7 @@ Route::middleware('auth:empresa')->group(function(){
             Route::put('/posts/{id}', [PostController::class, 'update'])->name('posts.update');
 
             // Rota para excluir uma postagem
-            Route::delete('/posts/{id}', [PostController::class, 'destroy'])->name('posts.destroy');
+            Route::delete('/posts/{id}', [PostController::class, 'destroy'])->name('post.destroy');
                
 
                 
@@ -337,3 +337,4 @@ Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
 Route::get('/buscar-usuario', [UsuarioController::class, 'buscarUsuario'])->name('buscar.usuario');
 Route::get('/buscar-empresa', [EmpresaController::class, 'buscarEmpresa'])->name('buscar.empresa');
+Route::get('/buscar-vaga', [VagaController::class, 'buscarVaga'])->name('buscar.vaga');

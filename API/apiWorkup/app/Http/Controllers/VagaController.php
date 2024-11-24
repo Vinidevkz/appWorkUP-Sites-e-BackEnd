@@ -404,4 +404,23 @@ class VagaController extends Controller
     }
     */
 
+
+       // UsuarioController.php
+public function buscarVaga(Request $request)
+{
+    $nome = $request->get('nome');
+    $vaga = Vaga::where('nomeVaga', 'LIKE', "%{$nome}%")->first();
+
+    if ($vaga) {
+        return response()->json([
+            'status' => 'success',
+            'vaga' => $vaga,
+        ]);
+    }
+
+    return response()->json([
+        'status' => 'error',
+        'message' => 'Vaga não encontrada',
+    ]);
+}
 }
