@@ -34,7 +34,7 @@
                         @endif
                         <div class="row body-box-login">
                             <div class="col-12">
-                                <label class="label-padrao" for="">Email:</label>
+                                <label class="label-padrao" for="">E-mail:</label>
                                 <input type="email" name="email" class="input-padrao" required placeholder="Digite seu e-mail"></p>
                             </div>
                             <div class="col-12">
@@ -47,9 +47,9 @@
                                 <p style="align-self: center; color: #ff0505; font-size: 0.8rem">{{ session('error') }}</p>
                             @endif
                             <input type="submit" href="/home" id="logar" class="botao-padrao" value="Entrar">
-                            <button class="botao-padrao"><a href="/cadastrarEmpresa" id="cadastrar" style="text-decoration: none; color: #242424">Cadastrar-se</a></button>
+                            </form>
+                            <button type="button" class="botao-padrao"><a href="/cadastrarEmpresa" id="cadastrar" style="text-decoration: none; color: #242424">Cadastrar-se</a></button>
                         </div>
-                    </form>
                 </div>
             </div>
         </div>  
