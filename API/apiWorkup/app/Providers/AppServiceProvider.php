@@ -52,13 +52,15 @@ class AppServiceProvider extends ServiceProvider
         if($empresa){
             $posts = Post::where('idEmpresa', $empresa->idEmpresa)->get();
 
+            $denuncias = DB::table('tb_denunciausuario')->where('idEmpresa', $empresa->idEmpresa)->get();
+
             $vagas = Vaga::where('idEmpresa', $empresa->idEmpresa)
             ->with('modalidade', 'area', 'status')
             ->withCount('candidatos')
             ->orderBy('prazoVaga', 'asc')->get();
             
             
-            $view->with('posts', $posts)->with('empresa', $empresa)->with('vagas', $vagas);
+            $view->with('posts', $posts)->with('empresa', $empresa)->with('vagas', $vagas)->with('denuncias', $denuncias);
         }
     });
     
