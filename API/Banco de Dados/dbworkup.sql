@@ -79,7 +79,10 @@ INSERT INTO `tb_area` (`idArea`, `nomeArea`) VALUES
 (12, 'Serviços Gerais'),
 (13, 'Higienização'),
 (14, 'Engenharia'),
-(15, 'Meio Ambiente');
+(15, 'Meio Ambiente'),
+(16, 'Psicologia'),
+(17, 'Vendas'),
+(18, 'Moda');
 
 -- --------------------------------------------------------
 

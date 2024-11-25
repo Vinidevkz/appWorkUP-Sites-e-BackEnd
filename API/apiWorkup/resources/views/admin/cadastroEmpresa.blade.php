@@ -88,7 +88,7 @@
                 <div class="row d-flex flex-row h-50 inputs-txt">
 
                     <div class="col d-flex col-6 h-100">
-                        <label for="emailEmpresa">Email:</label>
+                        <label for="emailEmpresa">E-mail:</label>
                         <input type="email" class="form-control custom-input" name="emailEmpresa" placeholder="exemplo@gmail.com" value="{{old('emailEmpresa')}}">
                         @error('emailEmpresa')
                             <div class="error-message">{{ $message }}</div>
