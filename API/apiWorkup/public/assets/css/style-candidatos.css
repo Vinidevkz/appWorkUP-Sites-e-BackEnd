@@ -140,11 +140,11 @@ body, .candidatos {
 
 .perfil {
     background-color: #fff;
-    border: 2px solid #20dd77;
+    border: 2px solid #20dd77 !important;
+    border-radius: 5rem !important;
     color: #20dd77;
-    width: 8rem;
     font-weight: 500;
-    width: 10rem;
+    width: 8rem;
 }
 
 .dados-candidato h5, .dados-candidato p {
@@ -188,7 +188,7 @@ body, .candidatos {
     align-items: center;
 }
 
-.aprovar, .negar, .perfil, .mensagem {
+.aprovar, .negar, .mensagem {
     height: 2.5rem;
     display: flex;
     align-items: center;
@@ -236,7 +236,7 @@ body, .candidatos {
 
 .modal-candidato {
     width: 100%;
-    height: 35rem;
+    height: 38rem;
     background-color: rgb(255, 255, 255);
     display: flex;
     flex-direction: column;
@@ -246,37 +246,66 @@ body, .candidatos {
 .banner-modal {
     width: 100%;
     height: 20%;
+    object-fit: cover;
 }
 
-.dados-modal div {
-    justify-content: start !important;
+.foto-perfil-usuario {
+    width: 100px;
+    height: 100px;
+    border-radius: 5rem; 
+    align-self: start;
 }
 
-.modal-body {
-    padding: 0 2rem;
-}
-
-.info-adicional {
-    padding: 2rem;
-}
-
-.sobre {
-    padding: 0 1rem;
+.user-info-modal {
     margin-top: 1.5rem;
 }
 
-.info-adicional .col {
-    padding: 0.3rem 0;
+.user-info-modal h5, .sobre h6 {
+    font-family: "Poppins", sans-serif;
+    font-weight: 300;
+    margin-bottom: 0;
 }
 
-.col h6, .col p {
+.user-info-modal h6, .sub-candidato h6, .sub-candidato p {
+    color: #6a6a6a;
+    font-weight: 300;
+    font-size: 0.9rem;
+    margin-bottom: 0.3rem;
+}
+
+.sobre {
+    padding: 0 3rem;
+    margin-top: 1.5rem;
+}
+
+.info-adicional {
+    padding: 0 3rem 2rem;
+}
+
+.info-adicional .col h6, .info-adicional .col p {
     margin-bottom: 0;
+}
+
+.info-adicional .col {
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+}
+
+.info-adicional .col h6, .modal-aprovar h5, .modal-negar h5 {
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+}
+
+.info-adicional .col p {
+    font-weight: 300;
+    font-size: 0.8rem;
 }
 
 .header-modal{
     z-index: 1;
     width: 25rem;
-    margin-top: -15px;
+    margin-top: -30px;
     padding: 0 1rem;
     flex-direction: row;
     gap: 1rem;
@@ -349,3 +378,5 @@ body, .candidatos {
     width: 45%;
     border-radius: 10px;
 }
+
+/*------------------------------------*/

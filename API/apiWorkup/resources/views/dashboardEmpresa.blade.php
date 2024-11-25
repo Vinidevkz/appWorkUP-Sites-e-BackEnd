@@ -26,12 +26,9 @@
                     <h3>
                         Nos ajude nessa jornada de transformar a carreira de diversas pessoas
                     </h3>
-                    <div
-                        class="botoes-card d-flex flex-column flex-md-row justify-content-center justify-content-md-start">
-                        <a href="{{ route('cadastrarVaga') }}"
-                            class="botao-card botao-vaga mb-2 mb-md-0 me-md-2">Publicar vaga</a>
-                        <a href="{{ route('post.create', $empresa->idEmpresa) }}" class="botao-card botao-post">Fazer
-                            post</a>
+                    <div class="botoes-card d-flex flex-column flex-md-row justify-content-center justify-content-md-start">
+                        <a href="{{ route('cadastrarVaga') }}" class="botao-padrao botao-vaga mb-2 mb-md-0 me-md-2">Publicar vaga</a>
+                        <a href="{{ route('post.create', $empresa->idEmpresa) }}" class="botao-padrao botao-post">Fazer post</a>
                     </div>
                 </div>
             </div>
@@ -146,7 +143,7 @@
                     </div>
                 @else
                     @foreach($posts as $post)
-                        <div class="col-12 col-sm-4 col-md-4 col-lg-4 d-flex justify-content-center">
+                        <div class="col-12 col-sm-4 col-md-4 col-lg-4 d-flex h-100 justify-content-center">
 
                             <div class="publ">
                                 <div class="empresa-publ">
@@ -161,7 +158,7 @@
                                 </div>
 
                                 <div class="col conteudo-publ">
-                                    <h6>{{ $post->tituloPublicacao }}</h6>
+                                    <h6 class="text-truncate">{{ $post->tituloPublicacao }}</h6>
                                     <p class="text-truncate">{{ $post->detalhePublicacao }}</p>
                                 </div>
                                 <img src="{{$post->fotoPublicacao}}" class="img-publ" alt="">

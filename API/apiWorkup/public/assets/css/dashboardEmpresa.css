@@ -57,12 +57,16 @@
     background-color: var(--verde);
 }
 
-.botao-vaga, .botao-vaga i, .botao-post {
-    color: #f4f4f4;
-}
-
 .botao-post {
     background-color: #0d9883;
+}
+
+.botao-vaga, .botao-post {
+    width: 80%;
+    display: flex;
+    justify-content: center;
+    color: #fff;
+    text-decoration: none;
 }
 
 /*--area vagas--*/
@@ -352,10 +356,12 @@
 
 .conteudo-publ {
     width: 80%;
+    display: flex;
+    flex-direction: column;
     align-self: center;
-    min-height: 4rem;
-    max-height: 10rem;
+    height: 12rem;
     margin-top: 1.5rem;
+    gap: 0.3rem;
 }
 
 .conteudo-publ p {
@@ -414,10 +420,15 @@ footer ul li a i {
     align-items: center;
     overflow-x: auto;
     scroll-behavior: smooth;
-    padding: 0 20px;
+    padding: 20px;
     gap: 0.5rem;
     -ms-overflow-style: none;
     scrollbar-width: none;
+}
+
+#vagas h4, #publicacoes h4 {
+    font-family: "Poppins", sans-serif;
+    font-weight: 300;
 }
 
 /* Responsividade */
