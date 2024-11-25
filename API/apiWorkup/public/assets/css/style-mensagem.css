@@ -1,78 +1,199 @@
-body {
-    height: 100vh;
-}
-
-.perfil-user {
-    position: fixed;
-    margin-top: 4rem;
-    background-color: #fff;
-    width: 100%;
+.chat-container {
     display: flex;
-    gap: 1rem;
-    padding: 0.5rem 3rem;
+    height: 90vh;
+    margin-top: 4rem;
 }
 
-.perfil-user img {
-    object-fit: cover;
-    width: 60px;
-    height: 60px;
-    border-radius: 10rem;
+.chat-container h4 {
+    font-family: "Poppins", sans-serif;
+    font-weight: 350;
+    align-items: left;
+    padding: 1.5rem 0 2rem 2rem;
 }
 
-.perfil-user div {
+.chat-list {
+    width: 30%;
+    background-color: var(--f4);
+    overflow-y: auto;
+    border-right: 1px solid #ddd;
     display: flex;
     flex-direction: column;
-    justify-content: center;
 }
 
-.perfil-user div h5 {
-    font-weight: 350;
+.chat-list ul {
+    width: 95%;
+    padding: 0;
+    align-self: center;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
 }
 
-.perfil-user div p {
+.card-mensagem {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 6rem;
+    padding: 0 2rem;
+    transition: all 0.3s ease;
+    background-color: var(--f8);
+}
+
+.card-mensagem:hover {
+    background-color: var(--f4);
+    border: 0.5px solid var(--c4);
+}
+
+.card-mensagem img {
+    width: 4rem;
+    height: 4rem;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 8rem;
+}
+
+.card-mensagem div {
+    display: flex;
+    flex-direction: column;
+    margin-left: 1rem;
+}
+
+.card-mensagem h5, .header h5 {
+    font-family: "DM Sans", sans-serif;
     font-weight: 300;
-}
-
-.perfil-user div p, .perfil-user div h5 {
     margin-bottom: 0;
 }
 
-
-
-
-.campo-mensagem {
-    width: 100%;
-    background-color: white;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 0.8rem 0;
+.last-message {
+    font-weight: 350;
 }
 
-.campo-mensagem div {
+/*-- área mensagem --*/
+
+.chat-messages {
+    width: 70%;
     display: flex;
-    justify-content: space-between;
-    width: 55%;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.header {
+    padding: 1rem 2rem;
+    background-color: var(--24);
+    color: var(--f4);
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #ddd;
+}
+
+.header h5, .header p {
+    margin-bottom: 0;
+}
+
+.header img {
+    width: 3rem;
+    height: 3rem;
+    border-radius: 8rem;
+    margin-right: 1rem;
+}
+
+.messages-container {
+    flex: 1;
+    overflow-y: auto;
+    padding: 15px;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.campo-mensagem {
+    padding: 10px 15px;
+    background-color: #f4f4f4;
+    border-top: 1px solid #ddd;
+    display: flex;
+    align-items: center;
 }
 
 .campo-mensagem textarea {
-    padding: 0.8rem 1rem;
-    width: 85%;
-    height: 3rem;
+    width: 90%;
+    border-radius: 20px;
+    padding: 0.5rem 1rem;
+    border: 1px solid #ccc;
     resize: none;
+    height: 40px;
+    -ms-overflow-style: none;
     scrollbar-width: none;
-    border-radius: 3rem;
-    border: 1px solid #20dd77;
 }
 
 .campo-mensagem button {
-    border-style: none;
-    background-color: transparent;
+    margin-left: 2rem;
+    background-color: var(--verde);
+    border: none;
+    color: white;
+    width: 3rem;
+    height: 3rem;
+    border-radius: 8rem;
+    cursor: pointer;
+    font-size: 18px;
 }
 
-.campo-mensagem i {
-    font-size: 1.5rem;
-    padding: 1rem;
-    background-color: #20dd77;
-    border-radius: 10rem;
+.campo-mensagem button:hover {
+    background-color: #128C7E;
+}
+
+.list-group-item {
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    margin-bottom: 5px;
+    background-color: white;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.list-group-item img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.message {
+    display: flex;
+    margin-bottom: 15px;
+}
+
+.message.usuario {
+    justify-content: flex-start;
+}
+
+.message.empresa {
+    justify-content: flex-end;
+}
+
+.message-bubble {
+    max-width: 60%;
+    padding: 10px 15px;
+    border-radius: 15px;
+    font-size: 1rem;
+    line-height: 1.4;
+}
+
+.message.usuario .message-bubble {
+    background-color: #e0e0e0;
+    color: black;
+    border-radius: 15px 15px 15px 0;
+}
+
+.message.empresa .message-bubble {
+    background-color: #25D366;
+    color: white;
+    border-radius: 15px 15px 0 15px;
+}
+
+.message small {
+    font-size: 0.8rem;
+    color: #777;
 }

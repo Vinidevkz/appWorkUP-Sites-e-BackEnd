@@ -28,7 +28,7 @@ body {
     font-weight: 400;
 }
 
-.saudacoes p, .saudacoes h3, .card-funcoes h5, #funcoes h5 {
+.saudacoes p, .saudacoes h3, .card-funcoes h5, #funcoes h5, #objetivos h5 {
     font-family: "Poppins", sans-serif;
 }
 
@@ -54,7 +54,7 @@ body {
     background-color: var(--f4);
 }
 
-#funcoes h5 {
+#funcoes h5, #objetivos h5 {
     font-weight: 350;
 }
 
@@ -94,4 +94,51 @@ body {
     .conteudo-funcoes {
         display: block;
     }
+}
+
+/*-- seção de objetivos --*/
+
+#objetivos {
+    height: 35rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#objetivos h5 {
+    align-self: center;
+}
+
+.cards-objetivos {
+    height: 25rem;
+    width: 85%;
+}
+
+.card-objetivos {
+    height: 100%;
+    background-color: var(--1b);
+    transition: all 0.3s ease;
+}
+
+.card-objetivos:hover {
+    transform: translateY(-10px);
+}
+
+.header-card-objetivos {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #fff;
+    padding: 1rem 2rem;
+}
+
+.header-card-objetivos img {
+    width: 100%;
+    height: 12rem;
+    object-fit: cover;
+}
+
+.body-card-objetivos {
+    padding: 0 2rem;
+    color: #fff;
 }
