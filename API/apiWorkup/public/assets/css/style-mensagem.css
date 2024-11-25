@@ -36,11 +36,12 @@
     height: 6rem;
     padding: 0 2rem;
     transition: all 0.3s ease;
-    background-color: var(--ed);
+    background-color: var(--f8);
 }
 
 .card-mensagem:hover {
     background-color: var(--f4);
+    border: 0.5px solid var(--c4);
 }
 
 .card-mensagem img {
