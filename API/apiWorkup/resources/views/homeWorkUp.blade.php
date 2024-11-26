@@ -1,4 +1,3 @@
-`html
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -34,6 +33,7 @@
 
         <section id="card-header">
             <div class="saudacoes">
+                <img src="{{url('assets/img/login/workup-verde-branco.png')}}" alt="" style="width: 8rem;">
                 <p>Seja Bem vindo(a)</p>
                 <h3>Venha fazer parte da equipe WorkUp!</h3>
                 <a href="/login" class="botao-padrao">Entrar</a>
@@ -84,8 +84,8 @@
                 <div class="col-12 col-md-4">
                     <div class="card-objetivos">
                         <div class="header-card-objetivos">
-                            <h5>Encontre os Talentos do Futuro:</h5>
-                            <img src="{{url('assets/img/home/up.png')}}" alt="">
+                            <h5>Fornecer uma comunicação assertiva:</h5>
+                            <img src="{{url('assets/img/home/chat-home-asset.png')}}" alt="">
                         </div>
                         <div class="body-card-objetivos">
                             <p>"Nosso objetivo é conectar recrutadores com jovens talentos promissores e qualificados que estão prontos para contribuir com suas habilidades e energia no mercado de trabalho."</p>
@@ -95,8 +95,8 @@
                 <div class="col-12 col-md-4">
                     <div class="card-objetivos">
                         <div class="header-card-objetivos">
-                        <h5>Auxiliar:</h5>
-                        <img src="{{url('assets/img/home/6.png')}}" alt="">
+                        <h5>Auxiliar no ingresso de jovens:</h5>
+                        <img src="{{url('assets/img/home/auxilio-home-asset.png')}}" alt="">
                             
 
                         </div>
@@ -111,7 +111,7 @@
                     <div class="card-objetivos">
                         <div class="header-card-objetivos">
                         <h5>Promovendo Diversidade e Inclusão:</h5>
-                        <img src="{{url('assets/img/home/7.png')}}" alt="">
+                        <img src="{{url('assets/img/home/diversidade-home-asset.png')}}" alt="">
 
                         </div>
                         <div class="body-card-objetivos">
@@ -127,9 +127,10 @@
 
         <footer class="row row-cols-1 row-cols-sm-2 row-cols-md-5 py-5 my-5 text-light px-5" style="background-color: #0c0c0c; margin: 0 !important">
             <div class="col">
-                <img src="{{url('assets/img/login/workuplogo.png')}}" alt="" style="width: 8rem;">
+                <img src="{{url('assets/img/login/workup-verde-branco.png')}}" alt="" style="width: 8rem;">
                 <p>WorkUp construindo sonhos de jovens talentos e linkando-os ha grandes empresas.</p>
             </div>
+            <div class="col mb-3"></div>
             <div class="col mb-3"></div>
             <div class="col mb-3">
                 <h5>Contate-nos</h5>
@@ -167,26 +168,7 @@
                     
                 </ul>
             </div>
-            <div class="col mb-3">
-                <h5>Section</h5>
-                <ul class="nav flex-column">
-                    <li class="nav-item mb-2">
-                        item
-                    </li>
-                    <li class="nav-item mb-2">
-                        item
-                    </li>
-                    <li class="nav-item mb-2">
-                        item
-                    </li>
-                    <li class="nav-item mb-2">
-                        item
-                    </li>
-                    <li class="nav-item mb-2">
-                        item
-                    </li>
-                </ul>
-            </div>
+
         </footer>
 
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>

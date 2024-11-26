@@ -28,21 +28,28 @@
                         @csrf
                             <h4 class="mb-5" style="font-weight: 400;">Cadastro de vaga</h4>
                             <div class="wrap-body">
+                                
                                 <div class="row">
+                                
                                     <div class="col col-6">
-                                        <label for="nomeVaga" >Nome da Vaga</label>
+                                        <div class="d-flex flex-row">
+                                            <label for="nomeVaga" >Título</label>
+                                            @error('nomeVaga')
+                                                <div class="text-danger ps-1">{{ $message }}</div>
+                                            @enderror
+                                        </div>
                                         <input class="input-padrao" type="text" name="nomeVaga" value="{{ old('nomeVaga') }}">
-                                        @error('nomeVaga')
-                                            <div style="background-color: #fff;" class="error-message">{{ $message }}</div>
-                                        @enderror
                                     </div>
+
                                     <div class="col-3 d-flex align-items-center">
                                         <div class="form__group field">
-                                            @error('idModalidadeVaga')
-                                                <div style="background-color: #fff;" class="error-message">{{ $message }}</div>
-                                            @enderror
                                             <div class="input-container">
-                                                <label for="estadoVaga">Modalidade:</label>
+                                                <div class="d-flex flex-row">
+                                                    <label for="estadoVaga">Modalidade:</label>
+                                                    @error('idModalidadeVaga')
+                                                        <div class="text-danger ps-1">{{ $message }}</div>
+                                                    @enderror
+                                                </div>
                                                 <!-- Esta parte precisa ficar pode tirar o select contato que de o mesmo nome ao campo -->
                                                 <select name="idModalidadeVaga">
                                                     <option value="">Selecionar</option>
@@ -57,14 +64,16 @@
                                             </div>
                                         </div>
                                     </div>
+                                    
                                     <div class="col-3 d-flex align-items-center">
                                         <div class="form__group field">
-                                            @error('idModalidadeVaga')
-                                                <div style="background-color: #fff;" class="error-message">{{ $message }}
-                                                </div>
-                                            @enderror
                                             <div class="input-container">
-                                                <label for="estadoVaga" >Área:</label>
+                                                <div class="d-flex flex-row">
+                                                    <label for="estadoVaga" >Área:</label>
+                                                    @error('idModalidadeVaga')
+                                                        <div class="text-danger ps-1">{{ $message }}</div>
+                                                    @enderror
+                                                </div>
 
                                                 <!-- Esta parte precisa ficar pode tirar o select contato que de o mesmo nome ao campo -->
                                                 <select name="idArea">
@@ -77,6 +86,7 @@
                                                     @endforeach
                                                     <!-- Esta parte precisa ficar -->
                                                 </select>
+                                                
                                             </div>
                                         </div>
                                     </div>
@@ -86,12 +96,13 @@
                                 <div class="row">
                                     <div class="col-6">
                                         <div class="form__group field">
-                                            @error('horarioVaga')
-                                                <div style="background-color: #fff;" class="error-message">{{ $message }}
-                                                </div>
-                                            @enderror
                                             <div class="input-container">
-                                                <label for="horarioVaga" >Carga horária:</label>
+                                                <div class="d-flex flex-row">
+                                                    <label for="horarioVaga" >Carga horária</label>
+                                                    @error('horarioVaga')
+                                                        <div class="text-danger ps-1">{{ $message }}</div>
+                                                    @enderror
+                                                </div>
 
                                                 <select name="horarioVaga">
                                                     <option value="">Selecionar</option>
@@ -103,23 +114,22 @@
                                                     <option value="20h/Sem" {{ old('horarioVaga') == '20h/Sem' ? 'selected' : '' }}>20h/Sem</option>
                                                     <option value="Flexível (negociada)" {{ old('horarioVaga') == 'Flexível (negociada)' ? 'selected' : '' }}>Flexível (negociada)</option>
                                                 </select>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
 
                                     <div class="col-6">
                                         <div class="form__group field">
-                                            @error('contratoVaga')
-                                                <div style="background-color: #fff;" class="error-message">{{ $message }}
-                                                </div>
-                                            @enderror
+                                            
                                             <div class="input-container">
-                                                <label for="contratoVaga" >Tipo de contrato:</label>
-
-                                                
+                                                <div class="d-flex flex-row">
+                                                    <label for="contratoVaga" >Tipo de contrato</label>
+                                                    @error('contratoVaga')
+                                                        <div class="text-danger ps-1">{{ $message }}</div>
+                                                    @enderror
+                                                </div>
                                                 <select name="contratoVaga">
                                                 <option value="">Selecionar</option>
-
                                                 <option value="CLT" {{ old('contratoVaga') == 'CLT' ? 'selected' : '' }}>CLT</option>
                                                 <option value="Estágio (Superior)" {{ old('contratoVaga') == 'Estágio (Superior)' ? 'selected' : '' }}>Estágio (Superior)</option>
                                                 <option value="Estágio (Médio)" {{ old('contratoVaga') == 'Estágio (Médio)' ? 'selected' : '' }}>Estágio (Médio)</option>
@@ -131,54 +141,72 @@
                                 </div>
                                 <div class="row">
                                     <div class="col col-7">
-                                        @error('cidadeVaga')
-                                            <div style="background-color: #fff;" class="error-message">{{ $message }}</div>
-                                        @enderror
-                                        <label for="cidadeVaga" >Cidade da Vaga</label>
+                                        <div class="d-flex flex-row">
+                                            <label for="cidadeVaga" >Cidade</label>
+                                            @error('cidadeVaga')
+                                                <div class="text-danger ps-1">{{ $message }}</div>
+                                            @enderror
+                                        </div>
                                         <input class="input-padrao" type="text" name="cidadeVaga" value="{{ old('cidadeVaga') }}">
                                     </div>
                                     <div class="col col-5">
-                                        @error('estadoVaga')
-                                            <div style="background-color: #fff;" class="error-message">{{ $message }}</div>
-                                        @enderror
-                                        <label for="estadoVaga" >Estado da Vaga</label>
+                                        <div class="d-flex flex-row">
+                                            <label for="estadoVaga" >Estado</label>
+                                            @error('estadoVaga')
+                                                <div class="text-danger ps-1">{{ $message }}</div>
+                                            @enderror
+                                        </div>
                                         <input class="input-padrao" type="text" name="estadoVaga" value="{{ old('estadoVaga') }}">
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col col-12">
-                                        @error('diferencialVaga')
-                                            <div style="background-color: #fff;" class="error-message">{{ $message }}</div>
-                                        @enderror
-                                        <label for="diferencialVaga" >Diferencial Vaga</label>
+                                        <div class="d-flex flex-row">
+                                            <label for="diferencialVaga" >Diferencial</label>
+                                            @error('diferencialVaga')
+                                                <div class="text-danger ps-1">{{ $message }}</div>
+                                            @enderror
+                                        </div>
                                         <input class="input-padrao" type="text" name="diferencialVaga" placeholder="Ex: curso técnico" value="{{ old('diferencialVaga') }}">
                                     </div>
                                 </div>
+
                                 <div class="row">
                                     <div class="col col-12">
-                                        <label for="descricaoVaga" >Descrição da Vaga</label>
+                                        <div class="d-flex flex-row">
+                                            <label for="descricaoVaga" >Descrição</label>
+                                            @error('beneficiosVaga')
+                                                <div class="text-danger ps-1">{{ $message }}</div>
+                                            @enderror
+                                        </div>
                                         <input class="input-padrao" type="text" name="descricaoVaga" placeholder="Ex: Vaga para aqueles que querem crecer na empresa" value="{{ old('descricaoVaga') }}">
                                     </div>
                                 </div>
+
                                 <div class="row">
                                     <div class="col col-12">
-                                    @error('beneficiosVaga')
-                                            <div style="background-color: #fff;" class="error-message">{{ $message }}</div>
-                                        @enderror
-                                        <label for="">Benefícios:</label>
+                                        <label for="">Benefícios</label>
                                         <input class="input-padrao" type="text" name="beneficiosVaga" placeholder="Como VR, Vale transporte e etc" value="{{ old('beneficiosVaga') }}">
                                     </div>
                                 </div>
+
                                 <div class="row">
                                     <div class="col col-5">
-                                        <label for="salarioVaga" >Salário da Vaga</label>
+                                        <div class="d-flex flex-row">
+                                            <label for="salarioVaga" >Salário</label>
+                                            @error('salarioVaga')
+                                                <div class="text-danger ps-1">{{ $message }}</div>
+                                            @enderror
+                                        </div>
                                         <input class="input-padrao" type="text" name="salarioVaga" value="{{ old('salarioVaga') }}">
                                     </div>
                                     <div class="col col-7">
-                                        @error('prazoVaga')
-                                            <div style="background-color: #fff;" class="error-message">{{ $message }}</div>
-                                        @enderror
-                                        <label for="">Expira em:</label>
+                                        <div class="d-flex flex-row">
+                                            <label for="">Expira em</label>
+                                            @error('prazoVaga')
+                                                <div class="text-danger ps-1">{{ $message }}</div>
+                                            @enderror
+                                        </div>
                                         <input class="input-padrao" type="text" name="prazoVaga" value="{{ old('prazoVaga') }}" placeholder="dd/mm/yyyy" pattern="\d{2}/\d{2}/\d{4}" data-mask="00/00/0000" required>
                                     </div>
                                 </div>
@@ -186,9 +214,6 @@
 
                             <div class="wrap-footer">
                                 <input class="botao-padrao enviar" type="submit" value="Enviar">
-                                @foreach ($errors->all() as $error)
-                                    <li>{{ $error }}</li>
-                                @endforeach
                             </div>
                     </form>
                 </div>

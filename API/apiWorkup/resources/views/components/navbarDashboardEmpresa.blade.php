@@ -47,11 +47,11 @@
     <div class="modal-dialog modal-dialog-centered modal-sm">
         <div class="modal-content" style="height:225px;">
             <h1 class="modal-title fs-5 mt-4 fw-light" id="exampleModalLabel">Deseja realmente sair?</h1>
-            <div class="modal-footer w-50 d-flex justify-content-center">
+            <div class="modal-footer w-75 d-flex justify-content-center">
                 <form action="/logout" method="POST" class="w-100 d-flex justify-content-between">
                     @csrf
-                    <button type="button" class="botao-padrao text-light" style="background-color: var(--24)" data-bs-dismiss="modal">Não</button>
-                    <button type="submit" class="botao-padrao botao-vaga">Sair</button>
+                    <button type="button" class="botao-padrao text-light" style="background-color: var(--24); width: 5rem" data-bs-dismiss="modal">Não</button>
+                    <button type="submit" class="botao-padrao botao-vaga" style="width: 5rem">Sair</button>
                 </form>
             </div>
         </div>

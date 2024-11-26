@@ -128,18 +128,20 @@ class VagaController extends Controller
                 'idModalidadeVaga' => 'required',
             ],
             [
-                'nomeVaga.required' => 'Digite um nome para continuar',
-                'prazoVaga.required' => 'Digite um prazo',
-                'prazoVaga.date_format' => 'Formato de data errado',
-                'prazoVaga.date' => 'Data inválida',
-                'salarioVaga.required' => 'Digite um salário',
-                'salarioVaga.numeric' => 'O salário deve ser um número', // Mensagem para caso não seja numérico
-                'cidadeVaga.required' => 'Digite uma cidade',
-                'estadoVaga.required' => 'Digite um estado',
-                'beneficiosVaga.required' => 'Digite um benefício',
-                'diferencialVaga.required' => 'Digite um diferencial',
-                'idArea.required' => 'Digite um id área',
-                'idModalidadeVaga.required' => 'Digite uma modalidade',
+                'nomeVaga.required' => '*',
+                'prazoVaga.required' => '*',
+                'prazoVaga.date_format' => '*',
+                'prazoVaga.date' => '*',
+                'salarioVaga.required' => '*',
+                'salarioVaga.numeric' => '*', // Mensagem para caso não seja numérico
+                'cidadeVaga.required' => '*',
+                'estadoVaga.required' => '*',
+                'horarioVaga.required' => '*',
+                'contratoVaga.required' => '*',
+                'beneficiosVaga.required' => '*',
+                'diferencialVaga.required' => '*',
+                'idArea.required' => '*',
+                'idModalidadeVaga.required' => '*',
             ]
         );
     
