@@ -117,7 +117,7 @@ person
                     {{ strtoupper(substr($u->nomeUsuario, 0, 1)) }}{{ strtoupper(substr(explode(' ', $u->nomeUsuario)[1] ?? '', 0, 1)) }}
                 </div>   -->
                 <div class="d-flex modal-imagem justify-content-center">
-                <img src="{{$u->fotoUsuario}}" alt=""  width="50px" height="50px" class="rounded-pill">
+                <img src="{{$u->fotoUsuario}}" alt=""  width="50px" height="50px" class="rounded-pill object-fit: cover">
 
           </div>
                 <a href="" class="visualizar-link m-0" data-bs-toggle="modal" data-bs-target="#visualizarModal"

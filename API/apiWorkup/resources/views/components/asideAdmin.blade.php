@@ -13,7 +13,7 @@
   <div class="modal-dialog modal-dialog-centered ">
     <div class="modal-content modal-fundo-cor">
       <div class="modal-body d-flex justify-content-center">
-        <img src="/assets/img/perfil/admin/{{ $admin->fotoAdmin }}" class="img-fluid" alt="Imagem ampliada">
+        <img src="/assets/img/perfil/admin/{{ $admin->fotoAdmin }}" class="img-fluid object-fit: cover" alt="Imagem ampliada">
       </div>
  
     </div>

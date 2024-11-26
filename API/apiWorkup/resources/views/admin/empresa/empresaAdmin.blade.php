@@ -109,7 +109,7 @@ person
                     <td class="d-flex align-items-center">
 
   <div class="d-flex modal-imagem justify-content-center">
-  <img src="{{$em->fotoEmpresa}}" alt="" width="50px" height="50px" class="rounded-pill">
+  <img src="{{$em->fotoEmpresa}}" alt="" width="50px" height="50px" class="rounded-pill object-fit: cover">
   </div>
 
 
