@@ -1,3 +1,4 @@
+`html
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -11,6 +12,20 @@
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
         <link rel="icon" href="/img/icons/android-chrome-192x192.png" type="image/x-icon">  
         <title>Document</title>
+        <style>
+            @media (max-width: 767px) {
+                #funcoes, #objetivos {
+                    margin-bottom: 6rem;
+                }
+                .cards-objetivos {
+                    display: grid;
+                    grid-template-columns: repeat(1, 1fr);
+                    grid-gap: 2rem;
+                    max-height: 300px;
+                    overflow-y: auto;
+                }
+            }
+        </style>
     </head>
 
     <body style="background-color: var(--ed);">
@@ -32,7 +47,7 @@
             <div class="wrap-funcoes">
 
                 <div class="row">
-                    <div class="col">
+                    <div class="col-12 col-md-4">
                         <div class="card-funcoes">
                             <h5><i class="me-2 fa-solid fa-window-maximize"></i> Publicar vagas</h5>
                             <div class="conteudo-funcoes">
@@ -40,7 +55,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col">
+                    <div class="col-12 col-md-4">
                         <div class="card-funcoes">
                             <h5><i class="me-2 fa-solid fa-comment"></i> Conversar com candidatos</h5>
                             <div class="conteudo-funcoes">
@@ -48,7 +63,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col">
+                    <div class="col-12 col-md-4">
                         <div class="card-funcoes">
                             <h5><i class="me-2 fa-solid fa-share-nodes"></i> Compartilhar informações</h5>
                             <div class="conteudo-funcoes">
@@ -66,33 +81,41 @@
             <h5 class="mt-5">Nossos valores e objetivos:</h5>
 
             <div class="cards-objetivos row mt-5">
-                <div class="col-4">
+                <div class="col-12 col-md-4">
                     <div class="card-objetivos">
                         <div class="header-card-objetivos">
-                            <h5>Auxiliar:</h5>
-                            <img src="{{url('assets/img/home/card-objetivos-1.png')}}" alt="">
+                            <h5>Encontre os Talentos do Futuro:</h5>
+                            <img src="{{url('assets/img/home/up.png')}}" alt="">
                         </div>
                         <div class="body-card-objetivos">
-                            <p>Temos como objetivo principal auxiliar pessoas com nossos serviços, sendo de forma direta, com nossos sistemas, ou auxiliando outras empresas</p>
+                            <p>"Nosso objetivo é conectar recrutadores com jovens talentos promissores e qualificados que estão prontos para contribuir com suas habilidades e energia no mercado de trabalho."</p>
                         </div>
                     </div>
                 </div>
-                <div class="col-4">
+                <div class="col-12 col-md-4">
                     <div class="card-objetivos">
                         <div class="header-card-objetivos">
+                        <h5>Auxiliar:</h5>
+                        <img src="{{url('assets/img/home/6.png')}}" alt="">
+                            
 
                         </div>
                         <div class="body-card-objetivos">
+                        <p>"Recrutadores têm acesso a um banco de dados extenso e ferramentas avançadas para facilitar a busca e seleção de jovens talentos. Garantimos um processo de recrutamento ágil e assertivo."</p>
+                            
                             
                         </div>
                     </div>
                 </div>
-                <div class="col-4">
+                <div class="col-12 col-md-4">
                     <div class="card-objetivos">
                         <div class="header-card-objetivos">
+                        <h5>Promovendo Diversidade e Inclusão:</h5>
+                        <img src="{{url('assets/img/home/7.png')}}" alt="">
 
                         </div>
                         <div class="body-card-objetivos">
+                        <p>"Estamos comprometidos em promover a diversidade e inclusão no ambiente de trabalho, candidatos diversos que tragam novas perspectivas e inovação para sua empresa."</p>
                             
                         </div>
                     </div>
@@ -104,48 +127,44 @@
 
         <footer class="row row-cols-1 row-cols-sm-2 row-cols-md-5 py-5 my-5 text-light px-5" style="background-color: #0c0c0c; margin: 0 !important">
             <div class="col">
-                <img src="{{url('assets/img/login/WorkUp-logo.png')}}" alt="" style="width: 8rem;">
-                <p>WorkUp</p>
+                <img src="{{url('assets/img/login/workuplogo.png')}}" alt="" style="width: 8rem;">
+                <p>WorkUp construindo sonhos de jovens talentos e linkando-os ha grandes empresas.</p>
             </div>
             <div class="col mb-3"></div>
             <div class="col mb-3">
-                <h5>Section</h5>
+                <h5>Contate-nos</h5>
                 <ul class="nav flex-column">
                     <li class="nav-item mb-2">
-                        item
+                        email; workup@projetos.com
                     </li>
                     <li class="nav-item mb-2">
-                        item
+                        tel; (11) 99999-9999
                     </li>
                     <li class="nav-item mb-2">
-                        item
+                        sac; (11) 99999-9999
                     </li>
                     <li class="nav-item mb-2">
-                        item
+                        fax; (11) 99999-9999
                     </li>
-                    <li class="nav-item mb-2">
-                        item
-                    </li>
+                   
                 </ul>
             </div>
             <div class="col mb-3">
-                <h5>Section</h5>
+                <h5>Endereços</h5>
                 <ul class="nav flex-column">
                     <li class="nav-item mb-2">
-                        item
+                        São Paulo - SP
                     </li>
                     <li class="nav-item mb-2">
-                        item
+                        Natal - RN
                     </li>
                     <li class="nav-item mb-2">
-                        item
+                        Curitiba - PR
                     </li>
                     <li class="nav-item mb-2">
-                        item
+                        Manaus -- AM
                     </li>
-                    <li class="nav-item mb-2">
-                        item
-                    </li>
+                    
                 </ul>
             </div>
             <div class="col mb-3">
@@ -169,12 +188,9 @@
                 </ul>
             </div>
         </footer>
-    </div>
 
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
         <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
         <script src="{{url('/assets/js/home.js')}}" async></script>
-
     </body>
-
 </html>
