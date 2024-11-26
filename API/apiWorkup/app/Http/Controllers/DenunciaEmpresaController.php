@@ -104,7 +104,16 @@ class DenunciaEmpresaController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
-    {
-        //
+{
+    // Encontre a denúncia pelo ID
+    $denunciaEmpresa = DenunciaEmpresa::find($id);
+
+    if ($denunciaEmpresa) {
+        // Exclua a denúncia
+        $denunciaEmpresa->delete();
+        return redirect()->back()->with('success', 'Denúncia excluída com sucesso!');
     }
+
+    return redirect()->back()->with('error', 'Denúncia não encontrada!');
+}
 }

@@ -106,7 +106,17 @@ class DenunciaUsuarioController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
-    {
-        //
+{
+    // Encontre a denúncia pelo ID
+    $denunciaUsuario = DenunciaUsuario::find($id);
+
+    if ($denunciaUsuario) {
+        // Exclua a denúncia
+        $denunciaUsuario->delete();
+        return redirect()->back()->with('success', 'Denúncia excluída com sucesso!');
     }
+
+    return redirect()->back()->with('error', 'Denúncia não encontrada!');
+}
+
 }

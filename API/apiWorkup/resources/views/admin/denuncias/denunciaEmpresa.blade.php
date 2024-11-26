@@ -62,12 +62,17 @@
 </div>
 <div class="col-3"></div>
 <div class="col-2">
-<button type="button" class="btn btn-danger btn-sm"><i class="bi bi-envelope-slash"></i>&nbsp;E-mail</button>
+<button type="button" class="btn btn-outline-dark btn-sm"><i class="bi bi-envelope-slash"></i>&nbsp;E-mail</button>
 </div>
 
 <div class="col-2 ps-1">
-<button type="button" class="btn btn-primary btn-sm"><i class="bi bi-trash3"></i>&nbsp;Descartar</button>
-</div>
+<form action="{{ route('denunciaEmpresa.destroy', $denuncia->idDenunciaEmpresa) }}" method="POST" class="d-inline">
+    @csrf
+    @method('DELETE')
+    <button onclick="return confirm('Realmente deseja excluir essa denúncia?')" type="submit" class="btn btn-outline-danger btn-sm">
+        <span class="bi-slash-circle">&nbsp;Descartar</span>
+    </button>
+</form></div>
 </div>
 
 

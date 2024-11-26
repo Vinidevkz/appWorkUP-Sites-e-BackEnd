@@ -307,6 +307,11 @@ Route::middleware('auth:admin')->group(function(){
                 Route::get('/vaga', [DenunciaVagaController::class, 'index'])->name('denunciar.vaga');
                 Route::get('/vaga{id}', [DenunciaVagaController::class, 'show'])->name('denunciaVaga.show');
 
+                // Deletar denúncia
+                Route::delete('/usuario/{id}', [DenunciaUsuarioController::class, 'destroy'])->name('denunciaUsuario.destroy');
+                Route::delete('/vaga/{id}', [DenunciaVagaController::class, 'destroy'])->name('denunciaVaga.destroy');
+                Route::delete('/empresa/{id}', [DenunciaEmpresaController::class, 'destroy'])->name('denunciaEmpresa.destroy');
+
             });
             
             });

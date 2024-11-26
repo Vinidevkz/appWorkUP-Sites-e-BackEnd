@@ -116,7 +116,16 @@ class DenunciaVagaController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
-    {
-        //
+{
+    // Encontre a denúncia pelo ID
+    $denunciaVaga = DenunciaVaga::find($id);
+
+    if ($denunciaVaga) {
+        // Exclua a denúncia
+        $denunciaVaga->delete();
+        return redirect()->back()->with('success', 'Denúncia excluída com sucesso!');
     }
+
+    return redirect()->back()->with('error', 'Denúncia não encontrada!');
+}
 }

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 24/11/2024 às 07:46
+-- Tempo de geração: 26/11/2024 às 01:06
 -- Versão do servidor: 10.4.32-MariaDB
 -- Versão do PHP: 8.2.12
 
@@ -47,7 +47,9 @@ CREATE TABLE `tb_admin` (
 INSERT INTO `tb_admin` (`idAdmin`, `nomeAdmin`, `usernameAdmin`, `emailAdmin`, `senhaAdmin`, `contatoAdmin`, `fotoAdmin`, `idStatus`, `created_at`, `updated_at`) VALUES
 (1, 'Admin', 'admin', 'admin@admin.com', '$2y$10$cUpTQVon8qNrfny1.849iO0G.w7/.Fuu9tQ2xNtKnikjOj7N2Jctm', '(11)9 9999-9999', 'fc29c16347cac127de9ef3d04cd20f68.jpg', 1, '2024-11-13 20:31:50', '2024-11-13 20:31:50'),
 (2, 'Danilo da Silva', 'Danilo', 'danilo@gmail.com', '$2y$10$zRWHNqxm7cnsOTmOB6Ll6OsNP.pCKw9XmCqpyo/AeQ.TxYgQo4Ihm', '(11)9 1111-1111', 'fc29c16347cac127de9ef3d04cd20f68.jpg', 1, '2024-11-13 20:31:50', '2024-11-13 20:31:50'),
-(3, 'Vitor Augusto', 'Vitor', 'vitor@gmail.com', '$2y$10$x7xwpwULEswNXDbVg5AdsuxxvBuVijL7Ofg28m2v0tiTBZUhwwRBS', '(11)9 1111-1111', 'fc29c16347cac127de9ef3d04cd20f68.jpg', 1, '2024-11-13 20:31:50', '2024-11-13 20:31:50');
+(3, 'Vitor Augusto', 'Vitor', 'vitor@gmail.com', '$2y$10$x7xwpwULEswNXDbVg5AdsuxxvBuVijL7Ofg28m2v0tiTBZUhwwRBS', '(11)9 1111-1111', 'fc29c16347cac127de9ef3d04cd20f68.jpg', 1, '2024-11-13 20:31:50', '2024-11-13 20:31:50'),
+(4, 'Tony Stottlemeyer', 'tony.stottlemeyer', 'tony@gmail.com', '$2y$10$BiXtQLECv/ykHlXWF1vuher2wMCq0wr8jTvsYOLoFPFVFp997PKaC', '11954198765', '6017964912838a3f4c1ec8f68c91049e.jpg', 1, '2024-11-25 20:59:15', '2024-11-25 20:59:15'),
+(5, 'Leland Stottlemeyer', 'stottlemeyer', 'le@gmail.com', '$2y$10$F05hIEZ1MRlqD2VP5v4Xgu8Qfwc3wMlhatHWZqM2Nt0JISyXF0Qr2', '11954196789', '6412bc0fbce81e9d5c87761fcd5500ba.jpg', 1, '2024-11-25 21:02:57', '2024-11-25 21:02:57');
 
 -- --------------------------------------------------------
 
@@ -178,7 +180,6 @@ CREATE TABLE `tb_denunciausuario` (
 --
 
 INSERT INTO `tb_denunciausuario` (`idDenunciaUsuario`, `idUsuario`, `idEmpresa`, `motivo`, `idStatus`, `created_at`, `updated_at`) VALUES
-(1, 1, 5, 'O usuário tem se comportado de maneira inapropriada em ambientes públicos e online, prejudicando a imagem da empresa.', 1, '2024-11-01 11:20:44', '2024-11-24 03:20:12'),
 (2, 2, 8, 'O usuário foi flagrado falsificando documentos e informações para benefício próprio.', 2, '2024-11-08 14:14:43', '2024-11-24 03:20:12'),
 (3, 3, 12, 'O usuário tem feito comentários discriminatórios em relação a colegas de trabalho, criando um ambiente tóxico.', 3, '2024-11-15 13:38:20', '2024-11-24 03:20:12'),
 (4, 4, 15, 'O usuário desrespeitou as políticas internas da empresa, comprometendo a segurança e a eficiência do time.', 4, '2024-11-22 16:59:36', '2024-11-24 03:20:12'),
@@ -906,13 +907,13 @@ ALTER TABLE `tb_vagausuario`
 -- AUTO_INCREMENT de tabela `tb_admin`
 --
 ALTER TABLE `tb_admin`
-  MODIFY `idAdmin` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `idAdmin` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de tabela `tb_area`
 --
 ALTER TABLE `tb_area`
-  MODIFY `idArea` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `idArea` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT de tabela `tb_areainteresseusuario`
